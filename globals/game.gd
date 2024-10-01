@@ -16,7 +16,11 @@ func toggle_game_paused() -> bool:
 func is_game_running() -> bool:
 	return _is_game_running
 
+func _ready() -> void:
+	EventBus.start_game.connect(_on_game_start)
+
 func _on_game_start() -> void:
 	if not _is_game_running:
 		# switch scene to main
+		SceneManager.switch_scene_to("main")
 		_is_game_running = true
