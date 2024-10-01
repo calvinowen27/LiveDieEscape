@@ -18,3 +18,8 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://globals/scene_manager.gd"
 Game="*res://globals/game.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
