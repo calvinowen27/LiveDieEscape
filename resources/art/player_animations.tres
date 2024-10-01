@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://dq3cnfmwtht6e"]
+
+[ext_resource type="Texture2D" uid="uid://nnjtr6oolcu4" path="res://resources/art/player-sheet.png" id="1_hmltq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nko0j"]
+atlas = ExtResource("1_hmltq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3up64"]
+atlas = ExtResource("1_hmltq")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s1ry"]
+atlas = ExtResource("1_hmltq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihsys"]
+atlas = ExtResource("1_hmltq")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nko0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3up64")
+}],
+"loop": true,
+"name": &"player_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s1ry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihsys")
+}],
+"loop": true,
+"name": &"player_walk",
+"speed": 5.0
+}]

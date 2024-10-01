@@ -1,36 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8qusfhw71qlq"]
+[gd_scene load_steps=3 format=3 uid="uid://c8qusfhw71qlq"]
 
-[ext_resource type="Texture2D" uid="uid://nnjtr6oolcu4" path="res://resources/art/player-sheet.png" id="1_g0g4l"]
+[ext_resource type="PackedScene" uid="uid://c3ta8j7vd1u2w" path="res://scenes/player/player_behavior.tscn" id="1_h148c"]
+[ext_resource type="Script" path="res://scenes/player/player_walk.gd" id="1_jcook"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pi1uq"]
-radius = 32.0
-height = 76.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0vdm"]
-atlas = ExtResource("1_g0g4l")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_d4t00"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0vdm")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[node name="PlayerWalk" type="Node"]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-collision_layer = 3
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(-3, 3)
-shape = SubResource("CapsuleShape2D_pi1uq")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_d4t00")
+[node name="PlayerWalk" instance=ExtResource("1_h148c")]
+script = ExtResource("1_jcook")

@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dviw650xtb18v"]
+[gd_scene load_steps=2 format=3 uid="uid://dviw650xtb18v"]
+
+[ext_resource type="PackedScene" uid="uid://dsjw11gafshw3" path="res://scenes/player/player.tscn" id="1_yfgn5"]
 
 [node name="Main" type="Node"]
 
@@ -9,12 +11,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-metadata/_edit_group_ = true
 
 [node name="GameRect" type="ReferenceRect" parent="Background"]
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 1080.0
+metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Background/GameRect"]
 layout_mode = 1
@@ -23,6 +25,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Player" parent="Background/GameRect" instance=ExtResource("1_yfgn5")]
+position = Vector2(536, 470)
 
 [node name="HUDRect" type="ReferenceRect" parent="."]
 offset_left = 1080.0

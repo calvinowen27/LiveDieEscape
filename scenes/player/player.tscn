@@ -2,10 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
-[ext_resource type="Script" path="res://scenes/player/player_walk.gd" id="3_psfb3"]
+[ext_resource type="PackedScene" uid="uid://dx4duiho1gprs" path="res://scenes/player/player_idle.tscn" id="2_ml3m3"]
 
-[node name="Player" type="Node"]
+[node name="Player" type="Node2D"]
 script = ExtResource("1_fa2xx")
+metadata/_edit_group_ = true
+
+[node name="PlayerIdle" parent="." instance=ExtResource("2_ml3m3")]
 
 [node name="PlayerWalk" parent="." instance=ExtResource("1_5cvwq")]
-script = ExtResource("3_psfb3")
