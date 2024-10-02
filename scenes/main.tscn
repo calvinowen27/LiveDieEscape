@@ -16,7 +16,6 @@ color = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 1080.0
-metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Background/GameRect"]
 layout_mode = 1

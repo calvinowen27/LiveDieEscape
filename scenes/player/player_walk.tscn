@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8qusfhw71qlq"]
 
-[ext_resource type="PackedScene" uid="uid://c3ta8j7vd1u2w" path="res://scenes/player/player_behavior.tscn" id="1_h148c"]
+[ext_resource type="PackedScene" uid="uid://c3ta8j7vd1u2w" path="res://scenes/player/player_state.tscn" id="1_h148c"]
 [ext_resource type="Script" path="res://scenes/player/player_walk.gd" id="1_jcook"]
 
 [node name="PlayerWalk" instance=ExtResource("1_h148c")]
 script = ExtResource("1_jcook")
+speed = null

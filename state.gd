@@ -1,8 +1,8 @@
 extends Node
 
-class_name Behavior
+class_name State
 
-var _curr_behavior: Behavior
+var _curr_state: State
 
 var _is_enabled = false
 
@@ -13,17 +13,19 @@ func _process(delta: float) -> void:
 	pass
 
 # disable current behavior and set new one
-func _set_curr_behavior(new_behavior: Behavior) -> void:
-	if _curr_behavior != null:
-		_curr_behavior.disable()
+func _set_curr_state(new_behavior: State) -> void:
+	if _curr_state != null:
+		_curr_state.disable()
 	
-	_curr_behavior = new_behavior
-	_curr_behavior.enable()
+	_curr_state = new_behavior
+	_curr_state.enable()
 
 func disable() -> void:
 	set_process(false)
+	set_physics_process(false)
 	_is_enabled = false
 
 func enable() -> void:
 	set_process(true)
+	set_physics_process(true)
 	_is_enabled = true
