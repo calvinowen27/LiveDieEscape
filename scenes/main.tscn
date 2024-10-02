@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dviw650xtb18v"]
 
-[ext_resource type="PackedScene" uid="uid://dsjw11gafshw3" path="res://scenes/player/player.tscn" id="1_yfgn5"]
+[ext_resource type="PackedScene" uid="uid://cyw3gwmvgg68m" path="res://scenes/levels/level_0/room_0_0.tscn" id="1_0lgf6"]
 
 [node name="Main" type="Node"]
 
@@ -25,8 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" parent="Background/GameRect" instance=ExtResource("1_yfgn5")]
-position = Vector2(536, 470)
+[node name="Room0_0" parent="Background/GameRect" instance=ExtResource("1_0lgf6")]
 
 [node name="HUDRect" type="ReferenceRect" parent="."]
 offset_left = 1080.0
