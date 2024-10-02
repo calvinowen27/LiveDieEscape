@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=8 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
 [ext_resource type="Script" path="res://scenes/player/player_state.gd" id="2_4s0rh"]
 [ext_resource type="PackedScene" uid="uid://dx4duiho1gprs" path="res://scenes/player/player_idle.tscn" id="2_ml3m3"]
 [ext_resource type="SpriteFrames" uid="uid://dq3cnfmwtht6e" path="res://resources/art/player_animations.tres" id="4_nowlt"]
+[ext_resource type="PackedScene" uid="uid://bx5updvn4x8tv" path="res://scenes/player/player_run.tscn" id="5_2cah7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mifri"]
 radius = 32.0
@@ -19,11 +20,10 @@ script = ExtResource("1_fa2xx")
 script = ExtResource("2_4s0rh")
 
 [node name="PlayerIdle" parent="PlayerState" instance=ExtResource("2_ml3m3")]
-metadata/_edit_group_ = true
 
 [node name="PlayerWalk" parent="PlayerState" instance=ExtResource("1_5cvwq")]
-speed = 2
-metadata/_edit_group_ = true
+
+[node name="PlayerRun" parent="PlayerState" instance=ExtResource("5_2cah7")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 1)
