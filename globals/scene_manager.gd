@@ -9,8 +9,6 @@ func switch_scene_to(scene_name: String) -> Node:
 	return _curr_scene
 
 func _ready() -> void:
-	# switch scene to title screen
-	# start game event
 	pass
 
 func _return_curr_scene() -> Node:

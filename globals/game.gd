@@ -4,7 +4,7 @@ var _is_game_running = false
 var _is_game_paused = false
 
 func restart_game() -> void:
-	# SceneManager.switch_scene_to("title_screen")
+	SceneManager.switch_scene_to("ui/title_screen")
 	_is_game_running = false
 
 # returns new state of game pause
