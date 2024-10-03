@@ -1,7 +1,7 @@
 extends PlayerState
 
 var move_dir: Vector2
-@export var speed = 2
+@export var speed = 5
 
 func _ready() -> void:
 	pass
@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 
 func state_init() -> void:
 	super.state_init()
-	_animated_sprite.animation = "player_walk"
+	_animated_sprite.animation = "player_run"
 	_animated_sprite.play()
 
 func update(delta: float) -> String:
@@ -23,8 +23,8 @@ func update(delta: float) -> String:
 	if move_dir == Vector2.ZERO:
 		return "PlayerIdle"
 	
-	# start running --> run
-	if Input.is_action_pressed("run"):
-		return "PlayerRun"
+	# not sprinting anymore, but still moving --> walk
+	if not Input.is_action_pressed("run"):
+		return "PlayerWalk"
 	
 	return name
