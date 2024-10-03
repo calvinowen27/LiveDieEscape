@@ -1,0 +1,22 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://yol7g56jqnv2"]
+
+[ext_resource type="Texture2D" uid="uid://nc2vvd6w52m7" path="res://resources/art/wall.png" id="1_qht8t"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgq6j"]
+friction = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ybi60"]
+texture = ExtResource("1_qht8t")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_fgq6j")
+sources/0 = SubResource("TileSetAtlasSource_ybi60")
