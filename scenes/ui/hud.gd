@@ -8,4 +8,5 @@ func _process(delta: float) -> void:
 
 # update all nodes in HUD
 func update() -> void:
-	pass
+	$StatsLabel.text = ""
+	#for stat in StatManager.get_stats():
