@@ -31,3 +31,18 @@ func player_enable(rigidbody: RigidBody2D, animated_sprite: AnimatedSprite2D) ->
 	_animated_sprite = animated_sprite
 	
 	super.enable()
+
+# flip sprite depending on move direction, retain last direction
+func point_sprite(move_dir: Vector2) -> void:
+	if move_dir.x > 0:
+		_animated_sprite.scale.x = -1 * abs(_animated_sprite.scale.x)
+	elif move_dir.x < 0:
+		_animated_sprite.scale.x = 1 * abs(_animated_sprite.scale.x)
+
+func move(speed_mult: float) -> Vector2:
+	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	var speed = StatManager.get_base_stat("speed")
+	_rigidbody.linear_velocity = move_dir * (150 + speed * 10) * speed_mult
+	
+	return move_dir
