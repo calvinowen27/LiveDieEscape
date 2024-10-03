@@ -37,6 +37,7 @@ func set_stat(stat: String, val: int) -> bool:
 func change_stat(stat: String, dval: int) -> bool:
 	if stat not in _stats.keys():
 		print_debug("change_stat(): Stat %s doesn't exist in _stats" % stat)
+		return false
 	
 	_stats[stat] += dval
 	
@@ -46,6 +47,7 @@ func change_stat(stat: String, dval: int) -> bool:
 func change_base_stat(stat: String, dval: int) -> bool:
 	if stat not in _base_stats.keys():
 		print_debug("change_stat(): Stat %s doesn't exist in _base_stats" % stat)
+		return false
 	
 	_base_stats[stat] += dval
 	
