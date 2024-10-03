@@ -23,6 +23,15 @@ func state_init() -> void:
 func _set_curr_state(new_state: State) -> void:
 	super._set_curr_state(new_state)
 	
+	var need_endurance = StatManager.get_stat("endurance") < StatManager.get_base_stat("endurance")
+	var endurance_cd_timer = $EnduranceCooldownTimer
+	
+	if new_state.name != "PlayerRun":
+		if need_endurance and endurance_cd_timer.is_stopped():
+			endurance_cd_timer.start()
+	else:
+		endurance_cd_timer.stop()
+	
 	if _curr_state != null:
 		_curr_state.player_enable(get_parent(), get_parent().get_node("AnimatedSprite2D"))
 
@@ -49,3 +58,12 @@ func move(speed_mult: float) -> Vector2:
 	_rigidbody.linear_velocity = move_dir * (150 + speed * 10) * speed_mult
 	
 	return move_dir
+
+func _on_endurance_cooldown_timer_timeout() -> void:
+	if _curr_state.name == "PlayerRun":
+		return
+	
+	StatManager.change_stat("endurance", 1)
+	
+	if StatManager.get_stat("endurance") < StatManager.get_base_stat("endurance"):
+		$EnduranceCooldownTimer.start()

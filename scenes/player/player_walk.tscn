@@ -5,8 +5,3 @@
 
 [node name="PlayerWalk" instance=ExtResource("1_h148c")]
 script = ExtResource("1_jcook")
-
-[node name="EnduranceCooldownTimer" type="Timer" parent="." index="0"]
-one_shot = true
-
-[connection signal="timeout" from="EnduranceCooldownTimer" to="." method="_on_endurance_cooldown_timer_timeout"]
