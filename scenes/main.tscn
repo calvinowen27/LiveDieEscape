@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dviw650xtb18v"]
+[gd_scene load_steps=3 format=3 uid="uid://dviw650xtb18v"]
 
 [ext_resource type="PackedScene" uid="uid://cyw3gwmvgg68m" path="res://scenes/levels/level_0/room_0_0.tscn" id="1_0lgf6"]
+[ext_resource type="PackedScene" uid="uid://b3m15d5m7d5rl" path="res://scenes/ui/hud.tscn" id="2_b7633"]
 
 [node name="Main" type="Node"]
 
@@ -31,3 +32,17 @@ grow_vertical = 2
 offset_left = 1080.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="HUD" parent="HUDRect" instance=ExtResource("2_b7633")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -184.0
+offset_right = 20.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
