@@ -35,9 +35,10 @@ func update(delta: float) -> String:
 	if move_dir == Vector2.ZERO:
 		return "PlayerIdle"
 	
+	var has_endurance = StatManager.get_stat("endurance") > 0
+	
 	# not sprinting anymore, but still moving --> walk
-	var has_endurance = StatManager.get_st
-	if not Input.is_action_pressed("run"):
+	if not Input.is_action_pressed("run") or not has_endurance:
 		return "PlayerWalk"
 	
 	return name
