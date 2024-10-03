@@ -13,6 +13,7 @@ func state_init() -> void:
 	super.state_init()
 	_animated_sprite.animation = "player_run"
 	_animated_sprite.play()
+	
 	$EnduranceTimer.start()
 
 func disable() -> void:
@@ -37,3 +38,4 @@ func update(delta: float) -> String:
 
 func _on_endurance_timer_timeout() -> void:
 	StatManager.change_stat("endurance", -1)
+	$EnduranceTimer.start()

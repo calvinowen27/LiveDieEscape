@@ -9,7 +9,8 @@ var _base_stats = {
 var _stats = {}
 
 func _ready() -> void:
-	_stats = _base_stats
+	for stat in _base_stats.keys():
+		_stats[stat] = _base_stats[stat]
 
 # add stat: val to _stats, returns false if stat already in _base_stats
 # returns true if successful
