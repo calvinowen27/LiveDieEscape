@@ -4,9 +4,11 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	pass
+	update()
 
 # update all nodes in HUD
 func update() -> void:
 	$StatsLabel.text = ""
-	#for stat in StatManager.get_stats():
+	var stats = StatManager.get_stats()
+	for stat in stats:
+		$StatsLabel.text += "%s: %d\n" % [stat, stats[stat]]

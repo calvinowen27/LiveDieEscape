@@ -22,7 +22,4 @@ offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 64
-text = "Health: 0
-Speed: 0
-Endurance: 0"
 horizontal_alignment = 1

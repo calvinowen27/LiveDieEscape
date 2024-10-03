@@ -33,6 +33,14 @@ func set_base_stat(stat: String, val: int) -> bool:
 	
 	return true
 
+# get value of stat to val, returns -1 if stat doesn't exist
+func get_base_stat(stat: String) -> int:
+	if stat not in _base_stats.keys():
+		print_debug("get_stat(): Stat %s doesn't exist in _base_stats" % stat)
+		return -1
+	
+	return _base_stats[stat]
+
 # change stat by dval, returns false on failure, true on success
 func change_stat(stat: String, dval: int) -> bool:
 	if stat not in _stats.keys():
