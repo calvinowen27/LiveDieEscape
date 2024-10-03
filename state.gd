@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	if _curr_state != null:
 		_curr_state.update(delta)
 
+# returns name of next state
 func update(delta: float) -> String:
 	return name
 

@@ -19,6 +19,12 @@ func update(delta: float) -> String:
 	
 	_rigidbody.linear_velocity = move_dir * (150 + speed * 10)
 	
+	# flip sprite depending on move direction, retain last direction
+	if move_dir.x > 0:
+		_animated_sprite.scale.x = -1 * abs(_animated_sprite.scale.x)
+	elif move_dir.x < 0:
+		_animated_sprite.scale.x = 1 * abs(_animated_sprite.scale.x)
+	
 	# not moving anymore --> idle
 	if move_dir == Vector2.ZERO:
 		return "PlayerIdle"
