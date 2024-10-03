@@ -29,7 +29,7 @@ func update(delta: float) -> String:
 	if move_dir == Vector2.ZERO:
 		return "PlayerIdle"
 	
-	var has_endurance = StatManager.get_stat("endurance") > 0
+	var has_endurance = StatManager.get_stat("endurance") > 1
 	
 	# start running --> run
 	if Input.is_action_pressed("run") and has_endurance:

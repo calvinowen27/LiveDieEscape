@@ -5,3 +5,8 @@
 
 [node name="PlayerIdle" instance=ExtResource("1_7xlar")]
 script = ExtResource("1_jgy17")
+
+[node name="EnduranceCooldownTimer" type="Timer" parent="." index="0"]
+one_shot = true
+
+[connection signal="timeout" from="EnduranceCooldownTimer" to="." method="_on_endurance_cooldown_timer_timeout"]
