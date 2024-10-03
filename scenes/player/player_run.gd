@@ -13,6 +13,11 @@ func state_init() -> void:
 	super.state_init()
 	_animated_sprite.animation = "player_run"
 	_animated_sprite.play()
+	$EnduranceTimer.start()
+
+func disable() -> void:
+	super.disable()
+	$EnduranceTimer.stop()
 
 func update(delta: float) -> String:
 	move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -31,7 +36,11 @@ func update(delta: float) -> String:
 		return "PlayerIdle"
 	
 	# not sprinting anymore, but still moving --> walk
+	var has_endurance = StatManager.get_st
 	if not Input.is_action_pressed("run"):
 		return "PlayerWalk"
 	
 	return name
+
+func _on_endurance_timer_timeout() -> void:
+	StatManager.change_stat("endurance", -1)
