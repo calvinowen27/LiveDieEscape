@@ -5,4 +5,4 @@
 
 [node name="PlayerRun" instance=ExtResource("1_bxrhe")]
 script = ExtResource("2_xssko")
-speed = 5
+speed_mult = 2.5

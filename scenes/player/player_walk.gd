@@ -1,7 +1,6 @@
 extends PlayerState
 
 var move_dir: Vector2
-@export var speed = 2
 
 func _ready() -> void:
 	pass
@@ -17,6 +16,7 @@ func state_init() -> void:
 func update(delta: float) -> String:
 	move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
+	var speed = StatManager.get_base_stat("speed")
 	_rigidbody.linear_velocity = move_dir * (150 + speed * 10)
 	
 	# flip sprite depending on move direction, retain last direction
