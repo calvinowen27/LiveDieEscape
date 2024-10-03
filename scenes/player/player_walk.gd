@@ -13,12 +13,12 @@ func state_init() -> void:
 	_animated_sprite.animation = "player_walk"
 	_animated_sprite.play()
 	
-	print("walk init")
-	print(StatManager.get_stat("endurance"))
-	print(StatManager.get_base_stat("endurance"))
 	if StatManager.get_stat("endurance") < StatManager.get_base_stat("endurance"):
 		$EnduranceCooldownTimer.start()
-		print("timer started")
+
+func disable() -> void:
+	super.disable()
+	$EnduranceCooldownTimer.stop()
 
 func update(delta: float) -> String:
 	move_dir = move(1)
