@@ -26,6 +26,9 @@ func _set_curr_state(new_state: State) -> void:
 	if _curr_state != null:
 		_curr_state.player_enable(get_parent(), get_parent().get_node("AnimatedSprite2D"))
 
+func get_curr_state() -> PlayerState:
+	return _curr_state
+
 func player_enable(rigidbody: RigidBody2D, animated_sprite: AnimatedSprite2D) -> void:
 	_rigidbody = rigidbody
 	_animated_sprite = animated_sprite

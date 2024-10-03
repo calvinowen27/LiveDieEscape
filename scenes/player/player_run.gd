@@ -14,11 +14,8 @@ func state_init() -> void:
 	_animated_sprite.animation = "player_run"
 	_animated_sprite.play()
 	
-	$EnduranceTimer.start()
-
-func disable() -> void:
-	super.disable()
-	$EnduranceTimer.stop()
+	if $EnduranceTimer.is_stopped():
+		$EnduranceTimer.start()
 
 func update(delta: float) -> String:
 	move_dir = move(speed_mult)
@@ -37,5 +34,6 @@ func update(delta: float) -> String:
 	return name
 
 func _on_endurance_timer_timeout() -> void:
-	StatManager.change_stat("endurance", -1)
-	$EnduranceTimer.start()
+	if get_parent().get_curr_state() == self:
+		StatManager.change_stat("endurance", -1)
+		$EnduranceTimer.start()
