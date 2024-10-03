@@ -5,4 +5,3 @@
 
 [node name="PlayerWalk" instance=ExtResource("1_h148c")]
 script = ExtResource("1_jcook")
-speed = 2

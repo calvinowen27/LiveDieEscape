@@ -24,6 +24,7 @@ script = ExtResource("2_4s0rh")
 [node name="PlayerWalk" parent="PlayerState" instance=ExtResource("1_5cvwq")]
 
 [node name="PlayerRun" parent="PlayerState" instance=ExtResource("5_2cah7")]
+speed_mult = 2.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 1)
