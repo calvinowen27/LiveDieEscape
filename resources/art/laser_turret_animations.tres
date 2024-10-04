@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://ee30rq1upa5a"]
+
+[ext_resource type="Texture2D" uid="uid://ccyd8trqc4mtg" path="res://resources/art/laser-turret.png" id="1_e6b6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5572"]
+atlas = ExtResource("1_e6b6o")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5572")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
