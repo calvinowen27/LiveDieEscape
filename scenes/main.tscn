@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dviw650xtb18v"]
 
-[ext_resource type="PackedScene" uid="uid://cyw3gwmvgg68m" path="res://scenes/levels/level_0/room_0_0.tscn" id="1_0lgf6"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_khhrq"]
 [ext_resource type="PackedScene" uid="uid://b3m15d5m7d5rl" path="res://scenes/ui/hud.tscn" id="2_b7633"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_khhrq")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -14,6 +15,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="GameRect" type="ReferenceRect" parent="Background"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 1080.0
@@ -25,8 +27,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Room0_0" parent="Background/GameRect" instance=ExtResource("1_0lgf6")]
 
 [node name="HUDRect" type="ReferenceRect" parent="."]
 offset_left = 1080.0

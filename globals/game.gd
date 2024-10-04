@@ -24,3 +24,4 @@ func _on_game_start() -> void:
 		# switch scene to main
 		SceneManager.switch_scene_to("main")
 		_is_game_running = true
+		RoomManager.set_curr_room(0, 0)
