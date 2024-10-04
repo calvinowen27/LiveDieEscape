@@ -8,4 +8,9 @@
 [node name="Door0" parent="." index="3" instance=ExtResource("2_0nwva")]
 position = Vector2(526, 68)
 rotation = 1.5708
-_next_room = 1
+_next_room_idx = 1
+
+[node name="ActivationTimer" parent="Door0" index="2"]
+autostart = true
+
+[editable path="Door0"]

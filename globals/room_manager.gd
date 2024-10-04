@@ -16,11 +16,13 @@ func set_curr_room(level_idx: int, room_idx: int, door: Door) -> void:
 	
 	_curr_room_idx = room_idx
 	
-	change_room(new_room, door)
+	_change_room(new_room, door)
 	
+	# used for things affected by room change
 	EventBus.change_room.emit.bind(level_idx, room_idx).call_deferred()
 
-func change_room(new_room: Room, door: Door):
+# change current room for new room in scene tree
+func _change_room(new_room: Room, door: Door):
 	# game rect is parent of room
 	var game_rect = SceneManager.get_curr_scene().get_node("%GameRect")
 	if game_rect == null:
@@ -35,17 +37,19 @@ func change_room(new_room: Room, door: Door):
 	_curr_room = new_room
 	_player = _curr_room.get_node("Player")
 	
+	# move player to next door start position
 	if door != null:
-		var next_door = get_door(door.get_next_door())
+		var next_door = get_door(door.get_next_door_idx())
 		move_player_to_door(next_door)
-		_player.position = next_door.get_node("SpawnLocation").global_position
 
 func move_player_to_door(next_door: Door) -> void:
+	# spawn location position is relative to parent, global position is what we want
 	_player.position = next_door.get_node("SpawnLocation").global_position
 
 func get_door(door_idx: int) -> Door:
 	return _curr_room.get_node("Door%d" % door_idx)
 
+# get room node associated with level and room idx, if room doesn't exist, create and store it
 func _get_room(level_idx: int, room_idx: int) -> Node:
 	if level_idx in _rooms.keys():
 		var level_rooms = _rooms[level_idx]
@@ -60,10 +64,12 @@ func _get_room(level_idx: int, room_idx: int) -> Node:
 	var level_rooms = _rooms[level_idx]
 	
 	# if level not seen, room not seen
+	# if level seen and room not seen, make sure list is large enough for room
 	# if level and room seen this is skipped
 	while room_idx >= level_rooms.size():
 		level_rooms.append(null)
 	
+	# load and instantiate appropriate room
 	var new_room_resource = load("res://scenes/levels/level_%d/room_%d_%d.tscn" % [level_idx, level_idx, room_idx])
 	var new_room = new_room_resource.instantiate()
 	

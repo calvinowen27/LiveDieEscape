@@ -24,9 +24,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SpawnLocation" type="Marker2D" parent="."]
-position = Vector2(100, 0)
+position = Vector2(57, 0)
 
 [node name="ActivationTimer" type="Timer" parent="."]
+wait_time = 0.125
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
