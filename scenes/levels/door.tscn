@@ -3,13 +3,31 @@
 [ext_resource type="Script" path="res://scenes/levels/door.gd" id="1_wxue2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6co3"]
-size = Vector2(32, 317)
+size = Vector2(32, 319.25)
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_wxue2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 148.5)
+position = Vector2(0, 0.375)
 shape = SubResource("RectangleShape2D_o6co3")
 
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -159.0
+offset_right = 16.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpawnLocation" type="Marker2D" parent="."]
+position = Vector2(100, 0)
+
+[node name="ActivationTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]
