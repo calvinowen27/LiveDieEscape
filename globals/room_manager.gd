@@ -2,6 +2,7 @@ extends Node
 
 @export var _curr_level: int
 var _curr_room: Room
+var _curr_room_idx: int
 var _player: Node2D
 
 func get_player() -> Node2D:
@@ -23,8 +24,11 @@ func set_curr_room(level_idx: int, room_idx: int) -> void:
 	
 	game_rect.add_child(new_room)
 	_curr_room = new_room
+	_curr_room_idx = room_idx
 	_player = _curr_room.get_node("Player")
-	print("room set successfully")
 
 func get_curr_room() -> Room:
 	return _curr_room
+
+func get_curr_room_idx() -> int:
+	return _curr_room_idx

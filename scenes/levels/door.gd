@@ -1,19 +1,24 @@
 extends Area2D
 
-@export var room: int
+var _room_idx = 0
+@export var next_level: int
 @export var next_room: int
 @export var next_door: int
 
+@export var locked = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	_room_idx = RoomManager.get_curr_room_idx()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if body == RoomManager.get_player() and not locked:
+		RoomManager.set_curr_room(next_level, next_room)
+
+func unlock() -> void:
+	locked = false
+
+func get_room_idx() -> int:
+	return _room_idx
