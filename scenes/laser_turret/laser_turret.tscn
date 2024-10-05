@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=9 format=3 uid="uid://kfqi07twfc48"]
 
 [ext_resource type="SpriteFrames" uid="uid://ee30rq1upa5a" path="res://resources/art/laser_turret_animations.tres" id="1_8cqaf"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="3_1uiul"]
 [ext_resource type="PackedScene" uid="uid://drsdpgl44jwak" path="res://scenes/laser_turret/laser_turret_state.tscn" id="3_geuje"]
 [ext_resource type="PackedScene" uid="uid://cbm8r2br40wp2" path="res://scenes/laser_turret/laser_turret_activated.tscn" id="4_tnb3m"]
+[ext_resource type="PackedScene" uid="uid://b2rvce3d4esii" path="res://scenes/laser_turret/laser_turret_idle.tscn" id="4_wk736"]
+[ext_resource type="PackedScene" uid="uid://ppik0l0qoman" path="res://scenes/laser_turret/laser_turret_priming.tscn" id="5_ncfwj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swdh7"]
 radius = 13.0
@@ -23,9 +25,13 @@ shape = SubResource("CapsuleShape2D_swdh7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("1_8cqaf")
-animation = &"idle"
+animation = &"laser_turret_activated"
 
 [node name="LaserTurretState" parent="." instance=ExtResource("3_geuje")]
+
+[node name="LaserTurretIdle" parent="LaserTurretState" instance=ExtResource("4_wk736")]
+
+[node name="LaserTurretPriming" parent="LaserTurretState" instance=ExtResource("5_ncfwj")]
 
 [node name="LaserTurretActivated" parent="LaserTurretState" instance=ExtResource("4_tnb3m")]
 

@@ -5,10 +5,10 @@ class_name LaserTurretState
 var _animated_sprite: AnimatedSprite2D
 
 func _ready() -> void:
-	_set_curr_state("LaserTurretActivated")
+	_set_curr_state("LaserTurretIdle")
 
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+	#pass
 
 func _set_curr_state(new_state_name: String) -> State:
 	var new_state = super._set_curr_state(new_state_name)

@@ -8,11 +8,11 @@ var _animated_sprite: AnimatedSprite2D
 func _ready() -> void:
 	_set_curr_state("PlayerIdle")
 
-func _process(delta: float) -> void:
-	if _curr_state != null:
-		var next_state_name = _curr_state.update(delta)
-		if next_state_name != _curr_state.name:
-			_set_curr_state(next_state_name)
+#func _process(delta: float) -> void:
+	#if _curr_state != null:
+		#var next_state_name = _curr_state.update(delta)
+		#if next_state_name != _curr_state.name:
+			#_set_curr_state(next_state_name)
 
 func enable():
 	pass

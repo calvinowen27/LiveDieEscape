@@ -10,8 +10,12 @@ func _ready() -> void:
 	disable()
 
 func _process(delta: float) -> void:
+	#if _curr_state != null:
+		#_curr_state.update(delta)
 	if _curr_state != null:
-		_curr_state.update(delta)
+		var next_state_name = _curr_state.update(delta)
+		if next_state_name != _curr_state.name:
+			_set_curr_state(next_state_name)
 
 # returns name of next state
 func update(delta: float) -> String:
@@ -25,7 +29,7 @@ func _set_curr_state(new_state_name: String) -> State:
 	var new_state = get_node(new_state_name)
 	
 	if new_state == null:
-		print_debug("state: _set_curr_state(): state %s not found")
+		print_debug("state: _set_curr_state(): state %s not found" % new_state_name)
 		return null
 	
 	_curr_state = new_state
