@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=16 format=3 uid="uid://kfqi07twfc48"]
 
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="3_1uiul"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cbm8r2br40wp2" path="res://scenes/laser_turret/laser_turret_activated.tscn" id="4_tnb3m"]
 [ext_resource type="PackedScene" uid="uid://b2rvce3d4esii" path="res://scenes/laser_turret/laser_turret_idle.tscn" id="4_wk736"]
 [ext_resource type="PackedScene" uid="uid://ppik0l0qoman" path="res://scenes/laser_turret/laser_turret_priming.tscn" id="5_ncfwj"]
+[ext_resource type="Texture2D" uid="uid://dhwrv3ysnfn6s" path="res://resources/art/laser.png" id="8_1af6w"]
 [ext_resource type="Texture2D" uid="uid://bidqsr7cq3ous" path="res://resources/art/laser-turret-sheet.png" id="8_mog6t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swdh7"]
@@ -19,7 +20,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("../Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +35,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("../Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,7 +52,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("../Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -69,7 +70,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("../Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,11 +88,23 @@ _data = {
 "laser_turret_priming": SubResource("Animation_ab143")
 }
 
-[node name="LaserTurret" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_td0ds"]
+radius = 281.642
+
+[node name="LaserTurret" type="RayCast2D"]
+target_position = Vector2(-1000, 0)
+collision_mask = 3
+script = ExtResource("1_ktj7o")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 3
 mass = 0.001
 lock_rotation = true
 freeze = true
-script = ExtResource("1_ktj7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-2, 19)
+shape = SubResource("CapsuleShape2D_swdh7")
 
 [node name="LaserTurretState" parent="." instance=ExtResource("3_geuje")]
 
@@ -101,10 +114,6 @@ script = ExtResource("1_ktj7o")
 
 [node name="LaserTurretActivated" parent="LaserTurretState" instance=ExtResource("4_tnb3m")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 19)
-shape = SubResource("CapsuleShape2D_swdh7")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.78814e-07, 0)
 scale = Vector2(5, 5)
@@ -113,6 +122,7 @@ hframes = 14
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../RigidBody2D")
 libraries = {
 "": SubResource("AnimationLibrary_sa0ud")
 }
@@ -120,5 +130,15 @@ libraries = {
 [node name="ZOrdering" parent="." instance=ExtResource("3_1uiul")]
 
 [node name="Laser" type="Sprite2D" parent="."]
+position = Vector2(-15, 3)
+texture = ExtResource("8_1af6w")
+offset = Vector2(-32, 0)
+
+[node name="ActivationArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea"]
+shape = SubResource("CircleShape2D_td0ds")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="ActivationArea" to="LaserTurretState" method="_on_activation_area_body_entered"]
+[connection signal="body_exited" from="ActivationArea" to="LaserTurretState" method="_on_activation_area_body_exited"]

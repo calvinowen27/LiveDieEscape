@@ -13,3 +13,7 @@ rotation = -1.5708
 
 [node name="LaserTurret" parent="." index="4" instance=ExtResource("3_yj8nx")]
 position = Vector2(709, 263)
+
+[node name="LaserTurret2" parent="." index="5" instance=ExtResource("3_yj8nx")]
+position = Vector2(246, 687)
+scale = Vector2(-1, 1)
