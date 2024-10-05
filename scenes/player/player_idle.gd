@@ -8,8 +8,7 @@ func _process(delta: float) -> void:
 
 func state_init() -> void:
 	super.state_init()
-	_animated_sprite.animation = "player_idle"
-	_animated_sprite.play()
+	_animation_player.play("player_idle")
 
 func update(delta: float) -> String:
 	var move_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down")

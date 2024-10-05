@@ -6,11 +6,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func laser_turret_state_enable(animated_sprite: AnimatedSprite2D) -> void:
-	super.laser_turret_state_enable(animated_sprite)
+func laser_turret_state_enable(animation_player: AnimationPlayer) -> void:
+	super.laser_turret_state_enable(animation_player)
 	
-	animated_sprite.animation = "laser_turret_idle"
-	animated_sprite.play()
+	animation_player.play("laser_turret_idle")
 
 func update(delta: float) -> String:
 	var dist = RoomManager.get_player().global_position.distance_to(get_parent().get_parent().global_position)

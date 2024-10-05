@@ -3,16 +3,11 @@ extends State
 class_name PlayerState
 
 var _rigidbody: RigidBody2D
-var _animated_sprite: AnimatedSprite2D
+var _sprite: Sprite2D
+var _animation_player: AnimationPlayer
 
 func _ready() -> void:
 	_set_curr_state("PlayerIdle")
-
-#func _process(delta: float) -> void:
-	#if _curr_state != null:
-		#var next_state_name = _curr_state.update(delta)
-		#if next_state_name != _curr_state.name:
-			#_set_curr_state(next_state_name)
 
 func enable():
 	pass
@@ -30,8 +25,9 @@ func _set_curr_state(new_state_name: String) -> State:
 	
 	if _curr_state != null:
 		var rigidbody = get_parent()
-		var animated_sprite = rigidbody.get_node("AnimatedSprite2D")
-		_curr_state.player_state_enable(rigidbody, animated_sprite)
+		var sprite = rigidbody.get_node("Sprite2D")
+		var animation_player = rigidbody.get_node("AnimationPlayer")
+		_curr_state.player_state_enable(sprite, rigidbody, animation_player)
 
 	return new_state
 
@@ -46,18 +42,19 @@ func manage_endurance_cooldown(new_state_name: String) -> void:
 		endurance_cd_timer.stop()
 
 # enable state and pass necessary references
-func player_state_enable(rigidbody: RigidBody2D, animated_sprite: AnimatedSprite2D) -> void:
+func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
+	_sprite = sprite
 	_rigidbody = rigidbody
-	_animated_sprite = animated_sprite
+	_animation_player = animation_player
 	
 	super.enable()
 
 # flip sprite depending on move direction, retain last direction
 func point_sprite(move_dir: Vector2) -> void:
 	if move_dir.x > 0:
-		_animated_sprite.scale.x = -1 * abs(_animated_sprite.scale.x)
+		_sprite.scale.x = -1 * abs(_sprite.scale.x)
 	elif move_dir.x < 0:
-		_animated_sprite.scale.x = 1 * abs(_animated_sprite.scale.x)
+		_sprite.scale.x = 1 * abs(_sprite.scale.x)
 
 func move(speed_mult: float) -> Vector2:
 	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")

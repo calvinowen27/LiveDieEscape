@@ -10,8 +10,8 @@ func _process(delta: float) -> void:
 
 func state_init() -> void:
 	super.state_init()
-	_animated_sprite.animation = "player_walk"
-	_animated_sprite.play()
+	
+	_animation_player.play("player_walk")
 
 func update(delta: float) -> String:
 	move_dir = move(1)

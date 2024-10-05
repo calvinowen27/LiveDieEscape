@@ -11,8 +11,7 @@ func _process(delta: float) -> void:
 
 func state_init() -> void:
 	super.state_init()
-	_animated_sprite.animation = "player_run"
-	_animated_sprite.play()
+	_animation_player.play("player_run")
 	
 	if $EnduranceTimer.is_stopped():
 		$EnduranceTimer.start()

@@ -1,31 +1,97 @@
-[gd_scene load_steps=9 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=14 format=3 uid="uid://kfqi07twfc48"]
 
-[ext_resource type="SpriteFrames" uid="uid://ee30rq1upa5a" path="res://resources/art/laser_turret_animations.tres" id="1_8cqaf"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="3_1uiul"]
 [ext_resource type="PackedScene" uid="uid://drsdpgl44jwak" path="res://scenes/laser_turret/laser_turret_state.tscn" id="3_geuje"]
 [ext_resource type="PackedScene" uid="uid://cbm8r2br40wp2" path="res://scenes/laser_turret/laser_turret_activated.tscn" id="4_tnb3m"]
 [ext_resource type="PackedScene" uid="uid://b2rvce3d4esii" path="res://scenes/laser_turret/laser_turret_idle.tscn" id="4_wk736"]
 [ext_resource type="PackedScene" uid="uid://ppik0l0qoman" path="res://scenes/laser_turret/laser_turret_priming.tscn" id="5_ncfwj"]
+[ext_resource type="Texture2D" uid="uid://bidqsr7cq3ous" path="res://resources/art/laser-turret-sheet.png" id="8_mog6t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swdh7"]
 radius = 13.0
 height = 40.0
+
+[sub_resource type="Animation" id="Animation_1rxu1"]
+resource_name = "laser_turret_idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_uc08l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ab143"]
+resource_name = "laser_turret_priming"
+length = 1.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+}
+
+[sub_resource type="Animation" id="Animation_oqmuh"]
+resource_name = "laser_turret_activated"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33, 34, 35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sa0ud"]
+_data = {
+"RESET": SubResource("Animation_uc08l"),
+"laser_turret_activated": SubResource("Animation_oqmuh"),
+"laser_turret_idle": SubResource("Animation_1rxu1"),
+"laser_turret_priming": SubResource("Animation_ab143")
+}
 
 [node name="LaserTurret" type="RigidBody2D"]
 mass = 0.001
 lock_rotation = true
 freeze = true
 script = ExtResource("1_ktj7o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 19)
-shape = SubResource("CapsuleShape2D_swdh7")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(5, 5)
-sprite_frames = ExtResource("1_8cqaf")
-animation = &"laser_turret_activated"
 
 [node name="LaserTurretState" parent="." instance=ExtResource("3_geuje")]
 
@@ -35,4 +101,24 @@ animation = &"laser_turret_activated"
 
 [node name="LaserTurretActivated" parent="LaserTurretState" instance=ExtResource("4_tnb3m")]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 19)
+shape = SubResource("CapsuleShape2D_swdh7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.78814e-07, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("8_mog6t")
+hframes = 14
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sa0ud")
+}
+
 [node name="ZOrdering" parent="." instance=ExtResource("3_1uiul")]
+
+[node name="Laser" type="Sprite2D" parent="."]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]

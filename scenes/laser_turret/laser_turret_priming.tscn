@@ -5,9 +5,3 @@
 
 [node name="LaserTurretPriming" instance=ExtResource("1_7lgi3")]
 script = ExtResource("2_81lp7")
-
-[node name="PrimeTimer" type="Timer" parent="." index="0"]
-wait_time = 2.0
-one_shot = true
-
-[connection signal="timeout" from="PrimeTimer" to="." method="_on_prime_timer_timeout"]

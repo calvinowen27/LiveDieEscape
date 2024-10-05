@@ -1,9 +1,9 @@
 extends Node
 
-var _animated_sprite: AnimatedSprite2D
+var _sprite: Sprite2D
 
-func init(animated_sprite: AnimatedSprite2D) -> void:
-	_animated_sprite = animated_sprite
+func init(sprite: Sprite2D) -> void:
+	_sprite = sprite
 
 func _process(delta: float) -> void:
-	_animated_sprite.z_index = _animated_sprite.global_position.y
+	_sprite.z_index = _sprite.global_position.y
