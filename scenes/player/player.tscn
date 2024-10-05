@@ -16,7 +16,6 @@ radius = 20.0
 height = 62.0
 
 [node name="Player" type="RigidBody2D"]
-position = Vector2(-2, 2)
 physics_material_override = SubResource("PhysicsMaterial_w0vmm")
 gravity_scale = 0.0
 lock_rotation = true
