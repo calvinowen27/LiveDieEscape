@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drsdpgl44jwak"]
+
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_state.gd" id="1_4pfl8"]
+
+[node name="LaserTurretState" type="Node"]
+script = ExtResource("1_4pfl8")
