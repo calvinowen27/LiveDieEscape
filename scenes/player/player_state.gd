@@ -6,13 +6,13 @@ var _rigidbody: RigidBody2D
 var _animated_sprite: AnimatedSprite2D
 
 func _ready() -> void:
-	_set_curr_state(get_node("PlayerIdle"))
+	_set_curr_state("PlayerIdle")
 
 func _process(delta: float) -> void:
 	if _curr_state != null:
 		var next_state_name = _curr_state.update(delta)
 		if next_state_name != _curr_state.name:
-			_set_curr_state(get_node(next_state_name))
+			_set_curr_state(next_state_name)
 
 func enable():
 	pass
@@ -20,25 +20,33 @@ func enable():
 func state_init() -> void:
 	pass
 
-func _set_curr_state(new_state: State) -> void:
-	super._set_curr_state(new_state)
+func _set_curr_state(new_state_name: String) -> State:
+	var new_state = super._set_curr_state(new_state_name)
 	
+	if new_state == null:
+		return null
+	
+	manage_endurance_cooldown(new_state_name)
+	
+	if _curr_state != null:
+		var rigidbody = get_parent()
+		var animated_sprite = rigidbody.get_node("AnimatedSprite2D")
+		_curr_state.player_state_enable(rigidbody, animated_sprite)
+
+	return new_state
+
+func manage_endurance_cooldown(new_state_name: String) -> void:
 	var need_endurance = StatManager.get_stat("endurance") < StatManager.get_base_stat("endurance")
 	var endurance_cd_timer = $EnduranceCooldownTimer
 	
-	if new_state.name != "PlayerRun":
+	if new_state_name != "PlayerRun":
 		if need_endurance and endurance_cd_timer.is_stopped():
 			endurance_cd_timer.start()
 	else:
 		endurance_cd_timer.stop()
-	
-	if _curr_state != null:
-		_curr_state.player_enable(get_parent(), get_parent().get_node("AnimatedSprite2D"))
 
-func get_curr_state() -> PlayerState:
-	return _curr_state
-
-func player_enable(rigidbody: RigidBody2D, animated_sprite: AnimatedSprite2D) -> void:
+# enable state and pass necessary references
+func player_state_enable(rigidbody: RigidBody2D, animated_sprite: AnimatedSprite2D) -> void:
 	_rigidbody = rigidbody
 	_animated_sprite = animated_sprite
 	

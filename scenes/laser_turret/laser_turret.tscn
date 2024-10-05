@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=7 format=3 uid="uid://kfqi07twfc48"]
 
 [ext_resource type="SpriteFrames" uid="uid://ee30rq1upa5a" path="res://resources/art/laser_turret_animations.tres" id="1_8cqaf"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="3_1uiul"]
+[ext_resource type="PackedScene" uid="uid://drsdpgl44jwak" path="res://scenes/laser_turret/laser_turret_state.tscn" id="3_geuje"]
+[ext_resource type="PackedScene" uid="uid://cbm8r2br40wp2" path="res://scenes/laser_turret/laser_turret_activated.tscn" id="4_tnb3m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swdh7"]
 radius = 13.0
@@ -22,5 +24,9 @@ shape = SubResource("CapsuleShape2D_swdh7")
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("1_8cqaf")
 animation = &"idle"
+
+[node name="LaserTurretState" parent="." instance=ExtResource("3_geuje")]
+
+[node name="LaserTurretActivated" parent="LaserTurretState" instance=ExtResource("4_tnb3m")]
 
 [node name="ZOrdering" parent="." instance=ExtResource("3_1uiul")]

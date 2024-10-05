@@ -18,16 +18,27 @@ func update(delta: float) -> String:
 	return name
 
 # disable current behavior and set new one
-func _set_curr_state(new_state: State) -> void:
+func _set_curr_state(new_state_name: String) -> State:
 	if _curr_state != null:
 		_curr_state.disable()
+	
+	var new_state = get_node(new_state_name)
+	
+	if new_state == null:
+		print_debug("state: _set_curr_state(): state %s not found")
+		return null
 	
 	_curr_state = new_state
 	if _curr_state != null:
 		_curr_state.enable()
+	
+	return _curr_state
 
 func state_init() -> void:
 	pass
+
+func get_curr_state() -> State:
+	return _curr_state
 
 func disable() -> void:
 	set_process(false)
