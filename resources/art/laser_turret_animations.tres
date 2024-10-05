@@ -1,18 +1,63 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://ee30rq1upa5a"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://ee30rq1upa5a"]
 
 [ext_resource type="Texture2D" uid="uid://ccyd8trqc4mtg" path="res://resources/art/laser-turret.png" id="1_e6b6o"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w5572"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4cyg"]
+atlas = ExtResource("1_e6b6o")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee8dh"]
+atlas = ExtResource("1_e6b6o")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr5b4"]
 atlas = ExtResource("1_e6b6o")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vffu"]
+atlas = ExtResource("1_e6b6o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv3p2"]
+atlas = ExtResource("1_e6b6o")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysnt2"]
+atlas = ExtResource("1_e6b6o")
+region = Rect2(16, 16, 16, 16)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w5572")
+"texture": SubResource("AtlasTexture_e4cyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee8dh")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"laser_turret_activated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr5b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vffu")
+}],
+"loop": true,
+"name": &"laser_turret_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv3p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysnt2")
+}],
+"loop": true,
+"name": &"laser_turret_priming",
 "speed": 5.0
 }]

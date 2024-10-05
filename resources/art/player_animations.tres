@@ -2,38 +2,38 @@
 
 [ext_resource type="Texture2D" uid="uid://nnjtr6oolcu4" path="res://resources/art/player-sheet.png" id="1_hmltq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nko0j"]
-atlas = ExtResource("1_hmltq")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3up64"]
-atlas = ExtResource("1_hmltq")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gt5df"]
-atlas = ExtResource("1_hmltq")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p80ca"]
-atlas = ExtResource("1_hmltq")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8s1ry"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lifi2"]
 atlas = ExtResource("1_hmltq")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihsys"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_834bt"]
 atlas = ExtResource("1_hmltq")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcjh2"]
+atlas = ExtResource("1_hmltq")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0se7"]
+atlas = ExtResource("1_hmltq")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5l5a"]
+atlas = ExtResource("1_hmltq")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef262"]
+atlas = ExtResource("1_hmltq")
+region = Rect2(16, 16, 16, 16)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nko0j")
+"texture": SubResource("AtlasTexture_lifi2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3up64")
+"texture": SubResource("AtlasTexture_834bt")
 }],
 "loop": true,
 "name": &"player_idle",
@@ -41,10 +41,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gt5df")
+"texture": SubResource("AtlasTexture_gcjh2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p80ca")
+"texture": SubResource("AtlasTexture_y0se7")
 }],
 "loop": true,
 "name": &"player_run",
@@ -52,10 +52,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8s1ry")
+"texture": SubResource("AtlasTexture_f5l5a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ihsys")
+"texture": SubResource("AtlasTexture_ef262")
 }],
 "loop": true,
 "name": &"player_walk",

@@ -41,7 +41,7 @@ shape = SubResource("CapsuleShape2D_mifri")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("4_nowlt")
-animation = &"player_walk"
+animation = &"player_run"
 
 [node name="ZOrdering" parent="." instance=ExtResource("7_iwhiw")]
 
