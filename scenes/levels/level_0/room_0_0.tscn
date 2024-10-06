@@ -6,7 +6,7 @@
 [node name="Room0_0" instance=ExtResource("1_obo4y")]
 
 [node name="Door0" parent="." index="3" instance=ExtResource("2_0nwva")]
-position = Vector2(526, 68)
+position = Vector2(526, 33)
 rotation = 1.5708
 _next_room_idx = 1
 

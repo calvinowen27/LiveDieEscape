@@ -8,15 +8,11 @@
 _room_idx = 1
 
 [node name="Door0" parent="." index="3" instance=ExtResource("2_6rxug")]
-position = Vector2(546, 1024)
+position = Vector2(546, 1048)
 rotation = -1.5708
 
 [node name="LaserTurret" parent="." index="4" instance=ExtResource("3_yj8nx")]
 position = Vector2(709, 263)
-
-[node name="Sprite2D" parent="LaserTurret" index="2"]
-position = Vector2(16, 35)
-scale = Vector2(5, 5)
 
 [node name="LaserTurret2" parent="." index="5" instance=ExtResource("3_yj8nx")]
 position = Vector2(246, 687)
