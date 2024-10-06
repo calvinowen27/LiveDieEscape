@@ -82,12 +82,16 @@ func reset_level(level_idx: int) -> void:
 		print_debug("reset_level(): level %d not loaded yet?" % level_idx)
 		return
 	
+	# invalidate all rooms in level for out of sync calls
+	# free rooms
 	for room in _rooms[level_idx]:
 		room.set_invalid()
 		room.queue_free()
 	
+	# reset rooms list and reset room to default
 	_rooms[level_idx].clear()
 	set_curr_room(level_idx, 0, null)
+	
 	StatManager.reset_stats()
 
 func get_curr_room() -> Room:
