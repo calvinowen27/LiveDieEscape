@@ -17,7 +17,7 @@ func _set_curr_state(new_state_name: String) -> State:
 	
 	# enable new state
 	if _curr_state != null:
-		var animation_player = get_parent().get_node("AnimationPlayer")
+		var animation_player = get_node("../AnimationPlayer")
 		_curr_state.laser_turret_state_enable(animation_player)
 
 	return new_state

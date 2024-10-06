@@ -10,4 +10,5 @@ func laser_turret_state_enable(animation_player: AnimationPlayer) -> void:
 	super.laser_turret_state_enable(animation_player)
 	
 	animation_player.play("laser_turret_idle")
-	get_parent().get_parent().get_node("Laser").visible = false
+	get_node("../../Laser").visible = false
+	get_node("../../").enabled = false
