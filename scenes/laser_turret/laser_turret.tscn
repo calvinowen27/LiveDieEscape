@@ -168,6 +168,7 @@ _data = {
 radius = 281.642
 
 [node name="LaserTurret" type="RayCast2D"]
+enabled = false
 target_position = Vector2(-1000, 0)
 collision_mask = 3
 script = ExtResource("1_ktj7o")
@@ -208,6 +209,7 @@ libraries = {
 [node name="ZOrdering" parent="." instance=ExtResource("3_1uiul")]
 
 [node name="Laser" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1, -2)
 texture = ExtResource("8_1af6w")
 offset = Vector2(-32, 0)

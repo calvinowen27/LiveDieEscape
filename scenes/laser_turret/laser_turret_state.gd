@@ -5,7 +5,7 @@ class_name LaserTurretState
 var _animation_player: AnimationPlayer
 
 func _ready() -> void:
-	_set_curr_state("LaserTurretIdle")
+	_set_curr_state("LaserTurretPriming")
 
 func _set_curr_state(new_state_name: String) -> State:
 	var new_state = super._set_curr_state(new_state_name)
@@ -34,10 +34,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 # activate when player nearby
 func _on_activation_area_body_entered(body: Node2D) -> void:
-	if body == RoomManager.get_player():
-		_set_curr_state("LaserTurretPriming")
+	#if body == RoomManager.get_player():
+		#_set_curr_state("LaserTurretPriming")
+	pass
 
 # deactivate when player leaves
 func _on_activation_area_body_exited(body: Node2D) -> void:
-	if body == RoomManager.get_player():
-		_set_curr_state("LaserTurretIdle")
+	#if body == RoomManager.get_player():
+		#_set_curr_state("LaserTurretIdle")
+	pass

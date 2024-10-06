@@ -9,8 +9,7 @@ var _base_stats = {
 var _stats = {}
 
 func _ready() -> void:
-	for stat in _base_stats.keys():
-		_stats[stat] = _base_stats[stat]
+	reset_stats()
 
 # add stat: val to _stats, returns false if stat already in _base_stats
 # returns true if successful
@@ -69,6 +68,11 @@ func change_base_stat(stat: String, dval: int) -> bool:
 	_base_stats[stat] += dval
 	
 	return true
+
+# reset stats to base
+func reset_stats() -> void:
+	for stat in _base_stats.keys():
+		_stats[stat] = _base_stats[stat]
 
 func get_stats() -> Dictionary:
 	return _stats

@@ -88,6 +88,7 @@ func reset_level(level_idx: int) -> void:
 	
 	_rooms[level_idx].clear()
 	set_curr_room(level_idx, 0, null)
+	StatManager.reset_stats()
 
 func get_curr_room() -> Room:
 	return _curr_room
