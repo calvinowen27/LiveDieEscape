@@ -28,7 +28,8 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	# if next room is this door's room, start activation timer for door
 	var parent_room = get_parent()
-	if parent_room.get_level_idx() == level_idx and parent_room.get_room_idx() == room_idx:
+	var valid = parent_room.is_valid()
+	if valid and parent_room.get_level_idx() == level_idx and parent_room.get_room_idx() == room_idx:
 		start_activation()
 
 func start_activation() -> void:

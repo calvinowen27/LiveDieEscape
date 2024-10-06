@@ -14,10 +14,12 @@ func _physics_process(delta: float) -> void:
 	var collision_point = get_collision_point()
 	var distance = transform.origin.distance_to(collision_point)
 	
-	$Laser.scale.x = (distance - 14) / 64
+	$Laser.scale.x = distance / 64
 	
 	var found_collider = get_collider()
 	
 	if found_collider != last_collider:
-		pass
+		last_collider = found_collider
+		if found_collider == RoomManager.get_player():
+			RoomManager.get_player().die()
 		# do hit stuff here

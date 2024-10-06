@@ -77,6 +77,18 @@ func _get_room(level_idx: int, room_idx: int) -> Node:
 	
 	return new_room
 
+func reset_level(level_idx: int) -> void:
+	if level_idx not in _rooms.keys():
+		print_debug("reset_level(): level %d not loaded yet?" % level_idx)
+		return
+	
+	for room in _rooms[level_idx]:
+		room.set_invalid()
+		room.queue_free()
+	
+	_rooms[level_idx].clear()
+	set_curr_room(level_idx, 0, null)
+
 func get_curr_room() -> Room:
 	return _curr_room
 
