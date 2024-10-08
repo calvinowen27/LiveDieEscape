@@ -16,6 +16,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ycd2s")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15

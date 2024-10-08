@@ -36,4 +36,3 @@ func _on_item_drop(item_idx: int) -> void:
 
 	slot.clear_item()
 	item.drop()
-
