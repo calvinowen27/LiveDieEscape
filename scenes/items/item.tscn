@@ -1,20 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1j10o3evpi4"]
+[gd_scene load_steps=7 format=3 uid="uid://c1j10o3evpi4"]
 
 [ext_resource type="Script" path="res://scenes/items/item.gd" id="1_cwod5"]
+[ext_resource type="PackedScene" uid="uid://cw6oa0apoon7u" path="res://scenes/items/item_state.tscn" id="2_ky0s2"]
+[ext_resource type="PackedScene" uid="uid://c14hn51b1sfkw" path="res://scenes/items/item_ground.tscn" id="3_vgvtc"]
+[ext_resource type="PackedScene" uid="uid://bio2udaxmt02r" path="res://scenes/items/item_inventory.tscn" id="4_l8lby"]
+[ext_resource type="PackedScene" uid="uid://dewkpjna0mqcv" path="res://scenes/items/item_placed.tscn" id="5_jeboa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wplvq"]
 radius = 20.2237
 
 [node name="Item" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_cwod5")
 
-[node name="ItemState" type="Node" parent="."]
+[node name="ItemState" parent="." instance=ExtResource("2_ky0s2")]
 
-[node name="ItemGround" type="Node" parent="ItemState"]
+[node name="ItemGround" parent="ItemState" instance=ExtResource("3_vgvtc")]
 
-[node name="ItemInventory" type="Node" parent="ItemState"]
+[node name="ItemInventory" parent="ItemState" instance=ExtResource("4_l8lby")]
 
-[node name="ItemPlaced" type="Node" parent="ItemState"]
+[node name="ItemPlaced" parent="ItemState" instance=ExtResource("5_jeboa")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
