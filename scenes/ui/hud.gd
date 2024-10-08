@@ -19,7 +19,7 @@ func _on_item_pickup(item: Item, idx: int) -> void:
 	var slot = inventory_slots[idx]
 
 	# change item parent to slot
-	RoomManager.get_curr_room().remove_child(item)
+	RoomManager.get_curr_room().remove_child.bind(item).call_deferred()
 	slot.add_child(item)
 
 	slot.set_item(item)
@@ -31,7 +31,7 @@ func _on_item_drop(item_idx: int) -> void:
 	var item = slot.get_item()
 
 	# change item parent to room
-	slot.remove_child(item)
+	slot.remove_child.bind(item).call_deferred
 	RoomManager.get_curr_room().add_child(item)
 
 	slot.clear_item()

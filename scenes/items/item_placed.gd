@@ -6,9 +6,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func item_state_enable(item: Item, rigidbody: RigidBody2D, sprite: Sprite2D) -> void:
-	super.item_state_enable(item, rigidbody, sprite)
+func item_state_enable(item: Item, sprite: Sprite2D) -> void:
+	super.item_state_enable(item, sprite)
 
-	rigidbody.sleeping = false
+	# unlock item position
 
 	sprite.texture = item.get_object_texture()
