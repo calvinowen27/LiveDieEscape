@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 func _ready() -> void:
 	EventBus.item_pickup.connect(_on_item_pickup)
