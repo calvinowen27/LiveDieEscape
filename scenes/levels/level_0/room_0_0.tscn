@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyw3gwmvgg68m"]
+[gd_scene load_steps=4 format=3 uid="uid://cyw3gwmvgg68m"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_obo4y"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_0nwva"]
+[ext_resource type="PackedScene" uid="uid://co87vsw0tevrl" path="res://scenes/items/key.tscn" id="3_uneob"]
 
 [node name="Room0_0" instance=ExtResource("1_obo4y")]
 
@@ -12,5 +13,8 @@ _next_room_idx = 1
 
 [node name="ActivationTimer" parent="Door0" index="2"]
 autostart = true
+
+[node name="Key" parent="." index="4" instance=ExtResource("3_uneob")]
+position = Vector2(264, 620)
 
 [editable path="Door0"]

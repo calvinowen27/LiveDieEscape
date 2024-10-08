@@ -26,3 +26,5 @@ script = ExtResource("1_cwod5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wplvq")
+
+[connection signal="body_entered" from="." to="ItemState" method="_on_item_body_entered"]
