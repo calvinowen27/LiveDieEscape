@@ -5,7 +5,7 @@ var move_dir: Vector2
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func state_init() -> void:
@@ -13,7 +13,7 @@ func state_init() -> void:
 	
 	_animation_player.play("player_walk")
 
-func update(delta: float) -> String:
+func update(_delta: float) -> String:
 	move_dir = move(1)
 	
 	point_sprite(move_dir)

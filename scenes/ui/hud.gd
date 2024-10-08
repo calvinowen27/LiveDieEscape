@@ -4,7 +4,7 @@ func _ready() -> void:
 	EventBus.item_pickup.connect(_on_item_pickup)
 	EventBus.item_drop.connect(_on_item_drop)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update()
 
 # update all nodes in HUD

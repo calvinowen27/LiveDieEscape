@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 			_set_curr_state(next_state_name)
 
 # returns name of next state
-func update(delta: float) -> String:
+func update(_delta: float) -> String:
 	return name
 
 # disable current behavior and set new one

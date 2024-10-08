@@ -17,7 +17,7 @@ func _init() -> void:
 func _ready() -> void:
 	_room_idx = RoomManager.get_curr_room_idx()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:

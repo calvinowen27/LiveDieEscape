@@ -3,7 +3,7 @@ extends LaserTurretState
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func laser_turret_state_enable(animation_player: AnimationPlayer) -> void:

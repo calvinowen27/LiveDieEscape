@@ -3,7 +3,7 @@ extends ItemState
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func item_state_enable(item: Item, sprite: Sprite2D) -> void:

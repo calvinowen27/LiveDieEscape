@@ -51,8 +51,9 @@ func get_door(door_idx: int) -> Door:
 
 # get room node associated with level and room idx, if room doesn't exist, create and store it
 func _get_room(level_idx: int, room_idx: int) -> Node:
+	var level_rooms
 	if level_idx in _rooms.keys():
-		var level_rooms = _rooms[level_idx]
+		level_rooms = _rooms[level_idx]
 		if room_idx < level_rooms.size():
 			var room = _rooms[level_idx][room_idx]
 			if room != null:
@@ -61,7 +62,7 @@ func _get_room(level_idx: int, room_idx: int) -> Node:
 		# level not seen yet
 		_rooms[level_idx] = []
 
-	var level_rooms = _rooms[level_idx]
+	level_rooms = _rooms[level_idx]
 
 	# if level not seen, room not seen
 	# if level seen and room not seen, make sure list is large enough for room
@@ -99,3 +100,6 @@ func get_curr_room() -> Room:
 
 func get_curr_room_idx() -> int:
 	return _curr_room_idx
+
+func get_curr_level() -> int:
+	return _curr_level

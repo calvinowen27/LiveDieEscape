@@ -6,7 +6,7 @@ var move_dir: Vector2
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func state_init() -> void:
@@ -16,7 +16,7 @@ func state_init() -> void:
 	if $EnduranceTimer.is_stopped():
 		$EnduranceTimer.start()
 
-func update(delta: float) -> String:
+func update(_delta: float) -> String:
 	move_dir = move(speed_mult)
 	point_sprite(move_dir)
 	
