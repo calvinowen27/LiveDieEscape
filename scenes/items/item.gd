@@ -8,11 +8,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_item_pickup() -> void:
-	pass
+func pickup() -> void:
+	$ItemState._set_curr_state("ItemInventory")
 
-func _on_item_dropped() -> void:
-	pass
+func drop() -> void:
+	$ItemState._set_curr_state("ItemGround")
 
 func use() -> void:
-	pass
+	$ItemState._set_curr_state("ItemPlaced")

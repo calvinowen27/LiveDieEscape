@@ -16,7 +16,9 @@ func add_item(item: Item) -> int:
 			break
 	
 	# add item to hud
-	# change item state from ground to inventory
+	if item_idx != -1:
+		EventBus.item_pickup.emit(item, item_idx)
+		# change item state from ground to inventory
 	
 	return item_idx
 
@@ -28,6 +30,8 @@ func drop_item(item_idx: int) -> void:
 	var item = _slots[item_idx]
 	
 	# remove item from hud
+	if item_idx != -1:
+		EventBus.item_drop.emit(item_idx)
 	# change item state from inventory to ground/destroy
 	
 	_slots[item_idx] = null
