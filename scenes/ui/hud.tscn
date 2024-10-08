@@ -43,29 +43,34 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 1
-offset_left = -325.0
-offset_top = 384.0
-offset_right = 325.0
-offset_bottom = 544.0
-theme_override_constants/separation = 10
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -322.5
+offset_top = 340.0
+offset_right = 322.5
+offset_bottom = 490.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+metadata/_edit_group_ = true
 
 [node name="InventorySlot" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="InventorySlot2" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="InventorySlot3" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="InventorySlot4" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3

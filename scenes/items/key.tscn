@@ -5,3 +5,6 @@
 
 [node name="Key" instance=ExtResource("1_vkg46")]
 _item_texture = ExtResource("2_8o0ur")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_8o0ur")
