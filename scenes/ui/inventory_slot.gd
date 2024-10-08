@@ -1,10 +1,25 @@
 extends Panel
 
+var _hud: Control
+var _slot_idx: int
+
 var _item: Item
 var _is_filled = false
 
+var _mouse_over = false
+
+func init(hud: Control, slot_idx: int):
+	_hud = hud
+	_slot_idx = slot_idx
+
+func _process(_delta: float) -> void:
+	if _mouse_over and Input.is_action_just_pressed("drop_item"):
+		EventBus.item_drop.emit(_slot_idx)
+
 func set_item(item: Item) -> void:
 	_is_filled = true
+	
+	_item = item
 
 	# set sprite
 	var sprite = $Sprite2D
@@ -24,3 +39,12 @@ func get_item() -> Item:
 
 func is_filled() -> bool:
 	return _is_filled
+
+func _on_mouse_entered() -> void:
+	_mouse_over = true
+
+func _on_mouse_exited() -> void:
+	_mouse_over = false
+
+func get_slot_idx() -> int:
+	return _slot_idx

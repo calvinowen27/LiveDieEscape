@@ -4,6 +4,12 @@ func _ready() -> void:
 	EventBus.item_pickup.connect(_on_item_pickup)
 	EventBus.item_drop.connect(_on_item_drop)
 
+	# init inventory slots with reference to hud and respective slot nums
+	var slots = get_tree().get_nodes_in_group("InventorySlots")
+
+	for i in range(slots.size()):
+		slots[i].init(self, i)
+
 func _process(_delta: float) -> void:
 	update()
 
@@ -29,8 +35,10 @@ func _on_item_drop(item_idx: int) -> void:
 	var inventory_slots = get_tree().get_nodes_in_group("InventorySlots")
 	var slot = inventory_slots[item_idx]
 	var item = slot.get_item()
+	if item == null:
+		return
 
-	# change item parent to room
+	# change item parent to raoom
 	slot.remove_child.bind(item).call_deferred()
 	RoomManager.get_curr_room().add_child.bind(item).call_deferred()
 
