@@ -21,6 +21,9 @@ func set_item(item: Item) -> void:
 	
 	_item = item
 
+	# set label to item name
+	$Label.text = _item.get_item_name()
+
 	# set sprite
 	var sprite = $Sprite2D
 	sprite.texture = item.get_item_texture()
@@ -28,6 +31,9 @@ func set_item(item: Item) -> void:
 
 func clear_item() -> void:
 	_is_filled = false
+
+	# clear label
+	$Label.text = ""
 
 	# clear sprite
 	var sprite = $Sprite2D
