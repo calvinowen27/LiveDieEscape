@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_wplvq"]
 radius = 25.1794
 
-[node name="Area2D" type="Area2D"]
+[node name="Item" type="Area2D"]
 script = ExtResource("1_cwod5")
 
 [node name="ItemState" parent="." instance=ExtResource("2_ky0s2")]
