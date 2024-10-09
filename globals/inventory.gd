@@ -26,8 +26,6 @@ func drop_item(item_idx: int) -> void:
 		print_debug("drop_item(): no item in slot %d" % item_idx)
 		return
 	
-	var item = _slots[item_idx]
-	
 	# remove item from hud
 	if item_idx >= 0 and item_idx < _slots.size():
 		_slots[item_idx] = null
