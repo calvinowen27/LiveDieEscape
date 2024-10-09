@@ -12,3 +12,4 @@ func item_state_enable(item: Item, sprite: Sprite2D) -> void:
 	# unlock item position
 
 	sprite.texture = item.get_object_texture()
+	sprite.visible = true

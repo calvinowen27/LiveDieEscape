@@ -27,6 +27,6 @@ position = Vector2(465, 728)
 position = Vector2(694, 516)
 
 [node name="Key5" parent="." index="8" instance=ExtResource("3_uneob")]
-position = Vector2(695, 824)
+position = Vector2(694, 824)
 
 [editable path="Door0"]

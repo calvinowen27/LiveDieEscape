@@ -17,6 +17,8 @@ func pickup() -> void:
 func drop() -> void:
 	$ItemState._set_curr_state("ItemGround")
 
+	position = RoomManager.get_player().global_position + Vector2(0, 20)
+
 func use() -> void:
 	$ItemState._set_curr_state("ItemPlaced")
 

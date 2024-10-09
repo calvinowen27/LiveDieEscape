@@ -31,6 +31,6 @@ func item_state_enable(item: Item, sprite: Sprite2D) -> void:
 	super.enable()
 
 func _on_item_body_entered(body: Node) -> void:
-	if body == RoomManager.get_player() and _curr_state.name == "ItemGround":
+	if body == RoomManager.get_player() and _curr_state.name == "ItemGround" and _curr_state.can_be_picked_up():
 		var item = get_parent()
 		Inventory.add_item(item)

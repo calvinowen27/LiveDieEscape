@@ -11,4 +11,5 @@ func item_state_enable(item: Item, sprite: Sprite2D) -> void:
 
 	# lock item position
 
-	sprite.texture = item.get_item_texture()
+	# sprite.texture = item.get_item_texture()
+	sprite.visible = false

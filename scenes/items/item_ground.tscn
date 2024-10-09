@@ -5,3 +5,8 @@
 
 [node name="ItemGround" instance=ExtResource("1_0da47")]
 script = ExtResource("2_4ppyl")
+
+[node name="PickupTimer" type="Timer" parent="." index="0"]
+one_shot = true
+
+[connection signal="timeout" from="PickupTimer" to="." method="_on_pickup_timer_timeout"]

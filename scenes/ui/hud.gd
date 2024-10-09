@@ -37,6 +37,8 @@ func _on_item_drop(item_idx: int) -> void:
 	var item = slot.get_item()
 	if item == null:
 		return
+	
+	Inventory.drop_item(item_idx)
 
 	# change item parent to raoom
 	slot.remove_child.bind(item).call_deferred()
