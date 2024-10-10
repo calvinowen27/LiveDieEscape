@@ -15,6 +15,9 @@ func init(hud: Control, slot_idx: int):
 func _process(_delta: float) -> void:
 	if _mouse_over and Input.is_action_just_pressed("drop_item"):
 		EventBus.item_drop.emit(_slot_idx)
+	
+	if _mouse_over and Input.is_action_just_pressed("use_item"):
+		EventBus.item_use.emit(_slot_idx)
 
 func set_item(item: Item) -> void:
 	_is_filled = true

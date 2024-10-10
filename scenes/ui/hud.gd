@@ -3,6 +3,7 @@ extends Control
 func _ready() -> void:
 	EventBus.item_pickup.connect(_on_item_pickup)
 	EventBus.item_drop.connect(_on_item_drop)
+	EventBus.item_use.connect(_on_item_use)
 
 	# init inventory slots with reference to hud and respective slot nums
 	var slots = get_tree().get_nodes_in_group("InventorySlots")
@@ -46,3 +47,12 @@ func _on_item_drop(item_idx: int) -> void:
 
 	slot.clear_item()
 	item.drop()
+
+func _on_item_use(item_idx: int) -> void:
+	var inventory_slots = get_tree().get_nodes_in_group("InventorySlots")
+	var slot = inventory_slots[item_idx]
+	var item = slot.get_item()
+	if item == null:
+		return
+	
+	item.use()
