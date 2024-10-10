@@ -23,3 +23,6 @@ func _physics_process(_delta: float) -> void:
 		if found_collider == RoomManager.get_player():
 			RoomManager.get_player().die()
 		# do hit stuff here
+
+func reboot() -> void:
+	$LaserTurretState.reboot()

@@ -7,6 +7,12 @@ class_name Room
 
 var _is_valid = true
 
+func reboot_room() -> void:
+	print("asf")
+	var laser_turrets = get_tree().get_nodes_in_group("LaserTurrets")
+	for turret in laser_turrets:
+		turret.reboot()
+
 func get_level_idx() -> int:
 	return _level_idx
 

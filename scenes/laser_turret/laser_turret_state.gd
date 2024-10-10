@@ -43,3 +43,10 @@ func _on_activation_area_body_exited(body: Node2D) -> void:
 	#if body == RoomManager.get_player():
 		#_set_curr_state("LaserTurretIdle")
 	pass
+
+func reboot() -> void:
+	_set_curr_state("LaserTurretIdle")
+	
+	await get_tree().create_timer(3).timeout
+	
+	_set_curr_state("LaserTurretPriming")
