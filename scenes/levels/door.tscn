@@ -1,31 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://78xjhgygrik8"]
+[gd_scene load_steps=4 format=3 uid="uid://78xjhgygrik8"]
 
 [ext_resource type="Script" path="res://scenes/levels/door.gd" id="1_wxue2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6co3"]
-size = Vector2(32, 319.25)
+size = Vector2(69, 318)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qna3v"]
+size = Vector2(39, 319)
 
 [node name="Door" type="Area2D"]
-scale = Vector2(2, 1)
 script = ExtResource("1_wxue2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.375)
+position = Vector2(-18.5, 1)
 shape = SubResource("RectangleShape2D_o6co3")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
+offset_left = -38.0
 offset_top = -159.0
-offset_right = 16.0
+offset_right = 34.0
 offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SpawnLocation" type="Marker2D" parent="."]
-position = Vector2(57, 0)
+position = Vector2(68, 0)
 
 [node name="ActivationTimer" type="Timer" parent="."]
 wait_time = 0.125
@@ -42,5 +45,32 @@ theme_override_font_sizes/font_size = 24
 text = "Door"
 horizontal_alignment = 1
 
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(35.5, 1.5)
+shape = SubResource("RectangleShape2D_qna3v")
+
+[node name="InteractLabel" type="Label" parent="."]
+offset_left = -15.0
+offset_top = -9.0
+offset_right = 88.0
+offset_bottom = 15.0
+rotation = -1.5708
+pivot_offset = Vector2(50, 12)
+text = "'E' to Interact"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="InteractLabel"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

@@ -11,6 +11,8 @@ var _room_idx = 0
 @export var _locked = false
 @export var _consume_key = false
 
+var _player_in_range = false
+
 var _activated = false # if door can be used
 
 func _init() -> void:
@@ -21,23 +23,23 @@ func _ready() -> void:
 	
 	if _locked:
 		$CollisionShape2D/ColorRect.color = Color(1.0, 0.0, 0.0, 1.0)
+	
+	$InteractLabel.rotation = -rotation
 
 func _process(_delta: float) -> void:
-	pass
+	if _locked and Input.is_action_just_pressed("interact"):
+		attempt_open()
 
-func _on_body_entered(body: Node2D) -> void:
-	if _activated and body == RoomManager.get_player():
-		if not _locked:
-			next_room()
-		else:
-			var keys = Inventory.get_items_of_group("Keys")
-			for key in keys:
-				if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
-					if _consume_key:
-						Inventory.del_item(key)
-					unlock()
-					next_room()
-					break
+func attempt_open() -> void:
+	if _activated and _player_in_range:
+		var keys = Inventory.get_items_of_group("Keys")
+		for key in keys:
+			if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
+				if _consume_key:
+					Inventory.del_item(key)
+				unlock()
+				next_room()
+				break
 
 func next_room() -> void:
 	RoomManager.set_curr_room(_next_level_idx, _next_room_idx, self)
@@ -62,9 +64,24 @@ func get_next_door_idx() -> int:
 func unlock() -> void:
 	$CollisionShape2D/ColorRect.color = Color(1.0, 1.0, 1.0, 1.0)
 	_locked = false
+	$InteractLabel.visible = false
 
 func is_locked() -> bool:
 	return _locked
 
 func get_room_idx() -> int:
 	return _room_idx
+
+func _on_interact_area_body_entered(body: Node2D) -> void:
+	if body == RoomManager.get_player() and _locked:
+		_player_in_range = true
+		$InteractLabel.visible = true
+
+func _on_interact_area_body_exited(body: Node2D) -> void:
+	if body == RoomManager.get_player():
+		_player_in_range = false
+		$InteractLabel.visible = false
+
+func _on_body_entered(body: Node2D) -> void:
+	if body == RoomManager.get_player() and not _locked:
+		next_room()
