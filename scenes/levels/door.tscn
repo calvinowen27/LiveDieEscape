@@ -31,5 +31,16 @@ position = Vector2(57, 0)
 wait_time = 0.125
 one_shot = true
 
+[node name="Label" type="Label" parent="."]
+offset_left = -19.0
+offset_top = 55.0
+offset_right = 88.0
+offset_bottom = 89.0
+rotation = -1.5708
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Door"
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]

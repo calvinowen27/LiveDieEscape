@@ -7,6 +7,9 @@ var _player: Node2D
 
 var _rooms = {}
 
+func _ready() -> void:
+	EventBus.level_reset.connect(_on_level_reset)
+
 func get_player() -> Node2D:
 	return _player
 
@@ -78,7 +81,7 @@ func _get_room(level_idx: int, room_idx: int) -> Node:
 
 	return new_room
 
-func reset_level(level_idx: int) -> void:
+func _on_level_reset(level_idx: int) -> void:
 	if level_idx not in _rooms.keys():
 		print_debug("reset_level(): level %d not loaded yet?" % level_idx)
 		return

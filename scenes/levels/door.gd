@@ -3,11 +3,13 @@ extends Area2D
 class_name Door
 
 var _room_idx = 0
+@export var _door_idx = 0
 @export var _next_level_idx: int
 @export var _next_room_idx: int
 @export var _next_door_idx: int
 
-@export var locked = false
+@export var _locked = false
+@export var _consume_key = false
 
 var _activated = false # if door can be used
 
@@ -16,14 +18,30 @@ func _init() -> void:
 
 func _ready() -> void:
 	_room_idx = RoomManager.get_curr_room_idx()
+	
+	if _locked:
+		$CollisionShape2D/ColorRect.color = Color(1.0, 0.0, 0.0, 1.0)
 
 func _process(_delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if _activated and body == RoomManager.get_player() and not locked:
-		RoomManager.set_curr_room(_next_level_idx, _next_room_idx, self)
-		_activated = false
+	if _activated and body == RoomManager.get_player():
+		if not _locked:
+			next_room()
+		else:
+			var keys = Inventory.get_items_of_group("Keys")
+			for key in keys:
+				if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
+					if _consume_key:
+						Inventory.del_item(key)
+					unlock()
+					next_room()
+					break
+
+func next_room() -> void:
+	RoomManager.set_curr_room(_next_level_idx, _next_room_idx, self)
+	_activated = false
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	# if next room is this door's room, start activation timer for door
@@ -42,7 +60,11 @@ func get_next_door_idx() -> int:
 	return _next_door_idx
 
 func unlock() -> void:
-	locked = false
+	$CollisionShape2D/ColorRect.color = Color(1.0, 1.0, 1.0, 1.0)
+	_locked = false
+
+func is_locked() -> bool:
+	return _locked
 
 func get_room_idx() -> int:
 	return _room_idx
