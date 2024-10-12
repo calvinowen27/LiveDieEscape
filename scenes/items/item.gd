@@ -8,7 +8,7 @@ class_name Item
 @export var _object_texture: Texture2D
 
 func _ready() -> void:
-	pass
+	$ZOrdering.init($Sprite2D)
 
 func _process(_delta: float) -> void:
 	pass

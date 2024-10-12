@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://kjrb8k6r0cfo"]
+[gd_scene load_steps=6 format=3 uid="uid://kjrb8k6r0cfo"]
 
 [ext_resource type="Script" path="res://scenes/world_objects/control_point.gd" id="1_l6bys"]
 [ext_resource type="Texture2D" uid="uid://c0e3dmlouj6k8" path="res://resources/art/control_point.png" id="1_othg3"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/interactable.tscn" id="3_vym52"]
+[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="4_pwybs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6sy0"]
 size = Vector2(90, 64)
@@ -19,3 +21,31 @@ shape = SubResource("RectangleShape2D_s6sy0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("1_othg3")
+
+[node name="Interactable" parent="." instance=ExtResource("3_vym52")]
+position = Vector2(-64, -100)
+
+[node name="InteractArea" parent="Interactable" index="1"]
+position = Vector2(64, 100)
+
+[node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
+position = Vector2(2, 9.5)
+
+[node name="UI" type="Panel" parent="."]
+visible = false
+z_index = 4096
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -175.0
+offset_right = 175.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ZOrdering" parent="." instance=ExtResource("4_pwybs")]
+
+[editable path="Interactable"]

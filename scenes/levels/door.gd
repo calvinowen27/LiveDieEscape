@@ -20,8 +20,10 @@ func _ready() -> void:
 	_room_idx = RoomManager.get_curr_room_idx()
 	
 	# initialize interactable node
-	$Interactable.interact.connect(attempt_open)
-	$Interactable.set_active(_locked)
+	var interactable = $Interactable
+	interactable.interact.connect(attempt_open)
+	interactable.set_active(_locked)
+	interactable.get_node("InteractLabel").rotation = interactable.rotation + (PI / 2)
 	
 	if _locked:
 		$CollisionShape2D/ColorRect.color = Color(1.0, 0.0, 0.0, 1.0)

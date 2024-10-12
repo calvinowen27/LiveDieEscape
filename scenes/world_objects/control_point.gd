@@ -1,10 +1,15 @@
 extends RigidBody2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$ZOrdering.init($Sprite2D)
+	
+	# initialize interactable signals
+	$Interactable.interact.connect(_on_interact)
+	$Interactable.interactable_set.connect(_on_interactable_set)
 
+func _on_interact() -> void:
+	$UI.visible = !$UI.visible
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_interactable_set(val: bool) -> void:
+	if not val:
+		$UI.visible = false

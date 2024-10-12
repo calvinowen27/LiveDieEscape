@@ -6,9 +6,7 @@ var _player_in_range = false
 var _is_active = true
 
 signal interact
-
-func _ready() -> void:
-	$InteractLabel.rotation = rotation + (PI / 2)
+signal interactable_set(val: bool)
 
 func _process(_delta: float) -> void:
 	# check for player interaction
@@ -17,13 +15,16 @@ func _process(_delta: float) -> void:
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	if body == RoomManager.get_player() and _is_active:
-		_player_in_range = true
-		$InteractLabel.visible = true
+		_set_interactable(true)
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	if body == RoomManager.get_player():
-		_player_in_range = false
-		$InteractLabel.visible = false
+		_set_interactable(false)
+
+func _set_interactable(val: bool) -> void:
+	_player_in_range = val
+	$InteractLabel.visible = val
+	interactable_set.emit(val)
 
 func is_active() -> bool:
 	return _is_active
