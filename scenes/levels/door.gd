@@ -35,10 +35,10 @@ func attempt_open() -> void:
 		var keys = Inventory.get_items_of_group("Keys")
 		for key in keys:
 			if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
-				if _consume_key:
-					Inventory.del_item(key)
 				unlock()
 				next_room()
+				if _consume_key:
+					Inventory.del_item(key)
 				break
 
 func next_room() -> void:
