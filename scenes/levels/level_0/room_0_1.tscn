@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb1tgidnjrhfg"]
+[gd_scene load_steps=5 format=3 uid="uid://bb1tgidnjrhfg"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_3b385"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6rxug"]
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_yj8nx"]
+[ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="4_602i6"]
 
 [node name="Room0_1" instance=ExtResource("1_3b385")]
 _room_idx = 1
@@ -17,3 +18,6 @@ position = Vector2(709, 263)
 [node name="LaserTurret2" parent="." index="5" instance=ExtResource("3_yj8nx")]
 position = Vector2(246, 687)
 scale = Vector2(-1, 1)
+
+[node name="ControlPoint" parent="." index="6" instance=ExtResource("4_602i6")]
+position = Vector2(287, 234)

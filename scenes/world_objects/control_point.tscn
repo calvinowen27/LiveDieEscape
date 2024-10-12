@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://kjrb8k6r0cfo"]
+
+[ext_resource type="Script" path="res://scenes/world_objects/control_point.gd" id="1_l6bys"]
+[ext_resource type="Texture2D" uid="uid://c0e3dmlouj6k8" path="res://resources/art/control_point.png" id="1_othg3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6sy0"]
+size = Vector2(90, 64)
+
+[node name="ControlPoint" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+script = ExtResource("1_l6bys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 38)
+shape = SubResource("RectangleShape2D_s6sy0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_othg3")
