@@ -11,6 +11,7 @@ func _ready() -> void:
 	$InteractLabel.rotation = rotation + (PI / 2)
 
 func _process(_delta: float) -> void:
+	# check for player interaction
 	if Input.is_action_just_pressed("interact") and _player_in_range:
 		interact.emit()
 

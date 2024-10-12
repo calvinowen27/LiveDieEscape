@@ -19,6 +19,7 @@ func _init() -> void:
 func _ready() -> void:
 	_room_idx = RoomManager.get_curr_room_idx()
 	
+	# initialize interactable node
 	$Interactable.interact.connect(attempt_open)
 	$Interactable.set_active(_locked)
 	
@@ -27,9 +28,11 @@ func _ready() -> void:
 
 func attempt_open() -> void:
 	if _active:
+		# check for correct key in inventory
 		var keys = Inventory.get_items_of_group("Keys")
 		for key in keys:
 			if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
+				# unlock and next room
 				unlock()
 				next_room()
 				if _consume_key:
@@ -59,6 +62,8 @@ func get_next_door_idx() -> int:
 func unlock() -> void:
 	$CollisionShape2D/ColorRect.color = Color(1.0, 1.0, 1.0, 1.0)
 	_locked = false
+	
+	# deactivate interactable (only for unlocking)
 	$Interactable.set_active(false)
 
 func is_locked() -> bool:
