@@ -2,6 +2,10 @@ extends Node2D
 
 class_name Item
 
+static var _next_id = 1
+
+var _id
+
 @export var _item_name: String
 
 @export var _item_texture: Texture2D
@@ -9,6 +13,9 @@ class_name Item
 
 func _ready() -> void:
 	$ZOrdering.init($Sprite2D)
+	
+	_id = _next_id
+	_next_id += 1
 
 func _process(_delta: float) -> void:
 	pass
@@ -33,3 +40,6 @@ func get_object_texture() -> Texture2D:
 
 func get_item_name() -> String:
 	return _item_name
+
+func get_id() -> int:
+	return _id
