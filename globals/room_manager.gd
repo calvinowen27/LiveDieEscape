@@ -15,7 +15,7 @@ func get_player() -> Node2D:
 
 func set_curr_room(level_idx: int, room_idx: int, door: Door) -> void:
 	# get room instance
-	var new_room = _get_room(level_idx, room_idx)
+	var new_room = get_room(level_idx, room_idx)
 
 	_curr_room_idx = room_idx
 
@@ -53,7 +53,7 @@ func get_door(door_idx: int) -> Door:
 	return _curr_room.get_node("Door%d" % door_idx)
 
 # get room node associated with level and room idx, if room doesn't exist, create and store it
-func _get_room(level_idx: int, room_idx: int) -> Node:
+func get_room(level_idx: int, room_idx: int) -> Node:
 	var level_rooms
 	if level_idx in _rooms.keys():
 		level_rooms = _rooms[level_idx]

@@ -1,9 +1,15 @@
-[gd_scene format=3 uid="uid://cl7ojr8mmppuq"]
+[gd_scene load_steps=3 format=3 uid="uid://cl7ojr8mmppuq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_co82a"]
+
+[sub_resource type="Theme" id="Theme_arfk6"]
+/styles/font_color = SubResource("StyleBoxFlat_co82a")
 
 [node name="ControlButton" type="Button"]
 custom_minimum_size = Vector2(100, 100)
 offset_right = 100.0
 offset_bottom = 100.0
+theme = SubResource("Theme_arfk6")
 text = "Room 0
 ------------
 Control

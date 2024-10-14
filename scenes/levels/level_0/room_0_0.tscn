@@ -22,5 +22,7 @@ position = Vector2(264, 620)
 
 [node name="ControlChip" parent="." index="5" instance=ExtResource("4_wcbvr")]
 position = Vector2(244, 315)
+_control_room = 1
 
 [editable path="Door0"]
+[editable path="Door0/Interactable"]

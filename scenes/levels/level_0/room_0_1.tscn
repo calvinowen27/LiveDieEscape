@@ -21,4 +21,4 @@ scale = Vector2(-1, 1)
 
 [node name="ControlPoint" parent="." index="6" instance=ExtResource("4_602i6")]
 position = Vector2(287, 234)
-_rooms = Array[int]([0, 1])
+_control_rooms = Array[int]([0, 1])
