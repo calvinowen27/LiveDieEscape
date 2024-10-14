@@ -60,6 +60,7 @@ func _update_control() -> void:
 		button.text = control_button_available_text % control_room
 		button_info[1] = true
 		button.set("theme_override_colors/font_color", Color(0.0, 1.0, 0.0, 1.0))
+		button.set("theme_override_colors/font_pressed_color", Color(0.0, 1.0, 0.0, 1.0))
 
 		for chip in control_chips:
 			if chip.get_control_level() != _level:
@@ -75,6 +76,7 @@ func _update_control() -> void:
 			button_info[1] = false
 			button.text = control_button_unavailable_text % control_room
 			button.set("theme_override_colors/font_color", Color(1.0, 0.0, 0.0, 1.0))
+			button.set("theme_override_colors/font_pressed_color", Color(1.0, 0.0, 0.0, 1.0))
 
 func _on_control_button_pressed(room_idx: int) -> void:
 	RoomManager.get_room(_level, room_idx).reboot_room()
