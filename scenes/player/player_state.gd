@@ -60,7 +60,7 @@ func move(speed_mult: float) -> Vector2:
 	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	var speed = StatManager.get_base_stat("speed")
-	_rigidbody.linear_velocity = move_dir * (150 + speed * 10) * speed_mult
+	_rigidbody.linear_velocity = move_dir * (300 + speed * 20) * speed_mult
 	
 	return move_dir
 

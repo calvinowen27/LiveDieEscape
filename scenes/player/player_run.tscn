@@ -5,7 +5,7 @@
 
 [node name="PlayerRun" instance=ExtResource("1_bxrhe")]
 script = ExtResource("2_xssko")
-speed_mult = 2.5
+speed_mult = 1.5
 
 [node name="EnduranceTimer" type="Timer" parent="." index="0"]
 one_shot = true
