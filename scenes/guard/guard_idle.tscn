@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwisyklm77mc5"]
+
+[ext_resource type="PackedScene" uid="uid://cw8c30c07yift" path="res://scenes/guard/guard_state.tscn" id="1_bclei"]
+[ext_resource type="Script" path="res://scenes/guard/guard_idle.gd" id="2_14tom"]
+
+[node name="GuardIdle" instance=ExtResource("1_bclei")]
+script = ExtResource("2_14tom")

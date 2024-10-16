@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwfp4uu7bds7i"]
+
+[ext_resource type="Texture2D" uid="uid://dsn77dja8lky4" path="res://resources/art/guard.png" id="1_45w1c"]
+[ext_resource type="PackedScene" uid="uid://cw8c30c07yift" path="res://scenes/guard/guard_state.tscn" id="2_of4ti"]
+[ext_resource type="PackedScene" uid="uid://bwisyklm77mc5" path="res://scenes/guard/guard_idle.tscn" id="3_sq0rg"]
+[ext_resource type="PackedScene" uid="uid://871s4ssyqa6l" path="res://scenes/guard/guard_follow_player.tscn" id="4_h1kgr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1mse"]
+radius = 38.0
+height = 114.0
+
+[node name="Guard" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_45w1c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 37)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_q1mse")
+
+[node name="GuardState" parent="." instance=ExtResource("2_of4ti")]
+
+[node name="GuardIdle" parent="GuardState" instance=ExtResource("3_sq0rg")]
+
+[node name="GuardFollowPlayer" parent="GuardState" instance=ExtResource("4_h1kgr")]
