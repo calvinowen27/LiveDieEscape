@@ -21,6 +21,8 @@ position = Vector2(2, 37)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_q1mse")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [node name="GuardState" parent="." instance=ExtResource("2_of4ti")]
 
 [node name="GuardIdle" parent="GuardState" instance=ExtResource("3_sq0rg")]
