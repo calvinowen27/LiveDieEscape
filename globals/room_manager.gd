@@ -98,6 +98,11 @@ func _on_level_reset(level_idx: int) -> void:
 
 	StatManager.reset_stats()
 
+func guard_reset() -> void:
+	set_curr_room(0, 0, null);
+
+	_player.queue_teleport(_curr_room.get_node("PlayerResetPos").position);
+
 func get_curr_room() -> Room:
 	return _curr_room
 

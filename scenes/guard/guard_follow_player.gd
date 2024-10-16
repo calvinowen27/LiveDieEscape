@@ -15,5 +15,4 @@ func _process(_delta: float) -> void:
 
 func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
 	super.guard_state_enable(rigidbody, animation_player)
-
 	#animation_player.play("guard_walk")

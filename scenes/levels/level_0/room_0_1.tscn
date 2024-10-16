@@ -26,3 +26,6 @@ _control_rooms = Array[int]([0, 1])
 
 [node name="Guard" parent="." index="7" instance=ExtResource("5_xdnju")]
 position = Vector2(152, 316)
+
+[node name="GuardResetPos" type="Marker2D" parent="." index="8"]
+position = Vector2(154, 317)
