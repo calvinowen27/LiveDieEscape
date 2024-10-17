@@ -32,18 +32,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "laser_turret_priming":
 		_set_curr_state("LaserTurretActivated")
 
-# activate when player nearby
-func _on_activation_area_body_entered(body: Node2D) -> void:
-	#if body == RoomManager.get_player():
-		#_set_curr_state("LaserTurretPriming")
-	pass
-
-# deactivate when player leaves
-func _on_activation_area_body_exited(body: Node2D) -> void:
-	#if body == RoomManager.get_player():
-		#_set_curr_state("LaserTurretIdle")
-	pass
-
 func reboot() -> void:
 	_set_curr_state("LaserTurretIdle")
 	
