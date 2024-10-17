@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://du7rg0bguh68w"]
+
+[ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="1_31gae"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_rotating.gd" id="2_68so1"]
+
+[node name="LaserTurretRotating" instance=ExtResource("1_31gae")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_68so1")

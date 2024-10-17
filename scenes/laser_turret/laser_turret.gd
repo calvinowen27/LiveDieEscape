@@ -1,5 +1,7 @@
 extends RayCast2D
 
+class_name LaserTurret
+
 var last_collider: Object
 
 func _ready() -> void:
