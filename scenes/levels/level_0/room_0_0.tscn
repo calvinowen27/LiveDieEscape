@@ -24,8 +24,5 @@ position = Vector2(264, 620)
 position = Vector2(244, 315)
 _control_room = 1
 
-[node name="PlayerResetPos" type="Marker2D" parent="." index="6"]
-position = Vector2(554, 797)
-
 [editable path="Door0"]
 [editable path="Door0/Interactable"]
