@@ -44,10 +44,17 @@ func _change_room(new_room: Room, door: Door):
 	if door != null:
 		var next_door = get_door(door.get_next_door_idx())
 		move_player_to_door(next_door)
+	else:
+		try_move_player_to_spawn()
 
 func move_player_to_door(next_door: Door) -> void:
 	# spawn location position is relative to parent, global position is what we want
 	_player.position = next_door.get_node("SpawnLocation").global_position
+
+func try_move_player_to_spawn() -> void:
+	var player_spawn = _curr_room.get_node("PlayerSpawn")
+	if player_spawn != null:
+		_player.position = player_spawn.position
 
 func get_door(door_idx: int) -> Door:
 	return _curr_room.get_node("Door%d" % door_idx)
@@ -101,7 +108,7 @@ func _on_level_reset(level_idx: int) -> void:
 func guard_reset() -> void:
 	set_curr_room(0, 0, null);
 
-	_player.queue_teleport(_curr_room.get_node("PlayerResetPos").position);
+	#_player.queue_teleport(_curr_room.get_node("%PlayerResetPos").position);
 
 func get_curr_room() -> Room:
 	return _curr_room

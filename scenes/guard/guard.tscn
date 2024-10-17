@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwfp4uu7bds7i"]
+[gd_scene load_steps=8 format=3 uid="uid://bwfp4uu7bds7i"]
 
 [ext_resource type="Texture2D" uid="uid://dsn77dja8lky4" path="res://resources/art/guard.png" id="1_45w1c"]
+[ext_resource type="Script" path="res://scenes/guard/guard.gd" id="1_t1dok"]
 [ext_resource type="PackedScene" uid="uid://cw8c30c07yift" path="res://scenes/guard/guard_state.tscn" id="2_of4ti"]
 [ext_resource type="PackedScene" uid="uid://bwisyklm77mc5" path="res://scenes/guard/guard_idle.tscn" id="3_sq0rg"]
 [ext_resource type="PackedScene" uid="uid://871s4ssyqa6l" path="res://scenes/guard/guard_follow_player.tscn" id="4_h1kgr"]
+[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="5_f4t6e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1mse"]
 radius = 38.0
@@ -14,6 +16,7 @@ gravity_scale = 0.0
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 5
+script = ExtResource("1_t1dok")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_45w1c")
@@ -31,4 +34,6 @@ shape = SubResource("CapsuleShape2D_q1mse")
 
 [node name="GuardFollowPlayer" parent="GuardState" instance=ExtResource("4_h1kgr")]
 
-[connection signal="body_entered" from="." to="GuardState" method="_on_guard_body_entered"]
+[node name="ZOrdering" parent="." instance=ExtResource("5_f4t6e")]
+
+[connection signal="body_entered" from="." to="GuardState/GuardFollowPlayer" method="_on_guard_body_entered"]
