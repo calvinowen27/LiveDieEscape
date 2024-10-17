@@ -13,3 +13,7 @@ _item_texture = ExtResource("2_6l4vo")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_6l4vo")
+offset = Vector2(0, -6)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -24)

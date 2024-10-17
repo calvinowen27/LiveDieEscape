@@ -15,21 +15,26 @@ freeze = true
 script = ExtResource("1_l6bys")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 38)
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_s6sy0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("1_othg3")
+offset = Vector2(0, -14)
 
 [node name="Interactable" parent="." instance=ExtResource("3_vym52")]
-position = Vector2(-64, -100)
+
+[node name="InteractLabel" parent="Interactable" index="0"]
+visible = false
+offset_top = -168.0
+offset_bottom = -144.0
 
 [node name="InteractArea" parent="Interactable" index="1"]
-position = Vector2(64, 100)
+position = Vector2(0, -36)
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
-position = Vector2(2, 9.5)
+position = Vector2(0, 17.3958)
 
 [node name="UI" type="Panel" parent="."]
 visible = false

@@ -7,7 +7,8 @@ var _sprite: Sprite2D
 var _animation_player: AnimationPlayer
 
 func _ready() -> void:
-	_set_curr_state("PlayerIdle")
+	# _set_curr_state("PlayerIdle")
+	super._ready()
 
 func enable():
 	pass

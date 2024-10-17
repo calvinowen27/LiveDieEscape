@@ -101,6 +101,7 @@ script = ExtResource("1_fa2xx")
 
 [node name="PlayerState" type="Node" parent="."]
 script = ExtResource("2_4s0rh")
+_initial_state = "PlayerIdle"
 
 [node name="PlayerIdle" parent="PlayerState" instance=ExtResource("2_ml3m3")]
 
@@ -112,13 +113,14 @@ script = ExtResource("2_4s0rh")
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 17)
+position = Vector2(0, -23)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mifri")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("6_fempl")
+offset = Vector2(0, -8)
 hframes = 2
 vframes = 3
 

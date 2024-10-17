@@ -10,7 +10,7 @@ func _ready() -> void:
 	var animation_player = get_node("../AnimationPlayer")
 	guard_state_enable(rigidbody, animation_player)
 
-	_set_curr_state("GuardIdle")
+	super._ready()
 
 func _set_curr_state(new_state_name: String) -> State:
 	var new_state = super._set_curr_state(new_state_name)

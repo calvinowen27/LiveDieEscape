@@ -2,10 +2,12 @@ extends State
 
 class_name LaserTurretState
 
-var _animation_player: AnimationPlayer
+@export var _animation_player: AnimationPlayer
+@export var _laser_sprite: Sprite2D
+@export var _laser_raycast: RayCast2D
 
 func _ready() -> void:
-	_set_curr_state("LaserTurretPriming")
+	super._ready()
 
 func _set_curr_state(new_state_name: String) -> State:
 	var new_state = super._set_curr_state(new_state_name)
@@ -17,13 +19,14 @@ func _set_curr_state(new_state_name: String) -> State:
 	
 	# enable new state
 	if _curr_state != null:
-		var animation_player = get_node("../AnimationPlayer")
-		_curr_state.laser_turret_state_enable(animation_player)
+		_curr_state.laser_turret_state_enable(_animation_player, _laser_sprite, _laser_raycast)
 
 	return new_state
 
-func laser_turret_state_enable(animation_player: AnimationPlayer) -> void:
+func laser_turret_state_enable(animation_player: AnimationPlayer, laser_sprite: Sprite2D, laser_raycast: RayCast2D) -> void:
 	_animation_player = animation_player
+	_laser_sprite = laser_sprite
+	_laser_raycast = laser_raycast
 	
 	super.enable()
 

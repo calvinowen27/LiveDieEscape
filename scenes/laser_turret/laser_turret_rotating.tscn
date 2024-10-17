@@ -1,8 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://du7rg0bguh68w"]
+[gd_scene load_steps=4 format=3 uid="uid://du7rg0bguh68w"]
 
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="1_31gae"]
-[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_rotating.gd" id="2_68so1"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_activated_rotating.gd" id="2_5pkt1"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/interactable.tscn" id="3_x0jnn"]
 
 [node name="LaserTurretRotating" instance=ExtResource("1_31gae")]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("2_68so1")
+
+[node name="LaserTurretActivated" parent="LaserTurretState" index="2" node_paths=PackedStringArray("_laser_sprite")]
+script = ExtResource("2_5pkt1")
+_laser_sprite = NodePath("../../RayCast2D/Laser")
+
+[node name="Interactable" parent="." index="6" instance=ExtResource("3_x0jnn")]
+visible = false
+
+[node name="InteractLabel" parent="Interactable" index="0"]
+offset_top = -68.0
+offset_bottom = -44.0
+
+[node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
+position = Vector2(-2.66667, 7.33333)
+
+[editable path="Interactable"]

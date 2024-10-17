@@ -6,8 +6,13 @@ var _curr_state: State
 
 var _is_enabled = false
 
+@export var _initial_state: String
+
 func _ready() -> void:
-	disable()
+	# disable()
+
+	if _initial_state != "":
+		_set_curr_state(_initial_state)
 
 func _process(delta: float) -> void:
 	#if _curr_state != null:
