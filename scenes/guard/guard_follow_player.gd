@@ -14,12 +14,14 @@ func _ready() -> void:
 	
 	EventBus.change_room.connect(_on_room_change)
 
-func _process(_delta: float) -> void:
+func update(_delta: float) -> String:
 	var player_pos = RoomManager.get_player().global_position
 	var speed = 100 + _move_speed * 15
 
 	_move_dir = (player_pos - _rigidbody.global_position).normalized()
 	_rigidbody.linear_velocity = _move_dir * speed
+
+	return name
 
 func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
 	super.guard_state_enable(rigidbody, animation_player)

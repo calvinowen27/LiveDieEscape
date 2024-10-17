@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwfp4uu7bds7i"]
+[gd_scene load_steps=9 format=3 uid="uid://bwfp4uu7bds7i"]
 
 [ext_resource type="Texture2D" uid="uid://dsn77dja8lky4" path="res://resources/art/guard.png" id="1_45w1c"]
 [ext_resource type="Script" path="res://scenes/guard/guard.gd" id="1_t1dok"]
@@ -10,6 +10,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1mse"]
 radius = 38.0
 height = 114.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1m64"]
+radius = 497.197
 
 [node name="Guard" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -36,4 +39,11 @@ shape = SubResource("CapsuleShape2D_q1mse")
 
 [node name="ZOrdering" parent="." instance=ExtResource("5_f4t6e")]
 
+[node name="ActivationArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea"]
+shape = SubResource("CircleShape2D_o1m64")
+
 [connection signal="body_entered" from="." to="GuardState/GuardFollowPlayer" method="_on_guard_body_entered"]
+[connection signal="body_entered" from="ActivationArea" to="GuardState" method="_on_activation_area_body_entered"]
+[connection signal="body_exited" from="ActivationArea" to="GuardState" method="_on_activation_area_body_exited"]

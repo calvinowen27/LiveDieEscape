@@ -10,3 +10,5 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 	super.guard_state_enable(rigidbody, animation_player)
 	
 	#animation_player.play("guard_idle")
+
+	rigidbody.linear_velocity = Vector2.ZERO

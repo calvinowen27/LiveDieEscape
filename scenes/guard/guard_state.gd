@@ -10,7 +10,7 @@ func _ready() -> void:
 	var animation_player = get_node("../AnimationPlayer")
 	guard_state_enable(rigidbody, animation_player)
 
-	_set_curr_state("GuardFollowPlayer")
+	_set_curr_state("GuardIdle")
 
 func _set_curr_state(new_state_name: String) -> State:
 	var new_state = super._set_curr_state(new_state_name)
@@ -33,3 +33,11 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 	_animation_player = animation_player
 
 	super.enable()
+
+func _on_activation_area_body_entered(body: Node2D) -> void:
+	if body == RoomManager.get_player() and _curr_state.name == "GuardIdle":
+		_set_curr_state("GuardFollowPlayer")
+
+func _on_activation_area_body_exited(body: Node2D) -> void:
+	if body == RoomManager.get_player() and _curr_state.name == "GuardFollowPlayer":
+		_set_curr_state("GuardIdle")
