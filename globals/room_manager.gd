@@ -69,6 +69,11 @@ func get_door(door_idx: int) -> Door:
 
 # get room node associated with level and room idx, if room doesn't exist, create and store it
 func get_room(level_idx: int, room_idx: int) -> Node:
+	if level_idx != _curr_level:
+		clear_level(_curr_level)
+		_curr_level = level_idx
+		LevelManager.load_level(level_idx)
+
 	var level_rooms
 	if level_idx in _rooms.keys():
 		level_rooms = _rooms[level_idx]
@@ -97,6 +102,13 @@ func get_room(level_idx: int, room_idx: int) -> Node:
 	return new_room
 
 func _on_level_reset(level_idx: int) -> void:
+	clear_level(level_idx)
+
+	set_curr_room(level_idx, 0, -1)
+
+	StatManager.reset_stats()
+
+func clear_level(level_idx: int) -> void:
 	if level_idx not in _rooms.keys():
 		print_debug("reset_level(): level %d not loaded yet?" % level_idx)
 		return
@@ -109,9 +121,6 @@ func _on_level_reset(level_idx: int) -> void:
 
 	# reset rooms list and reset room to default
 	_rooms[level_idx].clear()
-	set_curr_room(level_idx, 0, -1)
-
-	StatManager.reset_stats()
 
 func guard_reset() -> void:
 	set_curr_room(0, 0, -1);

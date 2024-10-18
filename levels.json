@@ -9,8 +9,8 @@
 						"next_door": 0
 					},
 					"1": {
-						"next_level": 0,
-						"next_room": 2,
+						"next_level": 1,
+						"next_room": 0,
 						"next_door": 0
 					}
 				}
@@ -34,6 +34,18 @@
 				}
 			}
 		}
+	},
+	"level_1": {
+		"rooms": {
+			"0": {
+				"doors": {
+					"0": {
+						"next_level": 0,
+						"next_room": 0,
+						"next_door": 1
+					}
+				}
+			}
+		}
 	}
-	
 }

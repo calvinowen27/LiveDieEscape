@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b66gj8u8sjg08"]
+
+[ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_gxpro"]
+[ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_af2oy"]
+
+[node name="Room1_0" instance=ExtResource("1_gxpro")]
+_room_idx = 2
+
+[node name="Player" parent="." index="0"]
+position = Vector2(892, 538)
+
+[node name="Door0" parent="." index="3" instance=ExtResource("2_af2oy")]
+position = Vector2(1039, 516)
+rotation = 3.14159
+
+[node name="Label" type="Label" parent="." index="4"]
+offset_left = 373.0
+offset_top = 397.0
+offset_right = 413.0
+offset_bottom = 420.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "LEVEL 1!!!"
