@@ -57,6 +57,7 @@ func _change_room(new_room: Room, next_door_idx: int):
 func move_player_to_door(next_door: Door) -> void:
 	# spawn location position is relative to parent, global position is what we want
 	_player.position = next_door.get_node("SpawnLocation").global_position
+	print(next_door.get_node("SpawnLocation").global_position)
 
 func try_move_player_to_spawn() -> void:
 	var player_spawn = _curr_room.get_node("PlayerSpawn")

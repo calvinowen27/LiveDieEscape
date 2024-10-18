@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd44e242h8gmu"]
+
+[ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_rcvgy"]
+[ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_hf2v4"]
+
+[node name="Room0_2" instance=ExtResource("1_rcvgy")]
+_room_idx = 2
+
+[node name="Player" parent="." index="0"]
+position = Vector2(892, 538)
+
+[node name="Door0" parent="." index="3" instance=ExtResource("2_hf2v4")]
+position = Vector2(1039, 516)
+rotation = 3.14159

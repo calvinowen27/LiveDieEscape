@@ -7,6 +7,11 @@
 						"next_level": 0,
 						"next_room": 1,
 						"next_door": 0
+					},
+					"1": {
+						"next_level": 0,
+						"next_room": 2,
+						"next_door": 0
 					}
 				}
 			},
@@ -16,6 +21,15 @@
 						"next_level": 0,
 						"next_room": 0,
 						"next_door": 0
+					}
+				}
+			},
+			"2": {
+				"doors": {
+					"0": {
+						"next_level": 0,
+						"next_room": 0,
+						"next_door": 1
 					}
 				}
 			}
