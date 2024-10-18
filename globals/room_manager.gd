@@ -110,6 +110,14 @@ func guard_reset() -> void:
 
 	#_player.queue_teleport(_curr_room.get_node("%PlayerResetPos").position);
 
+func instantiate_item(item_name: String, position: Vector2) -> Item:
+	var item = load("res://scenes/items/%s.tscn" % item_name).instantiate()
+	
+	_curr_room.add_child(item)
+	item.position = position
+	
+	return item
+
 func get_curr_room() -> Room:
 	return _curr_room
 

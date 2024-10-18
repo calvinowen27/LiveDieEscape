@@ -42,3 +42,6 @@ func reboot() -> void:
 	
 	if _curr_state.name == "LaserTurretIdle":
 		_set_curr_state("LaserTurretPriming")
+
+func disable_turret() -> void:
+	_set_curr_state("LaserTurretIdle")
