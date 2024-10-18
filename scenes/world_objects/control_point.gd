@@ -91,7 +91,8 @@ func _update_control() -> void:
 			button.set("theme_override_colors/font_pressed_color", Color(1.0, 0.0, 0.0, 1.0))
 
 func _on_control_button_pressed(room_idx: int) -> void:
-	RoomManager.get_room(_level, room_idx).reboot_room()
+	if RoomManager.get_curr_room_idx() == room_idx:
+		RoomManager.get_room(_level, room_idx).reboot_room()
 
 func _on_interact() -> void:
 	$UI.visible = !$UI.visible
