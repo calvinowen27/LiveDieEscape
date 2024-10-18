@@ -18,8 +18,9 @@ func _ready() -> void:
 	_interact_timer = $InteractTimer
 	_progress_bar = $InteractLabel/TextureProgressBar
 	
-	if _hold_to_interact:
-		$InteractLabel.text = "Hold  E  to Interact"
+	if not _hold_to_interact:
+		_progress_bar.value = _progress_bar.max_value
+		#$InteractLabel.text = "Hold  E  to Interact"
 
 func _process(_delta: float) -> void:
 	# check for player interaction
@@ -36,7 +37,7 @@ func _process(_delta: float) -> void:
 			_interacting = false
 			_progress_bar.value = 0
 		else:
-			_progress_bar.value = 100 - int(_interact_timer.time_left * 100)
+			_progress_bar.value = _progress_bar.max_value - int(_interact_timer.time_left / _interact_timer.wait_time * _progress_bar.max_value)
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	if body == RoomManager.get_player() and _is_active:

@@ -23,7 +23,7 @@ func _ready() -> void:
 	var interactable = $Interactable
 	interactable.interact.connect(attempt_open)
 	interactable.set_active(_locked)
-	interactable.get_node("InteractLabel").rotation = interactable.rotation + (PI / 2)
+	interactable.get_node("InteractLabel").rotation = interactable.rotation - (PI / 2)
 	
 	if _locked:
 		$CollisionShape2D/ColorRect.color = Color(1.0, 0.0, 0.0, 1.0)
