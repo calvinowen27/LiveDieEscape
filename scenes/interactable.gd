@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 			_interacting = true
 	
 	if _interacting:
-		if (Input.is_action_just_released("interact") or not _player_in_range):
+		if Input.is_action_just_released("interact") or not _player_in_range:
 			_interact_timer.stop()
 			_interacting = false
 			_progress_bar.value = 0
@@ -63,3 +63,4 @@ func set_active(val: bool) -> void:
 
 func _on_interact_timer_timeout() -> void:
 	interact.emit()
+	_interacting = false
