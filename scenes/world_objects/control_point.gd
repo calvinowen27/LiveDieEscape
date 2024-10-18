@@ -19,6 +19,9 @@ func _ready() -> void:
 	$Interactable.interactable_set.connect(_on_interactable_set)
 
 	EventBus.change_room.connect(_on_room_change)
+	EventBus.item_pickup.connect(_on_item_pickup)
+	EventBus.item_drop.connect(_on_item_drop)
+	EventBus.item_use.connect(_on_item_use)
 	
 	_create_control_buttons()
 
@@ -39,6 +42,15 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if not (level_idx == _level and room_idx == _room):
 		return
 	
+	_update_control()
+
+func _on_item_pickup(item: Item, idx: int) -> void:
+	_update_control()
+
+func _on_item_drop(item_idx: int) -> void:
+	_update_control()
+
+func _on_item_use(item_idx: int) -> void:
 	_update_control()
 
 func _update_control() -> void:
