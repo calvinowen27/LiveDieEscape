@@ -4,9 +4,9 @@ class_name Door
 
 var _room_idx = 0
 @export var _door_idx = 0
-@export var _next_level_idx: int
-@export var _next_room_idx: int
-@export var _next_door_idx: int
+# @export var _next_level_idx: int
+# @export var _next_room_idx: int
+# @export var _next_door_idx: int
 
 @export var _locked = false
 @export var _consume_key = false
@@ -42,7 +42,7 @@ func attempt_open() -> void:
 				break
 
 func next_room() -> void:
-	RoomManager.set_curr_room(_next_level_idx, _next_room_idx, self)
+	RoomManager.door_entered(_door_idx)
 	_active = false
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:
@@ -58,8 +58,8 @@ func start_activation() -> void:
 func _on_activation_timer_timeout() -> void:
 	_active = true
 
-func get_next_door_idx() -> int:
-	return _next_door_idx
+# func get_next_door_idx() -> int:
+# 	return _next_door_idx
 
 func unlock() -> void:
 	$CollisionShape2D/ColorRect.color = Color(1.0, 1.0, 1.0, 1.0)

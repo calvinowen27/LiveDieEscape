@@ -24,6 +24,7 @@ EventBus="*res://globals/event_bus.gd"
 RoomManager="*res://globals/room_manager.gd"
 StatManager="*res://globals/stat_manager.gd"
 Inventory="*res://globals/inventory.gd"
+LevelManager="*res://globals/level_manager.gd"
 
 [display]
 

@@ -13,19 +13,26 @@ func _ready() -> void:
 func get_player() -> Node2D:
 	return _player
 
-func set_curr_room(level_idx: int, room_idx: int, door: Door) -> void:
+func set_curr_room(level_idx: int, room_idx: int, next_door_idx: int) -> void:
 	# get room instance
 	var new_room = get_room(level_idx, room_idx)
 
 	_curr_room_idx = room_idx
 
-	_change_room(new_room, door)
+	_change_room(new_room, next_door_idx)
 
 	# used for things affected by room change
 	EventBus.change_room.emit.bind(level_idx, room_idx).call_deferred()
 
+func door_entered(door_idx: int) -> void:
+	# RoomManager.set_curr_room(_next_level_idx, _next_room_idx, self)
+
+	var door_info = LevelManager.get_door_info(_curr_room_idx, door_idx)
+
+	set_curr_room(door_info["next_level"], door_info["next_room"], door_info["next_door"])
+
 # change current room for new room in scene tree
-func _change_room(new_room: Room, door: Door):
+func _change_room(new_room: Room, next_door_idx: int):
 	# game rect is parent of room
 	var game_rect = SceneManager.get_curr_scene().get_node("%GameRect")
 	if game_rect == null:
@@ -41,8 +48,8 @@ func _change_room(new_room: Room, door: Door):
 	_player = _curr_room.get_node("Player")
 
 	# move player to next door start position
-	if door != null:
-		var next_door = get_door(door.get_next_door_idx())
+	if next_door_idx != -1:
+		var next_door = get_door(next_door_idx)
 		move_player_to_door(next_door)
 	else:
 		try_move_player_to_spawn()
@@ -101,12 +108,12 @@ func _on_level_reset(level_idx: int) -> void:
 
 	# reset rooms list and reset room to default
 	_rooms[level_idx].clear()
-	set_curr_room(level_idx, 0, null)
+	set_curr_room(level_idx, 0, -1)
 
 	StatManager.reset_stats()
 
 func guard_reset() -> void:
-	set_curr_room(0, 0, null);
+	set_curr_room(0, 0, -1);
 
 	#_player.queue_teleport(_curr_room.get_node("%PlayerResetPos").position);
 

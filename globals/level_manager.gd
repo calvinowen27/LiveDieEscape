@@ -1,0 +1,29 @@
+extends Node
+
+var _level = {}
+
+func _ready() -> void:
+	load_level(0)
+
+func load_level(level: int):
+	# read level file, load each room
+	load_level_file(level)
+	
+	for room in _level["rooms"].keys():
+		RoomManager.get_room(level, int(room))
+
+func load_level_file(level: int):
+	var file = FileAccess.open("res://levels.json", FileAccess.READ)
+	var content = file.get_as_text()
+
+	var json = JSON.new()
+	var error = json.parse(content)
+	if error == OK:
+		# print(json.data)
+		_level = json.data["level_%d" % level]
+		# print(_level["rooms"]["0"]["doors"]["0"])
+	else:
+		print("JSON Parse Error: ", json.get_error_message(), " in ", json.dat, " at line ", json.get_error_line())
+
+func get_door_info(room_idx: int, door_idx: int) -> Dictionary:
+	return _level["rooms"]["%d" % room_idx]["doors"]["%d" % door_idx]

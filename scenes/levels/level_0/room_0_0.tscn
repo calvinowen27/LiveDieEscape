@@ -9,7 +9,6 @@
 [node name="Door0" parent="." index="3" instance=ExtResource("2_0nwva")]
 position = Vector2(526, 49)
 rotation = 1.5708
-_next_room_idx = 1
 _locked = true
 _consume_key = true
 
