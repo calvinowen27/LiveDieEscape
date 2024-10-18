@@ -1,6 +1,9 @@
 extends LaserTurret
 
 func _on_interactable_interact() -> void:
-	$LaserTurretState.disable_turret()
+	if $LaserTurretState.get_curr_state().name == "LaserTurretActivated":
+		var control_chip = RoomManager.instantiate_item("control_chip", position + Vector2(0, 50))
+		control_chip.set_control_level(RoomManager.get_curr_level())
+		control_chip.set_control_room(RoomManager.get_curr_room_idx())
 	
-	RoomManager.instantiate_item("control_chip", position + Vector2(0, 50))
+	$LaserTurretState.disable_turret()

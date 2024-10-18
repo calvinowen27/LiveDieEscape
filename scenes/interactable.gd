@@ -24,14 +24,14 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# check for player interaction
-	if Input.is_action_just_pressed("interact") and _player_in_range:
+	if Input.is_action_just_pressed("interact") and _player_in_range and _is_active:
 		if not _hold_to_interact:
 			interact.emit()
 		elif _interact_timer.is_stopped():
 			_interact_timer.start()
 			_interacting = true
 	
-	if _interacting:
+	if _interacting and _is_active:
 		if Input.is_action_just_released("interact") or not _player_in_range:
 			_interact_timer.stop()
 			_interacting = false
@@ -64,3 +64,4 @@ func set_active(val: bool) -> void:
 func _on_interact_timer_timeout() -> void:
 	interact.emit()
 	_interacting = false
+	set_active(false)
