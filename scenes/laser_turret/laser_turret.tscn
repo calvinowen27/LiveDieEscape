@@ -155,7 +155,7 @@ _data = {
 "laser_turret_priming": SubResource("Animation_d2sdy")
 }
 
-[node name="LaserTurret" type="RigidBody2D"]
+[node name="LaserTurret" type="RigidBody2D" groups=["LaserTurrets"]]
 collision_layer = 3
 mass = 0.001
 lock_rotation = true
@@ -166,7 +166,7 @@ script = ExtResource("1_ktj7o")
 position = Vector2(0, -20)
 shape = SubResource("CapsuleShape2D_swdh7")
 
-[node name="RayCast2D" type="RayCast2D" parent="." groups=["LaserTurrets"]]
+[node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-13, -37)
 enabled = false
 target_position = Vector2(-1000, 0)
