@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://78xjhgygrik8"]
+[gd_scene load_steps=5 format=3 uid="uid://78xjhgygrik8"]
 
 [ext_resource type="Script" path="res://scenes/levels/door.gd" id="1_wxue2"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/interactable.tscn" id="2_5ru3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6co3"]
 size = Vector2(69, 318)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y37t4"]
+size = Vector2(320, 141.208)
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_wxue2")
@@ -45,6 +48,7 @@ horizontal_alignment = 1
 
 [node name="Interactable" parent="." instance=ExtResource("2_5ru3l")]
 rotation = -1.5708
+_hold_to_interact = true
 
 [node name="InteractLabel" parent="Interactable" index="0"]
 visible = false
@@ -54,7 +58,8 @@ offset_right = 72.9999
 offset_bottom = 45.9997
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
-position = Vector2(-2.00014, 40)
+position = Vector2(-1.00017, 40)
+shape = SubResource("RectangleShape2D_y37t4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]

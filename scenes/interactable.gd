@@ -5,13 +5,31 @@ class_name Interactable
 var _player_in_range = false
 var _is_active = true
 
+@export var _hold_to_interact = false # if true, duration is $InteractTimer
+var _interacting = false
+
+var _interact_timer: Timer
+
 signal interact
 signal interactable_set(val: bool)
+
+func _ready() -> void:
+	_interact_timer = $InteractTimer
+	if _hold_to_interact:
+		$InteractLabel.text = "Hold  E  to Interact"
 
 func _process(_delta: float) -> void:
 	# check for player interaction
 	if Input.is_action_just_pressed("interact") and _player_in_range:
-		interact.emit()
+		if not _hold_to_interact:
+			interact.emit()
+		elif _interact_timer.is_stopped():
+			_interact_timer.start()
+			_interacting = true
+	
+	if _interacting and (Input.is_action_just_released("interact") or not _player_in_range):
+		_interact_timer.stop()
+		_interacting = false
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	if body == RoomManager.get_player() and _is_active:
@@ -34,3 +52,6 @@ func set_active(val: bool) -> void:
 	
 	if not val:
 		$InteractLabel.visible = false
+
+func _on_interact_timer_timeout() -> void:
+	interact.emit()

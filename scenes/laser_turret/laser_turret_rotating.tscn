@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://du7rg0bguh68w"]
+[gd_scene load_steps=5 format=3 uid="uid://du7rg0bguh68w"]
 
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="1_31gae"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_activated_rotating.gd" id="2_5pkt1"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/interactable.tscn" id="3_x0jnn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4wg1"]
+size = Vector2(80, 141.208)
 
 [node name="LaserTurretRotating" instance=ExtResource("1_31gae")]
 scale = Vector2(1.5, 1.5)
@@ -20,5 +23,6 @@ offset_bottom = -76.0
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
 position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_d4wg1")
 
 [editable path="Interactable"]
