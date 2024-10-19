@@ -12,9 +12,6 @@ rotation = 1.5708
 _locked = true
 _consume_key = true
 
-[node name="ActivationTimer" parent="Door0" index="2"]
-autostart = true
-
 [node name="Key" parent="." index="4" instance=ExtResource("3_uneob")]
 position = Vector2(264, 620)
 
@@ -24,6 +21,3 @@ position = Vector2(554, 797)
 [node name="Door1" parent="." index="6" instance=ExtResource("2_0nwva")]
 position = Vector2(49, 593)
 _door_idx = 1
-
-[editable path="Door0"]
-[editable path="Door0/Interactable"]

@@ -21,6 +21,7 @@ func set_curr_room(level_idx: int, room_idx: int, next_door_idx: int) -> void:
 
 	_change_room(new_room, next_door_idx)
 
+
 	# used for things affected by room change
 	EventBus.change_room.emit.bind(level_idx, room_idx).call_deferred()
 
@@ -122,7 +123,7 @@ func clear_level(level_idx: int) -> void:
 	_rooms[level_idx].clear()
 
 func guard_reset() -> void:
-	set_curr_room(0, 0, -1);
+	set_curr_room(0, 0, -1)
 
 	#_player.queue_teleport(_curr_room.get_node("%PlayerResetPos").position);
 

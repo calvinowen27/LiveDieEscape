@@ -23,9 +23,7 @@ func load_level_file(level: int):
 	var json = JSON.new()
 	var error = json.parse(content)
 	if error == OK:
-		# print(json.data)
 		_level_info = json.data["level_%d" % level]
-		# print(_level_info["rooms"]["0"]["doors"]["0"])
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json.dat, " at line ", json.get_error_line())
 

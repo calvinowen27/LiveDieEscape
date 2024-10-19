@@ -17,13 +17,14 @@ func _init() -> void:
 	EventBus.change_room.connect(_on_room_change)
 	
 func _ready() -> void:
-	_room_idx = RoomManager.get_curr_room_idx()
-	
+	# _room_idx = RoomManager.get_curr_room_idx()
+	_room_idx = get_parent().get_room_idx()
+
 	# initialize interactable node
 	var interactable = $Interactable
 	interactable.interact.connect(attempt_open)
 	interactable.set_active(_locked)
-	interactable.get_node("InteractLabel").rotation = interactable.rotation - (PI / 2)
+	# interactable.get_node("InteractLabel").rotation = PI - interactable.rotation
 	
 	if _locked:
 		$CollisionShape2D/ColorRect.color = Color(1.0, 0.0, 0.0, 1.0)
@@ -36,15 +37,16 @@ func attempt_open() -> void:
 		for key in keys:
 			if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
 				# unlock and next room
+				key_found = true
 				unlock()
 				next_room()
+				# $Interactable.set_interactable(true)
 				if _consume_key:
 					Inventory.del_item(key)
-					key_found = true
 				break
 		
-		if not key_found:
-			$Interactable.set_active(true)
+		if key_found:
+			$Interactable.set_active(false)
 
 func next_room() -> void:
 	RoomManager.door_entered(_door_idx)
@@ -56,6 +58,7 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	var valid = parent_room.is_valid()
 	if valid and parent_room.get_level_idx() == level_idx and parent_room.get_room_idx() == room_idx:
 		start_activation()
+		# _active = true
 
 func start_activation() -> void:
 	$ActivationTimer.start()
