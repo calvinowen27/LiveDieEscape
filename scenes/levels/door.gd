@@ -31,6 +31,7 @@ func _ready() -> void:
 func attempt_open() -> void:
 	if _active:
 		# check for correct key in inventory
+		var key_found = false
 		var keys = Inventory.get_items_of_group("Keys")
 		for key in keys:
 			if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
@@ -39,7 +40,11 @@ func attempt_open() -> void:
 				next_room()
 				if _consume_key:
 					Inventory.del_item(key)
+					key_found = true
 				break
+		
+		if not key_found:
+			$Interactable.set_active(true)
 
 func next_room() -> void:
 	RoomManager.door_entered(_door_idx)
