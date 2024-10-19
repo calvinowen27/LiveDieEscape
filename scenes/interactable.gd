@@ -12,7 +12,6 @@ var _interact_timer: Timer
 var _progress_bar: TextureProgressBar
 
 signal interact
-signal interactable_set(val: bool)
 
 func _ready() -> void:
 	_interact_timer = $InteractTimer
@@ -50,7 +49,6 @@ func _on_interact_area_body_exited(body: Node2D) -> void:
 func _set_interactable(val: bool) -> void:
 	_player_in_range = val
 	$InteractLabel.visible = val
-	interactable_set.emit(val)
 
 func is_active() -> bool:
 	return _is_active
@@ -60,6 +58,8 @@ func set_active(val: bool) -> void:
 	
 	if not val:
 		$InteractLabel.visible = false
+		_interacting = false
+		_progress_bar.value = 0
 	elif _player_in_range:
 		$InteractLabel.visible = true
 
