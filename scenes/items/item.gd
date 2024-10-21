@@ -7,6 +7,7 @@ static var _next_id = 1
 var _id
 
 @export var _item_name: String
+var _item_info: String
 
 @export var _item_texture: Texture2D
 @export var _object_texture: Texture2D
@@ -40,6 +41,9 @@ func get_object_texture() -> Texture2D:
 
 func get_item_name() -> String:
 	return _item_name
+
+func get_item_info() -> String:
+	return _item_info
 
 func get_id() -> int:
 	return _id

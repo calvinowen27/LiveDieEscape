@@ -24,8 +24,12 @@ func set_item(item: Item) -> void:
 	
 	_item = item
 
-	# set label to item name
-	$Label.text = _item.get_item_name()
+	# set item label to item name
+	$ItemLabel.text = _item.get_item_name()
+
+	# set info label to item info
+	$InfoLabel.text = _item.get_item_info()
+	$InfoLabel.visible = false
 
 	# set sprite
 	var sprite = $Sprite2D
@@ -35,8 +39,10 @@ func set_item(item: Item) -> void:
 func clear_item() -> void:
 	_is_filled = false
 
-	# clear label
-	$Label.text = ""
+	# clear labels
+	$ItemLabel.text = ""
+	$InfoLabel.text = ""
+	$InfoLabel.visible = false
 
 	# clear sprite
 	var sprite = $Sprite2D
@@ -52,8 +58,13 @@ func is_filled() -> bool:
 func _on_mouse_entered() -> void:
 	_mouse_over = true
 
+	if _item != null:
+		$InfoLabel.visible = true
+
 func _on_mouse_exited() -> void:
 	_mouse_over = false
+
+	$InfoLabel.visible = false
 
 func get_slot_idx() -> int:
 	return _slot_idx

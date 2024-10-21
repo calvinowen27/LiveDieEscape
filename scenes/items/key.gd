@@ -4,6 +4,11 @@ extends Item
 @export var _room: int
 @export var _door: int
 
+func _ready() -> void:
+	_item_info = "Level: %d Room: %d Door %d" % [_level, _room, _door]
+
+	super._ready()
+
 func get_level() -> int:
 	return _level
 
