@@ -45,8 +45,8 @@ func attempt_open() -> void:
 					Inventory.del_item(key)
 				break
 		
-		if key_found:
-			$Interactable.set_active(false)
+		if not key_found:
+			$Interactable.set_active(true)
 
 func next_room() -> void:
 	RoomManager.door_entered(_door_idx)
