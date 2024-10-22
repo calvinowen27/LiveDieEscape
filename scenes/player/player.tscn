@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=16 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dx4duiho1gprs" path="res://scenes/player/player_idle.tscn" id="2_ml3m3"]
 [ext_resource type="PackedScene" uid="uid://bx5updvn4x8tv" path="res://scenes/player/player_run.tscn" id="5_2cah7"]
 [ext_resource type="Texture2D" uid="uid://nnjtr6oolcu4" path="res://resources/art/player-sheet.png" id="6_fempl"]
+[ext_resource type="PackedScene" uid="uid://c661v61raotsm" path="res://scenes/player/player_dash.tscn" id="6_mx61r"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="7_iwhiw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w0vmm"]
@@ -111,6 +112,9 @@ _initial_state = "PlayerIdle"
 
 [node name="EnduranceCooldownTimer" type="Timer" parent="PlayerState"]
 one_shot = true
+
+[node name="PlayerDash" parent="PlayerState" instance=ExtResource("6_mx61r")]
+dash_ticks = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -23)

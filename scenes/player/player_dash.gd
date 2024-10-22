@@ -1,8 +1,11 @@
 extends PlayerState
 
 var move_dir: Vector2
+@export var speed_mult = 10
+@export var dash_ticks = 10
+var _dash_ticks_elapsed = 0
 
-var _can_dash = true
+var _dashing = false
 
 func _ready() -> void:
 	pass
@@ -12,29 +15,27 @@ func _process(_delta: float) -> void:
 
 func state_init() -> void:
 	super.state_init()
-	
-	_animation_player.play("player_walk")
+	_animation_player.play("player_run")
 
 # enable state and pass necessary references
 func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
 	super.player_state_enable(sprite, rigidbody, animation_player)
 
+	_dash_ticks_elapsed = 0
+	_dashing = true
+
 func update(_delta: float) -> String:
-	move_dir = move(1)
-	
+	move_dir = move(speed_mult)
 	point_sprite(move_dir)
 	
 	# not moving anymore --> idle
 	if move_dir == Vector2.ZERO:
 		return "PlayerIdle"
 	
-	# start running --> run
-	if Input.is_action_pressed("run") and _can_dash:
-		_can_dash = false
-		$DashCooldownTimer.start()
-		return "PlayerDash"
+	if _dash_ticks_elapsed < dash_ticks and _dashing:
+		_dash_ticks_elapsed += 1
+	else:
+		_dashing = false
+		return "PlayerWalk"
 	
 	return name
-
-func _on_dash_cooldown_timer_timeout() -> void:
-	_can_dash = true

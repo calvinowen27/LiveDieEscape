@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_yj8nx"]
 [ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="4_602i6"]
 [ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="5_xdnju"]
-[ext_resource type="PackedScene" uid="uid://du7rg0bguh68w" path="res://scenes/laser_turret/laser_turret_rotating.tscn" id="6_8a3v7"]
+[ext_resource type="PackedScene" uid="uid://du7rg0bguh68w" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="6_8a3v7"]
 
 [node name="Room0_1" instance=ExtResource("1_3b385")]
 _room_idx = 1
