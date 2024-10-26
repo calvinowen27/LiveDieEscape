@@ -58,7 +58,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="InventoryContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -75,26 +75,50 @@ grow_vertical = 0
 theme_override_constants/separation = 15
 metadata/_edit_group_ = true
 
-[node name="InventorySlot" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
+[node name="InventorySlot" parent="InventoryContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InventorySlot2" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
+[node name="InventorySlot2" parent="InventoryContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InventorySlot3" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
+[node name="InventorySlot3" parent="InventoryContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="InventorySlot4" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
+[node name="InventorySlot4" parent="InventoryContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DashProgressBar" parent="." instance=ExtResource("3_3grgp")]
-layout_mode = 0
-offset_left = -165.0
-offset_top = 143.0
-offset_right = -125.0
-offset_bottom = 183.0
+[node name="DashContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = 204.0
+offset_right = 52.0
+offset_bottom = 236.0
+grow_horizontal = 2
 scale = Vector2(3, 3)
+pivot_offset = Vector2(52, 16)
+alignment = 1
+
+[node name="DashProgressBar" parent="DashContainer" instance=ExtResource("3_3grgp")]
+layout_mode = 2
+
+[node name="DashProgressBar2" parent="DashContainer" instance=ExtResource("3_3grgp")]
+layout_mode = 2
+
+[node name="DashProgressBar3" parent="DashContainer" instance=ExtResource("3_3grgp")]
+layout_mode = 2
+
+[node name="DashLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -92.0
+offset_top = 91.0
+offset_right = 89.0
+offset_bottom = 158.0
+theme_override_font_sizes/font_size = 48
+text = "Dashes:"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bqasq5r1eqe2b" path="res://resources/art/circle.png" id="1_rr5hy"]
 
-[node name="DashProgressBar" type="TextureProgressBar"]
+[node name="DashProgressBar" type="TextureProgressBar" groups=["DashProgressBars"]]
 offset_right = 40.0
 offset_bottom = 40.0
 fill_mode = 4
