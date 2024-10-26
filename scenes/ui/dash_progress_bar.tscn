@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw4ivehrt8j0t"]
+
+[ext_resource type="Texture2D" uid="uid://bqasq5r1eqe2b" path="res://resources/art/circle.png" id="1_rr5hy"]
+
+[node name="DashProgressBar" type="TextureProgressBar"]
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 4
+texture_under = ExtResource("1_rr5hy")
+texture_progress = ExtResource("1_rr5hy")
+tint_under = Color(0, 0, 0, 1)

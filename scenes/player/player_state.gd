@@ -54,7 +54,6 @@ func move(speed_mult: float) -> void:
 	
 	if new_dir != _move_dir and _move_dir != Vector2.ZERO:
 		_rigidbody.set_last_move_dir(_move_dir)
-		print(_move_dir)
 	
 	_move_dir = new_dir
 	

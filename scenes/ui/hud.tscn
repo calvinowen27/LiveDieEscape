@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3m15d5m7d5rl"]
+[gd_scene load_steps=4 format=3 uid="uid://b3m15d5m7d5rl"]
 
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_kx0v1"]
 [ext_resource type="PackedScene" uid="uid://m4l0ixney2nw" path="res://scenes/ui/inventory_slot.tscn" id="2_xy2ua"]
+[ext_resource type="PackedScene" uid="uid://bw4ivehrt8j0t" path="res://scenes/ui/dash_progress_bar.tscn" id="3_3grgp"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -17,6 +18,20 @@ offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kx0v1")
+
+[node name="Back" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -372.0
+offset_top = -324.0
+offset_right = 372.0
+offset_bottom = 621.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="StatsLabel" type="Label" parent="."]
 visible = false
@@ -75,3 +90,11 @@ size_flags_vertical = 3
 [node name="InventorySlot4" parent="HBoxContainer" instance=ExtResource("2_xy2ua")]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="DashProgressBar" parent="." instance=ExtResource("3_3grgp")]
+layout_mode = 0
+offset_left = -165.0
+offset_top = 143.0
+offset_right = -125.0
+offset_bottom = 183.0
+scale = Vector2(3, 3)

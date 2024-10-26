@@ -20,7 +20,10 @@ func update() -> void:
 	#var stats = StatManager.get_stats()
 	#for stat in stats:
 		#$StatsLabel.text += "%s: %d\n" % [stat, stats[stat]]
-	pass
+	
+	var dash_timer = RoomManager.get_player().get_node("PlayerState/DashCooldownTimer")
+	var dash_bar = $DashProgressBar
+	dash_bar.value = dash_bar.max_value - int(dash_timer.time_left / dash_timer.wait_time * dash_bar.max_value)
 
 func _on_item_pickup(item: Item, idx: int) -> void:
 	var inventory_slots = get_tree().get_nodes_in_group("InventorySlots")
