@@ -1,9 +1,5 @@
 extends PlayerState
 
-var move_dir: Vector2
-
-var _can_dash = true
-
 func _ready() -> void:
 	pass
 
@@ -20,18 +16,16 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 	super.player_state_enable(sprite, rigidbody, animation_player)
 
 func update(_delta: float) -> String:
-	move_dir = move(1)
-	
-	point_sprite(move_dir)
+	move(1)
+	point_sprite()
 	
 	# not moving anymore --> idle
-	if move_dir == Vector2.ZERO:
+	if _move_dir == Vector2.ZERO:
 		return "PlayerIdle"
 	
-	# start running --> run
 	if Input.is_action_pressed("run") and _can_dash:
 		_can_dash = false
-		$DashCooldownTimer.start()
+		get_node("../DashCooldownTimer").start()
 		return "PlayerDash"
 	
 	return name

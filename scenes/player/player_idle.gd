@@ -17,4 +17,12 @@ func update(_delta: float) -> String:
 	if move_vec != Vector2.ZERO:
 		return "PlayerWalk"
 	
+	if Input.is_action_pressed("run") and _can_dash:
+		_can_dash = false
+		get_node("../DashCooldownTimer").start()
+		return "PlayerDash"
+	
 	return name
+
+func _on_dash_cooldown_timer_timeout() -> void:
+	_can_dash = true

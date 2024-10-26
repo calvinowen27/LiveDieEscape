@@ -108,6 +108,10 @@ _initial_state = "PlayerIdle"
 [node name="PlayerWalk" parent="PlayerState" instance=ExtResource("1_5cvwq")]
 
 [node name="PlayerDash" parent="PlayerState" instance=ExtResource("6_mx61r")]
+dash_ticks = 7
+
+[node name="DashCooldownTimer" type="Timer" parent="PlayerState"]
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -23)
@@ -127,3 +131,6 @@ libraries = {
 }
 
 [node name="ZOrdering" parent="." instance=ExtResource("7_iwhiw")]
+
+[connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerIdle" method="_on_dash_cooldown_timer_timeout"]
+[connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerWalk" method="_on_dash_cooldown_timer_timeout"]

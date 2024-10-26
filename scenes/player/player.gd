@@ -2,6 +2,8 @@ extends RigidBody2D
 
 var _queue_teleport = Vector2.ZERO
 
+var _last_move_dir: Vector2
+
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _queue_teleport != Vector2.ZERO:
 		state.transform = Transform2D(0.0, _queue_teleport)
@@ -17,3 +19,9 @@ func die() -> void:
 
 func queue_teleport(pos: Vector2) -> void:
 	_queue_teleport = pos
+
+func set_last_move_dir(dir: Vector2) -> void:
+	_last_move_dir = dir
+
+func get_last_move_dir() -> Vector2:
+	return _last_move_dir

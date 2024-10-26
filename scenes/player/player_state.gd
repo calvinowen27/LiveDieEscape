@@ -6,6 +6,10 @@ var _rigidbody: RigidBody2D
 var _sprite: Sprite2D
 var _animation_player: AnimationPlayer
 
+var _move_dir: Vector2
+
+var _can_dash = true
+
 func _ready() -> void:
 	# _set_curr_state("PlayerIdle")
 	super._ready()
@@ -39,25 +43,20 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 	super.enable()
 
 # flip sprite depending on move direction, retain last direction
-func point_sprite(move_dir: Vector2) -> void:
-	if move_dir.x > 0:
+func point_sprite() -> void:
+	if _move_dir.x > 0:
 		_sprite.scale.x = -1 * abs(_sprite.scale.x)
-	elif move_dir.x < 0:
+	elif _move_dir.x < 0:
 		_sprite.scale.x = 1 * abs(_sprite.scale.x)
 
-func move(speed_mult: float) -> Vector2:
-	var move_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+func move(speed_mult: float) -> void:
+	var new_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if new_dir != _move_dir and _move_dir != Vector2.ZERO:
+		_rigidbody.set_last_move_dir(_move_dir)
+		print(_move_dir)
+	
+	_move_dir = new_dir
 	
 	var speed = StatManager.get_base_stat("speed")
-	_rigidbody.linear_velocity = move_dir * (300 + speed * 20) * speed_mult
-	
-	return move_dir
-
-func _on_endurance_cooldown_timer_timeout() -> void:
-	if _curr_state.name == "PlayerRun":
-		return
-	
-	StatManager.change_stat("endurance", 1)
-	
-	if StatManager.get_stat("endurance") < StatManager.get_base_stat("endurance"):
-		$EnduranceCooldownTimer.start()
+	_rigidbody.linear_velocity = _move_dir * (300 + speed * 20) * speed_mult
