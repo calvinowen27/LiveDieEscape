@@ -1,9 +1,8 @@
 extends Node
 
 var _base_stats = {
-			"health": 3,
 			"speed": 2,
-			"endurance": 3
+			"dashes": 1
 			}
 
 var _stats = {}

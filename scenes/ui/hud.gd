@@ -16,10 +16,11 @@ func _process(_delta: float) -> void:
 
 # update all nodes in HUD
 func update() -> void:
-	$StatsLabel.text = ""
-	var stats = StatManager.get_stats()
-	for stat in stats:
-		$StatsLabel.text += "%s: %d\n" % [stat, stats[stat]]
+	#$StatsLabel.text = ""
+	#var stats = StatManager.get_stats()
+	#for stat in stats:
+		#$StatsLabel.text += "%s: %d\n" % [stat, stats[stat]]
+	pass
 
 func _on_item_pickup(item: Item, idx: int) -> void:
 	var inventory_slots = get_tree().get_nodes_in_group("InventorySlots")

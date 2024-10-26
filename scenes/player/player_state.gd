@@ -22,8 +22,6 @@ func _set_curr_state(new_state_name: String) -> State:
 	if new_state == null:
 		return null
 	
-	manage_endurance_cooldown(new_state_name)
-	
 	if _curr_state != null:
 		var rigidbody = get_parent()
 		var sprite = rigidbody.get_node("Sprite2D")
@@ -31,16 +29,6 @@ func _set_curr_state(new_state_name: String) -> State:
 		_curr_state.player_state_enable(sprite, rigidbody, animation_player)
 
 	return new_state
-
-func manage_endurance_cooldown(new_state_name: String) -> void:
-	var need_endurance = StatManager.get_stat("endurance") < StatManager.get_base_stat("endurance")
-	var endurance_cd_timer = $EnduranceCooldownTimer
-	
-	if new_state_name != "PlayerRun":
-		if need_endurance and endurance_cd_timer.is_stopped():
-			endurance_cd_timer.start()
-	else:
-		endurance_cd_timer.stop()
 
 # enable state and pass necessary references
 func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
