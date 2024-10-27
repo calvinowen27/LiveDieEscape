@@ -1,8 +1,7 @@
 extends Node
 
 var _base_stats = {
-			"speed": 2,
-			"dashes": 1
+			"speed": 2
 			}
 
 var _stats = {}

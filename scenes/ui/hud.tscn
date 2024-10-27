@@ -91,34 +91,19 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DashContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -52.0
-offset_top = 204.0
-offset_right = 52.0
-offset_bottom = 236.0
-grow_horizontal = 2
-scale = Vector2(3, 3)
-pivot_offset = Vector2(52, 16)
-alignment = 1
-
-[node name="DashProgressBar" parent="DashContainer" instance=ExtResource("3_3grgp")]
-layout_mode = 2
-
-[node name="DashProgressBar2" parent="DashContainer" instance=ExtResource("3_3grgp")]
-layout_mode = 2
-
-[node name="DashProgressBar3" parent="DashContainer" instance=ExtResource("3_3grgp")]
-layout_mode = 2
-
 [node name="DashLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -92.0
-offset_top = 91.0
-offset_right = 89.0
-offset_bottom = 158.0
+offset_left = -318.0
+offset_top = 156.0
+offset_right = -137.0
+offset_bottom = 223.0
 theme_override_font_sizes/font_size = 48
 text = "Dashes:"
+
+[node name="DashProgressBar" parent="DashLabel" instance=ExtResource("3_3grgp")]
+layout_mode = 2
+offset_left = 196.0
+offset_top = -14.0
+offset_right = 228.0
+offset_bottom = 18.0
+scale = Vector2(3, 3)

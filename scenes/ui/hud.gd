@@ -16,13 +16,8 @@ func _process(_delta: float) -> void:
 
 # update all nodes in HUD
 func update() -> void:
-	#$StatsLabel.text = ""
-	#var stats = StatManager.get_stats()
-	#for stat in stats:
-		#$StatsLabel.text += "%s: %d\n" % [stat, stats[stat]]
-	
 	var dash_timer = RoomManager.get_player().get_node("PlayerState/DashCooldownTimer")
-	var dash_bar = $DashContainer/DashProgressBar
+	var dash_bar = $DashLabel/DashProgressBar
 	dash_bar.value = dash_bar.max_value - int(dash_timer.time_left / dash_timer.wait_time * dash_bar.max_value)
 
 func _on_item_pickup(item: Item, idx: int) -> void:
