@@ -1,36 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb1tgidnjrhfg"]
+[gd_scene load_steps=5 format=3 uid="uid://bb1tgidnjrhfg"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_3b385"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6rxug"]
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_yj8nx"]
-[ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="4_602i6"]
-[ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="5_xdnju"]
 [ext_resource type="PackedScene" uid="uid://du7rg0bguh68w" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="6_8a3v7"]
 
 [node name="Room0_1" instance=ExtResource("1_3b385")]
 _room_idx = 1
 
-[node name="Door0" parent="." index="3" instance=ExtResource("2_6rxug")]
-position = Vector2(546, 1040)
+[node name="LaserTurret" parent="." index="3" instance=ExtResource("3_yj8nx")]
+position = Vector2(152, 200)
 rotation = -1.5708
 
-[node name="LaserTurret" parent="." index="4" instance=ExtResource("3_yj8nx")]
-position = Vector2(709, 263)
-
-[node name="LaserTurret2" parent="." index="5" instance=ExtResource("3_yj8nx")]
+[node name="LaserTurret2" parent="." index="4" instance=ExtResource("3_yj8nx")]
 position = Vector2(246, 687)
 scale = Vector2(-1, 1)
 
-[node name="ControlPoint" parent="." index="6" instance=ExtResource("4_602i6")]
-position = Vector2(287, 234)
-_control_rooms = Array[int]([0, 1])
-
-[node name="Guard" parent="." index="7" instance=ExtResource("5_xdnju")]
-position = Vector2(152, 316)
-
-[node name="GuardResetPos" type="Marker2D" parent="." index="8"]
-position = Vector2(154, 317)
-
-[node name="LaserTurretRotating" parent="." index="9" instance=ExtResource("6_8a3v7")]
-position = Vector2(912, 462)
+[node name="RotatingLaserTurret" parent="." index="5" instance=ExtResource("6_8a3v7")]
+position = Vector2(806, 462)
 collision_mask = 3
+
+[node name="Door0" parent="." index="6" instance=ExtResource("2_6rxug")]
+position = Vector2(546, 1040)
+rotation = -1.5708
+
+[node name="Door1" parent="." index="7" instance=ExtResource("2_6rxug")]
+position = Vector2(48, 497)
+_door_idx = 1
+
+[node name="Door2" parent="." index="8" instance=ExtResource("2_6rxug")]
+position = Vector2(1038, 490)
+rotation = 3.14159
+_door_idx = 2

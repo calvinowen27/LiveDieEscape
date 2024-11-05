@@ -57,18 +57,18 @@ func _change_room(new_room: Room, next_door_idx: int):
 
 func move_player_to_door(next_door: Door) -> void:
 	# spawn location position is relative to parent, global position is what we want
-	_player.position = next_door.get_node("SpawnLocation").global_position
+	_player.teleport(next_door.get_node("SpawnLocation").global_position)
 
 func try_move_player_to_spawn() -> void:
 	var player_spawn = _curr_room.get_node("PlayerSpawn")
 	if player_spawn != null:
-		_player.position = player_spawn.position
+		_player.teleport(player_spawn.position)
 
 func get_door(door_idx: int) -> Door:
 	return _curr_room.get_node("Door%d" % door_idx)
 
 # get room node associated with level and room idx, if room doesn't exist, create and store it
-func get_room(level_idx: int, room_idx: int) -> Node:
+func get_room(level_idx: int, room_idx: int) -> Room:
 	if level_idx != _curr_level:
 		clear_level(_curr_level)
 		_curr_level = level_idx
@@ -134,6 +134,13 @@ func instantiate_item(item_name: String, position: Vector2) -> Item:
 	item.position = position
 	
 	return item
+
+func reboot_room(level_idx: int, room_idx: int) -> void:
+	_rooms[level_idx][room_idx].disable_room()
+
+	await get_tree().create_timer(10).timeout
+	
+	_rooms[level_idx][room_idx].enable_room()
 
 func get_curr_room() -> Room:
 	return _curr_room

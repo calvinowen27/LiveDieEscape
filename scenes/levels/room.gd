@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name Room
 
@@ -7,10 +7,18 @@ class_name Room
 
 var _is_valid = true
 
-func reboot_room() -> void:
-	var laser_turrets = get_tree().get_nodes_in_group("LaserTurrets")
-	for turret in laser_turrets:
-		turret.reboot()
+var _laser_turrets: Array[Node]
+
+func _ready() -> void:
+	_laser_turrets = get_tree().get_nodes_in_group("LaserTurrets")
+
+func enable_room() -> void:
+	for turret in _laser_turrets:
+		turret.enable_turret()
+
+func disable_room() -> void:
+	for turret in _laser_turrets:
+		turret.disable_turret()
 
 func get_level_idx() -> int:
 	return _level_idx

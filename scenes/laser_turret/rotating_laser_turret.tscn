@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4wg1"]
 size = Vector2(80, 141.208)
 
-[node name="RotatinLaserTurret" instance=ExtResource("1_31gae")]
+[node name="RotatingLaserTurret" instance=ExtResource("1_31gae")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_pm2ay")
 

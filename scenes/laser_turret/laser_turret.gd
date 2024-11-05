@@ -8,3 +8,9 @@ func _ready() -> void:
 
 func reboot() -> void:
 	$LaserTurretState.reboot()
+
+func disable_turret() -> void:
+	$LaserTurretState.disable_turret()
+
+func enable_turret() -> void:
+	$LaserTurretState.enable_turret()

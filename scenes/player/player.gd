@@ -20,6 +20,10 @@ func die() -> void:
 func queue_teleport(pos: Vector2) -> void:
 	_queue_teleport = pos
 
+func teleport(pos: Vector2) -> void:
+	position = pos
+	linear_velocity = Vector2.ZERO
+
 func set_last_move_dir(dir: Vector2) -> void:
 	_last_move_dir = dir
 

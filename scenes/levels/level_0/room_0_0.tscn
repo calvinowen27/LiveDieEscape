@@ -1,23 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyw3gwmvgg68m"]
+[gd_scene load_steps=3 format=3 uid="uid://cyw3gwmvgg68m"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_obo4y"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_0nwva"]
-[ext_resource type="PackedScene" uid="uid://co87vsw0tevrl" path="res://scenes/items/key.tscn" id="3_uneob"]
 
 [node name="Room0_0" instance=ExtResource("1_obo4y")]
 
-[node name="Door0" parent="." index="3" instance=ExtResource("2_0nwva")]
-position = Vector2(526, 49)
-rotation = 1.5708
-_locked = true
-_consume_key = true
-
-[node name="Key" parent="." index="4" instance=ExtResource("3_uneob")]
-position = Vector2(264, 620)
-
-[node name="PlayerSpawn" type="Marker2D" parent="." index="5"]
+[node name="PlayerSpawn" type="Marker2D" parent="." index="3"]
 position = Vector2(554, 797)
 
-[node name="Door1" parent="." index="6" instance=ExtResource("2_0nwva")]
+[node name="Door0" parent="." index="4" instance=ExtResource("2_0nwva")]
+position = Vector2(526, 49)
+rotation = 1.5708
+
+[node name="Door1" parent="." index="5" instance=ExtResource("2_0nwva")]
 position = Vector2(49, 593)
 _door_idx = 1
+_locked = true
+_consume_key = true

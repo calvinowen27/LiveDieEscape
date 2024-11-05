@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://655as78qyvbs"]
+
+[ext_resource type="PackedScene" uid="uid://lec53rwd2xa" path="res://scenes/levels/level_0/room.tscn" id="1_6pbhw"]
+[ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_7mqs8"]
+[ext_resource type="Script" path="res://scenes/levels/room.gd" id="2_sjulg"]
+[ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="3_wjxb7"]
+[ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="4_0kot2"]
+
+[node name="Room0_3" instance=ExtResource("1_6pbhw")]
+script = ExtResource("2_sjulg")
+_room_idx = 3
+
+[node name="Player" parent="." index="0"]
+position = Vector2(551, 739)
+
+[node name="Door0" parent="." index="3" instance=ExtResource("2_7mqs8")]
+position = Vector2(49, 581)
+
+[node name="ControlPoint" parent="." index="4" instance=ExtResource("3_wjxb7")]
+position = Vector2(709, 393)
+_control_rooms = Array[int]([1, 2])
+
+[node name="Guard" parent="." index="5" instance=ExtResource("4_0kot2")]
+position = Vector2(547, 520)
+
+[node name="GuardResetPos" type="Marker2D" parent="." index="6"]
+position = Vector2(546, 515)
