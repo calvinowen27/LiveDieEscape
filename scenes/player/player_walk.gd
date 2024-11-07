@@ -9,7 +9,7 @@ func _process(_delta: float) -> void:
 func state_init() -> void:
 	super.state_init()
 	
-	_animation_player.play("player_walk")
+	_animation_player.play("walk_left_test")
 
 # enable state and pass necessary references
 func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
@@ -19,6 +19,11 @@ func update(_delta: float) -> String:
 	move(1)
 	point_sprite()
 	
+	if _sprite.scale.x < 0:
+		_animation_player.play("walk_right_test")
+	else:
+		_animation_player.play("walk_left_test")
+
 	# not moving anymore --> idle
 	if _move_dir == Vector2.ZERO:
 		return "PlayerIdle"
