@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=23 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://nnjtr6oolcu4" path="res://resources/art/player-sheet.png" id="6_fempl"]
 [ext_resource type="PackedScene" uid="uid://c661v61raotsm" path="res://scenes/player/player_dash.tscn" id="6_mx61r"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="7_iwhiw"]
+[ext_resource type="Script" path="res://scenes/player/player_items.gd" id="8_3sfxu"]
+[ext_resource type="Texture2D" uid="uid://bel2l3nw8f2dh" path="res://resources/art/control_chip.png" id="8_ddchl"]
+[ext_resource type="Texture2D" uid="uid://dwg81a4g1o0cf" path="res://resources/art/key.png" id="9_5fms7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w0vmm"]
 friction = 0.0
@@ -409,6 +412,35 @@ texture = ExtResource("6_fempl")
 offset = Vector2(0, -8)
 hframes = 2
 vframes = 3
+
+[node name="Items" type="Node2D" parent="Sprite2D"]
+rotation = -0.017122
+scale = Vector2(0.2, 0.2)
+script = ExtResource("8_3sfxu")
+
+[node name="Item1" type="Sprite2D" parent="Sprite2D/Items"]
+visible = false
+position = Vector2(-41, -33)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_ddchl")
+
+[node name="Item2" type="Sprite2D" parent="Sprite2D/Items"]
+visible = false
+position = Vector2(41, -30)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_5fms7")
+
+[node name="Item3" type="Sprite2D" parent="Sprite2D/Items"]
+visible = false
+position = Vector2(33, -12)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_ddchl")
+
+[node name="Item4" type="Sprite2D" parent="Sprite2D/Items"]
+visible = false
+position = Vector2(-40, -14)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_5fms7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
