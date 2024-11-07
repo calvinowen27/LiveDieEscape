@@ -24,8 +24,10 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 	_dashing = true
 
 func update(_delta: float) -> String:
-	dash()
-	point_sprite()
+	if dash().x > 0:
+		_animation_player.play("dash_right_test")
+	else:
+		_animation_player.play("dash_left_test")
 	
 	if _dash_ticks_elapsed < dash_ticks and _dashing:
 		_dash_ticks_elapsed += 1
@@ -40,10 +42,12 @@ func update(_delta: float) -> String:
 	
 	return name
 
-func dash() -> void:
+func dash() -> Vector2:
 	var dash_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if dash_dir == Vector2.ZERO:
 		dash_dir = get_node("../../").get_last_move_dir()
 	
 	var speed = StatManager.get_base_stat("speed")
 	_rigidbody.linear_velocity = dash_dir * (300 + speed * 20) * speed_mult
+
+	return dash_dir

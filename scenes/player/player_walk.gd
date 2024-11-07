@@ -18,11 +18,6 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 func update(_delta: float) -> String:
 	move(1)
 	point_sprite()
-	
-	if _sprite.scale.x < 0:
-		_animation_player.play("walk_right_test")
-	else:
-		_animation_player.play("walk_left_test")
 
 	# not moving anymore --> idle
 	if _move_dir == Vector2.ZERO:
