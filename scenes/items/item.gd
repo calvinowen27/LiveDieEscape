@@ -30,8 +30,8 @@ func drop() -> void:
 	position = RoomManager.get_player().global_position + Vector2(0, 60)
 
 func use() -> void:
-	#$ItemState._set_curr_state("ItemPlaced")
-	print("using item %s" % _item_name)
+	$ItemState._set_curr_state("ItemPlaced")
+	# print("using item %s" % _item_name)
 
 func get_item_texture() -> Texture2D:
 	return _item_texture
