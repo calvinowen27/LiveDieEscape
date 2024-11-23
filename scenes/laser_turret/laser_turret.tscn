@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=17 format=3 uid="uid://kfqi07twfc48"]
 
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_laser.gd" id="2_5f8wt"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ppik0l0qoman" path="res://scenes/laser_turret/laser_turret_priming.tscn" id="5_ncfwj"]
 [ext_resource type="Texture2D" uid="uid://dhwrv3ysnfn6s" path="res://resources/art/laser.png" id="8_1af6w"]
 [ext_resource type="Texture2D" uid="uid://bidqsr7cq3ous" path="res://resources/art/laser-turret-sheet.png" id="8_mog6t"]
+[ext_resource type="PackedScene" uid="uid://dwqiyol6kfj14" path="res://scenes/world_objects/force_field_world.tscn" id="10_1s3u2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swdh7"]
 radius = 13.0
@@ -206,5 +207,8 @@ libraries = {
 }
 
 [node name="ZOrdering" parent="." instance=ExtResource("3_1uiul")]
+
+[node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
+position = Vector2(0, -29)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
