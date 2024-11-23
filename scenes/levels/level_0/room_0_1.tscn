@@ -17,12 +17,6 @@ rotation = -1.5708
 position = Vector2(246, 687)
 scale = Vector2(-1, 1)
 
-[node name="ForceFieldWorld" parent="LaserTurret2" index="6"]
-visible = false
-collision_layer = 0
-monitoring = false
-monitorable = false
-
 [node name="RotatingLaserTurret" parent="." index="5" instance=ExtResource("6_8a3v7")]
 position = Vector2(806, 462)
 collision_mask = 3
@@ -42,6 +36,3 @@ _door_idx = 2
 
 [node name="ForceFieldItem" parent="." index="9" instance=ExtResource("6_s8hjx")]
 position = Vector2(670, 810)
-
-[editable path="LaserTurret2"]
-[editable path="LaserTurret2/Interactable"]

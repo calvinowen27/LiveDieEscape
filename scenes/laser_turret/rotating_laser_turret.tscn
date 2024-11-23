@@ -20,6 +20,4 @@ _initial_state = ""
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_d4wg1")
 
-[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
-
 [editable path="Interactable"]

@@ -26,5 +26,5 @@ func _on_interactable_interact() -> void:
 	remove_child(ff)
 	ff.queue_free()
 
-	
+	RoomManager.instantiate_item("force_field_item", position + Vector2(0, 15))
 
