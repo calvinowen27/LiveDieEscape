@@ -211,6 +211,7 @@ libraries = {
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
 position = Vector2(0, -29)
+_temporary = false
 
 [node name="Interactable" parent="." instance=ExtResource("11_emy65")]
 _hold_to_interact = true
