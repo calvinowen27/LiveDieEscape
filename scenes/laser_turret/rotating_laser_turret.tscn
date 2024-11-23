@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://du7rg0bguh68w"]
+[gd_scene load_steps=6 format=3 uid="uid://du7rg0bguh68w"]
 
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="1_31gae"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_activated_rotating.gd" id="2_5pkt1"]
 [ext_resource type="Script" path="res://scenes/laser_turret/rotating_laser_turret.gd" id="2_pm2ay"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="4_10f1w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4wg1"]
 size = Vector2(80, 141.208)
@@ -24,4 +25,18 @@ offset_bottom = -82.6667
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_d4wg1")
 
+[node name="ControlInteractable" parent="." index="8" instance=ExtResource("4_10f1w")]
+_hold_to_interact = true
+
+[node name="InteractLabel" parent="ControlInteractable" index="0"]
+visible = false
+offset_top = -109.333
+offset_bottom = -85.3333
+
+[node name="CollisionShape2D" parent="ControlInteractable/InteractArea" index="0"]
+position = Vector2(0, -4.63533)
+
+[connection signal="interact" from="ControlInteractable" to="." method="_on_control_interactable_interact"]
+
 [editable path="Interactable"]
+[editable path="ControlInteractable"]

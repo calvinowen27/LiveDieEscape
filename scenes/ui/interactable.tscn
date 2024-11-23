@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqasq5r1eqe2b" path="res://resources/art/circle.png" id="2_cchs2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chpaw"]
-size = Vector2(129, 141.208)
+size = Vector2(80, 131.937)
 
 [node name="Interactable" type="Node2D"]
 script = ExtResource("1_gx48w")
