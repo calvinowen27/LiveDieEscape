@@ -3,8 +3,12 @@ extends Node
 var _curr_scene: Node
 
 func switch_scene_to(scene_name: String) -> Node:
-	var prev_scene = get_tree().current_scene
-	
+	var prev_scene
+	if _curr_scene == null:
+		prev_scene = get_tree().current_scene
+	else:
+		prev_scene = _curr_scene
+
 	# load and instantiate new scene, getting instance
 	var scene_packed = load("res://scenes/%s.tscn" % scene_name)
 	var new_scene = scene_packed.instantiate()
