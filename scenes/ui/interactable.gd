@@ -19,6 +19,7 @@ func _ready() -> void:
 	_progress_bar = $InteractLabel/TextureProgressBar
 
 	$InteractLabel.rotation = -rotation
+	$InteractLabel.scale.x *= -1 if get_parent().scale.x < 1 else 1
 	
 	if not _hold_to_interact:
 		_progress_bar.value = _progress_bar.max_value
