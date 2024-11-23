@@ -2,6 +2,8 @@ extends RigidBody2D
 
 class_name LaserTurret
 
+var _item_dropped: bool = false
+
 func _ready() -> void:
 	$ZOrdering.init($Sprite2D)
 	$RayCast2D/Laser.visible = false
@@ -14,7 +16,8 @@ func reboot() -> void:
 func disable_turret() -> void:
 	$LaserTurretState.disable_turret()
 
-	$Interactable.set_active(true)
+	if not _item_dropped:
+		$Interactable.set_active(true)
 
 func enable_turret() -> void:
 	$LaserTurretState.enable_turret()
@@ -26,5 +29,6 @@ func _on_interactable_interact() -> void:
 	remove_child(ff)
 	ff.queue_free()
 
-	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 15))
+	_item_dropped = true
 
+	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 15))
