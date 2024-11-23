@@ -7,7 +7,7 @@ static var _next_id = 1
 var _id
 
 @export var _item_name: String
-var _item_info: String
+@export var _item_info: String
 
 @export var _item_texture: Texture2D
 @export var _object_texture: Texture2D
