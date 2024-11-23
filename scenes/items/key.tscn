@@ -12,9 +12,5 @@ _door = 0
 _item_name = "Key"
 _item_texture = ExtResource("2_8o0ur")
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_8o0ur")
-offset = Vector2(0, -3)
-
-[node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(-2, -11)

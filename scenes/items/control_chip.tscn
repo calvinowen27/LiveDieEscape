@@ -11,9 +11,6 @@ _control_room = 0
 _item_name = "Control Chip"
 _item_texture = ExtResource("2_6l4vo")
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_6l4vo")
-offset = Vector2(0, -6)
-
-[node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(0, -24)
+offset = Vector2(0, 0)

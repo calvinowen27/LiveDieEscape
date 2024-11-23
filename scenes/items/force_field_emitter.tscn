@@ -5,12 +5,11 @@
 [ext_resource type="Script" path="res://scenes/items/force_field_placed.gd" id="3_8jcfc"]
 
 [node name="ForceFieldEmitter" instance=ExtResource("1_3fuml")]
-_item_name = "Force Field Emitter"
+_item_name = "Field Emitter"
 _item_texture = ExtResource("2_rahs2")
 
 [node name="ItemPlaced" parent="ItemState" index="2"]
 script = ExtResource("3_8jcfc")
 
-[node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, 32)
+[node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_rahs2")
