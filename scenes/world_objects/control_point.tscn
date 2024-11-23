@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/world_objects/control_point.gd" id="1_l6bys"]
 [ext_resource type="Texture2D" uid="uid://c0e3dmlouj6k8" path="res://resources/art/control_point.png" id="1_othg3"]
-[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/interactable.tscn" id="3_vym52"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="3_vym52"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="4_pwybs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6sy0"]

@@ -17,6 +17,8 @@ signal interactable_set(val: bool)
 func _ready() -> void:
 	_interact_timer = $InteractTimer
 	_progress_bar = $InteractLabel/TextureProgressBar
+
+	$InteractLabel.rotation = -rotation
 	
 	if not _hold_to_interact:
 		_progress_bar.value = _progress_bar.max_value

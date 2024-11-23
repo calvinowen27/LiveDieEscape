@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="1_31gae"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_activated_rotating.gd" id="2_5pkt1"]
 [ext_resource type="Script" path="res://scenes/laser_turret/rotating_laser_turret.gd" id="2_pm2ay"]
-[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/interactable.tscn" id="3_x0jnn"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="3_x0jnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4wg1"]
 size = Vector2(80, 141.208)
