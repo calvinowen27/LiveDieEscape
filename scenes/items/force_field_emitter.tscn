@@ -1,17 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://oeqvilovte4h"]
 
 [ext_resource type="PackedScene" uid="uid://c1j10o3evpi4" path="res://scenes/items/item.tscn" id="1_3fuml"]
-[ext_resource type="Texture2D" uid="uid://d0ap21dfgwhvq" path="res://resources/art/force_field.png" id="2_rnbij"]
+[ext_resource type="Texture2D" uid="uid://6dutydhkateq" path="res://resources/art/force_field_emitter.png" id="2_rahs2"]
 [ext_resource type="Script" path="res://scenes/items/force_field_placed.gd" id="3_8jcfc"]
 
-[node name="ForceFieldItem" instance=ExtResource("1_3fuml")]
-_item_name = "Force Field"
-_item_texture = ExtResource("2_rnbij")
+[node name="ForceFieldEmitter" instance=ExtResource("1_3fuml")]
+_item_name = "Force Field Emitter"
+_item_texture = ExtResource("2_rahs2")
 
 [node name="ItemPlaced" parent="ItemState" index="2"]
 script = ExtResource("3_8jcfc")
 
 [node name="Sprite2D" parent="." index="1"]
-position = Vector2(0, 12)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_rnbij")
+position = Vector2(0, 32)
+texture = ExtResource("2_rahs2")

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6rxug"]
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_yj8nx"]
 [ext_resource type="PackedScene" uid="uid://du7rg0bguh68w" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="6_8a3v7"]
-[ext_resource type="PackedScene" uid="uid://oeqvilovte4h" path="res://scenes/items/force_field_item.tscn" id="6_s8hjx"]
+[ext_resource type="PackedScene" uid="uid://oeqvilovte4h" path="res://scenes/items/force_field_emitter.tscn" id="6_s8hjx"]
 
 [node name="Room0_1" instance=ExtResource("1_3b385")]
 _room_idx = 1
@@ -34,5 +34,5 @@ position = Vector2(1038, 490)
 rotation = 3.14159
 _door_idx = 2
 
-[node name="ForceFieldItem" parent="." index="9" instance=ExtResource("6_s8hjx")]
+[node name="ForceFieldEmitter" parent="." index="9" instance=ExtResource("6_s8hjx")]
 position = Vector2(670, 810)
