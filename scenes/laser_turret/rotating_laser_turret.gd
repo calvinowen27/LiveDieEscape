@@ -1,5 +1,9 @@
 extends LaserTurret
 
+func _ready() -> void:
+	$ZOrdering.init($Sprite2D)
+	$RayCast2D/Laser.visible = false
+
 func _on_interactable_interact() -> void:
 	# spawn control chip
 	if $LaserTurretState.get_curr_state().name == "LaserTurretActivated":
@@ -7,3 +11,9 @@ func _on_interactable_interact() -> void:
 		control_chip.set_control(RoomManager.get_curr_level(), RoomManager.get_curr_room_idx())
 	
 	$LaserTurretState.disable_turret()
+
+func disable_turret() -> void:
+	$LaserTurretState.disable_turret()
+
+func enable_turret() -> void:
+	$LaserTurretState.enable_turret()
