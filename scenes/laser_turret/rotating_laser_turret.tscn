@@ -21,8 +21,10 @@ _laser_sprite = NodePath("../../RayCast2D/Laser")
 _initial_state = ""
 
 [node name="InteractLabel" parent="Interactable" index="0"]
-offset_top = -106.667
-offset_bottom = -82.6667
+offset_left = -15.3333
+offset_top = -120.0
+offset_right = 21.6667
+offset_bottom = -32.0
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
 position = Vector2(0, -10)

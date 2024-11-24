@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsv72jbnb84xt"]
+[gd_scene load_steps=5 format=3 uid="uid://dsv72jbnb84xt"]
 
 [ext_resource type="Script" path="res://scenes/ui/interactable.gd" id="1_gx48w"]
 [ext_resource type="Texture2D" uid="uid://bqasq5r1eqe2b" path="res://resources/art/circle.png" id="2_cchs2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajm5t"]
+bg_color = Color(0.230315, 0.230315, 0.230315, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chpaw"]
 size = Vector2(80.6667, 136.573)
@@ -10,12 +17,15 @@ size = Vector2(80.6667, 136.573)
 script = ExtResource("1_gx48w")
 
 [node name="InteractLabel" type="Label" parent="."]
-offset_left = -12.0
-offset_top = -90.0
-offset_right = 11.0
-offset_bottom = -66.0
-scale = Vector2(1.5, 1.5)
+offset_left = -14.0
+offset_top = -109.0
+offset_right = 22.0
+offset_bottom = -21.0
+scale = Vector2(0.35, 0.35)
 pivot_offset = Vector2(12, 12)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 64
 text = "E"
 horizontal_alignment = 1
 
@@ -25,17 +35,22 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = 4.0
+offset_right = 26.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(12, 12)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ajm5t")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="InteractLabel"]
 layout_mode = 0
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 28.0
-offset_bottom = 28.0
-scale = Vector2(0.8, 0.8)
+offset_left = 3.429
+offset_top = 30.0
+offset_right = 35.429
+offset_bottom = 62.0
+scale = Vector2(2.75, 2.75)
 pivot_offset = Vector2(16, 16)
 fill_mode = 4
 texture_under = ExtResource("2_cchs2")
