@@ -12,5 +12,8 @@ _door = 0
 _item_name = "Key"
 _item_texture = ExtResource("2_8o0ur")
 
+[node name="ItemPlaced" parent="ItemState" index="2"]
+_object_name = ""
+
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_8o0ur")

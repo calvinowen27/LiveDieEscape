@@ -21,6 +21,7 @@ script = ExtResource("1_cwod5")
 [node name="ItemInventory" parent="ItemState" instance=ExtResource("4_l8lby")]
 
 [node name="ItemPlaced" parent="ItemState" instance=ExtResource("5_jeboa")]
+_object_name = ""
 
 [node name="ItemGlow" type="Sprite2D" parent="."]
 scale = Vector2(4.5, 4.5)
