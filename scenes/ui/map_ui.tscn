@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn61cof1tymen"]
+
+[ext_resource type="Script" path="res://scenes/ui/map_section.gd" id="1_6wlag"]
+[ext_resource type="PackedScene" uid="uid://bxwa1ma38eg77" path="res://scenes/ui/map_room.tscn" id="1_w76gk"]
+[ext_resource type="Texture2D" uid="uid://c3j4ep6qq71kh" path="res://resources/art/map_wall_door_locked.png" id="2_8ctlt"]
+[ext_resource type="Texture2D" uid="uid://x65bq7ro6ass" path="res://resources/art/map_wall_door.png" id="3_nq241"]
+[ext_resource type="Texture2D" uid="uid://c6csi175xvk0s" path="res://resources/art/map_spawn.png" id="4_gs53l"]
+
+[node name="MapUI" type="Panel"]
+offset_right = 358.0
+offset_bottom = 358.0
+
+[node name="Level0" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wlag")
+metadata/_edit_use_anchors_ = true
+
+[node name="MapRoom0" parent="Level0" instance=ExtResource("1_w76gk")]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 175.0
+offset_right = 184.0
+offset_bottom = 215.0
+
+[node name="WallLeft" parent="Level0/MapRoom0" index="0"]
+texture = ExtResource("2_8ctlt")
+
+[node name="WallTop" parent="Level0/MapRoom0" index="2"]
+texture = ExtResource("3_nq241")
+
+[node name="IDIcon" parent="Level0/MapRoom0" index="4"]
+visible = true
+texture = ExtResource("4_gs53l")
+
+[node name="MapRoom1" parent="Level0" instance=ExtResource("1_w76gk")]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 95.0
+offset_right = 184.0
+offset_bottom = 135.0
+_room_idx = 1
+
+[node name="WallLeft" parent="Level0/MapRoom1" index="0"]
+texture = ExtResource("3_nq241")
+
+[node name="WallRight" parent="Level0/MapRoom1" index="1"]
+texture = ExtResource("3_nq241")
+
+[node name="WallBottom" parent="Level0/MapRoom1" index="3"]
+texture = ExtResource("3_nq241")
+
+[node name="MapRoom2" parent="Level0" instance=ExtResource("1_w76gk")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 95.0
+offset_right = 104.0
+offset_bottom = 135.0
+_room_idx = 2
+
+[node name="WallRight" parent="Level0/MapRoom2" index="1"]
+texture = ExtResource("3_nq241")
+
+[node name="MapRoom3" parent="Level0" instance=ExtResource("1_w76gk")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 95.0
+offset_right = 264.0
+offset_bottom = 135.0
+_room_idx = 3
+
+[node name="WallLeft" parent="Level0/MapRoom3" index="0"]
+texture = ExtResource("3_nq241")
+
+[node name="IDIcon" parent="Level0/MapRoom3" index="4"]
+visible = true
+
+[node name="MapRoom4" parent="Level0" instance=ExtResource("1_w76gk")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 175.0
+offset_right = 103.0
+offset_bottom = 215.0
+_room_idx = 4
+
+[node name="WallRight" parent="Level0/MapRoom4" index="1"]
+texture = ExtResource("3_nq241")
+
+[editable path="Level0/MapRoom0"]
+[editable path="Level0/MapRoom1"]
+[editable path="Level0/MapRoom2"]
+[editable path="Level0/MapRoom3"]
+[editable path="Level0/MapRoom4"]

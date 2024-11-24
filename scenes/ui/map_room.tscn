@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxwa1ma38eg77"]
+
+[ext_resource type="Script" path="res://scenes/ui/map_room.gd" id="1_ahvpu"]
+[ext_resource type="Texture2D" uid="uid://c7aj6bi6ubyjw" path="res://resources/art/map_wall.png" id="1_co63b"]
+[ext_resource type="Texture2D" uid="uid://dtun0ir8fx5u2" path="res://resources/art/map_control.png" id="3_jor4y"]
+[ext_resource type="Texture2D" uid="uid://bgj354jf2uyxt" path="res://resources/art/map_player.png" id="4_cocjv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2qq7"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="MapRoom" type="Panel"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_h2qq7")
+script = ExtResource("1_ahvpu")
+
+[node name="WallLeft" type="Sprite2D" parent="."]
+position = Vector2(20, 20)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_co63b")
+
+[node name="WallRight" type="Sprite2D" parent="."]
+position = Vector2(20, 20)
+scale = Vector2(-2.5, 2.5)
+texture = ExtResource("1_co63b")
+
+[node name="WallTop" type="Sprite2D" parent="."]
+position = Vector2(20, 20)
+rotation = 1.5708
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_co63b")
+
+[node name="WallBottom" type="Sprite2D" parent="."]
+position = Vector2(20, 20)
+rotation = 1.5708
+scale = Vector2(-2.5, 2.5)
+texture = ExtResource("1_co63b")
+
+[node name="IDIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(20, 20)
+scale = Vector2(2.125, 2.125)
+texture = ExtResource("3_jor4y")
+
+[node name="PlayerIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 14)
+scale = Vector2(2, 2)
+texture = ExtResource("4_cocjv")

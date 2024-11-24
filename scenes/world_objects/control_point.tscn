@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://kjrb8k6r0cfo"]
+[gd_scene load_steps=7 format=3 uid="uid://kjrb8k6r0cfo"]
 
 [ext_resource type="Script" path="res://scenes/world_objects/control_point.gd" id="1_l6bys"]
 [ext_resource type="Texture2D" uid="uid://c0e3dmlouj6k8" path="res://resources/art/control_point.png" id="1_othg3"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6sy0"]
 size = Vector2(90, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr4sg"]
+size = Vector2(129, 141.208)
 
 [node name="ControlPoint" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -34,7 +37,8 @@ offset_bottom = -144.0
 position = Vector2(0, -36)
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
-position = Vector2(0.5, 7.68223)
+position = Vector2(0, 17.3958)
+shape = SubResource("RectangleShape2D_hr4sg")
 
 [node name="UI" type="Panel" parent="."]
 visible = false

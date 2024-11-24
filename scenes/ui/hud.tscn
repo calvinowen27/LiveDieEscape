@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3m15d5m7d5rl"]
+[gd_scene load_steps=5 format=3 uid="uid://b3m15d5m7d5rl"]
 
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_kx0v1"]
 [ext_resource type="PackedScene" uid="uid://m4l0ixney2nw" path="res://scenes/ui/inventory_slot.tscn" id="2_xy2ua"]
 [ext_resource type="PackedScene" uid="uid://bw4ivehrt8j0t" path="res://scenes/ui/dash_progress_bar.tscn" id="3_3grgp"]
+[ext_resource type="PackedScene" uid="uid://dn61cof1tymen" path="res://scenes/ui/map_ui.tscn" id="4_6dcsy"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -107,3 +108,14 @@ offset_top = -14.0
 offset_right = 228.0
 offset_bottom = 18.0
 scale = Vector2(3, 3)
+
+[node name="MapUI" parent="." instance=ExtResource("4_6dcsy")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -179.0
+offset_top = -292.0
+offset_right = 179.0
+offset_bottom = 66.0
+grow_horizontal = 2
