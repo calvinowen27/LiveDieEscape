@@ -6,6 +6,10 @@ var _base_stats = {
 
 var _stats = {}
 
+var _powerups = {}
+
+var _powerup_icon_path = "res://resources/art/"
+
 func _ready() -> void:
 	reset_stats()
 
@@ -77,3 +81,35 @@ func get_stats() -> Dictionary:
 
 func get_base_stats() -> Dictionary:
 	return _base_stats
+
+func add_powerup(powerup_name: String, duration: int) -> void:
+	_powerups[powerup_name] = get_tree().create_timer(duration)
+
+	if powerup_name == "speed":
+		set_base_stat("speed", 15)
+		# change_stat("speed", 13)
+
+	var texture_rects = get_tree().root.get_node("Main/HUDRect/HUD/Powerups/HBoxContainer").get_children()
+
+	var chosen_rect
+	var icon = load("%s%s_powerup.png" % [_powerup_icon_path, powerup_name])
+
+	for rect in texture_rects:
+		if not rect.visible or rect.texture == icon:
+			chosen_rect = rect
+			rect.texture = icon
+			rect.visible = true
+			break
+
+	await _powerups[powerup_name].timeout
+
+	if powerup_name == "speed":
+		# change_stat("speed", get_base_stat("speed") - get_stat("speed"))
+		set_base_stat("speed", 2)
+
+	chosen_rect.visible = false
+
+	_powerups.erase(powerup_name)
+
+func get_powerups() -> Dictionary:
+	return _powerups
