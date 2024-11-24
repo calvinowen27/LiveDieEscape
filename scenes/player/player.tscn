@@ -396,6 +396,7 @@ speed_mult = 4
 dash_ticks = 10
 
 [node name="DashCooldownTimer" type="Timer" parent="PlayerState"]
+wait_time = 2.5
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

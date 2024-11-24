@@ -58,4 +58,4 @@ func move(speed_mult: float) -> void:
 	_move_dir = new_dir
 	
 	var speed = StatManager.get_base_stat("speed")
-	_rigidbody.linear_velocity = _move_dir * (300 + speed * 20) * speed_mult
+	_rigidbody.linear_velocity = _move_dir * (250 + speed * 20) * speed_mult

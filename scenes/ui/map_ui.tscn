@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn61cof1tymen"]
+[gd_scene load_steps=8 format=3 uid="uid://dn61cof1tymen"]
 
 [ext_resource type="Script" path="res://scenes/ui/map_section.gd" id="1_6wlag"]
 [ext_resource type="PackedScene" uid="uid://bxwa1ma38eg77" path="res://scenes/ui/map_room.tscn" id="1_w76gk"]
@@ -13,6 +13,9 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_alx2q"]
+font_size = 48
 
 [node name="MapUI" type="Panel"]
 offset_right = 358.0
@@ -98,6 +101,19 @@ _room_idx = 4
 
 [node name="WallRight" parent="Level0/MapRoom4" index="1"]
 texture = ExtResource("3_nq241")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_top = -72.0
+offset_right = 51.0
+offset_bottom = -5.0
+grow_horizontal = 2
+text = "Map"
+label_settings = SubResource("LabelSettings_alx2q")
 
 [editable path="Level0/MapRoom0"]
 [editable path="Level0/MapRoom1"]

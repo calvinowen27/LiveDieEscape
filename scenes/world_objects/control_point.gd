@@ -40,7 +40,7 @@ func _create_control_buttons() -> void:
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if not (level_idx == _level and room_idx == _room):
-		return
+		$UI.visible = false
 	
 	_update_control()
 
