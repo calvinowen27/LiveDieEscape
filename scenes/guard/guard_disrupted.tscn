@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://j7ntys5pqt2x"]
+
+[ext_resource type="PackedScene" uid="uid://cw8c30c07yift" path="res://scenes/guard/guard_state.tscn" id="1_s3nh3"]
+[ext_resource type="Script" path="res://scenes/guard/guard_disrupted.gd" id="2_wg81p"]
+
+[node name="GuardDisrupted" instance=ExtResource("1_s3nh3")]
+script = ExtResource("2_wg81p")
+_move_speed = 0

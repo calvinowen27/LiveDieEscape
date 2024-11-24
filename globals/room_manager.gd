@@ -114,7 +114,7 @@ func instantiate_item(item_name: String, position: Vector2) -> Item:
 	
 	return item
 
-func spawn_object(object_name: String, position: Vector2) -> Node:
+func spawn_object(object_name: String, position: Vector2) -> Node2D:
 	var obj = load("res://scenes/world_objects/%s.tscn" % object_name).instantiate()
 	_curr_room.add_child(obj)
 	obj.position = position

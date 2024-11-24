@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwfp4uu7bds7i"]
+[gd_scene load_steps=10 format=3 uid="uid://bwfp4uu7bds7i"]
 
 [ext_resource type="Texture2D" uid="uid://dsn77dja8lky4" path="res://resources/art/guard.png" id="1_45w1c"]
 [ext_resource type="Script" path="res://scenes/guard/guard.gd" id="1_t1dok"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwisyklm77mc5" path="res://scenes/guard/guard_idle.tscn" id="3_sq0rg"]
 [ext_resource type="PackedScene" uid="uid://871s4ssyqa6l" path="res://scenes/guard/guard_follow_player.tscn" id="4_h1kgr"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="5_f4t6e"]
+[ext_resource type="PackedScene" uid="uid://j7ntys5pqt2x" path="res://scenes/guard/guard_disrupted.tscn" id="6_v3b3x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1mse"]
 radius = 38.0
@@ -38,6 +39,8 @@ _initial_state = "GuardIdle"
 [node name="GuardIdle" parent="GuardState" instance=ExtResource("3_sq0rg")]
 
 [node name="GuardFollowPlayer" parent="GuardState" instance=ExtResource("4_h1kgr")]
+
+[node name="GuardDisrupted" parent="GuardState" instance=ExtResource("6_v3b3x")]
 
 [node name="ZOrdering" parent="." instance=ExtResource("5_f4t6e")]
 

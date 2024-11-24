@@ -21,6 +21,13 @@ func update(_delta: float) -> String:
 	_move_dir = (player_pos - _rigidbody.global_position).normalized()
 	_rigidbody.linear_velocity = _move_dir * speed
 
+	var disruptors = get_tree().get_nodes_in_group("Disruptors")
+	for disruptor in disruptors:
+		if not disruptor.in_use():
+			disruptor.use()
+			get_node("../GuardDisrupted").init(disruptor)
+			return "GuardDisrupted"
+
 	return name
 
 func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
