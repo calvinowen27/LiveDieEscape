@@ -1,22 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://78xjhgygrik8"]
+[gd_scene load_steps=6 format=3 uid="uid://78xjhgygrik8"]
 
 [ext_resource type="Script" path="res://scenes/levels/door.gd" id="1_wxue2"]
+[ext_resource type="Texture2D" uid="uid://c0mc4eoamwoce" path="res://resources/art/door.png" id="2_1ga3h"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="2_5ru3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6co3"]
-size = Vector2(69, 318)
+size = Vector2(61, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5l1v"]
-size = Vector2(129, 319)
+size = Vector2(129, 160)
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_wxue2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-18.5, 1)
+position = Vector2(-22.5, 0)
 shape = SubResource("RectangleShape2D_o6co3")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,6 +29,11 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(8.5, 0)
+scale = Vector2(5, 5)
+texture = ExtResource("2_1ga3h")
 
 [node name="SpawnLocation" type="Marker2D" parent="."]
 position = Vector2(68, 0)
@@ -59,7 +66,6 @@ offset_bottom = 12.0
 rotation = -1.5708
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
-position = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_t5l1v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
