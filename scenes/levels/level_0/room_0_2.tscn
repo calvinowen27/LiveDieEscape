@@ -9,7 +9,7 @@
 [node name="Room0_2" instance=ExtResource("1_rcvgy")]
 _room_idx = 2
 
-[node name="Player" parent="." index="0"]
+[node name="Player" parent="." index="1"]
 position = Vector2(892, 538)
 
 [node name="Door0" parent="." index="3" instance=ExtResource("2_hf2v4")]
