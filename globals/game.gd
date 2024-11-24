@@ -4,7 +4,6 @@ var _is_game_running = false
 var _is_game_paused = false
 
 func restart_game() -> void:
-	EventBus.level_reset.emit(RoomManager.get_curr_level())
 	SceneManager.switch_scene_to("ui/title_screen")
 	_is_game_running = false
 
@@ -25,4 +24,5 @@ func _on_game_start() -> void:
 		# switch scene to main
 		SceneManager.switch_scene_to("main")
 		_is_game_running = true
+		EventBus.level_reset.emit(RoomManager.get_curr_level())
 		RoomManager.set_curr_room(0, 0, -1)
