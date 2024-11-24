@@ -34,7 +34,7 @@ offset_bottom = -144.0
 position = Vector2(0, -36)
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
-position = Vector2(0, 17.3958)
+position = Vector2(0.5, 7.68223)
 
 [node name="UI" type="Panel" parent="."]
 visible = false
