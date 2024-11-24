@@ -7,9 +7,6 @@ var _player: Node2D
 
 var _rooms = {}
 
-func _ready() -> void:
-	EventBus.level_reset.connect(_on_level_reset)
-
 func get_player() -> Node2D:
 	return _player
 
@@ -70,7 +67,8 @@ func get_door(door_idx: int) -> Door:
 # get room node associated with level and room idx, if room doesn't exist, create and store it
 func get_room(level_idx: int, room_idx: int) -> Room:
 	if level_idx != _curr_level:
-		clear_level(_curr_level)
+		print("get room clear level")
+		LevelManager.clear_level(_curr_level)
 		_curr_level = level_idx
 		LevelManager.load_level(level_idx)
 
@@ -101,27 +99,6 @@ func get_room(level_idx: int, room_idx: int) -> Room:
 
 	return new_room
 
-func _on_level_reset(level_idx: int) -> void:
-	clear_level(level_idx)
-
-	set_curr_room(level_idx, 0, -1)
-
-	StatManager.reset_stats()
-
-func clear_level(level_idx: int) -> void:
-	if level_idx not in _rooms.keys():
-		print_debug("reset_level(): level %d not loaded yet?" % level_idx)
-		return
-
-	# invalidate all rooms in level for out of sync calls
-	# free rooms
-	for room in _rooms[level_idx]:
-		room.set_invalid()
-		room.queue_free()
-
-	# reset rooms list and reset room to default
-	_rooms[level_idx].clear()
-
 func guard_reset() -> void:
 	set_curr_room(0, 0, -1)
 
@@ -150,3 +127,6 @@ func get_curr_room_idx() -> int:
 
 func get_curr_level() -> int:
 	return _curr_level
+
+func get_rooms() -> Dictionary:
+	return _rooms
