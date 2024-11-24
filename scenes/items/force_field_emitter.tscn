@@ -6,7 +6,7 @@
 
 [node name="ForceFieldEmitter" instance=ExtResource("1_3fuml")]
 _item_name = "Field Emitter"
-_item_info = "Emits a stationary force field"
+_item_info = "Emits a stationary force field for 15s"
 _item_texture = ExtResource("2_rahs2")
 
 [node name="ItemPlaced" parent="ItemState" index="2"]

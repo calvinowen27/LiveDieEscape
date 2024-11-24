@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw4ivehrt8j0t"]
+[gd_scene load_steps=5 format=3 uid="uid://bw4ivehrt8j0t"]
 
 [ext_resource type="Texture2D" uid="uid://bqasq5r1eqe2b" path="res://resources/art/circle.png" id="1_rr5hy"]
 [ext_resource type="Texture2D" uid="uid://bpwsqcmsmblca" path="res://resources/art/dash_icon.png" id="2_skh2w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_67ei0"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nljx"]
 bg_color = Color(1, 1, 1, 1)
@@ -9,6 +15,10 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [node name="DashProgressBar" type="TextureProgressBar" groups=["DashProgressBars"]]
 offset_right = 40.0
@@ -25,14 +35,14 @@ texture = ExtResource("2_skh2w")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 4.0
-offset_right = 210.0
-offset_bottom = 92.0
-scale = Vector2(0.25, 0.25)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 35.0
+offset_top = 7.0
+offset_right = 212.0
+offset_bottom = 95.0
+scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 64
 text = "LShift"
+label_settings = SubResource("LabelSettings_67ei0")
 
 [node name="Panel" type="Panel" parent="Label"]
 show_behind_parent = true

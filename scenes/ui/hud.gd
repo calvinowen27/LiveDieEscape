@@ -25,7 +25,7 @@ func update() -> void:
 
 	timer_label.text = ""
 	for room in room_timers.keys():
-		timer_label.text += "Room %d: %ds" % [room, room_timers[room].time_left]
+		timer_label.text += "Room %d: %ds\n" % [room, room_timers[room].time_left]
 
 func _on_item_pickup(item: Item, idx: int) -> void:
 	var inventory_slots = get_tree().get_nodes_in_group("InventorySlots")
