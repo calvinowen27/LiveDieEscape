@@ -13,3 +13,4 @@ func item_state_enable(item: Item, sprite: Sprite2D) -> void:
 
 	# sprite.texture = item.get_item_texture()
 	sprite.visible = false
+	get_node("../../ItemGlow").visible = false

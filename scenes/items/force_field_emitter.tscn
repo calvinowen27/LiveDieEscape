@@ -10,6 +10,14 @@ _item_texture = ExtResource("2_rahs2")
 
 [node name="ItemPlaced" parent="ItemState" index="2"]
 _object_name = "force_field_world"
+_pos_offset = Vector2(0, -35)
+
+[node name="ItemGlow" parent="." index="1"]
+position = Vector2(0, -24)
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("2_rahs2")
+offset = Vector2(0, -6)
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, -24)

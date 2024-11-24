@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://u6kgsfv5enfh"]
+
+[ext_resource type="Script" path="res://scenes/world_objects/disruptor_world.gd" id="1_vwjsd"]
+[ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="1_wbj4d"]
+[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="2_t7c4e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngpep"]
+radius = 19.0
+height = 66.0
+
+[node name="DisruptorWorld" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+script = ExtResource("1_vwjsd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -19)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ngpep")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+texture = ExtResource("1_wbj4d")
+
+[node name="ZOrdering" parent="." instance=ExtResource("2_t7c4e")]

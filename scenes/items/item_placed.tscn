@@ -5,3 +5,4 @@
 
 [node name="ItemPlaced" instance=ExtResource("1_btsu3")]
 script = ExtResource("2_jm046")
+_object_name = ""
