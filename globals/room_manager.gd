@@ -7,6 +7,8 @@ var _player: Node2D
 
 var _rooms = {}
 
+var _room_timers = {}
+
 func get_player() -> Node2D:
 	return _player
 
@@ -115,9 +117,12 @@ func instantiate_item(item_name: String, position: Vector2) -> Item:
 func reboot_room(level_idx: int, room_idx: int) -> void:
 	_rooms[level_idx][room_idx].disable_room()
 
-	await get_tree().create_timer(10).timeout
+	_room_timers[room_idx] = get_tree().create_timer(10)
+
+	await _room_timers[room_idx].timeout
 	
 	_rooms[level_idx][room_idx].enable_room()
+	_room_timers.erase(room_idx)
 
 func get_curr_room() -> Room:
 	return _curr_room
@@ -130,3 +135,6 @@ func get_curr_level() -> int:
 
 func get_rooms() -> Dictionary:
 	return _rooms
+
+func get_room_timers() -> Dictionary:
+	return _room_timers
