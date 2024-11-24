@@ -6,6 +6,8 @@ extends Panel
 func _ready() -> void:
 	EventBus.change_room.connect(_on_room_change)
 
+	$RoomNumber.text = "%d" % _room_idx
+
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if _level_idx == level_idx and _room_idx == room_idx:
 		visible = true

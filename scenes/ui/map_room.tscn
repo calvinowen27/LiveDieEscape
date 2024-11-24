@@ -49,3 +49,13 @@ visible = false
 position = Vector2(32, 14)
 scale = Vector2(2, 2)
 texture = ExtResource("4_cocjv")
+
+[node name="RoomNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 3.5
+offset_top = 22.5
+offset_right = 75.5
+offset_bottom = 110.5
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 64
+text = "1"
