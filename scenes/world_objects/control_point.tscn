@@ -38,9 +38,8 @@ offset = Vector2(0, -14)
 [node name="InteractLabel" parent="Interactable" index="0"]
 visible = false
 offset_left = -15.0
-offset_top = -168.0
-offset_right = 22.0
-offset_bottom = -144.0
+offset_top = -187.0
+offset_bottom = -99.0
 scale = Vector2(0.4, 0.4)
 label_settings = SubResource("LabelSettings_cs2rg")
 
