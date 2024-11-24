@@ -92,21 +92,12 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DashLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = -318.0
-offset_top = 156.0
-offset_right = -137.0
-offset_bottom = 223.0
-theme_override_font_sizes/font_size = 48
-text = "Dashes:"
-
-[node name="DashProgressBar" parent="DashLabel" instance=ExtResource("3_3grgp")]
+[node name="DashProgressBar" parent="." instance=ExtResource("3_3grgp")]
 layout_mode = 2
-offset_left = 196.0
-offset_top = -14.0
-offset_right = 228.0
-offset_bottom = 18.0
+offset_left = -134.0
+offset_top = 138.0
+offset_right = -102.0
+offset_bottom = 170.0
 scale = Vector2(3, 3)
 
 [node name="MapUI" parent="." instance=ExtResource("4_6dcsy")]
