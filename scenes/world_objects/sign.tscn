@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://sff6u8tq7wwe"]
+
+[ext_resource type="Texture2D" uid="uid://dv7ys8dh32ndx" path="res://resources/art/sign.png" id="1_7v4sv"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="1_yc462"]
+[ext_resource type="Script" path="res://scenes/world_objects/sign.gd" id="2_0ouem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nn7s"]
+size = Vector2(37.6, 26.2)
+
+[node name="Sign" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_7v4sv")
+script = ExtResource("2_0ouem")
+
+[node name="Interactable" parent="." instance=ExtResource("1_yc462")]
+
+[node name="InteractLabel" parent="Interactable" index="0"]
+visible = false
+offset_left = -12.6
+offset_top = -16.0
+offset_right = 23.4
+offset_bottom = 72.0
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
+position = Vector2(-7.62939e-07, 4.9)
+shape = SubResource("RectangleShape2D_3nn7s")
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
+[connection signal="body_exited" from="Interactable/InteractArea" to="." method="_on_interact_area_body_exited"]
+
+[editable path="Interactable"]
