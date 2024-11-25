@@ -6,4 +6,4 @@ func init(sprite: Sprite2D) -> void:
 	_sprite = sprite
 
 func _process(_delta: float) -> void:
-	_sprite.z_index = _sprite.global_position.y
+	_sprite.z_index = int(_sprite.global_position.y)
