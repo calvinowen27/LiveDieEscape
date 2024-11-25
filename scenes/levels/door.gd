@@ -11,6 +11,9 @@ var _room_idx = 0
 @export var _locked = false
 @export var _consume_key = false
 
+@export var _unlocked_texture: Texture2D
+@export var _locked_texture: Texture2D
+
 var _active = false # if door can be used
 
 func _init() -> void:
@@ -24,10 +27,10 @@ func _ready() -> void:
 	var interactable = $Interactable
 	interactable.interact.connect(attempt_open)
 	interactable.set_active(_locked)
-	# interactable.get_node("InteractLabel").rotation = PI - interactable.rotation
 	
 	if _locked:
-		$CollisionShape2D/ColorRect.color = Color(1.0, 0.0, 0.0, 1.0)
+		$CollisionShape2D/Sprite2D.texture = _locked_texture
+
 
 func attempt_open() -> void:
 	if _active:
@@ -66,11 +69,8 @@ func start_activation() -> void:
 func _on_activation_timer_timeout() -> void:
 	_active = true
 
-# func get_next_door_idx() -> int:
-# 	return _next_door_idx
-
 func unlock() -> void:
-	$CollisionShape2D/ColorRect.color = Color(1.0, 1.0, 1.0, 1.0)
+	$CollisionShape2D/Sprite2D.texture = _unlocked_texture
 	_locked = false
 	
 	# deactivate interactable (only for unlocking)
