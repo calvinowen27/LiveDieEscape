@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://bb1tgidnjrhfg"]
+[gd_scene load_steps=7 format=4 uid="uid://bb1tgidnjrhfg"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_3b385"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6rxug"]
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_yj8nx"]
+[ext_resource type="PackedScene" uid="uid://sff6u8tq7wwe" path="res://scenes/world_objects/sign.tscn" id="6_4xf38"]
 [ext_resource type="PackedScene" uid="uid://du7rg0bguh68w" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="6_8a3v7"]
 [ext_resource type="PackedScene" uid="uid://oeqvilovte4h" path="res://scenes/items/force_field_emitter.tscn" id="6_s8hjx"]
 
@@ -39,3 +40,7 @@ _door_idx = 2
 
 [node name="ForceFieldEmitter" parent="." index="9" instance=ExtResource("6_s8hjx")]
 position = Vector2(670, 810)
+
+[node name="Sign" parent="." index="11" instance=ExtResource("6_4xf38")]
+position = Vector2(800, 48)
+_sign_text = Array[String](["An item can be obtained from the large laser turrets to control the small ones. You can also harvest it's shield."])
