@@ -19,6 +19,7 @@ expand_margin_bottom = 5.0
 font_size = 48
 
 [node name="TextBox" type="Panel"]
+z_index = 4096
 offset_right = 245.0
 offset_bottom = 56.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0st20")

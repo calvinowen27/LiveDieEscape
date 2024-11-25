@@ -13,6 +13,7 @@ bg_color = Color(0, 0, 0, 1)
 font_size = 24
 
 [node name="HUD" type="Control"]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,10 +35,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -324.0
-offset_right = 372.0
-offset_bottom = 621.0
+offset_right = 840.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kacm3")
@@ -75,10 +74,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -322.5
-offset_top = 340.0
-offset_right = 322.5
-offset_bottom = 490.0
+offset_left = 72.5
+offset_top = 726.0
+offset_right = 717.5
+offset_bottom = 876.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 15
@@ -102,10 +101,10 @@ size_flags_vertical = 3
 
 [node name="DashProgressBar" parent="." instance=ExtResource("3_3grgp")]
 layout_mode = 2
-offset_left = -310.0
-offset_top = 138.0
-offset_right = -278.0
-offset_bottom = 170.0
+offset_left = 85.0
+offset_top = 524.0
+offset_right = 117.0
+offset_bottom = 556.0
 scale = Vector2(3, 3)
 
 [node name="MapUI" parent="." instance=ExtResource("4_6dcsy")]
@@ -113,26 +112,26 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -310.0
-offset_top = -251.0
-offset_right = 48.0
-offset_bottom = 107.0
+offset_left = 85.0
+offset_top = 135.0
+offset_right = 443.0
+offset_bottom = 493.0
 grow_horizontal = 2
 
 [node name="RoomTimerLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 76.0
-offset_top = -271.0
-offset_right = 318.0
-offset_bottom = -54.0
+offset_left = 471.0
+offset_top = 115.0
+offset_right = 713.0
+offset_bottom = 332.0
 theme_override_font_sizes/font_size = 32
 
 [node name="Powerups" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -48.0
-offset_top = 138.0
-offset_right = 315.0
-offset_bottom = 225.0
+offset_left = 347.0
+offset_top = 524.0
+offset_right = 710.0
+offset_bottom = 611.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Powerups"]
 layout_mode = 1

@@ -22,6 +22,7 @@ offset_right = 1080.0
 offset_bottom = 1080.0
 
 [node name="ColorRect" type="ColorRect" parent="Background/GameRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +31,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HUDRect" type="ReferenceRect" parent="."]
+z_index = 4096
+z_as_relative = false
 offset_left = 1080.0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -37,10 +40,8 @@ offset_bottom = 1080.0
 [node name="HUD" parent="HUDRect" instance=ExtResource("2_b7633")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = -20.0
-offset_top = -184.0
-offset_right = 20.0
-offset_bottom = -144.0
+offset_left = -420.0
+offset_right = -420.0
 
 [node name="TextBox" parent="." instance=ExtResource("3_4pxxy")]
 unique_name_in_owner = true
