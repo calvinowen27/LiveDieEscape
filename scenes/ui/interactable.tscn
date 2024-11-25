@@ -42,6 +42,7 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(12, 12)
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ajm5t")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="InteractLabel"]
@@ -52,6 +53,7 @@ offset_right = 35.429
 offset_bottom = 62.0
 scale = Vector2(2.75, 2.75)
 pivot_offset = Vector2(16, 16)
+mouse_filter = 2
 fill_mode = 4
 texture_under = ExtResource("2_cchs2")
 texture_progress = ExtResource("2_cchs2")

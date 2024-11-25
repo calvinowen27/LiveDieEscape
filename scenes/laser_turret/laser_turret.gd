@@ -31,4 +31,4 @@ func _on_interactable_interact() -> void:
 
 	_item_dropped = true
 
-	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 15))
+	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))

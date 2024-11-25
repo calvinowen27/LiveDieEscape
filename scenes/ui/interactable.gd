@@ -22,7 +22,8 @@ func _ready() -> void:
 	$InteractLabel.scale.x *= -1 if get_parent().scale.x < 1 else 1
 	
 	if not _hold_to_interact:
-		_progress_bar.value = _progress_bar.max_value
+		# _progress_bar.value = _progress_bar.max_value
+		_progress_bar.visible = false
 		#$InteractLabel.text = "Hold  E  to Interact"
 
 func _process(_delta: float) -> void:

@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 const control_button_path = "res://scenes/ui/control_button.tscn"
-const control_button_unavailable_text = "Room %d\n------------\nControl\nUnavailable"
-const control_button_available_text = "Room %d\n------------\nControl\nAvailable"
+const control_button_unavailable_text = "Room %d\nControl\nUnavailable"
+const control_button_available_text = "Room %d\nControl\nAvailable"
 
 @export var _control_rooms: Array[int]
 
