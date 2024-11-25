@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bddgcgpemcx6c" path="res://resources/art/door_locked.png" id="3_k7cif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6co3"]
-size = Vector2(43, 159)
+size = Vector2(43, 143.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5l1v"]
-size = Vector2(129, 160)
+size = Vector2(115, 144)
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_wxue2")
@@ -17,7 +17,7 @@ _unlocked_texture = ExtResource("2_1ga3h")
 _locked_texture = ExtResource("3_k7cif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-22, 0)
+position = Vector2(-21, 0)
 shape = SubResource("RectangleShape2D_o6co3")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
@@ -35,11 +35,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(8.5, 0)
-scale = Vector2(5, 5)
+scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_1ga3h")
 
 [node name="SpawnLocation" type="Marker2D" parent="."]
-position = Vector2(68, 0)
+position = Vector2(69, 0)
 
 [node name="ActivationTimer" type="Timer" parent="."]
 wait_time = 0.125
@@ -58,7 +58,7 @@ text = "Door"
 horizontal_alignment = 1
 
 [node name="Interactable" parent="." instance=ExtResource("2_5ru3l")]
-position = Vector2(38, 0)
+position = Vector2(39, -8)
 _hold_to_interact = true
 
 [node name="InteractLabel" parent="Interactable" index="0"]
@@ -70,6 +70,7 @@ offset_bottom = 41.0
 rotation = -1.5708
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
+position = Vector2(-5.5, 8)
 shape = SubResource("RectangleShape2D_t5l1v")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
