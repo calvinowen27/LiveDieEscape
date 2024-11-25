@@ -63,10 +63,10 @@ _hold_to_interact = true
 
 [node name="InteractLabel" parent="Interactable" index="0"]
 visible = false
-offset_left = -33.0
-offset_top = -23.0
-offset_right = 3.0
-offset_bottom = 65.0
+offset_left = -34.0
+offset_top = -47.0
+offset_right = 2.0
+offset_bottom = 41.0
 rotation = -1.5708
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]

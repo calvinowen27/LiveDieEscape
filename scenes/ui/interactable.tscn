@@ -17,12 +17,12 @@ size = Vector2(80.6667, 136.573)
 script = ExtResource("1_gx48w")
 
 [node name="InteractLabel" type="Label" parent="."]
-offset_left = -14.0
-offset_top = -109.0
-offset_right = 22.0
-offset_bottom = -21.0
+offset_left = -19.0
+offset_top = -133.0
+offset_right = 17.0
+offset_bottom = -45.0
 scale = Vector2(0.35, 0.35)
-pivot_offset = Vector2(12, 12)
+pivot_offset = Vector2(18.75, 47)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 64
@@ -41,7 +41,7 @@ offset_right = 26.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(12, 12)
+pivot_offset = Vector2(43, 43)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ajm5t")
 
@@ -52,7 +52,7 @@ offset_top = 30.0
 offset_right = 35.429
 offset_bottom = 62.0
 scale = Vector2(2.75, 2.75)
-pivot_offset = Vector2(16, 16)
+pivot_offset = Vector2(16.5, 16.25)
 mouse_filter = 2
 fill_mode = 4
 texture_under = ExtResource("2_cchs2")

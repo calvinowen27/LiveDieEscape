@@ -16,10 +16,8 @@ script = ExtResource("2_0ouem")
 
 [node name="InteractLabel" parent="Interactable" index="0"]
 visible = false
-offset_left = -12.6
-offset_top = -16.0
-offset_right = 23.4
-offset_bottom = 72.0
+offset_top = -47.4
+offset_bottom = 40.6
 scale = Vector2(0.1, 0.1)
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]

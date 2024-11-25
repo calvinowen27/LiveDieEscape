@@ -21,10 +21,11 @@ _laser_sprite = NodePath("../../RayCast2D/Laser")
 _initial_state = ""
 
 [node name="InteractLabel" parent="Interactable" index="0"]
-offset_left = -15.3333
-offset_top = -120.0
-offset_right = 21.6667
-offset_bottom = -32.0
+offset_left = -19.3333
+offset_top = -132.667
+offset_right = 17.6667
+offset_bottom = -44.6667
+scale = Vector2(0.325, 0.325)
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
 position = Vector2(0, -10)
@@ -35,8 +36,10 @@ _hold_to_interact = true
 
 [node name="InteractLabel" parent="ControlInteractable" index="0"]
 visible = false
-offset_top = -109.333
-offset_bottom = -85.3333
+offset_left = -19.3333
+offset_top = -134.0
+offset_right = 16.6667
+offset_bottom = -46.0
 
 [node name="CollisionShape2D" parent="ControlInteractable/InteractArea" index="0"]
 position = Vector2(0.333333, -6.953)
