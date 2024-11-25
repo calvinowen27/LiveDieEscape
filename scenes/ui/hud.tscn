@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3m15d5m7d5rl"]
+[gd_scene load_steps=8 format=3 uid="uid://b3m15d5m7d5rl"]
 
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_kx0v1"]
 [ext_resource type="PackedScene" uid="uid://m4l0ixney2nw" path="res://scenes/ui/inventory_slot.tscn" id="2_xy2ua"]
 [ext_resource type="PackedScene" uid="uid://bw4ivehrt8j0t" path="res://scenes/ui/dash_progress_bar.tscn" id="3_3grgp"]
 [ext_resource type="PackedScene" uid="uid://dn61cof1tymen" path="res://scenes/ui/map_ui.tscn" id="4_6dcsy"]
 [ext_resource type="PackedScene" uid="uid://uth7vm3vhpkr" path="res://scenes/ui/powerup_icon.tscn" id="5_ad1hm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kacm3"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tltay"]
 font_size = 24
@@ -37,6 +40,7 @@ offset_right = 372.0
 offset_bottom = 621.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kacm3")
 
 [node name="StatsLabel" type="Label" parent="."]
 visible = false

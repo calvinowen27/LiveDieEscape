@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="2_5ru3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6co3"]
-size = Vector2(61, 159)
+size = Vector2(43, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5l1v"]
 size = Vector2(129, 160)
@@ -14,7 +14,7 @@ size = Vector2(129, 160)
 script = ExtResource("1_wxue2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-22.5, 0)
+position = Vector2(-22, 0)
 shape = SubResource("RectangleShape2D_o6co3")
 
 [node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
