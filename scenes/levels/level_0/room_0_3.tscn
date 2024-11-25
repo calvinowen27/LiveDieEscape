@@ -16,9 +16,9 @@ position = Vector2(676, 652)
 [node name="GuardResetPos" type="Marker2D" parent="." index="4"]
 position = Vector2(676, 652)
 
-[node name="ControlPoint" parent="." index="5" instance=ExtResource("3_wjxb7")]
-position = Vector2(680, 378)
-_control_rooms = Array[int]([1, 2])
-
-[node name="Door0" parent="." index="6" instance=ExtResource("2_7mqs8")]
+[node name="Door0" parent="." index="5" instance=ExtResource("2_7mqs8")]
 position = Vector2(38, 544)
+
+[node name="ControlPoint" parent="." index="7" instance=ExtResource("3_wjxb7")]
+position = Vector2(678, 318)
+_control_rooms = Array[int]([1, 2])

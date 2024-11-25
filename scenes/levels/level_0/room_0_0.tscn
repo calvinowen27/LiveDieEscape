@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cyw3gwmvgg68m"]
+[gd_scene load_steps=6 format=4 uid="uid://cyw3gwmvgg68m"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_obo4y"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_0nwva"]
 [ext_resource type="PackedScene" uid="uid://dyx7q8gw7a7s4" path="res://scenes/items/disruptor.tscn" id="3_h2od5"]
 [ext_resource type="PackedScene" uid="uid://chmgb105w11s1" path="res://scenes/items/speed_powerup.tscn" id="4_70mo2"]
+[ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="5_wey18"]
 
 [node name="Room0_0" instance=ExtResource("1_obo4y")]
 
@@ -31,3 +32,7 @@ position = Vector2(348, 324)
 
 [node name="SpeedPowerup" parent="." index="7" instance=ExtResource("4_70mo2")]
 position = Vector2(738, 417)
+
+[node name="ControlPoint" parent="." index="9" instance=ExtResource("5_wey18")]
+position = Vector2(606, 685)
+_control_rooms = Array[int]([1, 2])

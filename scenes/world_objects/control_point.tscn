@@ -36,11 +36,15 @@ offset = Vector2(0, -14)
 [node name="Interactable" parent="." instance=ExtResource("3_vym52")]
 
 [node name="InteractLabel" parent="Interactable" index="0"]
+visible = false
 offset_left = -15.0
 offset_top = -187.0
 offset_bottom = -99.0
 scale = Vector2(0.4, 0.4)
 label_settings = SubResource("LabelSettings_cs2rg")
+
+[node name="Panel" parent="Interactable/InteractLabel" index="0"]
+mouse_filter = 0
 
 [node name="TextureProgressBar" parent="Interactable/InteractLabel" index="1"]
 offset_left = 5.0
@@ -48,6 +52,7 @@ offset_top = 28.375
 offset_right = 37.0
 offset_bottom = 60.375
 scale = Vector2(3, 3)
+mouse_filter = 1
 
 [node name="InteractArea" parent="Interactable" index="1"]
 position = Vector2(0, -36)
