@@ -1,16 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3m15d5m7d5rl"]
+[gd_scene load_steps=10 format=3 uid="uid://b3m15d5m7d5rl"]
 
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_kx0v1"]
 [ext_resource type="PackedScene" uid="uid://m4l0ixney2nw" path="res://scenes/ui/inventory_slot.tscn" id="2_xy2ua"]
 [ext_resource type="PackedScene" uid="uid://bw4ivehrt8j0t" path="res://scenes/ui/dash_progress_bar.tscn" id="3_3grgp"]
 [ext_resource type="PackedScene" uid="uid://dn61cof1tymen" path="res://scenes/ui/map_ui.tscn" id="4_6dcsy"]
 [ext_resource type="PackedScene" uid="uid://uth7vm3vhpkr" path="res://scenes/ui/powerup_icon.tscn" id="5_ad1hm"]
+[ext_resource type="Script" path="res://scenes/ui/dead_panel.gd" id="6_pvhjm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kacm3"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tltay"]
 font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypmao"]
+bg_color = Color(0.178212, 0.178212, 0.178212, 1)
 
 [node name="HUD" type="Control"]
 z_index = 4096
@@ -176,3 +180,45 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Powerups"
 label_settings = SubResource("LabelSettings_tltay")
+
+[node name="DeadPanel" type="Panel" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 504.0
+offset_right = 746.0
+offset_bottom = 904.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ypmao")
+script = ExtResource("6_pvhjm")
+
+[node name="RespawnButton" type="Button" parent="DeadPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -108.5
+offset_top = -141.0
+offset_right = 108.5
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "Respawn"
+
+[node name="Label" type="Label" parent="DeadPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -146.5
+offset_top = 88.0
+offset_right = 146.5
+offset_bottom = 176.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "You Died!"
+
+[connection signal="pressed" from="DeadPanel/RespawnButton" to="DeadPanel" method="_on_respawn_button_pressed"]

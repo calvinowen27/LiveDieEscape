@@ -18,6 +18,7 @@ func is_game_running() -> bool:
 
 func _ready() -> void:
 	EventBus.start_game.connect(_on_game_start)
+	EventBus.player_respawn.connect(_on_player_respawn)
 
 func _on_game_start() -> void:
 	if not _is_game_running:
@@ -26,3 +27,6 @@ func _on_game_start() -> void:
 		_is_game_running = true
 		EventBus.level_reset.emit(RoomManager.get_curr_level())
 		RoomManager.set_curr_room(0, 0, -1)
+
+func _on_player_respawn() -> void:
+	EventBus.level_reset.emit(0)

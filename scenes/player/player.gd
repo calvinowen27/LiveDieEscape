@@ -14,7 +14,8 @@ func _ready() -> void:
 	$ZOrdering.init($Sprite2D)
 
 func die() -> void:
-	EventBus.level_reset.emit(0)
+	# EventBus.level_reset.emit(0)
+	EventBus.player_death.emit()
 	Inventory.clear()
 
 func queue_teleport(pos: Vector2) -> void:
