@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dviw650xtb18v"]
+[gd_scene load_steps=5 format=3 uid="uid://dviw650xtb18v"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_khhrq"]
 [ext_resource type="PackedScene" uid="uid://b3m15d5m7d5rl" path="res://scenes/ui/hud.tscn" id="2_b7633"]
 [ext_resource type="PackedScene" uid="uid://bicclg6frtano" path="res://scenes/ui/text_box.tscn" id="3_4pxxy"]
+[ext_resource type="PackedScene" uid="uid://c22i7cl5i4ebq" path="res://scenes/ui/pause_menu.tscn" id="4_j1i6a"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_khhrq")
@@ -51,3 +52,15 @@ offset_top = 868.0
 offset_right = 427.0
 offset_bottom = 924.0
 scale = Vector2(3, 3)
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_j1i6a")]
+visible = false
+z_index = 4096
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 287.0
+offset_top = -211.0
+offset_right = 784.0
+offset_bottom = 211.0
+grow_vertical = 2

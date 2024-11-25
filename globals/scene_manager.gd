@@ -19,6 +19,10 @@ func switch_scene_to(scene_name: String) -> Node:
 	prev_scene.queue_free()
 	return _curr_scene
 
+func toggle_game_paused() -> bool:
+	get_tree().paused = !get_tree().paused
+	return get_tree().paused
+
 func _ready() -> void:
 	pass
 
