@@ -20,6 +20,6 @@ func update(_delta: float) -> String:
 func laser_turret_state_enable(animation_player: AnimationPlayer, laser_sprite: Sprite2D, laser_raycast: RayCast2D) -> void:
 	super.laser_turret_state_enable(animation_player, laser_sprite, laser_raycast)
 	
-	animation_player.play("laser_turret_activated")
+	animation_player.play("laser_turret_activated_rotating")
 	laser_sprite.visible = true
 	laser_raycast.enabled = true
