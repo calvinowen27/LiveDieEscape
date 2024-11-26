@@ -33,9 +33,13 @@ func update(_delta: float) -> String:
 func laser_turret_state_enable(animation_player: AnimationPlayer, laser_sprite: Sprite2D, laser_raycast: RayCast2D) -> void:
 	super.laser_turret_state_enable(animation_player, laser_sprite, laser_raycast)
 	
+	# has to be after super cuz it gets set to 1 there
 	_animation = animation_player.get_animation("laser_turret_activated_rotating")
-	animation_player.play("laser_turret_activated_rotating")
 	animation_player.speed_scale = _animation.length / _seconds_per_rotation
+
+	animation_player.play("laser_turret_activated_rotating")
+
+	_laser_rotation = 0
 
 	_init_pos = _laser_raycast.position
 

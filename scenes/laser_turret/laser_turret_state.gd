@@ -30,6 +30,8 @@ func laser_turret_state_enable(animation_player: AnimationPlayer, laser_sprite: 
 	
 	super.enable()
 
+	animation_player.speed_scale = 1
+
 # activate turret when finished priming
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "laser_turret_priming":
