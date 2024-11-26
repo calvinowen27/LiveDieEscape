@@ -19,6 +19,9 @@ func disable_turret() -> void:
 	if not _item_dropped:
 		$Interactable.set_active(true)
 
+func die() -> void:
+	$LaserTurretState.die()
+
 func enable_turret() -> void:
 	$LaserTurretState.enable_turret()
 

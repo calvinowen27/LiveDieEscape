@@ -19,5 +19,5 @@ func _physics_process(_delta: float) -> void:
 		if found_collider == RoomManager.get_player():
 			RoomManager.get_player().die()
 		elif found_collider as LaserTurret != null:
-			(found_collider as LaserTurret).disable_turret()
+			(found_collider as LaserTurret).die()
 		# do hit stuff here

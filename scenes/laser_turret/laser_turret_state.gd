@@ -34,6 +34,8 @@ func laser_turret_state_enable(animation_player: AnimationPlayer, laser_sprite: 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "laser_turret_priming":
 		_set_curr_state("LaserTurretActivated")
+	elif anim_name == "laser_turret_breaking":
+		_set_curr_state("LaserTurretBroken")
 
 func reboot() -> void:
 	_set_curr_state("LaserTurretIdle")
@@ -48,3 +50,7 @@ func disable_turret() -> void:
 
 func enable_turret() -> void:
 	_set_curr_state("LaserTurretPriming")
+
+func die() -> void:
+	if _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":
+		_set_curr_state("LaserTurretBreaking")
