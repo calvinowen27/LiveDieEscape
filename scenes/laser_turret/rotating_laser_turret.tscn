@@ -15,9 +15,9 @@ size = Vector2(80.6667, 136.573)
 scale = Vector2(1.5, 1.5)
 script = ExtResource("2_pm2ay")
 
-[node name="LaserTurretActivated" parent="LaserTurretState" index="2" node_paths=PackedStringArray("_laser_sprite")]
+[node name="LaserTurretActivated" parent="LaserTurretState" index="2"]
 script = ExtResource("2_5pkt1")
-_laser_sprite = NodePath("../../RayCast2D/Laser")
+_seconds_per_rotation = 5.0
 
 [node name="InteractLabel" parent="Interactable" index="0"]
 offset_left = -19.3333
@@ -30,7 +30,7 @@ scale = Vector2(0.325, 0.325)
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_d4wg1")
 
-[node name="ControlInteractable" parent="." index="8" instance=ExtResource("4_10f1w")]
+[node name="ControlInteractable" parent="." index="7" instance=ExtResource("4_10f1w")]
 _hold_to_interact = true
 
 [node name="InteractLabel" parent="ControlInteractable" index="0"]

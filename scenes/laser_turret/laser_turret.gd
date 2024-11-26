@@ -6,7 +6,7 @@ var _item_dropped: bool = false
 
 func _ready() -> void:
 	$ZOrdering.init($Sprite2D)
-	$RayCast2D/Laser.visible = false
+	$Sprite2D/RayCast2D/Laser.visible = false
 
 	$Interactable.set_active(false)
 

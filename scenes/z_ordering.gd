@@ -1,9 +1,17 @@
 extends Node
 
 var _sprite: Sprite2D
+var _marker: Marker2D
 
 func init(sprite: Sprite2D) -> void:
 	_sprite = sprite
 
+func init_marker(sprite: Sprite2D, marker: Marker2D) -> void:
+	_sprite = sprite
+	_marker = marker
+
 func _process(_delta: float) -> void:
-	_sprite.z_index = int(_sprite.global_position.y)
+	if _marker != null:
+		_sprite.z_index = int(_marker.global_position.y)
+	else:
+		_sprite.z_index = int(_sprite.global_position.y)
