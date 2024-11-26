@@ -5,11 +5,11 @@
 [ext_resource type="Script" path="res://scenes/laser_turret/rotating_laser_turret.gd" id="2_pm2ay"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="4_10f1w"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4wg1"]
-size = Vector2(80, 141.208)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvois"]
 size = Vector2(80.6667, 136.573)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4wg1"]
+size = Vector2(80, 141.208)
 
 [node name="RotatingLaserTurret" instance=ExtResource("1_31gae")]
 scale = Vector2(1.5, 1.5)
@@ -17,18 +17,7 @@ script = ExtResource("2_pm2ay")
 
 [node name="LaserTurretActivated" parent="LaserTurretState" index="2"]
 script = ExtResource("2_5pkt1")
-_seconds_per_rotation = 5.0
-
-[node name="InteractLabel" parent="Interactable" index="0"]
-offset_left = -19.3333
-offset_top = -132.667
-offset_right = 17.6667
-offset_bottom = -44.6667
-scale = Vector2(0.325, 0.325)
-
-[node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
-position = Vector2(0, -10)
-shape = SubResource("RectangleShape2D_d4wg1")
+_seconds_per_rotation = 3.14
 
 [node name="ControlInteractable" parent="." index="7" instance=ExtResource("4_10f1w")]
 _hold_to_interact = true
@@ -44,7 +33,18 @@ offset_bottom = -46.0
 position = Vector2(0.333333, -6.953)
 shape = SubResource("RectangleShape2D_wvois")
 
+[node name="InteractLabel" parent="Interactable" index="0"]
+offset_left = -19.3333
+offset_top = -132.667
+offset_right = 17.6667
+offset_bottom = -44.6667
+scale = Vector2(0.325, 0.325)
+
+[node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_d4wg1")
+
 [connection signal="interact" from="ControlInteractable" to="." method="_on_control_interactable_interact"]
 
-[editable path="Interactable"]
 [editable path="ControlInteractable"]
+[editable path="Interactable"]

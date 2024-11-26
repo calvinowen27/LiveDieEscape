@@ -11,17 +11,20 @@ var _animation: Animation
 
 var _init_pos: Vector2
 
-func _ready() -> void:
-	pass
-
 func update(_delta: float) -> String:
 	_laser_rotation += _delta * TWO_PI / _seconds_per_rotation
 	if _laser_rotation >= TWO_PI:
 		_laser_rotation = 0
 	
-	var dist = (_laser_raycast.position - get_node("../../ForceFieldWorld").position).length()
-	_laser_raycast.position = get_node("../../ForceFieldWorld").position + Vector2(-cos(_laser_rotation) * dist, -sin(_laser_rotation) * dist * 2 / 3)
+	# this whole section is bad, no constants or anything
+	# idk should prob fix but it works so i'll leave it for now
+	_laser_raycast.position = get_node("../../CenterMarker").position + Vector2(-cos(_laser_rotation) * 8, -8)
 	_laser_raycast.target_position = _laser_raycast.position + Vector2(-cos(_laser_rotation) * _target_len, -sin(_laser_rotation) * _target_len)
+
+	if _laser_raycast.get_node("Laser/ZOrderingMarker").global_position.y > get_node("../../").global_position.y:
+		_laser_sprite.z_index = 4096
+	else:
+		_laser_sprite.z_index = 0
 
 	_laser_sprite.rotation = _laser_rotation
 

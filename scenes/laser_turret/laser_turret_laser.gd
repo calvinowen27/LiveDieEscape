@@ -2,12 +2,6 @@ extends RayCast2D
 
 var last_collider: Object
 
-func _process(_delta: float) -> void:
-	if $ZOrderingMarker.global_position.y > get_node("../Sprite2D").global_position.y:
-		$Laser.z_index = 1
-	else:
-		$Laser.z_index = 0
-
 func _physics_process(_delta: float) -> void:
 	if not is_colliding():
 		last_collider = null

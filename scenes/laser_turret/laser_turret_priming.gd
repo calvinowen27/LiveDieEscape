@@ -10,3 +10,5 @@ func laser_turret_state_enable(animation_player: AnimationPlayer, laser_sprite: 
 	super.laser_turret_state_enable(animation_player, laser_sprite, laser_raycast)
 	
 	animation_player.play("laser_turret_priming")
+
+	animation_player.speed_scale = 1

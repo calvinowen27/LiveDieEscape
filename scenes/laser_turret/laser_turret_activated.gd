@@ -12,3 +12,5 @@ func laser_turret_state_enable(animation_player: AnimationPlayer, laser_sprite: 
 	animation_player.play("laser_turret_activated")
 	laser_sprite.visible = true
 	laser_raycast.enabled = true
+
+	animation_player.speed_scale = 1

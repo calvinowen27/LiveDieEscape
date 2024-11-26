@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://bb1tgidnjrhfg"]
+[gd_scene load_steps=7 format=4 uid="uid://bb1tgidnjrhfg"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_3b385"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6rxug"]
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_yj8nx"]
-[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_laser.gd" id="4_j2jvd"]
 [ext_resource type="PackedScene" uid="uid://sff6u8tq7wwe" path="res://scenes/world_objects/sign.tscn" id="6_4xf38"]
 [ext_resource type="PackedScene" uid="uid://du7rg0bguh68w" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="6_8a3v7"]
 [ext_resource type="PackedScene" uid="uid://oeqvilovte4h" path="res://scenes/items/force_field_emitter.tscn" id="6_s8hjx"]
@@ -25,28 +24,6 @@ scale = Vector2(-1, 1)
 [node name="RotatingLaserTurret" parent="." index="5" instance=ExtResource("6_8a3v7")]
 position = Vector2(806, 462)
 collision_mask = 3
-
-[node name="LaserTurretState" parent="RotatingLaserTurret" index="1" node_paths=PackedStringArray("_laser_sprite", "_laser_raycast")]
-_laser_sprite = NodePath("../RayCast2D/Laser")
-_laser_raycast = NodePath("../RayCast2D")
-
-[node name="RayCast2D" parent="RotatingLaserTurret" index="3"]
-position = Vector2(-13, -37)
-enabled = false
-target_position = Vector2(-1000, 0)
-collision_mask = 3
-collide_with_areas = true
-script = ExtResource("4_j2jvd")
-
-[node name="ZOrderingMarker" parent="RotatingLaserTurret/RayCast2D" index="1"]
-position = Vector2(-52, 0)
-
-[node name="TextureProgressBar" parent="RotatingLaserTurret/Interactable/InteractLabel" index="1"]
-offset_left = 5.0
-offset_top = 28.375
-offset_right = 37.0
-offset_bottom = 60.375
-scale = Vector2(3, 3)
 
 [node name="Door0" parent="." index="6" instance=ExtResource("2_6rxug")]
 position = Vector2(504, 1032)
@@ -73,7 +50,3 @@ offset_bottom = 1048.0
 [node name="Sign" parent="." index="11" instance=ExtResource("6_4xf38")]
 position = Vector2(800, 48)
 _sign_text = Array[String](["An item can be obtained from the large laser turrets to control the small ones. You can also harvest it's shield."])
-
-[editable path="RotatingLaserTurret"]
-[editable path="RotatingLaserTurret/Interactable"]
-[editable path="RotatingLaserTurret/ControlInteractable"]
