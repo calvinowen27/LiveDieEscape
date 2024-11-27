@@ -12,6 +12,9 @@ func _ready() -> void:
 	pass
 
 func update(_delta: float) -> String:
+	if _disruptor == null:
+		return "GuardFollowPlayer"
+
 	var target_pos = _disruptor.position
 	var speed = 100 + _move_speed * 15
 
@@ -23,3 +26,8 @@ func update(_delta: float) -> String:
 func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
 	super.guard_state_enable(rigidbody, animation_player)
 
+func _on_guard_body_entered(body: Node) -> void:
+	if body == _disruptor:
+		body.queue_free()
+		_disruptor = null
+		
