@@ -14,6 +14,8 @@ func _ready() -> void:
 	# _set_curr_state("PlayerIdle")
 	super._ready()
 
+	EventBus.change_room.connect(_on_room_change)
+
 func enable():
 	pass
 
@@ -49,6 +51,8 @@ func point_sprite() -> void:
 	elif _move_dir.x < 0:
 		_sprite.scale.x = 1 * abs(_sprite.scale.x)
 
+# move player based on input via rigidbody linear velocity
+# also update last_move_dir for dashing from idle state
 func move(speed_mult: float) -> void:
 	var new_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
@@ -59,3 +63,7 @@ func move(speed_mult: float) -> void:
 	
 	var speed = StatManager.get_base_stat("speed")
 	_rigidbody.linear_velocity = _move_dir * (250 + speed * 20) * speed_mult
+
+func _on_room_change(_level_idx: int, _room_idx):
+	# to prevent dash through door bug
+	_set_curr_state("PlayerWalk")
