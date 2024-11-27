@@ -25,9 +25,9 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 
 func update(_delta: float) -> String:
 	if dash().x > 0:
-		_animation_player.play("dash_right_test")
+		_animation_player.play("player_dash_right")
 	else:
-		_animation_player.play("dash_left_test")
+		_animation_player.play("player_dash_left")
 	
 	if _dash_ticks_elapsed < dash_ticks and _dashing:
 		_dash_ticks_elapsed += 1
