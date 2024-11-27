@@ -33,7 +33,7 @@ func _create_control_buttons() -> void:
 	
 	for room in _control_rooms:
 		var new_button = control_button.instantiate()
-		_control_buttons[room] = [new_button, false]
+		_control_buttons[room] = [new_button, false, false]
 		new_button.text = control_button_unavailable_text % room
 		$UI/GridContainer.add_child(new_button)
 		new_button.pressed.connect(_on_control_button_pressed.bind(room))
@@ -64,7 +64,7 @@ func _update_control() -> void:
 		var control_available = false
 
 		var button_info = _control_buttons[control_room]
-		if button_info == null:
+		if button_info == null or button_info[2]:
 			continue
 		
 		# set control to available by default
@@ -93,7 +93,21 @@ func _update_control() -> void:
 			button.set("theme_override_colors/font_hover_pressed_color", Color(1.0, 0.0, 0.0, 1.0))
 
 func _on_control_button_pressed(room_idx: int) -> void:
-	if _control_buttons[room_idx][1]:
+	var button_info = _control_buttons[room_idx]
+	if button_info[1]:
+		var control_chips = Inventory.get_items_of_group("ControlChips")
+
+		if not button_info[2]:
+			for chip in control_chips:
+				if chip.get_control_level() != _level:
+					continue
+				
+				# control is available, update permissions
+				if chip.get_control_room() == room_idx:
+					button_info[2] = true
+					Inventory.del_item(chip)
+					break
+
 		RoomManager.reboot_room(_level, room_idx)
 
 func _on_interact() -> void:
