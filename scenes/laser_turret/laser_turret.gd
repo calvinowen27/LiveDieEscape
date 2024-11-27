@@ -24,7 +24,7 @@ func die() -> void:
 
 func enable_turret() -> void:
 	$LaserTurretState.enable_turret()
-
+	
 	$Interactable.set_active(false)
 
 func _on_interactable_interact() -> void:

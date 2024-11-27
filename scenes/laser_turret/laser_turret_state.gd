@@ -6,8 +6,16 @@ class_name LaserTurretState
 @export var _laser_sprite: Sprite2D
 @export var _laser_raycast: RayCast2D
 
+var _level: int
+var _room: int
+
 func _ready() -> void:
 	super._ready()
+
+	_room = RoomManager.get_curr_room_idx()
+	_level = RoomManager.get_curr_level()
+
+	EventBus.change_room.connect(_on_room_change)
 
 func _set_curr_state(new_state_name: String) -> State:
 	var new_state = super._set_curr_state(new_state_name)
@@ -39,6 +47,14 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "laser_turret_breaking":
 		_set_curr_state("LaserTurretBroken")
 
+func _on_room_change(level_idx: int, room_idx: int) -> void:
+	if _curr_state == null:
+		return
+
+	if (level_idx != _level or room_idx != _room) and _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":
+		get_parent().disable_turret()
+		get_parent().enable_turret()
+
 func reboot() -> void:
 	_set_curr_state("LaserTurretIdle")
 	
@@ -48,10 +64,12 @@ func reboot() -> void:
 		_set_curr_state("LaserTurretPriming")
 	
 func disable_turret() -> void:
-	_set_curr_state("LaserTurretIdle")
+	if _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":
+		_set_curr_state("LaserTurretIdle")
 
 func enable_turret() -> void:
-	_set_curr_state("LaserTurretPriming")
+	if _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":
+		_set_curr_state("LaserTurretPriming")
 
 func die() -> void:
 	if _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":

@@ -9,8 +9,6 @@ var _laser_rotation = 0
 
 var _animation: Animation
 
-var _init_pos: Vector2
-
 func update(_delta: float) -> String:
 	_laser_rotation += _delta * TWO_PI / _seconds_per_rotation
 	if _laser_rotation >= TWO_PI:
@@ -40,8 +38,9 @@ func laser_turret_state_enable(animation_player: AnimationPlayer, laser_sprite: 
 	animation_player.play("laser_turret_activated_rotating")
 
 	_laser_rotation = 0
-
-	_init_pos = _laser_raycast.position
+	_laser_raycast.position = get_node("../../CenterMarker").position + Vector2(-8, -8)
+	_laser_raycast.target_position = _laser_raycast.position + Vector2(-_target_len, 0)
+	_laser_sprite.rotation = _laser_rotation
 
 	laser_sprite.visible = true
 	laser_raycast.enabled = true
