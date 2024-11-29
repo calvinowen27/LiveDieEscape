@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 
 func state_init() -> void:
 	super.state_init()
-	_animation_player.play("dash_left_test")
+	_animation_player.play("player_dash_left")
 
 # enable state and pass necessary references
 func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
