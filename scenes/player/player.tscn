@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=18 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://nnjtr6oolcu4" path="res://resources/art/player-sheet.png" id="6_fempl"]
 [ext_resource type="PackedScene" uid="uid://c661v61raotsm" path="res://scenes/player/player_dash.tscn" id="6_mx61r"]
 [ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="7_iwhiw"]
-[ext_resource type="PackedScene" uid="uid://c56iqshopjhc4" path="res://scenes/lightning_mine/lightning.tscn" id="8_ub7vv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w0vmm"]
 friction = 0.0
@@ -417,8 +416,6 @@ libraries = {
 }
 
 [node name="ZOrdering" parent="." instance=ExtResource("7_iwhiw")]
-
-[node name="Lightning" parent="." instance=ExtResource("8_ub7vv")]
 
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerIdle" method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerWalk" method="_on_dash_cooldown_timer_timeout"]

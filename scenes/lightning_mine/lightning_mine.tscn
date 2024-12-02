@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsd15uocf3nk3"]
+
+[ext_resource type="Texture2D" uid="uid://yuu4awo3bpbf" path="res://resources/art/lightning_mine.png" id="1_bafst"]
+[ext_resource type="Script" path="res://scenes/lightning_mine/lightning_mine.gd" id="1_no2fe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpf1e"]
+size = Vector2(16, 16)
+
+[node name="LightningMine" type="Area2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_no2fe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wpf1e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bafst")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
