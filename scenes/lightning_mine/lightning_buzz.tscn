@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddjlp2vdyhqr0"]
+
+[ext_resource type="PackedScene" uid="uid://cm4hfgb3fo55w" path="res://scenes/lightning_mine/lightning_state.tscn" id="1_8tctg"]
+[ext_resource type="Script" path="res://scenes/lightning_mine/lightning_buzz.gd" id="2_vkug5"]
+
+[node name="LightningBuzz" instance=ExtResource("1_8tctg")]
+script = ExtResource("2_vkug5")

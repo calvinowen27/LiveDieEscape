@@ -1,7 +1,7 @@
 extends Node
 
 var _base_stats = {
-			"speed": 2
+			"speed": 7
 			}
 
 var _stats = {}
@@ -51,6 +51,15 @@ func get_base_stat(stat: String) -> int:
 	
 	return _base_stats[stat]
 
+func set_stat(stat: String, val: int) -> bool:
+	if stat not in _stats.keys():
+		print_debug("set_stat(): Stat %s doesn't exist in _stats" % stat)
+		return false
+	
+	_stats[stat] = val
+
+	return true
+
 # change stat by dval, returns false on failure, true on success
 func change_stat(stat: String, dval: int) -> bool:
 	if stat not in _stats.keys():
@@ -86,7 +95,7 @@ func add_powerup(powerup_name: String, duration: int) -> void:
 	_powerups[powerup_name] = get_tree().create_timer(duration)
 
 	if powerup_name == "speed":
-		set_base_stat("speed", 15)
+		set_base_stat("speed", 20)
 		# change_stat("speed", 13)
 
 	var texture_rects = get_tree().root.get_node("Main/HUDRect/HUD/Powerups/HBoxContainer").get_children()
@@ -105,7 +114,7 @@ func add_powerup(powerup_name: String, duration: int) -> void:
 
 	if powerup_name == "speed":
 		# change_stat("speed", get_base_stat("speed") - get_stat("speed"))
-		set_base_stat("speed", 2)
+		set_base_stat("speed", 7)
 
 	chosen_rect.visible = false
 
