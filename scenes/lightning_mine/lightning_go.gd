@@ -2,6 +2,8 @@ extends LightningState
 
 var _transition: bool = false
 
+@export var _altered_speed: int = -3
+
 func _ready() -> void:
 	pass
 
@@ -22,8 +24,8 @@ func lightning_state_enable(animation_player: AnimationPlayer, sprite: Sprite2D)
 	_transition = false
 	$TransitionTimer.start()
 
-	StatManager.set_base_stat("speed", -3)
+	StatManager.change_stat("speed", _altered_speed)
 
 func _on_transition_timer_timeout() -> void:
-	print("transition")
+	StatManager.revert_stat_change("speed", _altered_speed)
 	_transition = true

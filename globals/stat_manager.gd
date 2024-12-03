@@ -1,124 +1,63 @@
 extends Node
 
 var _base_stats = {
-			"speed": 7
-			}
+	"speed": 7,
+	"speed_mult": 1
+}
 
 var _stats = {}
 
-var _powerups = {}
-
-var _powerup_icon_path = "res://resources/art/"
+# 2nd dimension (entries) are of form [stat_name: String, new_val: int]
+var _stat_changes: Array[Array] = []
 
 func _ready() -> void:
-	reset_stats()
+	_stats = _base_stats.duplicate(true)
 
-# add stat: val to _stats, returns false if stat already in _base_stats
-# returns true if successful
-func add_base_stat(stat: String, val: int) -> bool:
-	if stat in _base_stats.keys():
-		print_debug("add_stat(): Stat %s already exists in _base_stats" % stat)
-		return false
-	
-	_base_stats[stat] = val
-	
-	return true
-
-# set value of stat to val, returns false if stat doesn't exist,
-# returns true otherwise (success)
-func set_base_stat(stat: String, val: int) -> bool:
-	if stat not in _base_stats.keys():
-		print_debug("set_stat(): Stat %s doesn't exist in _base_stats" % stat)
-		return false
-	
-	_base_stats[stat] = val
-	
-	return true
-
-# get value of stat to val, returns -1 if stat doesn't exist
 func get_stat(stat: String) -> int:
 	if stat not in _stats.keys():
-		print_debug("get_stat(): Stat %s doesn't exist in _stats" % stat)
+		print_debug("get_stat(): stat %s not in _stats.keys()" % stat)
 		return -1
 	
 	return _stats[stat]
 
-# get value of stat to val, returns -1 if stat doesn't exist
-func get_base_stat(stat: String) -> int:
-	if stat not in _base_stats.keys():
-		print_debug("get_base_stat(): Stat %s doesn't exist in _base_stats" % stat)
-		return -1
-	
-	return _base_stats[stat]
-
-func set_stat(stat: String, val: int) -> bool:
+# add stat change to array and overwrite current stat
+func change_stat(stat: String, new_val: int) -> bool:
 	if stat not in _stats.keys():
-		print_debug("set_stat(): Stat %s doesn't exist in _stats" % stat)
-		return false
+			print_debug("change_stat(): stat %s not in _stats.keys()" % stat)
+			return false
 	
-	_stats[stat] = val
+	_stat_changes.append([stat, new_val])
+
+	_stats[stat] = new_val
 
 	return true
 
-# change stat by dval, returns false on failure, true on success
-func change_stat(stat: String, dval: int) -> bool:
-	if stat not in _stats.keys():
-		print_debug("change_stat(): Stat %s doesn't exist in _stats" % stat)
-		return false
+# remove first instance of stat from stat change array
+func revert_stat_change(stat: String, check_val: int) -> bool:
+	var found_idx: int = -1
+	for i in range(_stat_changes.size()):
+		if _stat_changes[i][0] == stat and _stat_changes[i][1] == check_val:
+			found_idx = i
 	
-	_stats[stat] += dval
-	
-	return true
+	_stat_changes.remove_at(found_idx)
 
-# change base stat by dval, returns false on failure, true on success
-func change_base_stat(stat: String, dval: int) -> bool:
-	if stat not in _base_stats.keys():
-		print_debug("change_stat(): Stat %s doesn't exist in _base_stats" % stat)
-		return false
+	# check if stat still being altered
+	var stat_altered: bool = false
+	for change in _stat_changes:
+		if change[0] == stat:
+			stat_altered = true
+			break
 	
-	_base_stats[stat] += dval
-	
-	return true
-
-# reset stats to base
-func reset_stats() -> void:
-	for stat in _base_stats.keys():
+	# if stat not altered anymore, revert to base value
+	if not stat_altered:
 		_stats[stat] = _base_stats[stat]
 
-func get_stats() -> Dictionary:
-	return _stats
+	if found_idx != -1:
+		return true
+	
+	return false
 
-func get_base_stats() -> Dictionary:
-	return _base_stats
+func reset_stats() -> void:
+	_stats.clear()
 
-func add_powerup(powerup_name: String, duration: int) -> void:
-	_powerups[powerup_name] = get_tree().create_timer(duration)
-
-	if powerup_name == "speed":
-		set_base_stat("speed", 20)
-		# change_stat("speed", 13)
-
-	var texture_rects = get_tree().root.get_node("Main/HUDRect/HUD/Powerups/HBoxContainer").get_children()
-
-	var chosen_rect
-	var icon = load("%s%s_powerup.png" % [_powerup_icon_path, powerup_name])
-
-	for rect in texture_rects:
-		if not rect.visible or rect.texture == icon:
-			chosen_rect = rect
-			rect.texture = icon
-			rect.visible = true
-			break
-
-	await _powerups[powerup_name].timeout
-
-	if powerup_name == "speed":
-		# change_stat("speed", get_base_stat("speed") - get_stat("speed"))
-		set_base_stat("speed", 7)
-
-	chosen_rect.visible = false
-
-	_powerups.erase(powerup_name)
-
-func get_powerups() -> Dictionary:
-	return _powerups
+	_stats = _base_stats.duplicate(true)

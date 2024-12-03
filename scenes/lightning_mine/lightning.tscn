@@ -78,17 +78,11 @@ libraries = {
 "": SubResource("AnimationLibrary_p26dt")
 }
 
-[node name="AliveTimer" type="Timer" parent="."]
-wait_time = 6.0
-one_shot = true
-autostart = true
-
 [node name="LightningState" parent="." node_paths=PackedStringArray("_animation_player", "_sprite") instance=ExtResource("3_r4rcn")]
 _animation_player = NodePath("../AnimationPlayer")
 _sprite = NodePath("..")
 
 [node name="LightningGo" parent="LightningState" instance=ExtResource("4_akt5g")]
+_altered_speed = -3
 
 [node name="LightningBuzz" parent="LightningState" instance=ExtResource("5_64l7y")]
-
-[connection signal="timeout" from="AliveTimer" to="." method="_on_alive_timer_timeout"]

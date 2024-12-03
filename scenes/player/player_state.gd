@@ -53,7 +53,7 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 
 # move player based on input via rigidbody linear velocity
 # also update last_move_dir for dashing from idle state
-func move(speed_mult: float) -> void:
+func move() -> void:
 	var new_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if new_dir != _move_dir and _move_dir != Vector2.ZERO:
@@ -61,7 +61,8 @@ func move(speed_mult: float) -> void:
 	
 	_move_dir = new_dir
 	
-	var speed = StatManager.get_base_stat("speed")
+	var speed = StatManager.get_stat("speed")
+	var speed_mult = StatManager.get_stat("speed_mult")
 	_rigidbody.linear_velocity = _move_dir * (150 + speed * 20) * speed_mult
 
 func _on_room_change(_level_idx: int, _room_idx):

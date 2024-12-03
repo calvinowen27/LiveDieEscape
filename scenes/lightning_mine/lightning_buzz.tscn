@@ -5,3 +5,10 @@
 
 [node name="LightningBuzz" instance=ExtResource("1_8tctg")]
 script = ExtResource("2_vkug5")
+_altered_speed = 0
+
+[node name="AliveTimer" type="Timer" parent="." index="0"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="AliveTimer" to="." method="_on_alive_timer_timeout"]

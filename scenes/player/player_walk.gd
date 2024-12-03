@@ -16,7 +16,7 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 	super.player_state_enable(sprite, rigidbody, animation_player)
 
 func update(_delta: float) -> String:
-	move(1)
+	move()
 	# point_sprite()
 
 	if _move_dir.x > 0:
