@@ -43,7 +43,7 @@ tracks/0/keys = {
 resource_name = "lightning_buzz"
 length = 2.0
 loop_mode = 1
-step = 0.125
+step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,10 +51,10 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.5, 1, 1.125, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.4375, 0.5, 1, 1.125, 1.25, 1.4375, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(3, 1)]
+"values": [Vector2i(0, 1), Vector2i(2, 1), Vector2i(1, 1), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(0, 1), Vector2i(3, 1), Vector2i(2, 1), Vector2i(3, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p26dt"]
@@ -83,6 +83,5 @@ _animation_player = NodePath("../AnimationPlayer")
 _sprite = NodePath("..")
 
 [node name="LightningGo" parent="LightningState" instance=ExtResource("4_akt5g")]
-_altered_speed = -3
 
 [node name="LightningBuzz" parent="LightningState" instance=ExtResource("5_64l7y")]
