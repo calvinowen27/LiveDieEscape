@@ -1,8 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://uth7vm3vhpkr"]
+[gd_scene load_steps=3 format=3 uid="uid://uth7vm3vhpkr"]
 
 [ext_resource type="Texture2D" uid="uid://cu8u1jyt6hx0l" path="res://resources/art/speed_powerup.png" id="1_kxn8b"]
+[ext_resource type="Texture2D" uid="uid://bqasq5r1eqe2b" path="res://resources/art/circle.png" id="2_3ga04"]
 
 [node name="PowerupIcon" type="TextureRect"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 88.0
+offset_bottom = 88.0
 texture = ExtResource("1_kxn8b")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.75, 2.75)
+pivot_offset = Vector2(16, 16)
+fill_mode = 5
+texture_under = ExtResource("2_3ga04")
+texture_progress = ExtResource("2_3ga04")
+tint_under = Color(0, 0, 0, 1)

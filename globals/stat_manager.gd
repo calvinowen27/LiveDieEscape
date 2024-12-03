@@ -54,8 +54,9 @@ func revert_stat_change(stat: String, check_val: float) -> bool:
 	# if stat not altered anymore, revert to base value
 	if not stat_altered:
 		_stats[stat] = _base_stats[stat]
+		return true
 
-	return true
+	return false
 
 func reset_stats() -> void:
 	_stats.clear()
