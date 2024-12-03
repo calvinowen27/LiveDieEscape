@@ -5,4 +5,4 @@ func _on_body_entered(body:Node2D) -> void:
 	if body == player:
 		self.queue_free()
 
-		StatManager.add_powerup("speed", 5)
+		PowerupManager.add_powerup("speed")

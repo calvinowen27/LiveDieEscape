@@ -25,6 +25,7 @@ RoomManager="*res://globals/room_manager.gd"
 StatManager="*res://globals/stat_manager.gd"
 Inventory="*res://globals/inventory.gd"
 LevelManager="*res://globals/level_manager.gd"
+PowerupManager="*res://globals/powerup_manager.gd"
 
 [display]
 

@@ -47,7 +47,7 @@ func dash() -> Vector2:
 	if dash_dir == Vector2.ZERO:
 		dash_dir = get_node("../../").get_last_move_dir()
 	
-	var speed = StatManager.get_base_stat("speed")
+	var speed = StatManager.get_stat("speed")
 	_rigidbody.linear_velocity = dash_dir * (300 + speed * 20) * speed_mult
 
 	return dash_dir
