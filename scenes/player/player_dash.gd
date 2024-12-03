@@ -1,6 +1,6 @@
 extends PlayerState
 
-@export var speed_mult = 10
+@export var dash_speed_mult = 5
 @export var dash_ticks = 10
 var _dash_ticks_elapsed = 0
 
@@ -48,6 +48,7 @@ func dash() -> Vector2:
 		dash_dir = get_node("../../").get_last_move_dir()
 	
 	var speed = StatManager.get_stat("speed")
-	_rigidbody.linear_velocity = dash_dir * (300 + speed * 20) * speed_mult
+	var speed_mult = StatManager.get_stat("speed_mult")
+	_rigidbody.linear_velocity = dash_dir * (300 + speed * 20) * dash_speed_mult * speed_mult
 
 	return dash_dir

@@ -24,8 +24,8 @@ func lightning_state_enable(animation_player: AnimationPlayer, sprite: Sprite2D)
 	_transition = false
 	$TransitionTimer.start()
 
-	StatManager.change_stat("speed", _altered_speed)
+	StatManager.change_stat("speed_mult", 0.25)
 
 func _on_transition_timer_timeout() -> void:
-	StatManager.revert_stat_change("speed", _altered_speed)
+	StatManager.revert_stat_change("speed_mult", 0.25)
 	_transition = true

@@ -39,6 +39,9 @@ func revert_stat_change(stat: String, check_val: int) -> bool:
 		if _stat_changes[i][0] == stat and _stat_changes[i][1] == check_val:
 			found_idx = i
 	
+	if found_idx == -1:
+		return false
+	
 	_stat_changes.remove_at(found_idx)
 
 	# check if stat still being altered
@@ -52,10 +55,7 @@ func revert_stat_change(stat: String, check_val: int) -> bool:
 	if not stat_altered:
 		_stats[stat] = _base_stats[stat]
 
-	if found_idx != -1:
-		return true
-	
-	return false
+	return true
 
 func reset_stats() -> void:
 	_stats.clear()

@@ -5,5 +5,5 @@
 
 [node name="PlayerDash" instance=ExtResource("1_1mvm6")]
 script = ExtResource("2_ettpc")
-speed_mult = 5
+speed_mult = 10
 dash_ticks = 1
