@@ -83,5 +83,7 @@ _animation_player = NodePath("../AnimationPlayer")
 _sprite = NodePath("..")
 
 [node name="LightningGo" parent="LightningState" instance=ExtResource("4_akt5g")]
+_altered_speed_mult = 0.0625
 
 [node name="LightningBuzz" parent="LightningState" instance=ExtResource("5_64l7y")]
+_altered_speed_mult = 0.5

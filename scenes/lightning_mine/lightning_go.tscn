@@ -5,7 +5,7 @@
 
 [node name="LightningGo" instance=ExtResource("1_k0olo")]
 script = ExtResource("2_c7rc7")
-_altered_speed = -3
+_altered_speed_mult = 0.0625
 
 [node name="TransitionTimer" type="Timer" parent="." index="0"]
 one_shot = true

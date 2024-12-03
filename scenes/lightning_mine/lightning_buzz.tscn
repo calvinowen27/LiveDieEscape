@@ -5,7 +5,7 @@
 
 [node name="LightningBuzz" instance=ExtResource("1_8tctg")]
 script = ExtResource("2_vkug5")
-_altered_speed = 0
+_altered_speed_mult = 0.5
 
 [node name="AliveTimer" type="Timer" parent="." index="0"]
 wait_time = 5.0

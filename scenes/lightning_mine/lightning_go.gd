@@ -1,8 +1,8 @@
 extends LightningState
 
-var _transition: bool = false
+@export var _altered_speed_mult: float = 0.0625
 
-@export var _altered_speed: int = -3
+var _transition: bool = false
 
 func _ready() -> void:
 	pass
@@ -24,8 +24,8 @@ func lightning_state_enable(animation_player: AnimationPlayer, sprite: Sprite2D)
 	_transition = false
 	$TransitionTimer.start()
 
-	StatManager.change_stat("speed_mult", 0.25)
+	StatManager.change_stat("speed_mult", _altered_speed_mult)
 
 func _on_transition_timer_timeout() -> void:
-	StatManager.revert_stat_change("speed_mult", 0.25)
+	StatManager.revert_stat_change("speed_mult", _altered_speed_mult)
 	_transition = true
