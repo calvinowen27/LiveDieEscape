@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cycidapfw14dd"]
+[gd_scene load_steps=8 format=3 uid="uid://bcfdg2re003ai"]
 
 [ext_resource type="Script" path="res://scenes/acid/acid.gd" id="1_axbjy"]
 [ext_resource type="Texture2D" uid="uid://46ufik2dem32" path="res://resources/art/acid-sheet.png" id="1_e4aiu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfva8"]
-size = Vector2(12, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccu0c"]
+size = Vector2(96, 128)
 
-[sub_resource type="Animation" id="Animation_7fe7c"]
-resource_name = "acid"
+[sub_resource type="Animation" id="Animation_n2cwm"]
+resource_name = "acid_bubble"
 length = 4.5
 loop_mode = 1
 step = 0.5
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_0kqhg"]
+[sub_resource type="Animation" id="Animation_0tko0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,26 +39,47 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_72nlq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5p40"]
 _data = {
-"RESET": SubResource("Animation_0kqhg"),
-"acid": SubResource("Animation_7fe7c")
+"RESET": SubResource("Animation_0tko0"),
+"acid_bubble": SubResource("Animation_n2cwm")
 }
 
-[node name="Acid" type="Area2D"]
-scale = Vector2(4, 4)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx0j8"]
+size = Vector2(64, 128)
+
+[node name="Acid" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("1_axbjy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cfva8")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
 texture = ExtResource("1_e4aiu")
 hframes = 9
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ccu0c")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_72nlq")
+"": SubResource("AnimationLibrary_j5p40")
 }
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gx0j8")
+
+[node name="EdgeTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_rigid_body_2d_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="EdgeTimer" to="." method="_on_edge_timer_timeout"]

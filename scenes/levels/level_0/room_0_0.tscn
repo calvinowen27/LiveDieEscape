@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chmgb105w11s1" path="res://scenes/items/speed_powerup.tscn" id="4_70mo2"]
 [ext_resource type="PackedScene" uid="uid://sff6u8tq7wwe" path="res://scenes/world_objects/sign.tscn" id="5_nf5d7"]
 [ext_resource type="PackedScene" uid="uid://bsd15uocf3nk3" path="res://scenes/lightning_mine/lightning_mine.tscn" id="5_yyxfu"]
-[ext_resource type="PackedScene" uid="uid://cycidapfw14dd" path="res://scenes/acid/acid.tscn" id="6_dx47l"]
+[ext_resource type="PackedScene" uid="uid://bcfdg2re003ai" path="res://scenes/acid/acid.tscn" id="6_dx47l"]
 
 [node name="Room0_0" instance=ExtResource("1_obo4y")]
 
@@ -51,7 +51,4 @@ position = Vector2(614, 470)
 position = Vector2(296, 451)
 
 [node name="Acid" parent="." index="13" instance=ExtResource("6_dx47l")]
-position = Vector2(194, 125)
-
-[node name="Acid2" parent="." index="14" instance=ExtResource("6_dx47l")]
-position = Vector2(194, 189)
+position = Vector2(269, 251)

@@ -391,7 +391,6 @@ _initial_state = "PlayerIdle"
 [node name="PlayerWalk" parent="PlayerState" instance=ExtResource("1_5cvwq")]
 
 [node name="PlayerDash" parent="PlayerState" instance=ExtResource("6_mx61r")]
-speed_mult = 10
 dash_ticks = 10
 
 [node name="DashCooldownTimer" type="Timer" parent="PlayerState"]
