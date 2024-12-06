@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://46ufik2dem32" path="res://resources/art/acid-sheet.png" id="1_e4aiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccu0c"]
-size = Vector2(96, 128)
+size = Vector2(48, 64)
 
 [sub_resource type="Animation" id="Animation_n2cwm"]
 resource_name = "acid_bubble"
@@ -46,7 +46,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx0j8"]
-size = Vector2(64, 128)
+size = Vector2(40, 64)
 
 [node name="Acid" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -58,7 +58,7 @@ max_contacts_reported = 5
 script = ExtResource("1_axbjy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
+scale = Vector2(4, 4)
 texture = ExtResource("1_e4aiu")
 hframes = 9
 

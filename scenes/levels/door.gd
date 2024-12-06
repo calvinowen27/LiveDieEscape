@@ -30,6 +30,7 @@ func _ready() -> void:
 	
 	if _locked:
 		$CollisionShape2D/Sprite2D.texture = _locked_texture
+		$RigidBody2D/CollisionShape2D.disabled = false
 
 
 func attempt_open() -> void:
@@ -71,6 +72,7 @@ func _on_activation_timer_timeout() -> void:
 
 func unlock() -> void:
 	$CollisionShape2D/Sprite2D.texture = _unlocked_texture
+	$RigidBody2D/CollisionShape2D.disabled = true
 	_locked = false
 	
 	# deactivate interactable (only for unlocking)

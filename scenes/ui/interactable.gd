@@ -18,6 +18,8 @@ func _ready() -> void:
 	_interact_timer = $InteractTimer
 	_progress_bar = $InteractLabel/TextureProgressBar
 
+	EventBus.change_room.connect(_on_room_change)
+
 	$InteractLabel.rotation = -rotation
 	$InteractLabel.scale.x *= -1 if get_parent().scale.x < 1 else 1
 	
@@ -74,3 +76,6 @@ func _on_interact_timer_timeout() -> void:
 	interact.emit()
 	_interacting = false
 	_progress_bar.value = 0
+
+func _on_room_change(_level_idx: int, _room_idx: int) -> void:
+	_set_interactable(false)

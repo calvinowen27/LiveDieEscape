@@ -52,3 +52,9 @@ position = Vector2(296, 451)
 
 [node name="Acid" parent="." index="13" instance=ExtResource("6_dx47l")]
 position = Vector2(269, 251)
+
+[node name="Acid2" parent="." index="14" instance=ExtResource("6_dx47l")]
+position = Vector2(269, 314)
+
+[node name="Acid3" parent="." index="15" instance=ExtResource("6_dx47l")]
+position = Vector2(269, 378)
