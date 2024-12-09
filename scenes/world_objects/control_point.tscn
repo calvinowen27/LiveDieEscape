@@ -37,7 +37,6 @@ offset = Vector2(0, -14)
 [node name="Interactable" parent="." instance=ExtResource("3_vym52")]
 
 [node name="InteractLabel" parent="Interactable" index="0"]
-visible = false
 offset_top = -207.0
 offset_right = 18.0
 offset_bottom = -119.0

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://br7efdqy35v3k"]
+
+[ext_resource type="Script" path="res://scenes/world_objects/lever.gd" id="1_50m3j"]
+[ext_resource type="Texture2D" uid="uid://cy1mg3pw2yjxf" path="res://resources/art/lever-sheet.png" id="2_72jp6"]
+[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="3_k4w7g"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="4_7fg2u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54rxq"]
+size = Vector2(48, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jywo0"]
+size = Vector2(80.6667, 71)
+
+[node name="Lever" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+script = ExtResource("1_50m3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_54rxq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_72jp6")
+offset = Vector2(0, -8)
+hframes = 2
+
+[node name="ZOrdering" parent="." instance=ExtResource("3_k4w7g")]
+
+[node name="Interactable" parent="." instance=ExtResource("4_7fg2u")]
+
+[node name="InteractLabel" parent="Interactable" index="0"]
+offset_top = -107.0
+offset_bottom = -19.0
+
+[node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
+position = Vector2(1.5, -11.5)
+shape = SubResource("RectangleShape2D_jywo0")
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
+
+[editable path="Interactable"]

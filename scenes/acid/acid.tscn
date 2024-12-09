@@ -4,54 +4,53 @@
 [ext_resource type="Texture2D" uid="uid://46ufik2dem32" path="res://resources/art/acid-sheet.png" id="1_e4aiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccu0c"]
-size = Vector2(48, 64)
+size = Vector2(54, 72)
 
 [sub_resource type="Animation" id="Animation_0tko0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("AcidSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 0)]
+"values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_n2cwm"]
+[sub_resource type="Animation" id="Animation_gde3y"]
 resource_name = "acid_bubble"
 length = 4.5
-loop_mode = 1
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("AcidSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0)]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j5p40"]
 _data = {
 "RESET": SubResource("Animation_0tko0"),
-"acid_bubble": SubResource("Animation_n2cwm")
+"acid_bubble": SubResource("Animation_gde3y")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gx0j8"]
-size = Vector2(14, 64)
+size = Vector2(18, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cfct4"]
-size = Vector2(56, 64)
+size = Vector2(62, 72)
 
-[node name="Acid" type="RigidBody2D"]
+[node name="Acid" type="RigidBody2D" groups=["Acid"]]
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
@@ -59,11 +58,21 @@ freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_axbjy")
+_is_bridge_piece = null
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
+[node name="AcidSprite" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
 texture = ExtResource("1_e4aiu")
 hframes = 9
+vframes = 2
+
+[node name="BridgeSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_e4aiu")
+hframes = 9
+vframes = 2
+frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ccu0c")

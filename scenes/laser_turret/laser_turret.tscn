@@ -300,7 +300,6 @@ _temporary = false
 _hold_to_interact = true
 
 [node name="InteractLabel" parent="Interactable" index="0"]
-visible = false
 offset_top = -138.0
 offset_right = 18.0
 offset_bottom = -50.0

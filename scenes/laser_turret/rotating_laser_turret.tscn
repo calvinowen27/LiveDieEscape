@@ -23,7 +23,6 @@ _seconds_per_rotation = 3.14
 _hold_to_interact = true
 
 [node name="InteractLabel" parent="ControlInteractable" index="0"]
-visible = false
 offset_left = -19.3333
 offset_top = -134.0
 offset_right = 16.6667

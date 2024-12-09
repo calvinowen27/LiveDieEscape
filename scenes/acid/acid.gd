@@ -1,9 +1,12 @@
 extends RigidBody2D
 
-var _player_touching = false
+@export var _is_bridge_piece: bool = false
 
 func _ready() -> void:
 	$AnimationPlayer.play("acid_bubble")
+
+	if _is_bridge_piece:
+		$BridgeSprite.visible = true
 
 func _on_edge_timer_timeout() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -20,3 +23,14 @@ func _on_total_area_body_exited(body: Node2D) -> void:
 	if body == RoomManager.get_player():
 		$EdgeTimer.stop()
 		$CollisionShape2D.set_deferred("disabled", false)
+
+func bridge() -> void:
+	if _is_bridge_piece:
+		$BridgeSprite.frame_coords = Vector2i(1, 1)
+		$LethalArea/CollisionShape2D.set_deferred("disabled", true)
+		$TotalArea/CollisionShape2D.set_deferred("disabled", true)
+		$CollisionShape2D.set_deferred("disabled", true)
+
+func is_bridge_piece() -> bool:
+	return _is_bridge_piece
+	

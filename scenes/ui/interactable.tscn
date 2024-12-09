@@ -17,6 +17,8 @@ size = Vector2(80.6667, 136.573)
 script = ExtResource("1_gx48w")
 
 [node name="InteractLabel" type="Label" parent="."]
+visible = false
+z_index = 4096
 offset_left = -19.0
 offset_top = -133.0
 offset_right = 17.0
