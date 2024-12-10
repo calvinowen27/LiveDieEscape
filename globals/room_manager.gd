@@ -131,7 +131,7 @@ func reboot_room(level_idx: int, room_idx: int) -> void:
 	_room_timers.erase(room_idx)
 
 func bridge_acid(room_idx: int) -> void:
-	var children = get_room(_curr_level, room_idx).get_children()
+	var children = get_room(_curr_level, room_idx).get_node("AcidContainer").get_children()
 	for child in children:
 		if child.is_in_group("Acid") && child.is_bridge_piece():
 			child.bridge()
