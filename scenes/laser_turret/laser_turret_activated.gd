@@ -1,7 +1,5 @@
 extends LaserTurretState
 
-const TWO_PI = 2*PI
-
 func _ready() -> void:
 	pass
 

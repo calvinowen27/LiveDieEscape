@@ -2,6 +2,8 @@ extends State
 
 class_name LaserTurretState
 
+const TWO_PI = 2*PI
+
 @export var _turret: LaserTurret
 @export var _animation_player: AnimationPlayer
 @export var _laser_sprite: Sprite2D

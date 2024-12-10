@@ -7,10 +7,13 @@ const TWO_PI = 2*PI
 var _item_dropped: bool = false
 
 @export var _start_rotation: int
+@export var _movable: bool = false
 
 func _ready() -> void:
 	$ZOrdering.init($Sprite2D)
 	$RayCast2D/Laser.visible = false
+
+	# $RayCast2D/Laser/ZOrdering.init_marker($RayCast2D/Laser, $RayCast2D/Laser/ZOrderingMarker)
 
 	$Interactable.set_active(false)
 
@@ -23,9 +26,14 @@ func _ready() -> void:
 	
 	$RayCast2D/Laser.rotation = rotation_rads
 	var laser_raycast = $RayCast2D
-	laser_raycast.position = $CenterMarker.position + Vector2(-cos(rotation_rads) * 8, -8)
-	$Sprite2D/Spark.position.x = $CenterMarker.position.x -cos(rotation_rads) * 4
+	laser_raycast.position = $CenterMarker.position + Vector2(-cos(rotation_rads) * 8, 0)
+	$Sprite2D/Spark.position.x = $CenterMarker.position.x - cos(rotation_rads) * 8
 	laser_raycast.target_position = laser_raycast.position + Vector2(-cos(rotation_rads) * 1000, -sin(rotation_rads) * 1000)
+
+	if $RayCast2D/Laser/ZOrderingMarker.global_position.y > $Sprite2D.global_position.y:
+		$RayCast2D/Laser.z_index = 4096
+	else:
+		$RayCast2D/Laser.z_index = 0
 	
 func reboot() -> void:
 	$LaserTurretState.reboot()
@@ -55,3 +63,6 @@ func _on_interactable_interact() -> void:
 
 func get_start_rotation() -> int:
 	return _start_rotation
+
+func is_movable() -> bool:
+	return _movable

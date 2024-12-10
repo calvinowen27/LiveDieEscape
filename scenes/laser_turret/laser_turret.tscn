@@ -217,7 +217,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/path = NodePath(".:frame_coords")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -300,12 +300,11 @@ _laser_raycast = NodePath("../RayCast2D")
 _initial_state = "LaserTurretPriming"
 
 [node name="LaserTurretIdle" parent="LaserTurretState" instance=ExtResource("4_wk736")]
-_movable = false
+_initial_state = null
 
 [node name="LaserTurretPriming" parent="LaserTurretState" instance=ExtResource("5_ncfwj")]
 
 [node name="LaserTurretActivated" parent="LaserTurretState" instance=ExtResource("4_tnb3m")]
-_initial_state = null
 
 [node name="LaserTurretBreaking" parent="LaserTurretState" instance=ExtResource("8_5xx7w")]
 
@@ -336,6 +335,7 @@ script = ExtResource("2_5f8wt")
 
 [node name="Laser" type="Sprite2D" parent="RayCast2D"]
 visible = false
+z_index = 4096
 texture = ExtResource("8_1af6w")
 offset = Vector2(-32, 0)
 
@@ -351,13 +351,11 @@ libraries = {
 [node name="ZOrdering" parent="." instance=ExtResource("3_1uiul")]
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
-visible = false
 position = Vector2(0, -38)
 scale = Vector2(5, 5)
 _temporary = false
 
 [node name="Interactable" parent="." instance=ExtResource("11_emy65")]
-visible = false
 _hold_to_interact = true
 
 [node name="InteractLabel" parent="Interactable" index="0"]

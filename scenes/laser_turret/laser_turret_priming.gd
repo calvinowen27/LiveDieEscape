@@ -10,3 +10,9 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	super.laser_turret_state_enable(turret, animation_player, laser_sprite, laser_raycast)
 	
 	animation_player.play("laser_turret_priming")
+
+	var rotation_rads = (_turret.get_start_rotation() % 360) * TWO_PI / 360
+
+	if rotation_rads != 0:
+		_turret.get_node("Sprite2D/Spark").visible = true
+		_turret.get_node("Sprite2D").frame_coords = Vector2i((int)((rotation_rads / TWO_PI) * 22) + 2, 7)

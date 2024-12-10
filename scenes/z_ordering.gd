@@ -12,6 +12,6 @@ func init_marker(sprite: Sprite2D, marker: Marker2D) -> void:
 
 func _process(_delta: float) -> void:
 	if _marker != null:
-		_sprite.z_index = int(_marker.global_position.y)
+		_sprite.z_index = int(_sprite.global_position.y)
 	else:
 		_sprite.z_index = int(_sprite.global_position.y)

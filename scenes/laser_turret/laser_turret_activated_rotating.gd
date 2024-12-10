@@ -1,7 +1,5 @@
 extends LaserTurretState
 
-const TWO_PI: float = 2 * PI
-
 var _target_len = 1000
 var _laser_rotation = 0
 
