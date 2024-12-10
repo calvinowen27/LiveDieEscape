@@ -2,7 +2,11 @@ extends RigidBody2D
 
 class_name LaserTurret
 
+const TWO_PI = 2*PI
+
 var _item_dropped: bool = false
+
+@export var _start_rotation: int
 
 func _ready() -> void:
 	$ZOrdering.init($Sprite2D)
@@ -10,6 +14,19 @@ func _ready() -> void:
 
 	$Interactable.set_active(false)
 
+	var rotation_rads = (_start_rotation % 360) * TWO_PI / 360
+
+	# if rotation_rads != 0:
+	# 	$Sprite2D/Spark.visible = true
+	# 	$Sprite2D.frame_coords = Vector2i((int)((rotation_rads / TWO_PI) * 22), 7)
+	# 	print($Sprite2D.frame_coords)
+	
+	$RayCast2D/Laser.rotation = rotation_rads
+	var laser_raycast = $RayCast2D
+	laser_raycast.position = $CenterMarker.position + Vector2(-cos(rotation_rads) * 8, -8)
+	$Sprite2D/Spark.position.x = $CenterMarker.position.x -cos(rotation_rads) * 4
+	laser_raycast.target_position = laser_raycast.position + Vector2(-cos(rotation_rads) * 1000, -sin(rotation_rads) * 1000)
+	
 func reboot() -> void:
 	$LaserTurretState.reboot()
 
@@ -35,3 +52,6 @@ func _on_interactable_interact() -> void:
 	_item_dropped = true
 
 	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
+
+func get_start_rotation() -> int:
+	return _start_rotation
