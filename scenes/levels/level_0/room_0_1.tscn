@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://cjds6wpj6581b"]
+[gd_scene load_steps=5 format=4 uid="uid://cjds6wpj6581b"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_3b385"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6rxug"]
 [ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="3_juvhb"]
+[ext_resource type="PackedScene" uid="uid://bsd15uocf3nk3" path="res://scenes/lightning_mine/lightning_mine.tscn" id="4_nkqly"]
 
 [node name="Room0_1" instance=ExtResource("1_3b385")]
 
@@ -27,3 +28,12 @@ _door_idx = 2
 
 [node name="Guard" parent="." index="7" instance=ExtResource("3_juvhb")]
 position = Vector2(534, 306)
+
+[node name="GuardResetPos" type="Marker2D" parent="." index="8"]
+position = Vector2(536, 312)
+
+[node name="LightningMine" parent="." index="9" instance=ExtResource("4_nkqly")]
+position = Vector2(378, 810)
+
+[node name="LightningMine2" parent="." index="10" instance=ExtResource("4_nkqly")]
+position = Vector2(600.5, 810)
