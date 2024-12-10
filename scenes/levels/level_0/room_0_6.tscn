@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://ppkb8pjj5buw"]
+[gd_scene load_steps=5 format=4 uid="uid://ppkb8pjj5buw"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_l45aw"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_4mgld"]
 [ext_resource type="PackedScene" uid="uid://br7efdqy35v3k" path="res://scenes/world_objects/lever.tscn" id="3_fkseq"]
+[ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="4_mn77h"]
 
 [node name="Room0_6" instance=ExtResource("1_l45aw")]
 
@@ -19,3 +20,7 @@ rotation = -1.5708
 [node name="Lever" parent="." index="5" instance=ExtResource("3_fkseq")]
 position = Vector2(502, 414)
 _control_room = 2
+
+[node name="ControlPoint" parent="." index="6" instance=ExtResource("4_mn77h")]
+position = Vector2(350, 318)
+_control_rooms = Array[int]([5])
