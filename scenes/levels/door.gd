@@ -29,9 +29,8 @@ func _ready() -> void:
 	interactable.set_active(_locked)
 	
 	if _locked:
-		$CollisionShape2D/Sprite2D.texture = _locked_texture
+		$Sprite2D.texture = _locked_texture
 		$RigidBody2D/CollisionShape2D.disabled = false
-
 
 func attempt_open() -> void:
 	if _active:
@@ -61,17 +60,10 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	var parent_room = get_parent()
 	var valid = parent_room.is_valid()
 	if valid and parent_room.get_level_idx() == level_idx and parent_room.get_room_idx() == room_idx:
-		start_activation()
-		# _active = true
-
-func start_activation() -> void:
-	$ActivationTimer.start()
-
-func _on_activation_timer_timeout() -> void:
-	_active = true
+		_active = true
 
 func unlock() -> void:
-	$CollisionShape2D/Sprite2D.texture = _unlocked_texture
+	Sprite2D.texture = _unlocked_texture
 	$RigidBody2D/CollisionShape2D.disabled = true
 	_locked = false
 	

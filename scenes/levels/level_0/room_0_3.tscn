@@ -1,33 +1,20 @@
-[gd_scene load_steps=7 format=4 uid="uid://655as78qyvbs"]
+[gd_scene load_steps=3 format=4 uid="uid://eic81kbefiag"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_u5y4p"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_7mqs8"]
-[ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="3_wjxb7"]
-[ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="4_0kot2"]
-[ext_resource type="PackedScene" uid="uid://sff6u8tq7wwe" path="res://scenes/world_objects/sign.tscn" id="5_h8fdh"]
-[ext_resource type="PackedScene" uid="uid://dyx7q8gw7a7s4" path="res://scenes/items/disruptor.tscn" id="6_kxk0a"]
 
 [node name="Room0_3" instance=ExtResource("1_u5y4p")]
 
 [node name="Walls" parent="." index="1"]
-tile_map_data = PackedByteArray("AAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAAAAAEAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAQAAAACAAEAAAAAAAUAAAACAAEAAAAAAAgAAAACAAEAAAAAAAkAAAACAAEAAAAAAAoAAAACAAEAAAAAAAsAAAACAAEAAAAAAAwAAAACAAEAAAAAAAAAAAAAAAAAAAANAAAAAAABAAEAAAAAAA0AAAACAAEAAAAOAAAAAAABAAAAAAAAAA4AAAAAAAIAAAABAA4AAAAAAAEAAAACAA4AAAAAAAEAAAADAA4AAAAAAAEAAAAEAA4AAAAAAAEAAAAFAA4AAAAAAAEAAAAGAA4AAAAAAAEAAAAHAA4AAAAAAAEAAAAIAA4AAAAAAAEAAAAJAA4AAAAAAAEAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAEAAAANAA4AAAAAAAEAAAAOAA4AAAABAAIAAAAOAA0AAAACAAAAAAAOAAwAAAACAAAAAAAOAAsAAAACAAAAAAAOAAoAAAACAAAAAAAOAAkAAAACAAAAAAAOAAgAAAACAAAAAAAOAAcAAAACAAAAAAAOAAYAAAACAAAAAAAOAAUAAAACAAAAAAAOAAQAAAACAAAAAAAOAAMAAAACAAAAAAAOAAIAAAACAAAAAAAOAAEAAAACAAAAAAD//wYAAAACAAIAAAD//wcAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAAAAEAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAYAAAACAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAAAAAAAAAAAAAAJAAkAAAABAAIAAAAJAAAAAAABAAAAAAAAAAkAAAAAAAIAAAABAAkAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAEAAAACAAAAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAACAAAAAAA=")
 
-[node name="Guard" parent="." index="3" instance=ExtResource("4_0kot2")]
-position = Vector2(676, 652)
+[node name="Player" parent="." index="3"]
+position = Vector2(544, 923)
 
-[node name="GuardResetPos" type="Marker2D" parent="." index="4"]
-position = Vector2(676, 652)
+[node name="Door0" parent="." index="4" instance=ExtResource("2_7mqs8")]
+position = Vector2(540, 1013)
+rotation = -1.5708
 
-[node name="Door0" parent="." index="5" instance=ExtResource("2_7mqs8")]
-position = Vector2(48, 504)
-
-[node name="ControlPoint" parent="." index="7" instance=ExtResource("3_wjxb7")]
-position = Vector2(678, 318)
-_control_rooms = Array[int]([1, 2])
-
-[node name="Sign" parent="." index="8" instance=ExtResource("5_h8fdh")]
-position = Vector2(446, 52)
-_sign_text = Array[String](["You might want to find a way to keep him off of you..."])
-
-[node name="Disruptor" parent="." index="9" instance=ExtResource("6_kxk0a")]
-position = Vector2(244, 860)
+[node name="Door1" parent="." index="5" instance=ExtResource("2_7mqs8")]
+position = Vector2(66, 540)
+_door_idx = 1

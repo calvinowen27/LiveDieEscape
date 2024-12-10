@@ -24,6 +24,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_gde3y"]
 resource_name = "acid_bubble"
 length = 4.5
+loop_mode = 1
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false

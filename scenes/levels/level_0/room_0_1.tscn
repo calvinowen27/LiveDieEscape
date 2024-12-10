@@ -1,52 +1,25 @@
-[gd_scene load_steps=7 format=4 uid="uid://bb1tgidnjrhfg"]
+[gd_scene load_steps=3 format=4 uid="uid://cjds6wpj6581b"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_3b385"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6rxug"]
-[ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_yj8nx"]
-[ext_resource type="PackedScene" uid="uid://sff6u8tq7wwe" path="res://scenes/world_objects/sign.tscn" id="6_4xf38"]
-[ext_resource type="PackedScene" uid="uid://du7rg0bguh68w" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="6_8a3v7"]
-[ext_resource type="PackedScene" uid="uid://oeqvilovte4h" path="res://scenes/items/force_field_emitter.tscn" id="6_s8hjx"]
 
 [node name="Room0_1" instance=ExtResource("1_3b385")]
-_room_idx = 1
 
 [node name="Walls" parent="." index="1"]
-tile_map_data = PackedByteArray("AAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAAAAAEAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAQAAAACAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAkAAAACAAEAAAAAAAoAAAACAAEAAAAAAAsAAAACAAEAAAAAAAwAAAACAAEAAAAAAAAAAAAAAAAAAAANAAAAAAABAAEAAAAAAA0AAAACAAEAAAAOAAAAAAABAAAAAAAAAA4AAAAAAAIAAAABAA4AAAAAAAEAAAACAA4AAAAAAAEAAAADAA4AAAAAAAEAAAAEAA4AAAAAAAEAAAAFAA4AAAAAAAEAAAAIAA4AAAAAAAEAAAAJAA4AAAAAAAEAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAEAAAANAA4AAAAAAAEAAAAOAA4AAAABAAIAAAAOAA0AAAACAAAAAAAOAAwAAAACAAAAAAAOAAsAAAACAAAAAAAOAAoAAAACAAAAAAAOAAkAAAACAAAAAAAOAAgAAAACAAAAAAAOAAcAAAACAAAAAAAOAAQAAAACAAAAAAAOAAMAAAACAAAAAAAOAAIAAAACAAAAAAAOAAEAAAACAAAAAAD//wUAAAACAAIAAAD//wYAAAACAAIAAAAGAA8AAAACAAIAAAAHAA8AAAACAAIAAAAPAAUAAAACAAIAAAAPAAYAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAAAAEAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAYAAAACAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAAAAAAAAAAAAAAJAAkAAAABAAIAAAAJAAAAAAABAAAAAAAAAAkAAAAAAAIAAAABAAkAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAEAAAACAAAAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAYAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAACAAAAAAA=")
 
-[node name="LaserTurret" parent="." index="3" instance=ExtResource("3_yj8nx")]
-position = Vector2(137, 200)
+[node name="Player" parent="." index="3"]
+position = Vector2(541, 854)
+
+[node name="Door0" parent="." index="4" instance=ExtResource("2_6rxug")]
+position = Vector2(540, 1014)
 rotation = -1.5708
 
-[node name="LaserTurret2" parent="." index="4" instance=ExtResource("3_yj8nx")]
-position = Vector2(246, 687)
-scale = Vector2(-1, 1)
-
-[node name="RotatingLaserTurret" parent="." index="5" instance=ExtResource("6_8a3v7")]
-position = Vector2(806, 462)
-collision_mask = 3
-
-[node name="Door0" parent="." index="6" instance=ExtResource("2_6rxug")]
-position = Vector2(504, 1032)
-rotation = -1.5708
-
-[node name="Door1" parent="." index="7" instance=ExtResource("2_6rxug")]
-position = Vector2(48, 432)
+[node name="Door1" parent="." index="5" instance=ExtResource("2_6rxug")]
+position = Vector2(1014, 540)
+rotation = 3.14159
 _door_idx = 1
 
-[node name="Door2" parent="." index="8" instance=ExtResource("2_6rxug")]
-position = Vector2(1032, 432)
-rotation = 3.14159
+[node name="Door2" parent="." index="6" instance=ExtResource("2_6rxug")]
+position = Vector2(66, 540)
 _door_idx = 2
-
-[node name="ForceFieldEmitter" parent="." index="9" instance=ExtResource("6_s8hjx")]
-position = Vector2(670, 810)
-
-[node name="RoomBounds" parent="." index="10"]
-offset_left = 10.0
-offset_top = -32.0
-offset_right = 1090.0
-offset_bottom = 1048.0
-
-[node name="Sign" parent="." index="11" instance=ExtResource("6_4xf38")]
-position = Vector2(800, 48)
-_sign_text = Array[String](["An item can be obtained from the large laser turrets to control the small ones. You can also harvest it's shield."])

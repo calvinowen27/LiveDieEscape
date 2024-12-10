@@ -1,38 +1,20 @@
-[gd_scene load_steps=7 format=4 uid="uid://bd44e242h8gmu"]
+[gd_scene load_steps=3 format=4 uid="uid://c5wlnpjyv20j6"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_rcvgy"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_hf2v4"]
-[ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_6k301"]
-[ext_resource type="PackedScene" uid="uid://co87vsw0tevrl" path="res://scenes/items/key.tscn" id="4_sldhq"]
-[ext_resource type="PackedScene" uid="uid://du7rg0bguh68w" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="5_55gmg"]
-[ext_resource type="PackedScene" uid="uid://chmgb105w11s1" path="res://scenes/items/speed_powerup.tscn" id="6_as1rg"]
 
 [node name="Room0_2" instance=ExtResource("1_rcvgy")]
-_room_idx = 2
 
 [node name="Walls" parent="." index="1"]
-tile_map_data = PackedByteArray("AAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAAAAAEAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAQAAAACAAEAAAAAAAUAAAACAAEAAAAAAAYAAAACAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAkAAAACAAEAAAAAAAoAAAACAAEAAAAAAAsAAAACAAEAAAAAAAwAAAACAAEAAAAAAAAAAAAAAAAAAAANAAAAAAABAAEAAAAAAA0AAAACAAEAAAAOAAAAAAABAAAAAAAAAA4AAAAAAAIAAAABAA4AAAAAAAEAAAACAA4AAAAAAAEAAAADAA4AAAAAAAEAAAAEAA4AAAAAAAEAAAAFAA4AAAAAAAEAAAAGAA4AAAAAAAEAAAAHAA4AAAAAAAEAAAAIAA4AAAAAAAEAAAAJAA4AAAAAAAEAAAAKAA4AAAAAAAEAAAALAA4AAAAAAAEAAAAMAA4AAAAAAAEAAAANAA4AAAAAAAEAAAAOAA4AAAABAAIAAAAOAA0AAAACAAAAAAAOAAwAAAACAAAAAAAOAAsAAAACAAAAAAAOAAoAAAACAAAAAAAOAAkAAAACAAAAAAAOAAgAAAACAAAAAAAOAAUAAAACAAAAAAAOAAQAAAACAAAAAAAOAAMAAAACAAAAAAAOAAIAAAACAAAAAAAOAAEAAAACAAAAAAAPAAYAAAACAAIAAAAPAAcAAAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAAAAEAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAYAAAACAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAAAAAAAAAAAAAAJAAkAAAABAAIAAAAJAAAAAAABAAAAAAAAAAkAAAAAAAIAAAABAAkAAAAAAAEAAAACAAkAAAAAAAEAAAADAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAEAAAACAAAAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAACAAAAAAA=")
 
-[node name="Player" parent="." index="2"]
-position = Vector2(892, 538)
+[node name="Player" parent="." index="3"]
+position = Vector2(231, 550)
 
-[node name="Door0" parent="." index="3" instance=ExtResource("2_hf2v4")]
-position = Vector2(1032, 504)
-rotation = 3.14159
+[node name="Door0" parent="." index="4" instance=ExtResource("2_hf2v4")]
+position = Vector2(66, 540)
 
-[node name="LaserTurret" parent="." index="4" instance=ExtResource("3_6k301")]
-position = Vector2(560, 698)
-
-[node name="LaserTurret2" parent="." index="5" instance=ExtResource("3_6k301")]
-position = Vector2(452, 446)
-rotation = -1.5708
-
-[node name="Key" parent="." index="6" instance=ExtResource("4_sldhq")]
-position = Vector2(237, 796)
-_door = 1
-
-[node name="RotatingLaserTurret" parent="." index="7" instance=ExtResource("5_55gmg")]
-position = Vector2(641, 266)
-
-[node name="SpeedPowerup" parent="." index="9" instance=ExtResource("6_as1rg")]
-position = Vector2(757, 672)
+[node name="Door1" parent="." index="5" instance=ExtResource("2_hf2v4")]
+position = Vector2(540, 67)
+rotation = 1.5708
+_door_idx = 1

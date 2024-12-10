@@ -12,8 +12,8 @@
 friction = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mifri"]
-radius = 23.0
-height = 62.0
+radius = 21.0
+height = 84.0
 
 [sub_resource type="Animation" id="Animation_npcyp"]
 length = 0.001
@@ -63,7 +63,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(5, 5)]
+"values": [Vector2(7.5, 7.5)]
 }
 
 [sub_resource type="Animation" id="Animation_hcmsq"]
@@ -116,7 +116,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.0333333, 0.125, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(5, 5), Vector2(7.5, 3), Vector2(5, 5)]
+"values": [Vector2(6.75, 6.75), Vector2(9, 3), Vector2(6.75, 6.75)]
 }
 
 [sub_resource type="Animation" id="Animation_xr281"]
@@ -169,7 +169,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.0333333, 0.125, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-5, 5), Vector2(-7.5, 3), Vector2(-5, 5)]
+"values": [Vector2(-6.75, 6.75), Vector2(-9, 3), Vector2(-6.75, 6.75)]
 }
 
 [sub_resource type="Animation" id="Animation_wkkq6"]
@@ -199,7 +199,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(5, 5), Vector2(5, 4.5), Vector2(5, 5)]
+"values": [Vector2(6.75, 6.75), Vector2(6.75, 6), Vector2(6.75, 6.75)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -241,7 +241,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-5, 5), Vector2(-5, 4.5), Vector2(-5, 5)]
+"values": [Vector2(-6.75, 6.75), Vector2(-6.75, 6), Vector2(-6.75, 6.75)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -307,7 +307,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(5, 5)]
+"values": [Vector2(6.75, 6.75)]
 }
 
 [sub_resource type="Animation" id="Animation_cixrc"]
@@ -361,7 +361,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-5, 5)]
+"values": [Vector2(-6.75, 6.75)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0qodp"]
@@ -391,19 +391,19 @@ _initial_state = "PlayerIdle"
 [node name="PlayerWalk" parent="PlayerState" instance=ExtResource("1_5cvwq")]
 
 [node name="PlayerDash" parent="PlayerState" instance=ExtResource("6_mx61r")]
-dash_ticks = 10
+dash_ticks = 7
 
 [node name="DashCooldownTimer" type="Timer" parent="PlayerState"]
 wait_time = 2.5
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -23)
+position = Vector2(0, -21)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mifri")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(7.5, 7.5)
 texture = ExtResource("6_fempl")
 offset = Vector2(0, -8)
 hframes = 2

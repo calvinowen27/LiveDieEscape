@@ -13,10 +13,16 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func _ready() -> void:
 	$ZOrdering.init($Sprite2D)
 
+	EventBus.change_room.connect(_on_room_change)
+
 func die() -> void:
 	# EventBus.level_reset.emit(0)
 	EventBus.player_death.emit()
 	Inventory.clear()
+
+func _on_room_change(_level_idx: int, _room_idx: int) -> void:
+	$PlayerState/DashCooldownTimer.stop()
+	$PlayerState/DashCooldownTimer.timeout.emit()
 
 func queue_teleport(pos: Vector2) -> void:
 	_queue_teleport = pos
