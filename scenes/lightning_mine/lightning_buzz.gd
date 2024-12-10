@@ -21,3 +21,5 @@ func _on_alive_timer_timeout() -> void:
 
 	get_node("../../").die()
 
+func get_altered_speed_mult() -> float:
+	return _altered_speed_mult
