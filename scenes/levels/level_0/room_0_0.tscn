@@ -22,3 +22,9 @@ rotation = 1.5708
 [node name="LaserTurret" parent="." index="6" instance=ExtResource("3_fot44")]
 position = Vector2(767, 380)
 _start_rotation = 225
+
+[node name="LaserTurretIdle" parent="LaserTurret/LaserTurretState" index="0"]
+_movable = true
+
+[editable path="LaserTurret"]
+[editable path="LaserTurret/Interactable"]
