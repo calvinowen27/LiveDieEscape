@@ -15,7 +15,7 @@ func _ready() -> void:
 
 	# $RayCast2D/Laser/ZOrdering.init_marker($RayCast2D/Laser, $RayCast2D/Laser/ZOrderingMarker)
 
-	$Interactable.set_active(false)
+	$ForceFieldInteractable.set_active(false)
 
 	var rotation_rads = (_start_rotation % 360) * TWO_PI / 360
 

@@ -279,7 +279,7 @@ font_size = 64
 
 [node name="LaserTurret" type="RigidBody2D" groups=["LaserTurrets"]]
 collision_layer = 3
-mass = 5.0
+mass = 2.5
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
@@ -355,30 +355,30 @@ position = Vector2(0, -38)
 scale = Vector2(5, 5)
 _temporary = false
 
-[node name="Interactable" parent="." instance=ExtResource("11_emy65")]
+[node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
 _hold_to_interact = true
 
-[node name="InteractLabel" parent="Interactable" index="0"]
+[node name="InteractLabel" parent="ForceFieldInteractable" index="0"]
 offset_top = -138.0
 offset_right = 18.0
 offset_bottom = -50.0
 scale = Vector2(0.4, 0.4)
 label_settings = SubResource("LabelSettings_cs2rg")
 
-[node name="TextureProgressBar" parent="Interactable/InteractLabel" index="1"]
+[node name="TextureProgressBar" parent="ForceFieldInteractable/InteractLabel" index="1"]
 offset_left = 5.0
 offset_top = 28.375
 offset_right = 37.0
 offset_bottom = 60.375
 scale = Vector2(3, 3)
 
-[node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
+[node name="CollisionShape2D" parent="ForceFieldInteractable/InteractArea" index="0"]
 position = Vector2(-1, -31)
 
 [node name="CenterMarker" type="Marker2D" parent="."]
 position = Vector2(0, -50)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
-[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
+[connection signal="interact" from="ForceFieldInteractable" to="." method="_on_interactable_interact"]
 
-[editable path="Interactable"]
+[editable path="ForceFieldInteractable"]
