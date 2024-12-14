@@ -15,17 +15,19 @@ func update(_delta: float) -> String:
 	# this whole section is bad, no constants or anything
 	# idk should prob fix but it works so i'll leave it for now
 	# it looks better a lil
-	# doesn't work anymore for some reason even though nothing changed?
-	_laser_raycast.position = _turret.get_node("CenterMarker").position + Vector2(-cos(_laser_rotation) * 8, -8)
+	_laser_raycast.position = _turret.get_node("CenterMarker").position + Vector2(-cos(_laser_rotation) * 27, 0)
 	_laser_raycast.target_position = _laser_raycast.position + Vector2(-cos(_laser_rotation) * _target_len, -sin(_laser_rotation) * _target_len)
+	var spark = _turret.get_node("Sprite2D/Spark")
 
-	print(_laser_raycast.target_position)
-	print(_laser_raycast.position)
+	# spark.position = _laser_raycast.position
+	spark.global_position = _laser_raycast.global_position + Vector2(3, 0)
 
 	if _laser_raycast.get_node("Laser/ZOrderingMarker").global_position.y > _turret.global_position.y:
 		_laser_sprite.z_index = 4096
+		spark.z_index = 0
 	else:
 		_laser_sprite.z_index = 0
+		spark.z_index = -1
 
 	_laser_sprite.rotation = _laser_rotation
 
@@ -42,7 +44,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	animation_player.play("rotating_laser_turret_activated")
 
 	_laser_rotation = 0
-	_laser_raycast.position = _turret.get_node("CenterMarker").position + Vector2(-8, -8)
+	_laser_raycast.position = _turret.get_node("CenterMarker").position + Vector2(-27, 0)
 	_laser_raycast.target_position = _laser_raycast.position + Vector2(-_target_len, 0)
 	_laser_sprite.rotation = _laser_rotation
 

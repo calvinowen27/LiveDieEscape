@@ -2,6 +2,8 @@ extends RayCast2D
 
 var last_collider: Object
 
+# note to self make sure script is actually attached in the editor
+
 func _physics_process(_delta: float) -> void:
 	if not is_colliding():
 		last_collider = null
