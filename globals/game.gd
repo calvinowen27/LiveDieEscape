@@ -2,6 +2,7 @@ extends Node
 
 var _is_game_running = false
 var _is_game_paused = false
+var _is_player_dead = false
 
 func restart_game() -> void:
 	SceneManager.switch_scene_to("ui/title_screen")
@@ -19,6 +20,7 @@ func is_game_running() -> bool:
 func _ready() -> void:
 	EventBus.start_game.connect(_on_game_start)
 	EventBus.player_respawn.connect(_on_player_respawn)
+	EventBus.player_death.connect(_on_player_death)
 
 func _on_game_start() -> void:
 	if not _is_game_running:
@@ -30,3 +32,10 @@ func _on_game_start() -> void:
 
 func _on_player_respawn() -> void:
 	EventBus.level_reset.emit(0)
+	_is_player_dead = false
+
+func _on_player_death() -> void:
+	_is_player_dead = true
+
+func is_player_dead() -> bool:
+	return _is_player_dead

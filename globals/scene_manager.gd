@@ -20,7 +20,9 @@ func switch_scene_to(scene_name: String) -> Node:
 	return _curr_scene
 
 func toggle_game_paused() -> bool:
-	get_tree().paused = !get_tree().paused
+	if not Game.is_player_dead():
+		get_tree().paused = !get_tree().paused
+	
 	return get_tree().paused
 
 func _ready() -> void:
