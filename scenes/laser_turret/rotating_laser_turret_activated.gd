@@ -20,7 +20,7 @@ func update(_delta: float) -> String:
 	var spark = _turret.get_node("Sprite2D/Spark")
 
 	# spark.position = _laser_raycast.position
-	spark.global_position = _laser_raycast.global_position + Vector2(3, 0)
+	spark.global_position = _laser_raycast.global_position
 
 	if _laser_raycast.get_node("Laser/ZOrderingMarker").global_position.y > _turret.global_position.y:
 		_laser_sprite.z_index = 4096

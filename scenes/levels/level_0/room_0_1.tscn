@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cjds6wpj6581b"]
+[gd_scene load_steps=6 format=4 uid="uid://cjds6wpj6581b"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_3b385"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6rxug"]
 [ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="3_juvhb"]
 [ext_resource type="PackedScene" uid="uid://bsd15uocf3nk3" path="res://scenes/lightning_mine/lightning_mine.tscn" id="4_nkqly"]
+[ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="5_u7xh1"]
 
 [node name="Room0_1" instance=ExtResource("1_3b385")]
 
@@ -33,7 +34,11 @@ position = Vector2(534, 306)
 position = Vector2(536, 312)
 
 [node name="LightningMine" parent="." index="9" instance=ExtResource("4_nkqly")]
-position = Vector2(378, 810)
+position = Vector2(403, 532)
 
 [node name="LightningMine2" parent="." index="10" instance=ExtResource("4_nkqly")]
-position = Vector2(600.5, 810)
+position = Vector2(625.5, 532)
+
+[node name="ControlPoint" parent="." index="11" instance=ExtResource("5_u7xh1")]
+position = Vector2(367, 822)
+_control_rooms = Array[int]([0])

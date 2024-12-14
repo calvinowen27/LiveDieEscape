@@ -23,4 +23,4 @@ _control_room = 2
 
 [node name="ControlPoint" parent="." index="6" instance=ExtResource("4_mn77h")]
 position = Vector2(350, 318)
-_control_rooms = Array[int]([5])
+_control_rooms = Array[int]([5, 0])

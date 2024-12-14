@@ -10,7 +10,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if _curr_state == null:
 		return
-
+	
 	if (level_idx != _level or room_idx != _room) and _curr_state.name != "RotatingLaserTurretBroken" and _curr_state.name != "RotatingLaserTurretBreaking":
 		get_parent().disable_turret()
 		get_parent().enable_turret()

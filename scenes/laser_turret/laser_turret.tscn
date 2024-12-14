@@ -300,7 +300,6 @@ _laser_raycast = NodePath("../RayCast2D")
 _initial_state = "LaserTurretPriming"
 
 [node name="LaserTurretIdle" parent="LaserTurretState" instance=ExtResource("4_wk736")]
-_initial_state = null
 
 [node name="LaserTurretPriming" parent="LaserTurretState" instance=ExtResource("5_ncfwj")]
 
@@ -352,7 +351,7 @@ libraries = {
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
 position = Vector2(0, -38)
-scale = Vector2(5, 5)
+scale = Vector2(6.75, 6.75)
 _temporary = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
