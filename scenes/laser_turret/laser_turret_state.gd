@@ -48,7 +48,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 
 # activate turret when finished priming
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "laser_turret_priming":
+	if anim_name == "laser_turret_priming" and _curr_state.name == "LaserTurretPriming":
 		_set_curr_state("LaserTurretActivated")
 	elif anim_name == "laser_turret_breaking":
 		_set_curr_state("LaserTurretBroken")
@@ -57,26 +57,32 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if _curr_state == null:
 		return
 
-	if (level_idx != _level or room_idx != _room) and _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":
+	if (level_idx == _level and room_idx == _room) and _can_state_change():
 		get_parent().disable_turret()
 		get_parent().enable_turret()
 
-func reboot() -> void:
-	_set_curr_state("LaserTurretIdle")
-	
-	await get_tree().create_timer(10).timeout
-	
-	if _curr_state.name == "LaserTurretIdle":
+func start_reboot() -> void:
+	if not _is_broken():
+		_set_curr_state("LaserTurretRebooting")
+
+func end_reboot() -> void:
+	if not _is_broken() and _curr_state.name == "LaserTurretRebooting":
 		_set_curr_state("LaserTurretPriming")
 	
 func disable_turret() -> void:
-	if _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":
+	if not _is_broken():
 		_set_curr_state("LaserTurretIdle")
 
 func enable_turret() -> void:
-	if _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":
+	if not _is_broken():
 		_set_curr_state("LaserTurretPriming")
 
 func die() -> void:
-	if _curr_state.name != "LaserTurretBroken" and _curr_state.name != "LaserTurretBreaking":
+	if not _is_broken():
 		_set_curr_state("LaserTurretBreaking")
+
+func _is_broken() -> bool:
+	return _curr_state.name == "LaserTurretBreaking" or _curr_state.name == "LaserTurretBroken"
+
+func _can_state_change() -> bool:
+	return _curr_state.name != "LaserTurretRebooting" and not _is_broken()

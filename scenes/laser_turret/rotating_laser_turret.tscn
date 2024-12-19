@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxywb3yjrleiy"]
+[gd_scene load_steps=26 format=3 uid="uid://bxywb3yjrleiy"]
 
 [ext_resource type="PackedScene" uid="uid://cxrkef56qxet5" path="res://scenes/laser_turret/rotating_laser_turret_state.tscn" id="1_1gjbq"]
 [ext_resource type="Script" path="res://scenes/laser_turret/rotating_laser_turret.gd" id="1_3x2r2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dhwrv3ysnfn6s" path="res://resources/art/laser.png" id="4_yet2n"]
 [ext_resource type="PackedScene" uid="uid://b4pkdnm5o1vw6" path="res://scenes/laser_turret/rotating_laser_turret_breaking.tscn" id="5_qrhec"]
 [ext_resource type="PackedScene" uid="uid://drpuukbwhfu5y" path="res://scenes/laser_turret/rotating_laser_turret_broken.tscn" id="6_yt6hw"]
+[ext_resource type="PackedScene" uid="uid://wo48wwdl44eg" path="res://scenes/laser_turret/rotating_laser_turret_rebooting.tscn" id="8_yxnmv"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_laser.gd" id="10_br35p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_npstd"]
@@ -302,6 +303,8 @@ _seconds_per_rotation = 3.14
 
 [node name="RotatingLaserTurretBroken" parent="RotatingLaserTurretState" instance=ExtResource("6_yt6hw")]
 
+[node name="RotatingLaserTurretRebooting" parent="RotatingLaserTurretState" instance=ExtResource("8_yxnmv")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(6.75, 6.75)
 texture = ExtResource("2_kp3vw")
@@ -341,7 +344,6 @@ libraries = {
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("3_su3uc")]
 position = Vector2(0, -70)
-scale = Vector2(6.75, 6.75)
 _temporary = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("4_f3u75")]

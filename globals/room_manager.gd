@@ -121,13 +121,15 @@ func spawn_object(object_name: String, position: Vector2) -> Node2D:
 	return obj
 
 func reboot_room(level_idx: int, room_idx: int) -> void:
-	_rooms[level_idx][room_idx].disable_room()
+	_rooms[level_idx][room_idx].start_reboot_room()
+	# _rooms[level_idx][room_idx].disable_room()
 
 	_room_timers[room_idx] = get_tree().create_timer(10)
 
 	await _room_timers[room_idx].timeout
 	
-	_rooms[level_idx][room_idx].enable_room()
+	# _rooms[level_idx][room_idx].enable_room()
+	_rooms[level_idx][room_idx].end_reboot_room()
 	_room_timers.erase(room_idx)
 
 func bridge_acid(room_idx: int) -> void:

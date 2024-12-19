@@ -20,6 +20,14 @@ func disable_room() -> void:
 	for turret in _laser_turrets:
 		turret.disable_turret()
 
+func start_reboot_room() -> void:
+	for turret in _laser_turrets:
+		turret.start_reboot()
+
+func end_reboot_room() -> void:
+	for turret in _laser_turrets:
+		turret.end_reboot()
+
 func get_level_idx() -> int:
 	return _level_idx
 

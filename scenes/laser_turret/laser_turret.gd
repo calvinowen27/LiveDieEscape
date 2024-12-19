@@ -18,11 +18,6 @@ func _ready() -> void:
 	$ForceFieldInteractable.set_active(false)
 
 	var rotation_rads = (_start_rotation % 360) * TWO_PI / 360
-
-	# if rotation_rads != 0:
-	# 	$Sprite2D/Spark.visible = true
-	# 	$Sprite2D.frame_coords = Vector2i((int)((rotation_rads / TWO_PI) * 22), 7)
-	# 	print($Sprite2D.frame_coords)
 	
 	$RayCast2D/Laser.rotation = rotation_rads
 	var laser_raycast = $RayCast2D
@@ -32,11 +27,24 @@ func _ready() -> void:
 
 	if $RayCast2D/Laser/ZOrderingMarker.global_position.y > $Sprite2D.global_position.y:
 		$RayCast2D/Laser.z_index = 4096
+		$Sprite2D/Spark.z_index = 0
 	else:
 		$RayCast2D/Laser.z_index = 0
+		$Sprite2D/Spark.z_index = -1
 	
 func reboot() -> void:
 	$LaserTurretState.reboot()
+
+func start_reboot() -> void:
+	$LaserTurretState.start_reboot()
+
+	if not _item_dropped:
+		$ForceFieldInteractable.set_active(true)
+
+func end_reboot() -> void:
+	$LaserTurretState.end_reboot()
+
+	$ForceFieldInteractable.set_active(false)
 
 func disable_turret() -> void:
 	$LaserTurretState.disable_turret()

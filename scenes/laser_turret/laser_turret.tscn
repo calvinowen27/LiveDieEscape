@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=27 format=3 uid="uid://kfqi07twfc48"]
 
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_laser.gd" id="2_5f8wt"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ppik0l0qoman" path="res://scenes/laser_turret/laser_turret_priming.tscn" id="5_ncfwj"]
 [ext_resource type="Texture2D" uid="uid://dhwrv3ysnfn6s" path="res://resources/art/laser.png" id="8_1af6w"]
 [ext_resource type="PackedScene" uid="uid://c4vy0snfseejl" path="res://scenes/laser_turret/laser_turret_breaking.tscn" id="8_5xx7w"]
+[ext_resource type="PackedScene" uid="uid://d0frovt5s2v47" path="res://scenes/laser_turret/laser_turret_rebooting.tscn" id="8_624xb"]
 [ext_resource type="Texture2D" uid="uid://bidqsr7cq3ous" path="res://resources/art/laser-turret-sheet.png" id="8_mog6t"]
 [ext_resource type="PackedScene" uid="uid://4jrsvenkhj7t" path="res://scenes/laser_turret/laser_turret_broken.tscn" id="9_26jlu"]
 [ext_resource type="PackedScene" uid="uid://dwqiyol6kfj14" path="res://scenes/world_objects/force_field_world.tscn" id="10_1s3u2"]
@@ -42,52 +43,53 @@ tracks/1/keys = {
 "points": PackedFloat32Array(6.75, -0.0005, 0, 0.0005, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/2/type = "bezier"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Sprite2D:frame")
+tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 4)]
+}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:frame_coords")
+tracks/4/path = NodePath("Spark:frame_coords")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 4)]
+"values": [Vector2i(0, 6)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Spark:frame_coords")
+tracks/5/path = NodePath(".:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 6)]
+"update": 0,
+"values": [Vector2(6.75, 6.75)]
 }
 
 [sub_resource type="Animation" id="Animation_oqmuh"]
@@ -168,14 +170,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0, 1]
+"values": [Vector2(6.75, 6.75), Vector2(6.75, 5.75), Vector2(6.75, 6.75)]
 }
 
 [sub_resource type="Animation" id="Animation_d2sdy"]
@@ -309,12 +311,15 @@ _initial_state = "LaserTurretPriming"
 
 [node name="LaserTurretBroken" parent="LaserTurretState" instance=ExtResource("9_26jlu")]
 
+[node name="LaserTurretRebooting" parent="LaserTurretState" instance=ExtResource("8_624xb")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(6.75, 6.75)
 texture = ExtResource("8_mog6t")
 offset = Vector2(0.5, -8)
 hframes = 22
 vframes = 8
+frame = 88
 
 [node name="Spark" type="Sprite2D" parent="Sprite2D"]
 visible = false
@@ -351,7 +356,6 @@ libraries = {
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
 position = Vector2(0, -38)
-scale = Vector2(6.75, 6.75)
 _temporary = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]

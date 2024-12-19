@@ -16,11 +16,21 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 		get_parent().enable_turret()
 
 func reboot() -> void:
-	_set_curr_state("RotatingLaserTurretIdle")
+	pass
+	# _set_curr_state("RotatingLaserTurretIdle")
 	
-	await get_tree().create_timer(10).timeout
+	# await get_tree().create_timer(10).timeout
 	
-	if _curr_state.name == "RotatingLaserTurretIdle":
+	# if _curr_state.name == "RotatingLaserTurretIdle":
+	# 	_set_curr_state("RotatingLaserTurretPriming")
+
+
+func start_reboot() -> void:
+	if not _is_broken():
+		_set_curr_state("RotatingLaserTurretRebooting")
+
+func end_reboot() -> void:
+	if not _is_broken() and _curr_state.name == "RotatingLaserTurretRebooting":
 		_set_curr_state("RotatingLaserTurretPriming")
 	
 func disable_turret() -> void:
