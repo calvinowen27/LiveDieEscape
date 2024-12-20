@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://g5dssf7icumf"]
+[gd_scene load_steps=7 format=4 uid="uid://g5dssf7icumf"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_obo4y"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_0nwva"]
 [ext_resource type="PackedScene" uid="uid://bsy0wvvbhdoce" path="res://scenes/laser_turret/laser_turret_2.tscn" id="3_4vs8l"]
 [ext_resource type="Texture2D" uid="uid://biodi138uf1oh" path="res://resources/art/player3.png" id="4_5vjo2"]
 [ext_resource type="Texture2D" uid="uid://doxgdovkblqq3" path="res://resources/art/laser_turret3.png" id="5_7to2o"]
+[ext_resource type="Texture2D" uid="uid://dsq443rblek0l" path="res://resources/art/sentry_turret.png" id="6_hjyt8"]
 
 [node name="Room0_0" instance=ExtResource("1_obo4y")]
 
@@ -34,3 +35,8 @@ texture = ExtResource("4_5vjo2")
 position = Vector2(542, 552)
 scale = Vector2(6.75, 6.75)
 texture = ExtResource("5_7to2o")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." index="9"]
+position = Vector2(354, 787)
+scale = Vector2(6.75, 6.75)
+texture = ExtResource("6_hjyt8")
