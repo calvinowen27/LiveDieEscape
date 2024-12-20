@@ -8,8 +8,18 @@ func _process(_delta: float) -> void:
 
 func state_init() -> void:
 	super.state_init()
+
+	var last_move_dir = get_node("../../").get_last_move_dir()
 	
-	_animation_player.play("player_walk_left")
+	if last_move_dir.y > 0:
+		_animation_player.play("player_walk_down")
+	elif last_move_dir.y < 0:
+		_animation_player.play("player_walk_up")
+	else:
+		if last_move_dir.x > 0:
+			_animation_player.play("player_walk_right")
+		else:
+			_animation_player.play("player_walk_left")
 
 # enable state and pass necessary references
 func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
@@ -17,12 +27,16 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 
 func update(_delta: float) -> String:
 	move()
-	# point_sprite()
 
-	if _move_dir.x > 0:
-		_animation_player.play("player_walk_right")
+	if _move_dir.y > 0:
+		_animation_player.play("player_walk_down")
+	elif _move_dir.y < 0:
+		_animation_player.play("player_walk_up")
 	else:
-		_animation_player.play("player_walk_left")
+		if _move_dir.x > 0:
+			_animation_player.play("player_walk_right")
+		else:
+			_animation_player.play("player_walk_left")
 
 	# not moving anymore --> idle
 	if _move_dir == Vector2.ZERO:
