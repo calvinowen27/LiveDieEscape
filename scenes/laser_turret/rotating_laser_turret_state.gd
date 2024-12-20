@@ -11,7 +11,7 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if _curr_state == null:
 		return
 	
-	if (level_idx != _level or room_idx != _room) and _curr_state.name != "RotatingLaserTurretBroken" and _curr_state.name != "RotatingLaserTurretBreaking":
+	if level_idx == _level and room_idx == _room and _can_state_change():
 		get_parent().disable_turret()
 		get_parent().enable_turret()
 
@@ -44,3 +44,9 @@ func enable_turret() -> void:
 func die() -> void:
 	if _curr_state.name != "RotatingLaserTurretBroken" and _curr_state.name != "RotatingLaserTurretBreaking":
 		_set_curr_state("RotatingLaserTurretBreaking")
+
+func _is_broken() -> bool:
+	return _curr_state.name == "RotatingLaserTurretBreaking" or _curr_state.name == "RotatingLaserTurretBroken"
+
+func _can_state_change() -> bool:
+	return _curr_state.name != "RotatingLaserTurretRebooting" and not _is_broken()

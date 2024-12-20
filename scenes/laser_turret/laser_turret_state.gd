@@ -57,7 +57,7 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if _curr_state == null:
 		return
 
-	if (level_idx == _level and room_idx == _room) and _can_state_change():
+	if level_idx == _level and room_idx == _room and _can_state_change():
 		get_parent().disable_turret()
 		get_parent().enable_turret()
 

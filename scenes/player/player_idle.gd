@@ -11,30 +11,14 @@ func state_init() -> void:
 
 	var last_move_dir = get_node("../../").get_last_move_dir()
 
-	if last_move_dir.y > 0:
-		_animation_player.play("player_idle_down")
-	elif last_move_dir.y < 0:
-		_animation_player.play("player_idle_up")
-	else:
-		if last_move_dir.x > 0:
-			_animation_player.play("player_idle_right")
-		else:
-			_animation_player.play("player_idle_left")
+	_play_animation(_animation_player, last_move_dir)
 
 func update(_delta: float) -> String:
 	var move_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	var last_move_dir = get_node("../../").get_last_move_dir()
 
-	if last_move_dir.y > 0:
-		_animation_player.play("player_idle_down")
-	elif last_move_dir.y < 0:
-		_animation_player.play("player_idle_up")
-	else:
-		if last_move_dir.x > 0:
-			_animation_player.play("player_idle_right")
-		else:
-			_animation_player.play("player_idle_left")
+	_play_animation(_animation_player, last_move_dir)
 	
 	# movement detected, change to walk state
 	if move_vec != Vector2.ZERO:
@@ -49,3 +33,14 @@ func update(_delta: float) -> String:
 
 func _on_dash_cooldown_timer_timeout() -> void:
 	_can_dash = true
+
+func _play_animation(animation_player: AnimationPlayer, move_dir: Vector2) -> void:
+	if move_dir.y > 0:
+		animation_player.play("player_idle_down")
+	elif move_dir.y < 0:
+		animation_player.play("player_idle_up")
+	else:
+		if move_dir.x > 0:
+			animation_player.play("player_idle_right")
+		else:
+			animation_player.play("player_idle_left")
