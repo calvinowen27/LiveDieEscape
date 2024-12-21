@@ -322,7 +322,6 @@ hframes = 8
 vframes = 3
 
 [node name="Spark" type="Sprite2D" parent="Sprite2D"]
-visible = false
 texture = ExtResource("8_mog6t")
 offset = Vector2(0.5, -8)
 hframes = 22
@@ -377,9 +376,6 @@ scale = Vector2(3, 3)
 
 [node name="CollisionShape2D" parent="ForceFieldInteractable/InteractArea" index="0"]
 position = Vector2(-1, -31)
-
-[node name="CenterMarker" type="Marker2D" parent="."]
-position = Vector2(0, -54)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
 [connection signal="interact" from="ForceFieldInteractable" to="." method="_on_interactable_interact"]

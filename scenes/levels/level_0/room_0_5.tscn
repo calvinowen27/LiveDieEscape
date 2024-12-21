@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://d2vq4hr8231h1"]
+[gd_scene load_steps=4 format=4 uid="uid://d2vq4hr8231h1"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_birqc"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6udcl"]
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_rtkny"]
-[ext_resource type="PackedScene" uid="uid://bxywb3yjrleiy" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="4_ke7ay"]
 
 [node name="Room0_5" instance=ExtResource("1_birqc")]
 
@@ -29,8 +28,32 @@ _locked = true
 _consume_key = true
 
 [node name="LaserTurret" parent="." index="7" instance=ExtResource("3_rtkny")]
-position = Vector2(306, 279)
+position = Vector2(247, 896)
+
+[node name="LaserTurret2" parent="." index="8" instance=ExtResource("3_rtkny")]
+position = Vector2(468, 888)
+_start_rotation = 45
+
+[node name="LaserTurret3" parent="." index="9" instance=ExtResource("3_rtkny")]
+position = Vector2(651, 891)
+_start_rotation = 90
+
+[node name="LaserTurret4" parent="." index="10" instance=ExtResource("3_rtkny")]
+position = Vector2(836, 883)
+_start_rotation = 135
+
+[node name="LaserTurret5" parent="." index="11" instance=ExtResource("3_rtkny")]
+position = Vector2(245, 283)
+_start_rotation = 180
+
+[node name="LaserTurret6" parent="." index="12" instance=ExtResource("3_rtkny")]
+position = Vector2(441, 290)
+_start_rotation = 225
+
+[node name="LaserTurret7" parent="." index="13" instance=ExtResource("3_rtkny")]
+position = Vector2(629, 289)
 _start_rotation = 270
 
-[node name="RotatingLaserTurret0" parent="." index="8" instance=ExtResource("4_ke7ay")]
-position = Vector2(796, 306)
+[node name="LaserTurret8" parent="." index="14" instance=ExtResource("3_rtkny")]
+position = Vector2(845, 274)
+_start_rotation = 315
