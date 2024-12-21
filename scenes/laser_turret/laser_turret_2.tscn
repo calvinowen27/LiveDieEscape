@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8g0ta6wqpso0"]
+
+[ext_resource type="Texture2D" uid="uid://fbaqujjovar5" path="res://resources/art/laser_turret2.png" id="1_tdw7i"]
+
+[node name="LaserTurret2" type="Sprite2D"]
+texture = ExtResource("1_tdw7i")

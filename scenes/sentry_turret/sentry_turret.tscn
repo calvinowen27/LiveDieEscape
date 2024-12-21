@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0vgmox072m1a"]
+
+[ext_resource type="Script" path="res://scenes/sentry_turret/sentry_turret.gd" id="1_mcjgq"]
+[ext_resource type="Texture2D" uid="uid://dsq443rblek0l" path="res://resources/art/sentry_turret.png" id="1_v2a5i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_red38"]
+radius = 57.0
+height = 122.0
+
+[node name="SentryTurret" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+script = ExtResource("1_mcjgq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6.75, 6.75)
+texture = ExtResource("1_v2a5i")
+offset = Vector2(-2, -16)
+hframes = 7
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -57)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_red38")
+
+[node name="ProjectileSpawn" type="Marker2D" parent="."]
+position = Vector2(-147, -93)
+
+[node name="ShootCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="ShootCooldownTimer" to="." method="_on_shoot_cooldown_timer_timeout"]
