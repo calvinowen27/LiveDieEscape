@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=28 format=3 uid="uid://kfqi07twfc48"]
 
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_laser.gd" id="2_5f8wt"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d0frovt5s2v47" path="res://scenes/laser_turret/laser_turret_rebooting.tscn" id="8_624xb"]
 [ext_resource type="Texture2D" uid="uid://bidqsr7cq3ous" path="res://resources/art/laser-turret-sheet.png" id="8_mog6t"]
 [ext_resource type="PackedScene" uid="uid://4jrsvenkhj7t" path="res://scenes/laser_turret/laser_turret_broken.tscn" id="9_26jlu"]
+[ext_resource type="Texture2D" uid="uid://doxgdovkblqq3" path="res://resources/art/laser_turret3.png" id="9_ugmcm"]
 [ext_resource type="PackedScene" uid="uid://dwqiyol6kfj14" path="res://scenes/world_objects/force_field_world.tscn" id="10_1s3u2"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="11_emy65"]
 
@@ -65,7 +66,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 4)]
+"values": [Vector2i(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -104,10 +105,10 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2), Vector2i(7, 2)]
+"values": [Vector2i(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cx82v"]
@@ -142,7 +143,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4)]
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_3y64h"]
@@ -157,10 +158,10 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 5), Vector2i(8, 5), Vector2i(9, 5), Vector2i(10, 5), Vector2i(11, 5), Vector2i(12, 5), Vector2i(13, 5)]
+"values": [Vector2i(0, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_1rxu1"]
@@ -295,11 +296,11 @@ position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_swdh7")
 
 [node name="LaserTurretState" parent="." node_paths=PackedStringArray("_turret", "_animation_player", "_laser_sprite", "_laser_raycast") instance=ExtResource("3_geuje")]
+_initial_state = "LaserTurretPriming"
 _turret = NodePath("..")
 _animation_player = NodePath("../AnimationPlayer")
 _laser_sprite = NodePath("../RayCast2D/Laser")
 _laser_raycast = NodePath("../RayCast2D")
-_initial_state = "LaserTurretPriming"
 
 [node name="LaserTurretIdle" parent="LaserTurretState" instance=ExtResource("4_wk736")]
 
@@ -315,11 +316,10 @@ _initial_state = "LaserTurretPriming"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(6.75, 6.75)
-texture = ExtResource("8_mog6t")
-offset = Vector2(0.5, -8)
-hframes = 22
-vframes = 8
-frame = 88
+texture = ExtResource("9_ugmcm")
+offset = Vector2(0, -8)
+hframes = 8
+vframes = 3
 
 [node name="Spark" type="Sprite2D" parent="Sprite2D"]
 visible = false
@@ -330,7 +330,7 @@ vframes = 8
 frame = 132
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-17, -50)
+position = Vector2(-44, -54)
 enabled = false
 target_position = Vector2(-1000, 0)
 collision_mask = 3
@@ -379,7 +379,7 @@ scale = Vector2(3, 3)
 position = Vector2(-1, -31)
 
 [node name="CenterMarker" type="Marker2D" parent="."]
-position = Vector2(0, -50)
+position = Vector2(0, -54)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
 [connection signal="interact" from="ForceFieldInteractable" to="." method="_on_interactable_interact"]

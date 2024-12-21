@@ -21,8 +21,8 @@ func _ready() -> void:
 	
 	$RayCast2D/Laser.rotation = rotation_rads
 	var laser_raycast = $RayCast2D
-	laser_raycast.position = $CenterMarker.position + Vector2(-cos(rotation_rads) * 8, 0)
-	$Sprite2D/Spark.position.x = $CenterMarker.position.x - cos(rotation_rads) * 8
+	laser_raycast.position = $CenterMarker.position + Vector2(-cos(rotation_rads) * 44, -sin(rotation_rads) * 13)
+	$Sprite2D/Spark.global_position = laser_raycast.global_position
 	laser_raycast.target_position = laser_raycast.position + Vector2(-cos(rotation_rads) * 1000, -sin(rotation_rads) * 1000)
 
 	if $RayCast2D/Laser/ZOrderingMarker.global_position.y > $Sprite2D.global_position.y:

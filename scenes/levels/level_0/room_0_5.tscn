@@ -29,8 +29,8 @@ _locked = true
 _consume_key = true
 
 [node name="LaserTurret" parent="." index="7" instance=ExtResource("3_rtkny")]
-position = Vector2(197, 901)
-_start_rotation = 90
+position = Vector2(306, 279)
+_start_rotation = 270
 
 [node name="RotatingLaserTurret0" parent="." index="8" instance=ExtResource("4_ke7ay")]
-position = Vector2(847, 284)
+position = Vector2(796, 306)
