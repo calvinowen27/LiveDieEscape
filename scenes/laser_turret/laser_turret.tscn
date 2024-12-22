@@ -296,11 +296,11 @@ position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_swdh7")
 
 [node name="LaserTurretState" parent="." node_paths=PackedStringArray("_turret", "_animation_player", "_laser_sprite", "_laser_raycast") instance=ExtResource("3_geuje")]
-_initial_state = "LaserTurretPriming"
 _turret = NodePath("..")
 _animation_player = NodePath("../AnimationPlayer")
 _laser_sprite = NodePath("../RayCast2D/Laser")
 _laser_raycast = NodePath("../RayCast2D")
+_initial_state = "LaserTurretPriming"
 
 [node name="LaserTurretIdle" parent="LaserTurretState" instance=ExtResource("4_wk736")]
 

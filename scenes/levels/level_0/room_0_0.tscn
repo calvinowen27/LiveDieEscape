@@ -46,4 +46,5 @@ frame = 4
 position = Vector2(655, 403)
 
 [node name="SentryTurret" parent="." index="10" instance=ExtResource("7_1y1gk")]
-position = Vector2(895, 472)
+position = Vector2(800, 630)
+_track_player = false
