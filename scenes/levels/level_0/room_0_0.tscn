@@ -49,4 +49,8 @@ _start_rotation = 270
 _movable = true
 
 [node name="SentryTurret" parent="." index="10" instance=ExtResource("7_1y1gk")]
-position = Vector2(509, 644)
+position = Vector2(849, 361)
+freeze = false
+_oscillate = true
+_oscillate_speed = 200.0
+_oscillate_end_pos = Vector2(500, 721)

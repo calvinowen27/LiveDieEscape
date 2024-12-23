@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name Projectile
+
 var _parent
 
 func init_projectile(parent: Node2D, linear_velocity_: Vector2) -> void:
