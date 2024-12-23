@@ -332,15 +332,16 @@ frame = 132
 position = Vector2(-44, -54)
 enabled = false
 target_position = Vector2(-1000, 0)
-collision_mask = 3
+collision_mask = 7
 collide_with_areas = true
 script = ExtResource("2_5f8wt")
 
 [node name="Laser" type="Sprite2D" parent="RayCast2D"]
-visible = false
 z_index = 4096
 texture = ExtResource("8_1af6w")
 offset = Vector2(-32, 0)
+
+[node name="ZOrdering" parent="RayCast2D" instance=ExtResource("3_1uiul")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
