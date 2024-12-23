@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0vgmox072m1a"]
+[gd_scene load_steps=5 format=3 uid="uid://d0vgmox072m1a"]
 
 [ext_resource type="Script" path="res://scenes/sentry_turret/sentry_turret.gd" id="1_mcjgq"]
-[ext_resource type="Texture2D" uid="uid://dsq443rblek0l" path="res://resources/art/sentry_turret.png" id="1_v2a5i"]
+[ext_resource type="Texture2D" uid="uid://bpxp6w501uwhf" path="res://resources/art/sentry_turret2.png" id="2_ioa36"]
+[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="3_b67mv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_red38"]
-radius = 57.0
-height = 134.0
+radius = 34.0
+height = 96.0
 
 [node name="SentryTurret" type="RigidBody2D"]
+input_pickable = true
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
@@ -15,21 +17,22 @@ script = ExtResource("1_mcjgq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(6.75, 6.75)
-texture = ExtResource("1_v2a5i")
-offset = Vector2(0, -15)
-hframes = 4
-frame = 3
+texture = ExtResource("2_ioa36")
+offset = Vector2(0, -16)
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -57)
+position = Vector2(0, -34)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_red38")
 
 [node name="ProjectileSpawn" type="Marker2D" parent="."]
-position = Vector2(0, -196)
+position = Vector2(-91, -118)
 
 [node name="ShootCooldownTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 autostart = true
+
+[node name="ZOrdering" parent="." instance=ExtResource("3_b67mv")]
 
 [connection signal="timeout" from="ShootCooldownTimer" to="." method="_on_shoot_cooldown_timer_timeout"]
