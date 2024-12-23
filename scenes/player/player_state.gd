@@ -44,13 +44,6 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 	
 	super.enable()
 
-# flip sprite depending on move direction, retain last direction
-# func point_sprite() -> void:
-# 	if _move_dir.x > 0:
-# 		_sprite.scale.x = -1 * abs(_sprite.scale.x)
-# 	elif _move_dir.x < 0:
-# 		_sprite.scale.x = 1 * abs(_sprite.scale.x)
-
 # move player based on input via rigidbody linear velocity
 # also update last_move_dir for dashing from idle state
 func move() -> void:
