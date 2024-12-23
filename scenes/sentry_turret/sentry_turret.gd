@@ -53,13 +53,10 @@ func _process(_delta: float) -> void:
 
 	if _oscillate:
 		linear_velocity = _oscillate_dir * _oscillate_speed
+		_oscillate_dir = ((_oscillate_end_pos if not _reverse_oscillation else _oscillate_start_pos) - position).normalized()
 		_distance_traveled = position.distance_to(_oscillate_start_pos if not _reverse_oscillation else _oscillate_end_pos)
 		if _distance_traveled >= _oscillate_dist:
 			_reverse_oscillation = not _reverse_oscillation
-			_oscillate_dir = -1 * _oscillate_dir
-		
-
-		
 
 func shoot() -> void:
 	var proj = _projectile.instantiate()
