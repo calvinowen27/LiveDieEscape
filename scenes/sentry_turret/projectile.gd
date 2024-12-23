@@ -9,6 +9,7 @@ func init_projectile(parent: Node2D, linear_velocity_: Vector2) -> void:
 	_parent = parent
 
 func _ready() -> void:
+	# just for spin, idk why i have to do this here but in the editor it does it weird
 	apply_torque(100000)
 
 func _on_alive_timer_timeout() -> void:

@@ -19,13 +19,14 @@ func _ready() -> void:
 
 	var rotation_rads = (_start_rotation % 360) * TWO_PI / 360
 	
+	# using rotation to calculate positions of everything, spark, raycast, etc.
 	$RayCast2D/Laser.rotation = rotation_rads
 	var laser_raycast = $RayCast2D
 	laser_raycast.position = $CenterMarker.position + Vector2(-cos(rotation_rads) * 44, -sin(rotation_rads) * 13)
-	# $Sprite2D/Spark.position = laser_raycast.position
 	$Sprite2D/Spark.position = Vector2(2 - cos(rotation_rads) * 6, -sin(rotation_rads) * 3.5)
 	laser_raycast.target_position = Vector2(-cos(rotation_rads) * 1000, -sin(rotation_rads) * 1000)
 
+	# hacky z ordering, idk why the normal ZOrder node doesn't work here, but this works so ima leave it
 	if (_start_rotation >= 180 and _start_rotation <= 360) or _start_rotation == 0:
 		$RayCast2D/Laser.z_index = 4096
 		$Sprite2D/Spark.z_index = 0
@@ -61,6 +62,7 @@ func enable_turret() -> void:
 	
 	$ForceFieldInteractable.set_active(false)
 
+# drop force field emitter if haven't already
 func _on_interactable_interact() -> void:
 	var ff = $ForceFieldWorld
 	remove_child(ff)
