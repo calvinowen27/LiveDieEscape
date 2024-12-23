@@ -45,6 +45,8 @@ hframes = 4
 
 [node name="LaserTurret" parent="." index="9" instance=ExtResource("4_psar8")]
 position = Vector2(298, 228)
+_start_rotation = 270
+_movable = true
 
 [node name="SentryTurret" parent="." index="10" instance=ExtResource("7_1y1gk")]
 position = Vector2(509, 644)
