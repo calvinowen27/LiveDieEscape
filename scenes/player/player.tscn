@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=23 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dx4duiho1gprs" path="res://scenes/player/player_idle.tscn" id="2_ml3m3"]
 [ext_resource type="PackedScene" uid="uid://c661v61raotsm" path="res://scenes/player/player_dash.tscn" id="6_mx61r"]
 [ext_resource type="Texture2D" uid="uid://biodi138uf1oh" path="res://resources/art/player3.png" id="6_vrsab"]
-[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="7_iwhiw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w0vmm"]
 friction = 0.0
@@ -634,6 +633,7 @@ _data = {
 }
 
 [node name="Player" type="RigidBody2D"]
+y_sort_enabled = true
 collision_layer = 7
 physics_material_override = SubResource("PhysicsMaterial_w0vmm")
 gravity_scale = 0.0
@@ -673,8 +673,6 @@ frame = 1
 libraries = {
 "": SubResource("AnimationLibrary_0qodp")
 }
-
-[node name="ZOrdering" parent="." instance=ExtResource("7_iwhiw")]
 
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerIdle" method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerWalk" method="_on_dash_cooldown_timer_timeout"]

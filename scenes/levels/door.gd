@@ -12,7 +12,6 @@ var _room_idx = 0
 @export var _consume_key = false
 
 @export var _unlocked_texture: Texture2D
-@export var _locked_texture: Texture2D
 
 var _active = false # if door can be used
 
@@ -27,10 +26,17 @@ func _ready() -> void:
 	var interactable = $Interactable
 	interactable.interact.connect(attempt_open)
 	interactable.set_active(_locked)
+	$Interactable/InteractLabel.rotation = -rotation
 	
 	if _locked:
-		$Sprite2D.texture = _locked_texture
+		$Sprite2D.frame_coords.y = 1
 		$RigidBody2D/CollisionShape2D.disabled = false
+	
+	if abs(rotation - (float(3)/2)*PI) <= 0.1:
+		$Sprite2D.frame_coords.x = 1
+	elif abs(rotation - PI/2) <= 0.1:
+		$Sprite2D.frame_coords.x = 2
+
 
 func attempt_open() -> void:
 	if _active:

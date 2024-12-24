@@ -4,8 +4,8 @@ var last_collider: Object
 
 # note to self make sure script is actually attached in the editor
 
-func _ready() -> void:
-	$ZOrdering.init($Laser)
+# func _ready() -> void:
+# 	$ZOrdering.init($Laser)
 
 func _physics_process(_delta: float) -> void:
 	if not is_colliding():

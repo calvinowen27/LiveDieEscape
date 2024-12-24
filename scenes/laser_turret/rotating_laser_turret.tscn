@@ -1,9 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://bxywb3yjrleiy"]
+[gd_scene load_steps=25 format=3 uid="uid://bxywb3yjrleiy"]
 
 [ext_resource type="PackedScene" uid="uid://cxrkef56qxet5" path="res://scenes/laser_turret/rotating_laser_turret_state.tscn" id="1_1gjbq"]
 [ext_resource type="Script" path="res://scenes/laser_turret/rotating_laser_turret.gd" id="1_3x2r2"]
 [ext_resource type="Texture2D" uid="uid://btrjdyh1benqo" path="res://resources/art/rotating_laser_turret_sheet.png" id="2_kp3vw"]
-[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="2_lysyd"]
 [ext_resource type="PackedScene" uid="uid://d73k7twb32tq" path="res://scenes/laser_turret/rotating_laser_turret_idle.tscn" id="2_xc8g8"]
 [ext_resource type="Texture2D" uid="uid://bidqsr7cq3ous" path="res://resources/art/laser-turret-sheet.png" id="3_pn4a2"]
 [ext_resource type="PackedScene" uid="uid://dwqiyol6kfj14" path="res://scenes/world_objects/force_field_world.tscn" id="3_su3uc"]
@@ -271,6 +270,7 @@ size = Vector2(80.6667, 136.573)
 size = Vector2(80.6667, 136.573)
 
 [node name="RotatingLaserTurret0" type="RigidBody2D" groups=["LaserTurrets"]]
+y_sort_enabled = true
 collision_layer = 5
 mass = 5.0
 gravity_scale = 0.0
@@ -340,8 +340,6 @@ position = Vector2(-161, 0)
 libraries = {
 "": SubResource("AnimationLibrary_y1632")
 }
-
-[node name="ZOrdering" parent="." instance=ExtResource("2_lysyd")]
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("3_su3uc")]
 position = Vector2(0, -70)

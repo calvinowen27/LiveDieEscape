@@ -10,7 +10,7 @@ var _item_dropped: bool = false
 @export var _movable: bool = false
 
 func _ready() -> void:
-	$ZOrdering.init($Sprite2D)
+	# $ZOrdering.init($Sprite2D)
 	$RayCast2D/Laser.visible = false
 
 	# $RayCast2D/Laser/ZOrdering.init_marker($RayCast2D/Laser, $RayCast2D/Laser/ZOrderingMarker)

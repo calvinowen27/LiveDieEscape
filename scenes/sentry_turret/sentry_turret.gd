@@ -17,7 +17,7 @@ var _oscillate_dir: Vector2
 @export var _setup_rotation: int = 0
 
 func _ready() -> void:
-	$ZOrdering.init($Sprite2D)
+	# $ZOrdering.init($Sprite2D)
 
 	_oscillate_dist = position.distance_to(_oscillate_end_pos)
 	_oscillate_start_pos = position
@@ -34,8 +34,9 @@ func _process(_delta: float) -> void:
 	if _track_player:
 		var rot_dir = (RoomManager.get_player().global_position - global_position).normalized()
 		rotation_rads = atan2(-rot_dir.y, rot_dir.x)
+
 		# + PI to account for negatives
-		# + PI / 8 for hacky (not hacky it's just fast) rounding to point at player
+		# + PI / 8 for hacky (not hacky it's just easy) rounding to point at player
 		sprite_rotation = (rotation_rads + PI + PI / 8)
 		proj_rotation = rotation_rads - PI
 	else:
@@ -52,7 +53,7 @@ func _process(_delta: float) -> void:
 
 	# could probably use some constants here, maybe this whole (surrounding) thing could go in a function
 	# but yeah we're pointing the projectile spawn marker to the player in an ellipse around the turret
-	$ProjectileSpawn.position = Vector2(-cos(proj_rotation) * 91, -94 + sin(proj_rotation) * 71)
+	$ProjectileSpawn.position = Vector2(-cos(proj_rotation) * 91, -118 + sin(proj_rotation) * 54)
 
 	if _oscillate:
 		# calculate direction of movement and travel that way until correct distance is traveled

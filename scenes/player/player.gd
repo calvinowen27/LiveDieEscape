@@ -11,7 +11,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		_queue_teleport = Vector2.ZERO
 
 func _ready() -> void:
-	$ZOrdering.init($Sprite2D)
+	# $ZOrdering.init($Sprite2D)
 
 	EventBus.change_room.connect(_on_room_change)
 
