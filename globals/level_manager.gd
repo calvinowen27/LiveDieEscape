@@ -27,7 +27,7 @@ func load_level_file(level: int):
 	if error == OK:
 		_level_info = json.data["level_%d" % level]
 	else:
-		print("JSON Parse Error: ", json.get_error_message(), " in ", json.dat, " at line ", json.get_error_line())
+		print("level_manager ~ JSON Parse Error: ", json.get_error_message(), " in ", json.dat, " at line ", json.get_error_line())
 
 func _on_level_reset(level_idx: int) -> void:
 	clear_level(level_idx)
