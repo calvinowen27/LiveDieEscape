@@ -7,15 +7,17 @@ var recipes: Dictionary
 func _ready() -> void:
 	load_recipes()
 	
-	add_resource("scrap", 5)
+	add_resource("scrap", 1000)
 
 func _process(_delta: float) -> void:
 	if RoomManager.get_curr_room() == null or not RoomManager.get_curr_room().is_valid():
 		return
 	
 	if Input.is_action_just_pressed("use_item"):
-		if not create_object("disruptor", RoomManager.get_player().position):
-			print("failed to create disruptor with fabricator")
+		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
+		print(mouse_pos)
+		if not create_object("wall_block", mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108)) + Vector2i(54, 108)):
+			print("failed to create wall block with fabricator")
 
 func load_recipes() -> void:
 	var file = FileAccess.open("res://recipes.json", FileAccess.READ)

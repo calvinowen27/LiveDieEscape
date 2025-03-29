@@ -12,7 +12,7 @@ friction = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mifri"]
 radius = 21.0
-height = 76.0
+height = 68.0
 
 [sub_resource type="Animation" id="Animation_npcyp"]
 length = 0.001

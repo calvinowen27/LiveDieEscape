@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn4nygk4ycnp4"]
+
+[ext_resource type="Texture2D" uid="uid://384qfyjvrwaq" path="res://resources/art/wall-sheet.png" id="1_448on"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxsn3"]
+size = Vector2(108, 43)
+
+[node name="WallBlock" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21.5)
+shape = SubResource("RectangleShape2D_vxsn3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6.75, 6.75)
+texture = ExtResource("1_448on")
+offset = Vector2(0, -7)
+hframes = 4
+vframes = 4
+frame = 1

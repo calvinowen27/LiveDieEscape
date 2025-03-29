@@ -1,8 +1,8 @@
 {
-    "disruptor": {
+    "wall_block": {
         "recipe": {
             "scrap": 4
         },
-        "result": "disruptor_world"
+        "result": "wall_block"
     }
 }
