@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://csku3tqcwkiq"]
+
+[ext_resource type="Texture2D" uid="uid://jtur1rwu0vfm" path="res://resources/art/rubble.png" id="1_mbwdh"]
+
+[node name="RecipeMaterial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1845.0
+offset_bottom = -1042.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 32.0
+offset_bottom = 30.0
+texture = ExtResource("1_mbwdh")
+
+[node name="Quantity" type="Label" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = -1.0
+offset_right = 78.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 24
+text = "x 4"

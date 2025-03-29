@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1rymmt6a7bom"]
+
+[ext_resource type="Script" path="res://scenes/ui/recipes.gd" id="1_o2go7"]
+[ext_resource type="PackedScene" uid="uid://cufkkek8fdseh" path="res://scenes/ui/recipe.tscn" id="1_u0oyi"]
+
+[node name="Recipes" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_o2go7")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 599.0
+offset_bottom = 255.0
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 128
+columns = 3
+
+[node name="Recipe" parent="GridContainer" instance=ExtResource("1_u0oyi")]
+layout_mode = 2
+result_name = "wall_block"
+
+[node name="Recipe2" parent="GridContainer" instance=ExtResource("1_u0oyi")]
+layout_mode = 2
+
+[node name="Recipe3" parent="GridContainer" instance=ExtResource("1_u0oyi")]
+layout_mode = 2
+
+[node name="Recipe4" parent="GridContainer" instance=ExtResource("1_u0oyi")]
+layout_mode = 2
+
+[node name="Recipe5" parent="GridContainer" instance=ExtResource("1_u0oyi")]
+layout_mode = 2
+
+[node name="Recipe6" parent="GridContainer" instance=ExtResource("1_u0oyi")]
+layout_mode = 2

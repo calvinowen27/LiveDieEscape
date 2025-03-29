@@ -4,21 +4,25 @@ var resources: Dictionary
 
 var recipes: Dictionary
 
+var known_recipes: Array = ["wall_block"]
+
+var fab_range: int = 200 # idk this can change
+
 func _ready() -> void:
 	load_recipes()
 	
 	#add_resource("scrap", 1000)
 
-func _process(_delta: float) -> void:
-	if RoomManager.get_curr_room() == null or not RoomManager.get_curr_room().is_valid():
-		return
-	
-	if Input.is_action_just_pressed("use_item"):
-		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
-		print(mouse_pos)
-		if not create_object("wall_block", mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108)) + Vector2i(54, 108)):
-			print("failed to create wall block with fabricator")
+#func _process(_delta: float) -> void:
+	#if RoomManager.get_curr_room() == null or not RoomManager.get_curr_room().is_valid():
+		#return
+	#
+	#if Input.is_action_just_pressed("use_item"):
+		#var mouse_pos = Vector2i(get_viewport().get_mouse_position())
+		#if not create_object("wall_block", ):
+			#print("failed to create wall block with fabricator")
 
+# open file and create recipe dictionary
 func load_recipes() -> void:
 	var file = FileAccess.open("res://recipes.json", FileAccess.READ)
 	var content = file.get_as_text()
@@ -39,6 +43,9 @@ func add_resource(name: String, quantity: int) -> int:
 		return resources[name]
 
 func create_object(name: String, location: Vector2) -> bool:
+	if (location - RoomManager.get_player().position).length() > fab_range:
+		return false
+	
 	if name not in recipes.keys():
 		print("fabricator ~ create_object(): can't create object of name ", name, " because it doesn't exist")
 		return false
