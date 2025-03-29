@@ -7,7 +7,7 @@ var recipes: Dictionary
 func _ready() -> void:
 	load_recipes()
 	
-	add_resource("scrap", 1000)
+	#add_resource("scrap", 1000)
 
 func _process(_delta: float) -> void:
 	if RoomManager.get_curr_room() == null or not RoomManager.get_curr_room().is_valid():
@@ -31,7 +31,7 @@ func load_recipes() -> void:
 		recipes = json.data
 
 func add_resource(name: String, quantity: int) -> int:
-	if resources.find_key(name) == null:
+	if name not in resources.keys():
 		resources[name] = quantity
 		return quantity
 	else:

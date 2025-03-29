@@ -1,7 +1,7 @@
 {
     "wall_block": {
         "recipe": {
-            "scrap": 4
+            "rubble": 4
         },
         "result": "wall_block"
     }

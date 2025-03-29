@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://crc3567q3vy3t"]
+
+[ext_resource type="Texture2D" uid="uid://jtur1rwu0vfm" path="res://resources/art/rubble.png" id="1_qxixm"]
+[ext_resource type="Script" path="res://scenes/world_objects/rubble.gd" id="1_xfhg5"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="2_7j77j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqxsg"]
+size = Vector2(108, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o56fr"]
+size = Vector2(141, 83)
+
+[node name="Rubble" type="RigidBody2D"]
+mass = 0.001
+lock_rotation = true
+freeze = true
+script = ExtResource("1_xfhg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25.5)
+shape = SubResource("RectangleShape2D_cqxsg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6.75, 6.75)
+texture = ExtResource("1_qxixm")
+offset = Vector2(0, -8)
+
+[node name="Interactable" parent="." instance=ExtResource("2_7j77j")]
+_hold_to_interact = true
+
+[node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
+position = Vector2(1.5, -26.5)
+shape = SubResource("RectangleShape2D_o56fr")
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
+
+[editable path="Interactable"]
