@@ -12,8 +12,6 @@ var _room: int
 var _control_buttons = {}
 
 func _ready() -> void:
-	$ZOrdering.init($Sprite2D)
-	
 	# initialize interactable signals
 	$Interactable.interact.connect(_on_interact)
 	$Interactable.interactable_set.connect(_on_interactable_set)

@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://kjrb8k6r0cfo"]
+[gd_scene load_steps=8 format=3 uid="uid://kjrb8k6r0cfo"]
 
 [ext_resource type="Script" path="res://scenes/world_objects/control_point.gd" id="1_l6bys"]
 [ext_resource type="Texture2D" uid="uid://c0e3dmlouj6k8" path="res://resources/art/control_point.png" id="1_othg3"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="3_vym52"]
-[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="4_pwybs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6sy0"]
 size = Vector2(90, 64)
@@ -19,11 +18,11 @@ font_size = 64
 size = Vector2(129, 141.208)
 
 [node name="ControlPoint" type="RigidBody2D"]
+y_sort_enabled = true
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
 script = ExtResource("1_l6bys")
-_control_rooms = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)
@@ -37,6 +36,7 @@ offset = Vector2(0, -14)
 [node name="Interactable" parent="." instance=ExtResource("3_vym52")]
 
 [node name="InteractLabel" parent="Interactable" index="0"]
+z_index = 4095
 offset_top = -207.0
 offset_right = 18.0
 offset_bottom = -119.0
@@ -97,7 +97,5 @@ offset_bottom = 374.0
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 20
 columns = 3
-
-[node name="ZOrdering" parent="." instance=ExtResource("4_pwybs")]
 
 [editable path="Interactable"]
