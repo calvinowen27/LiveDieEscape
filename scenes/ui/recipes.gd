@@ -24,3 +24,11 @@ func _process(_delta: float) -> void:
 			(recipes[recipe_idx] as Recipe).deselect()
 			recipe_idx = new_recipe_idx
 			new_recipe.select()
+
+func select(recipe: Recipe) -> void:
+	if not recipe.visible:
+		return
+	
+	recipes[recipe_idx].deselect()
+	recipe_idx = recipes.find(recipe)
+	recipe.select()

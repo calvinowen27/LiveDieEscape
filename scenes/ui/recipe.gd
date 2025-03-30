@@ -43,3 +43,7 @@ func select() -> void:
 func deselect() -> void:
 	selected = false
 	$Panel/Outline.hide()
+
+func _on_panel_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		get_parent().select(self)
