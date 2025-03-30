@@ -2,10 +2,25 @@
 
 [ext_resource type="Script" path="res://scenes/ui/recipe.gd" id="1_5cohx"]
 [ext_resource type="Texture2D" uid="uid://384qfyjvrwaq" path="res://resources/art/wall-sheet.png" id="1_hnt4f"]
-[ext_resource type="PackedScene" uid="uid://csku3tqcwkiq" path="res://scenes/ui/recipe_material.tscn" id="2_2c6p6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji30k"]
 bg_color = Color(0.526423, 0.526423, 0.526422, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dy4p1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.788235, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Recipe" type="Control" groups=["Recipes"]]
 layout_mode = 3
@@ -38,15 +53,6 @@ offset_right = 177.0
 offset_bottom = 129.0
 theme_override_constants/separation = 40
 
-[node name="RecipeMaterial" parent="Panel/Materials" instance=ExtResource("2_2c6p6")]
-layout_mode = 2
-
-[node name="RecipeMaterial2" parent="Panel/Materials" instance=ExtResource("2_2c6p6")]
-layout_mode = 2
-
-[node name="RecipeMaterial3" parent="Panel/Materials" instance=ExtResource("2_2c6p6")]
-layout_mode = 2
-
 [node name="ResultName" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 2.0
@@ -57,3 +63,13 @@ scale = Vector2(0.75, 0.75)
 theme_override_font_sizes/font_size = 28
 text = "Result"
 horizontal_alignment = 1
+
+[node name="Outline" type="Panel" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dy4p1")

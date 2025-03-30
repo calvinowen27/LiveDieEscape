@@ -20,10 +20,11 @@ columns = 3
 
 [node name="Recipe" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
-result_name = "wall_block"
+result_name = "Wall"
 
 [node name="Recipe2" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
+result_name = "Disruptor"
 
 [node name="Recipe3" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2

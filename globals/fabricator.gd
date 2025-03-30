@@ -4,7 +4,7 @@ var resources: Dictionary
 
 var recipes: Dictionary
 
-var known_recipes: Array = ["wall_block"]
+var known_recipes: Array = ["Wall", "Disruptor"]
 
 var fab_range: int = 200 # idk this can change
 

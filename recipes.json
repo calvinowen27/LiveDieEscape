@@ -1,8 +1,14 @@
 {
-    "wall_block": {
+    "Wall": {
         "recipe": {
-            "rubble": 4
+            "rubble": 3
         },
         "result": "wall_block"
+    },
+    "Disruptor": {
+        "recipe": {
+            "rubble": 5
+        },
+        "result": "disruptor_world"
     }
 }
