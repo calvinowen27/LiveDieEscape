@@ -1,6 +1,6 @@
 extends Node
 
-var resources: Dictionary
+var materials: Dictionary
 
 var recipes: Dictionary
 
@@ -8,19 +8,23 @@ var known_recipes: Array = ["Wall", "Disruptor"]
 
 var fab_range: int = 200 # idk this can change
 
+var active: bool = false
+
 func _ready() -> void:
 	load_recipes()
-	
-	#add_resource("scrap", 1000)
 
-#func _process(_delta: float) -> void:
-	#if RoomManager.get_curr_room() == null or not RoomManager.get_curr_room().is_valid():
-		#return
-	#
-	#if Input.is_action_just_pressed("use_item"):
-		#var mouse_pos = Vector2i(get_viewport().get_mouse_position())
-		#if not create_object("wall_block", ):
-			#print("failed to create wall block with fabricator")
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("fabricate"):
+		active = not active
+		if active:
+			get_tree().root.get_node("Main/FabricateTemplate").show()
+		else:
+			get_tree().root.get_node("Main/FabricateTemplate").hide()
+	
+	if active:
+		var fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
+		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
+		fab_temp.position = mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108))
 
 # open file and create recipe dictionary
 func load_recipes() -> void:
@@ -35,15 +39,15 @@ func load_recipes() -> void:
 		recipes = json.data
 
 func add_resource(name: String, quantity: int) -> int:
-	if name not in resources.keys():
-		resources[name] = quantity
+	if name not in materials.keys():
+		materials[name] = quantity
 		return quantity
 	else:
-		resources[name] += quantity
-		return resources[name]
+		materials[name] += quantity
+		return materials[name]
 
 func create_object(name: String, location: Vector2) -> bool:
-	if (location - RoomManager.get_player().position).length() > fab_range:
+	if not active or not get_tree().root.get_node("Main/FabricateTemplate").valid or (location - RoomManager.get_player().position).length() > fab_range:
 		return false
 	
 	if name not in recipes.keys():
@@ -53,17 +57,17 @@ func create_object(name: String, location: Vector2) -> bool:
 	var recipe: Dictionary = recipes[name]["recipe"]
 
 	for key in recipe.keys():
-		if key not in resources.keys():
-			print("fabricator ~ create_object(): resource ", key, " not present in resources dictionary")
+		if key not in materials.keys():
+			print("fabricator ~ create_object(): resource ", key, " not present in materials dictionary")
 			return false
-		if recipe[key] > resources[key]:
+		if recipe[key] > materials[key]:
 			return false
 	
 	for key in recipe.keys():
-		resources[key] -= recipe[key]
+		materials[key] -= recipe[key]
 	
 	RoomManager.spawn_object(recipes[name]["result"], location)
 	
-	print(resources)
+	print(materials)
 	
 	return true
