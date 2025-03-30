@@ -7,7 +7,7 @@
     },
     "Disruptor": {
         "recipe": {
-            "rubble": 5
+            "scrap": 5
         },
         "result": "disruptor_world"
     }
