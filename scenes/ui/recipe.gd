@@ -3,6 +3,8 @@ extends Control
 class_name Recipe
 
 @export var result_name: String
+@export var texture: Texture2D
+
 var selected: bool = false
 
 func _ready() -> void:
@@ -24,11 +26,13 @@ func init_recipe() -> void:
 	
 	var recipe: Dictionary = Fabricator.recipes[result_name]["recipe"]
 	
+	$Panel/Result.texture = texture
+	
 	for key in recipe.keys():
 		var material = load("res://scenes/ui/recipe_material.tscn").instantiate()
 		$Panel/Materials.add_child(material)
 		material.get_node("Quantity").text = "x %d" % recipe[key]
-		# also set material texture here
+		material.get_node("TextureRect").texture = load("res://resources/art/%s.png" % key)
 	
 	$Panel/ResultName.text = result_name
 
