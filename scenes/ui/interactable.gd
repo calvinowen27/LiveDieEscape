@@ -4,6 +4,7 @@ class_name Interactable
 
 var _player_in_range = false
 var _is_active = true
+var _interactable = false
 
 @export var _hold_to_interact = false # if true, duration is $InteractTimer
 var _interacting = false
@@ -29,6 +30,12 @@ func _ready() -> void:
 		#$InteractLabel.text = "Hold  E  to Interact"
 
 func _process(_delta: float) -> void:
+	if _player_in_range and not _interactable:
+		if RoomManager.get_player().can_interact_with(self):
+			_set_interactable(true)
+		else:
+			return
+
 	# check for player interaction
 	if Input.is_action_just_pressed("interact") and _player_in_range and _is_active:
 		if not _hold_to_interact:
@@ -46,17 +53,27 @@ func _process(_delta: float) -> void:
 			_progress_bar.value = _progress_bar.max_value - int(_interact_timer.time_left / _interact_timer.wait_time * _progress_bar.max_value)
 
 func _on_interact_area_body_entered(body: Node2D) -> void:
-	if body == RoomManager.get_player() and _is_active:
-		_set_interactable(true)
+	var player = RoomManager.get_player()
+	if body == player and _is_active:
+		_player_in_range = true
+
+		player.add_interactable_touching(self)
+
+		if player.can_interact_with(self):
+			_set_interactable(true)
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
-	if body == RoomManager.get_player():
+	var player = RoomManager.get_player()
+	if body == player:
+		_player_in_range = false
+
+		player.remove_interactable_touching(self)
 		_set_interactable(false)
 
 func _set_interactable(val: bool) -> void:
-	_player_in_range = val
 	$InteractLabel.visible = val
 	interactable_set.emit(val)
+	_interactable = val
 
 func is_active() -> bool:
 	return _is_active

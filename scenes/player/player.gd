@@ -4,6 +4,8 @@ var _queue_teleport = Vector2.ZERO
 
 var _last_move_dir: Vector2
 
+var _interactables_touching: Array
+
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _queue_teleport != Vector2.ZERO:
 		state.transform = Transform2D(0.0, _queue_teleport)
@@ -36,3 +38,12 @@ func set_last_move_dir(dir: Vector2) -> void:
 
 func get_last_move_dir() -> Vector2:
 	return _last_move_dir
+
+func add_interactable_touching(interactable: Interactable) -> void:
+	_interactables_touching.append(interactable)
+
+func remove_interactable_touching(interactable: Interactable) -> void:
+	_interactables_touching.erase(interactable)
+
+func can_interact_with(interactable: Interactable) -> bool:
+	return interactable in _interactables_touching and _interactables_touching.size() == 1
