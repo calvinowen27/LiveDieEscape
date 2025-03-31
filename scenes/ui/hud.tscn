@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3m15d5m7d5rl"]
+[gd_scene load_steps=11 format=3 uid="uid://b3m15d5m7d5rl"]
 
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_kx0v1"]
-[ext_resource type="PackedScene" uid="uid://m4l0ixney2nw" path="res://scenes/ui/inventory_slot.tscn" id="2_xy2ua"]
 [ext_resource type="PackedScene" uid="uid://bw4ivehrt8j0t" path="res://scenes/ui/dash_progress_bar.tscn" id="3_3grgp"]
 [ext_resource type="PackedScene" uid="uid://dn61cof1tymen" path="res://scenes/ui/map_ui.tscn" id="4_6dcsy"]
 [ext_resource type="PackedScene" uid="uid://uth7vm3vhpkr" path="res://scenes/ui/powerup_icon.tscn" id="5_ad1hm"]
@@ -71,40 +70,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="InventoryContainer" type="HBoxContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 72.5
-offset_top = 726.0
-offset_right = 717.5
-offset_bottom = 876.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 15
-metadata/_edit_group_ = true
-
-[node name="InventorySlot" parent="InventoryContainer" instance=ExtResource("2_xy2ua")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="InventorySlot2" parent="InventoryContainer" instance=ExtResource("2_xy2ua")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="InventorySlot3" parent="InventoryContainer" instance=ExtResource("2_xy2ua")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="InventorySlot4" parent="InventoryContainer" instance=ExtResource("2_xy2ua")]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="DashProgressBar" parent="." instance=ExtResource("3_3grgp")]
 layout_mode = 2

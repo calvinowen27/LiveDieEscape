@@ -77,3 +77,7 @@ position = Vector2(442, 945)
 
 [node name="RotatingLaserTurret" parent="." index="16" instance=ExtResource("10_ogppi")]
 position = Vector2(305, 512)
+
+[connection signal="body_entered" from="ForceFieldEmitter" to="ForceFieldEmitter/ItemState" method="_on_item_body_entered"]
+[connection signal="mouse_entered" from="ForceFieldEmitter" to="ForceFieldEmitter/ItemState/ItemInventory" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="ForceFieldEmitter" to="ForceFieldEmitter/ItemState/ItemInventory" method="_on_area_2d_mouse_exited"]

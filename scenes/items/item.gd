@@ -19,18 +19,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func pickup() -> void:
-	$ItemState._set_curr_state("ItemInventory")
-
-func drop() -> void:
-	$ItemState._set_curr_state("ItemGround")
-
-	position = RoomManager.get_player().global_position + Vector2(0, 60)
-
-func use() -> void:
-	$ItemState._set_curr_state("ItemPlaced")
-	# print("using item %s" % _item_name)
-
 func get_item_texture() -> Texture2D:
 	return _item_texture
 
@@ -45,3 +33,10 @@ func get_item_info() -> String:
 
 func get_id() -> int:
 	return _id
+
+func _on_body_entered(body: Node2D) -> void:
+	if body == RoomManager.get_player():
+		Inventory.add_item(self)
+		hide()
+		$CollisionShape2D.call_deferred("set_disabled", true)
+		#$CollisionShape2D.disabled = true
