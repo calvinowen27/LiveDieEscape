@@ -10,5 +10,11 @@
             "scrap": 5
         },
         "result": "disruptor_world"
+    },
+    "Force Field Emitter": {
+        "recipe": {
+            "force_field_emitter": 1
+        },
+        "result": "force_field_world"
     }
 }

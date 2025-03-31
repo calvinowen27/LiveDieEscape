@@ -28,18 +28,18 @@ func enable_turret() -> void:
 	
 	$ForceFieldInteractable.set_active(false)
 
-func _on_control_interactable_interact() -> void:
-	# spawn control chip
-	var control_chip = RoomManager.instantiate_item("control_chip", position + Vector2(0, 60))
-	control_chip.set_control(RoomManager.get_curr_level(), RoomManager.get_curr_room_idx())
+# func _on_control_interactable_interact() -> void:
+# 	# spawn control chip
+# 	var control_chip = RoomManager.instantiate_item("control_chip", position + Vector2(0, 60))
+# 	control_chip.set_control(RoomManager.get_curr_level(), RoomManager.get_curr_room_idx())
 	
-	disable_turret()
+# 	disable_turret()
 
-func _on_force_field_interactable_interact() -> void:
-	var ff = $ForceFieldWorld
-	remove_child(ff)
-	ff.queue_free()
+# func _on_force_field_interactable_interact() -> void:
+# 	var ff = $ForceFieldWorld
+# 	remove_child(ff)
+# 	ff.queue_free()
 
-	_item_dropped = true
+# 	_item_dropped = true
 
-	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
+# 	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))

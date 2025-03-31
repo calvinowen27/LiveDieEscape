@@ -87,3 +87,12 @@ func get_mat_count(name: String) -> int:
 		return 0
 	
 	return materials[name]
+
+func learn_recipe(name: String) -> void:
+	known_recipes.append(name)
+
+	var recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
+	for recipe in recipes:
+		print(recipe.result_name)
+		if recipe.result_name == name:
+			recipe.show() 

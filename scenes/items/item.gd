@@ -12,6 +12,9 @@ var _id
 @export var _item_texture: Texture2D
 @export var _object_texture: Texture2D
 
+@export var _is_fab_mat: bool = false
+@export var _fab_mat_name: String
+
 func _ready() -> void:
 	_id = _next_id
 	_next_id += 1
@@ -39,4 +42,6 @@ func _on_body_entered(body: Node2D) -> void:
 		Inventory.add_item(self)
 		hide()
 		$CollisionShape2D.call_deferred("set_disabled", true)
+		if _is_fab_mat:
+			Fabricator.add_resource(_fab_mat_name, 1)
 		#$CollisionShape2D.disabled = true

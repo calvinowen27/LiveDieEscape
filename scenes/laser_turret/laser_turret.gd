@@ -8,6 +8,7 @@ var _item_dropped: bool = false
 
 @export var _start_rotation: int
 @export var _movable: bool = false
+@export var _rotating: bool = false
 
 func _ready() -> void:
 	# $ZOrdering.init($Sprite2D)
@@ -68,14 +69,36 @@ func enable_turret() -> void:
 	$ForceFieldInteractable.set_active(false)
 
 # drop force field emitter if haven't already
-func _on_interactable_interact() -> void:
+# func _on_interactable_interact() -> void:
+# 	var ff = $ForceFieldWorld
+# 	remove_child(ff)
+# 	ff.queue_free()
+
+# 	_item_dropped = true
+
+# 	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
+
+func _on_control_interactable_interact() -> void:
+	if not _rotating:
+		return
+	
+	# spawn control chip
+	var control_chip = RoomManager.instantiate_item("control_chip", position + Vector2(0, 60))
+	control_chip.set_control(RoomManager.get_curr_level(), RoomManager.get_curr_room_idx())
+	
+	disable_turret()
+
+# drop force field emitter if haven't already
+func _on_force_field_interactable_interact() -> void:
 	var ff = $ForceFieldWorld
 	remove_child(ff)
 	ff.queue_free()
 
 	_item_dropped = true
 
-	#RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
+	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
+
+	Fabricator.learn_recipe("Force Field Emitter")
 
 func get_start_rotation() -> int:
 	return _start_rotation
