@@ -1,17 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1j10o3evpi4"]
+[gd_scene load_steps=8 format=3 uid="uid://c1j10o3evpi4"]
 
 [ext_resource type="Script" path="res://scenes/items/item.gd" id="1_cwod5"]
 [ext_resource type="PackedScene" uid="uid://cw6oa0apoon7u" path="res://scenes/items/item_state.tscn" id="2_ky0s2"]
 [ext_resource type="PackedScene" uid="uid://c14hn51b1sfkw" path="res://scenes/items/item_ground.tscn" id="3_vgvtc"]
 [ext_resource type="PackedScene" uid="uid://bio2udaxmt02r" path="res://scenes/items/item_inventory.tscn" id="4_l8lby"]
 [ext_resource type="PackedScene" uid="uid://dewkpjna0mqcv" path="res://scenes/items/item_placed.tscn" id="5_jeboa"]
-[ext_resource type="PackedScene" uid="uid://h3sc2rotjuyx" path="res://scenes/z_ordering.tscn" id="6_llh8t"]
 [ext_resource type="Texture2D" uid="uid://8bmbgotkrd78" path="res://resources/art/item_glow.png" id="7_xudgq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wplvq"]
 radius = 25.1794
 
 [node name="Item" type="Area2D"]
+y_sort_enabled = true
 script = ExtResource("1_cwod5")
 
 [node name="ItemState" parent="." instance=ExtResource("2_ky0s2")]
@@ -32,8 +32,6 @@ scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wplvq")
-
-[node name="ZOrdering" parent="." instance=ExtResource("6_llh8t")]
 
 [connection signal="body_entered" from="." to="ItemState" method="_on_item_body_entered"]
 [connection signal="mouse_entered" from="." to="ItemState/ItemInventory" method="_on_area_2d_mouse_entered"]

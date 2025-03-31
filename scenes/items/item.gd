@@ -13,8 +13,6 @@ var _id
 @export var _object_texture: Texture2D
 
 func _ready() -> void:
-	$ZOrdering.init($Sprite2D)
-	
 	_id = _next_id
 	_next_id += 1
 
