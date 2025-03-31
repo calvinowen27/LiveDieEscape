@@ -40,7 +40,8 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_laser_sprite = laser_sprite
 	_laser_raycast = laser_raycast
 
-	_turret.freeze = true
+	#_turret.freeze = true
+	_turret.set_deferred("freeze", true)
 	
 	super.enable()
 

@@ -23,5 +23,7 @@ func _on_body_entered(body: Node) -> void:
 	var player = RoomManager.get_player()
 	if body == player:
 		player.die()
+	elif body is LaserTurret:
+		body.die()
 	
 	queue_free()

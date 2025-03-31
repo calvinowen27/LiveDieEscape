@@ -13,7 +13,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	laser_raycast.enabled = false
 
 	if _turret.is_movable():
-		_turret.freeze = false
+		_turret.set_deferred("freeze", false)
 	
 	_turret.get_node("Sprite2D/Spark").visible = false
 
