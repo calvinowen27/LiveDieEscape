@@ -10,4 +10,4 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	super.laser_turret_state_enable(turret, animation_player, laser_sprite, laser_raycast)
 	
 	_turret.get_node("Sprite2D/Spark").visible = true
-	animation_player.play("rotating_laser_turret_priming")
+	animation_player.play("laser_turret_priming")

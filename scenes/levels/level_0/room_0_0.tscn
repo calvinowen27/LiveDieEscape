@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://g5dssf7icumf"]
+[gd_scene load_steps=11 format=4 uid="uid://g5dssf7icumf"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_obo4y"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_0nwva"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d0vgmox072m1a" path="res://scenes/sentry_turret/sentry_turret.tscn" id="7_1y1gk"]
 [ext_resource type="PackedScene" uid="uid://oeqvilovte4h" path="res://scenes/items/force_field_emitter.tscn" id="8_0h50a"]
 [ext_resource type="PackedScene" uid="uid://crc3567q3vy3t" path="res://scenes/world_objects/rubble.tscn" id="9_777nx"]
+[ext_resource type="PackedScene" uid="uid://bxywb3yjrleiy" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="10_ogppi"]
 
 [node name="Room0_0" instance=ExtResource("1_obo4y")]
 
@@ -56,6 +57,7 @@ position = Vector2(901, 587)
 _track_player = false
 _oscillate_speed = 500.0
 _oscillate_end_pos = Vector2(750, 720)
+_setup_rotation = 270
 
 [node name="ForceFieldEmitter" parent="." index="11" instance=ExtResource("8_0h50a")]
 position = Vector2(588, 567)
@@ -71,3 +73,6 @@ position = Vector2(571, 942)
 
 [node name="Rubble4" parent="." index="15" instance=ExtResource("9_777nx")]
 position = Vector2(442, 945)
+
+[node name="RotatingLaserTurret" parent="." index="16" instance=ExtResource("10_ogppi")]
+position = Vector2(305, 512)

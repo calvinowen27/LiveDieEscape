@@ -16,6 +16,7 @@ func _ready() -> void:
 	# $RayCast2D/Laser/ZOrdering.init_marker($RayCast2D/Laser, $RayCast2D/Laser/ZOrderingMarker)
 
 	$ForceFieldInteractable.set_active(false)
+	$ScrapInteractable.set_active(false)
 
 	var rotation_rads = (_start_rotation % 360) * TWO_PI / 360
 	
@@ -55,7 +56,11 @@ func disable_turret() -> void:
 		$ForceFieldInteractable.set_active(true)
 
 func die() -> void:
+	if $LaserTurretState.is_broken():
+		return
+	
 	$LaserTurretState.die()
+	$ScrapInteractable.set_active(true)
 
 func enable_turret() -> void:
 	$LaserTurretState.enable_turret()
@@ -70,10 +75,14 @@ func _on_interactable_interact() -> void:
 
 	_item_dropped = true
 
-	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
+	#RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
 
 func get_start_rotation() -> int:
 	return _start_rotation
 
 func is_movable() -> bool:
 	return _movable
+
+func _on_scrap_interactable_interact() -> void:
+	Fabricator.add_resource("scrap", 5)
+	$ScrapInteractable.set_active(false)

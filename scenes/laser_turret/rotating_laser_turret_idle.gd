@@ -17,4 +17,4 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 		_turret.freeze = false
 	
 	_turret.get_node("Sprite2D/Spark").visible = false
-	animation_player.play("rotating_laser_turret_idle")
+	animation_player.play("laser_turret_idle")
