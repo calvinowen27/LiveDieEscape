@@ -151,12 +151,11 @@ label_settings = SubResource("LabelSettings_tltay")
 
 [node name="DeadPanel" type="Panel" parent="."]
 process_mode = 3
-visible = false
 layout_mode = 0
-offset_left = 56.0
-offset_top = 504.0
-offset_right = 746.0
-offset_bottom = 904.0
+offset_left = -827.0
+offset_top = 339.0
+offset_right = -137.0
+offset_bottom = 739.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ypmao")
 script = ExtResource("6_pvhjm")
 
