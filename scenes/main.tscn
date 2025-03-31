@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dviw650xtb18v"]
+[gd_scene load_steps=8 format=3 uid="uid://dviw650xtb18v"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_khhrq"]
 [ext_resource type="PackedScene" uid="uid://b3m15d5m7d5rl" path="res://scenes/ui/hud.tscn" id="2_b7633"]
 [ext_resource type="PackedScene" uid="uid://bicclg6frtano" path="res://scenes/ui/text_box.tscn" id="3_4pxxy"]
 [ext_resource type="PackedScene" uid="uid://c22i7cl5i4ebq" path="res://scenes/ui/pause_menu.tscn" id="4_j1i6a"]
 [ext_resource type="Script" path="res://scenes/fabricate_template.gd" id="5_c2pln"]
+[ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="6_27b47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwtr3"]
-size = Vector2(104, 104)
+size = Vector2(15.1111, 15.1111)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_khhrq")
@@ -71,15 +72,20 @@ grow_vertical = 2
 
 [node name="FabricateTemplate" type="Area2D" parent="."]
 visible = false
+scale = Vector2(6.75, 6.75)
 collision_layer = 0
 script = ExtResource("5_c2pln")
 
+[node name="Sprite2D" type="Sprite2D" parent="FabricateTemplate"]
+texture = ExtResource("6_27b47")
+offset = Vector2(8, 8)
+
 [node name="Square" type="Polygon2D" parent="FabricateTemplate"]
 color = Color(0.152941, 0.521569, 1, 0.592157)
-polygon = PackedVector2Array(0, 0, 0, 108, 108, 108, 108, 0)
+polygon = PackedVector2Array(0, 0, 0, 16, 16, 16, 16, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FabricateTemplate"]
-position = Vector2(54, 54)
+position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_vwtr3")
 
 [connection signal="body_entered" from="FabricateTemplate" to="FabricateTemplate" method="_on_body_entered"]

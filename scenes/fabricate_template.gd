@@ -4,6 +4,9 @@ var valid: bool = true
 
 var invalid_objs: Array
 
+func _ready() -> void:
+	EventBus.recipe_select.connect(_on_recipe_select)
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is RigidBody2D:
 		valid = false
@@ -15,3 +18,6 @@ func _on_body_exited(body: Node2D) -> void:
 		invalid_objs.erase(body)
 		if invalid_objs.size() == 0:
 			valid = true
+
+func _on_recipe_select(recipe: Recipe) -> void:
+	$Sprite2D.texture = recipe.texture

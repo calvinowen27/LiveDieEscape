@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cufkkek8fdseh"]
 
 [ext_resource type="Script" path="res://scenes/ui/recipe.gd" id="1_5cohx"]
-[ext_resource type="Texture2D" uid="uid://384qfyjvrwaq" path="res://resources/art/wall-sheet.png" id="1_hnt4f"]
+[ext_resource type="Texture2D" uid="uid://cico8t12jclmb" path="res://resources/art/wall.png" id="2_hk1sk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji30k"]
 bg_color = Color(0.17881, 0.17881, 0.17881, 1)
@@ -43,7 +43,7 @@ offset_left = 9.0
 offset_top = 4.0
 offset_right = 101.0
 offset_bottom = 96.0
-texture = ExtResource("1_hnt4f")
+texture = ExtResource("2_hk1sk")
 
 [node name="Materials" type="VBoxContainer" parent="Panel"]
 layout_mode = 0

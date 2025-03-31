@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/ui/recipes.gd" id="1_o2go7"]
 [ext_resource type="PackedScene" uid="uid://cufkkek8fdseh" path="res://scenes/ui/recipe.tscn" id="1_u0oyi"]
-[ext_resource type="Texture2D" uid="uid://384qfyjvrwaq" path="res://resources/art/wall-sheet.png" id="3_r5wnn"]
+[ext_resource type="Texture2D" uid="uid://cico8t12jclmb" path="res://resources/art/wall.png" id="3_gy3hx"]
 [ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="4_bmajj"]
 [ext_resource type="Texture2D" uid="uid://6dutydhkateq" path="res://resources/art/force_field_emitter.png" id="5_v1ctj"]
 
@@ -38,7 +38,7 @@ script = ExtResource("1_o2go7")
 [node name="Recipe" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
 result_name = "Wall"
-texture = ExtResource("3_r5wnn")
+texture = ExtResource("3_gy3hx")
 
 [node name="Recipe2" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
