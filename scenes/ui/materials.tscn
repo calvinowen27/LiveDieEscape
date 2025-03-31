@@ -13,19 +13,25 @@ columns = 2
 script = ExtResource("1_6mhjf")
 
 [node name="RecipeMaterial" parent="." instance=ExtResource("1_dfj7c")]
+visible = false
 layout_mode = 2
 
 [node name="RecipeMaterial2" parent="." instance=ExtResource("1_dfj7c")]
+visible = false
 layout_mode = 2
 
 [node name="RecipeMaterial3" parent="." instance=ExtResource("1_dfj7c")]
+visible = false
 layout_mode = 2
 
 [node name="RecipeMaterial4" parent="." instance=ExtResource("1_dfj7c")]
+visible = false
 layout_mode = 2
 
 [node name="RecipeMaterial5" parent="." instance=ExtResource("1_dfj7c")]
+visible = false
 layout_mode = 2
 
 [node name="RecipeMaterial6" parent="." instance=ExtResource("1_dfj7c")]
+visible = false
 layout_mode = 2
