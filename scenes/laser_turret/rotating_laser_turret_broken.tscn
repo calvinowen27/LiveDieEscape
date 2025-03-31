@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://drpuukbwhfu5y"]
-
-[ext_resource type="PackedScene" uid="uid://drsdpgl44jwak" path="res://scenes/laser_turret/laser_turret_state.tscn" id="1_vqyjy"]
-[ext_resource type="Script" path="res://scenes/laser_turret/rotating_laser_turret_broken.gd" id="2_jwp7j"]
-
-[node name="RotatingLaserTurretBroken" instance=ExtResource("1_vqyjy")]
-script = ExtResource("2_jwp7j")
