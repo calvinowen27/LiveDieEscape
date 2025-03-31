@@ -71,6 +71,7 @@ grow_vertical = 2
 
 [node name="FabricateTemplate" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
 script = ExtResource("5_c2pln")
 
 [node name="Square" type="Polygon2D" parent="FabricateTemplate"]

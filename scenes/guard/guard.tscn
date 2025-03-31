@@ -43,6 +43,7 @@ _initial_state = "GuardIdle"
 [node name="GuardDisrupted" parent="GuardState" instance=ExtResource("6_v3b3x")]
 
 [node name="ActivationArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea"]
 shape = SubResource("CircleShape2D_o1m64")
