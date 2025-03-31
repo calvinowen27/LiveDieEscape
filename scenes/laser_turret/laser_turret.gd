@@ -19,6 +19,8 @@ func _ready() -> void:
 	$ForceFieldInteractable.set_active(false)
 	$ScrapInteractable.set_active(false)
 
+	$ControlInteractable.set_active(_rotating)
+
 	var rotation_rads = (_start_rotation % 360) * TWO_PI / 360
 	
 	# using rotation to calculate positions of everything, spark, raycast, etc.
