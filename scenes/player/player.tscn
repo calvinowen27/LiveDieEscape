@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=22 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
@@ -9,10 +9,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w0vmm"]
 friction = 0.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mifri"]
-radius = 21.0
-height = 68.0
 
 [sub_resource type="Animation" id="Animation_npcyp"]
 length = 0.001
@@ -657,10 +653,10 @@ dash_ticks = 10
 wait_time = 2.5
 one_shot = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -21)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_mifri")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1.19209e-07, -40)
+scale = Vector2(4.17969, 4.44444)
+polygon = PackedVector2Array(-5, 0, 5, 0, 8, 3, 8, 6, 5, 9, -5, 9, -8, 6, -8, 3)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(7.5, 7.5)
