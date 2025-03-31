@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dewkpjna0mqcv"]
-
-[ext_resource type="PackedScene" uid="uid://cw6oa0apoon7u" path="res://scenes/items/item_state.tscn" id="1_btsu3"]
-[ext_resource type="Script" path="res://scenes/items/item_placed.gd" id="2_jm046"]
-
-[node name="ItemPlaced" instance=ExtResource("1_btsu3")]
-script = ExtResource("2_jm046")
-_object_name = ""
