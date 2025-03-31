@@ -11,6 +11,8 @@ var fab_range: int = 200 # idk this can change
 var active: bool = false
 
 func _ready() -> void:
+	EventBus.player_death.connect(_on_player_death)
+	
 	load_recipes()
 
 func _process(_delta: float) -> void:
@@ -41,10 +43,11 @@ func load_recipes() -> void:
 func add_resource(name: String, quantity: int) -> int:
 	if name not in materials.keys():
 		materials[name] = quantity
-		return quantity
 	else:
 		materials[name] += quantity
-		return materials[name]
+	
+	EventBus.materials_update.emit()
+	return materials[name]
 
 func create_object(name: String, location: Vector2) -> bool:
 	if not active or not get_tree().root.get_node("Main/FabricateTemplate").valid or (location - RoomManager.get_player().position).length() > fab_range:
@@ -70,4 +73,15 @@ func create_object(name: String, location: Vector2) -> bool:
 	
 	print(materials)
 	
+	EventBus.materials_update.emit()
+	
 	return true
+
+func _on_player_death() -> void:
+	materials.clear()
+
+func get_mat_count(name: String) -> int:
+	if name not in materials.keys():
+		return 0
+	
+	return materials[name]

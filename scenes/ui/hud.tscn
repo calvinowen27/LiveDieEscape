@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3m15d5m7d5rl"]
+[gd_scene load_steps=12 format=3 uid="uid://b3m15d5m7d5rl"]
 
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_kx0v1"]
 [ext_resource type="PackedScene" uid="uid://m4l0ixney2nw" path="res://scenes/ui/inventory_slot.tscn" id="2_xy2ua"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://uth7vm3vhpkr" path="res://scenes/ui/powerup_icon.tscn" id="5_ad1hm"]
 [ext_resource type="Script" path="res://scenes/ui/dead_panel.gd" id="6_pvhjm"]
 [ext_resource type="PackedScene" uid="uid://b1rymmt6a7bom" path="res://scenes/ui/recipes.tscn" id="7_tgksy"]
+[ext_resource type="PackedScene" uid="uid://cfcn3onsdwndo" path="res://scenes/ui/materials.tscn" id="8_dniww"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kacm3"]
 bg_color = Color(0, 0, 0, 1)
@@ -225,9 +226,16 @@ text = "You Died!"
 
 [node name="Recipes" parent="." instance=ExtResource("7_tgksy")]
 layout_mode = 1
-offset_left = 107.0
+offset_left = 35.0
 offset_top = 760.0
-offset_right = 107.0
-offset_bottom = 760.0
+offset_right = 435.0
+offset_bottom = 888.0
+
+[node name="Materials" parent="." instance=ExtResource("8_dniww")]
+layout_mode = 0
+offset_left = 644.0
+offset_top = 761.0
+offset_right = 724.0
+offset_bottom = 833.0
 
 [connection signal="pressed" from="DeadPanel/RespawnButton" to="DeadPanel" method="_on_respawn_button_pressed"]

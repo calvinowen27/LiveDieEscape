@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scenes/fabricate_template.gd" id="5_c2pln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwtr3"]
-size = Vector2(106, 106)
+size = Vector2(104, 104)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_khhrq")
