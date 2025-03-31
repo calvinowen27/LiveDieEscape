@@ -151,6 +151,7 @@ label_settings = SubResource("LabelSettings_tltay")
 
 [node name="DeadPanel" type="Panel" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 0
 offset_left = -827.0
 offset_top = 339.0

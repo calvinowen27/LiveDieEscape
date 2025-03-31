@@ -9,5 +9,6 @@ func _on_resume_button_pressed() -> void:
 	SceneManager.toggle_game_paused()
 	visible = false
 
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+func _on_title_button_pressed() -> void:
+	SceneManager.toggle_game_paused()
+	Game.restart_game()
