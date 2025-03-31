@@ -100,12 +100,15 @@ func _on_force_field_interactable_interact() -> void:
 
 	Fabricator.learn_recipe("Force Field Emitter")
 
+func _on_scrap_interactable_interact() -> void:
+	Fabricator.add_resource("scrap", 5)
+	$ScrapInteractable.set_active(false)
+
 func get_start_rotation() -> int:
 	return _start_rotation
 
 func is_movable() -> bool:
 	return _movable
 
-func _on_scrap_interactable_interact() -> void:
-	Fabricator.add_resource("scrap", 5)
-	$ScrapInteractable.set_active(false)
+func is_rotating() -> bool:
+	return _rotating;

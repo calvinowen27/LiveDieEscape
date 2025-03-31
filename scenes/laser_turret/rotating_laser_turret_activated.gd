@@ -7,8 +7,8 @@ var _laser_rotation = 0
 
 var _animation: Animation
 
-func update(_delta: float) -> String:
-	_laser_rotation += _delta * TWO_PI / _seconds_per_rotation
+func update(delta: float) -> String:
+	_laser_rotation += delta * TWO_PI / _seconds_per_rotation
 	if _laser_rotation >= TWO_PI:
 		_laser_rotation = 0
 	

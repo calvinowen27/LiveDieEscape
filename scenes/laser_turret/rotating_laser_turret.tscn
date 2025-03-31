@@ -394,9 +394,6 @@ offset_bottom = -119.0
 position = Vector2(1.5, -32)
 shape = SubResource("RectangleShape2D_4figc")
 
-[node name="CenterMarker" type="Marker2D" parent="."]
-position = Vector2(0, -54)
-
 [node name="ScrapInteractable" parent="." instance=ExtResource("4_f3u75")]
 _hold_to_interact = true
 
@@ -413,6 +410,9 @@ scale = Vector2(3, 3)
 [node name="CollisionShape2D" parent="ScrapInteractable/InteractArea" index="0"]
 position = Vector2(-1, -31)
 shape = SubResource("RectangleShape2D_p43qh")
+
+[node name="CenterMarker" type="Marker2D" parent="."]
+position = Vector2(0, -54)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="RotatingLaserTurretState" method="_on_animation_player_animation_finished"]
 [connection signal="interact" from="ForceFieldInteractable" to="." method="_on_force_field_interactable_interact"]
