@@ -1,36 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1rymmt6a7bom"]
+[gd_scene load_steps=6 format=3 uid="uid://b1rymmt6a7bom"]
 
 [ext_resource type="Script" path="res://scenes/ui/recipes.gd" id="1_o2go7"]
 [ext_resource type="PackedScene" uid="uid://cufkkek8fdseh" path="res://scenes/ui/recipe.tscn" id="1_u0oyi"]
 [ext_resource type="Texture2D" uid="uid://384qfyjvrwaq" path="res://resources/art/wall-sheet.png" id="3_r5wnn"]
 [ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="4_bmajj"]
 
-[node name="Recipes" type="GridContainer"]
-offset_right = 599.0
-offset_bottom = 255.0
-theme_override_constants/h_separation = 200
-theme_override_constants/v_separation = 128
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w0uk"]
+bg_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.55562, 0.55562, 0.55562, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Recipes" type="Panel"]
+offset_top = 256.0
+offset_right = 622.0
+offset_bottom = 536.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6w0uk")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 13.0
+offset_right = 611.0
+offset_bottom = 268.0
+theme_override_constants/h_separation = 202
+theme_override_constants/v_separation = 132
 columns = 3
 script = ExtResource("1_o2go7")
 
-[node name="Recipe" parent="." instance=ExtResource("1_u0oyi")]
+[node name="Recipe" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
 result_name = "Wall"
 texture = ExtResource("3_r5wnn")
 
-[node name="Recipe2" parent="." instance=ExtResource("1_u0oyi")]
+[node name="Recipe2" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
 result_name = "Disruptor"
 texture = ExtResource("4_bmajj")
 
-[node name="Recipe3" parent="." instance=ExtResource("1_u0oyi")]
+[node name="Recipe3" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
 
-[node name="Recipe4" parent="." instance=ExtResource("1_u0oyi")]
+[node name="Recipe4" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
 
-[node name="Recipe5" parent="." instance=ExtResource("1_u0oyi")]
+[node name="Recipe5" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
 
-[node name="Recipe6" parent="." instance=ExtResource("1_u0oyi")]
+[node name="Recipe6" parent="GridContainer" instance=ExtResource("1_u0oyi")]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 202.0
+offset_top = -34.0
+offset_right = 415.0
+theme_override_font_sizes/font_size = 24
+text = "Fabricator Recipes"

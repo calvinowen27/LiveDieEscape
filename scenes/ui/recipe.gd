@@ -31,7 +31,7 @@ func init_recipe() -> void:
 	for key in recipe.keys():
 		var material = load("res://scenes/ui/recipe_material.tscn").instantiate()
 		$Panel/Materials.add_child(material)
-		material.get_node("Quantity").text = "x %d" % recipe[key]
+		material.get_node("Quantity").text = "x%d" % recipe[key]
 		material.get_node("TextureRect").texture = load("res://resources/art/%s.png" % key)
 	
 	$Panel/ResultName.text = result_name

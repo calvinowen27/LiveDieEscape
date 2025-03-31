@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://384qfyjvrwaq" path="res://resources/art/wall-sheet.png" id="1_hnt4f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji30k"]
-bg_color = Color(0.526423, 0.526423, 0.526422, 1)
+bg_color = Color(0.17881, 0.17881, 0.17881, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -16,7 +16,7 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(1, 0.788235, 1, 1)
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -47,9 +47,9 @@ texture = ExtResource("1_hnt4f")
 
 [node name="Materials" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 118.0
+offset_left = 114.0
 offset_top = 6.0
-offset_right = 177.0
+offset_right = 173.0
 offset_bottom = 129.0
 theme_override_constants/separation = 40
 

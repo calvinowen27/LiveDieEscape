@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://csku3tqcwkiq"]
+[gd_scene load_steps=3 format=3 uid="uid://csku3tqcwkiq"]
 
 [ext_resource type="Texture2D" uid="uid://jtur1rwu0vfm" path="res://resources/art/rubble.png" id="1_mbwdh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yiy6i"]
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="RecipeMaterial" type="Control"]
 layout_mode = 3
@@ -14,22 +20,25 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 74.0
+offset_right = 35.0
 offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yiy6i")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 2.0
+offset_left = 3.0
+offset_top = 1.0
 offset_right = 32.0
 offset_bottom = 30.0
 texture = ExtResource("1_mbwdh")
 
 [node name="Quantity" type="Label" parent="."]
 layout_mode = 0
-offset_left = 37.0
+offset_left = 39.0
 offset_top = -1.0
-offset_right = 78.0
+offset_right = 80.0
 offset_bottom = 33.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 24
 text = "x 4"

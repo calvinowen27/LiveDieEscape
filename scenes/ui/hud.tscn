@@ -191,16 +191,16 @@ text = "You Died!"
 
 [node name="Recipes" parent="." instance=ExtResource("7_tgksy")]
 layout_mode = 1
-offset_left = 35.0
+offset_left = 14.0
 offset_top = 760.0
-offset_right = 435.0
-offset_bottom = 888.0
+offset_right = 636.0
+offset_bottom = 1042.0
 
 [node name="Materials" parent="." instance=ExtResource("8_dniww")]
 layout_mode = 0
-offset_left = 644.0
+offset_left = 642.0
 offset_top = 761.0
-offset_right = 724.0
+offset_right = 722.0
 offset_bottom = 833.0
 
 [connection signal="pressed" from="DeadPanel/RespawnButton" to="DeadPanel" method="_on_respawn_button_pressed"]

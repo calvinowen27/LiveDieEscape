@@ -11,10 +11,10 @@ func _ready() -> void:
 	for key in materials.keys():
 		var material = materials[key]
 		material.show()
-		material.get_node("Quantity").text = "x 0"
+		material.get_node("Quantity").text = "x0"
 		material.get_node("TextureRect").texture = load("res://resources/art/%s.png" % key)
 
 func _on_materials_update() -> void:
 	for key in materials.keys():
 		var material = materials[key]
-		material.get_node("Quantity").text = "x %d" % Fabricator.get_mat_count(key)
+		material.get_node("Quantity").text = "x%d" % Fabricator.get_mat_count(key)
