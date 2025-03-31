@@ -79,6 +79,8 @@ func create_object(name: String, location: Vector2) -> bool:
 
 func _on_player_death() -> void:
 	materials.clear()
+	EventBus.materials_update.emit()
+	# may need to update this to save material count at start of level
 
 func get_mat_count(name: String) -> int:
 	if name not in materials.keys():

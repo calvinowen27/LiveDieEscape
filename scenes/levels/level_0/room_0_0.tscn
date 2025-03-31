@@ -60,6 +60,7 @@ _oscillate_end_pos = Vector2(750, 720)
 _setup_rotation = 270
 
 [node name="ForceFieldEmitter" parent="." index="11" instance=ExtResource("8_0h50a")]
+y_sort_enabled = false
 position = Vector2(588, 567)
 
 [node name="Rubble" parent="." index="12" instance=ExtResource("9_777nx")]
