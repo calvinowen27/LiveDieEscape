@@ -3,18 +3,21 @@
         "recipe": {
             "rubble": 3
         },
-        "result": "wall_block"
+        "snap-to-grid": true,
+        "object_name": "wall_block"
     },
     "Disruptor": {
         "recipe": {
             "scrap": 5
         },
-        "result": "disruptor_world"
+        "snap-to-grid": false,
+        "object_name": "disruptor_world"
     },
     "Force Field Emitter": {
         "recipe": {
             "force_field_emitter": 1
         },
-        "result": "force_field_world"
+        "snap-to-grid": false,
+        "object_name": "force_field_world"
     }
 }

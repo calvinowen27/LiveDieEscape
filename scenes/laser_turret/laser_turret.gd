@@ -103,7 +103,7 @@ func _on_force_field_interactable_interact() -> void:
 	Fabricator.learn_recipe("Force Field Emitter")
 
 func _on_scrap_interactable_interact() -> void:
-	Fabricator.add_resource("scrap", 5)
+	Fabricator.add_material("scrap", 5)
 	$ScrapInteractable.set_active(false)
 
 func get_start_rotation() -> int:

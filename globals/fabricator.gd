@@ -10,8 +10,11 @@ var fab_range: int = 200 # idk this can change
 
 var active: bool = false
 
+var snap_temp: bool = true
+
 func _ready() -> void:
 	EventBus.player_death.connect(_on_player_death)
+	EventBus.recipe_select.connect(_on_recipe_select)
 	
 	load_recipes()
 
@@ -23,10 +26,13 @@ func _process(_delta: float) -> void:
 		else:
 			get_tree().root.get_node("Main/FabricateTemplate").hide()
 	
-	if active:
+	if active and Game.is_game_running():
 		var fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
 		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
-		fab_temp.position = mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108))
+		if snap_temp:
+			fab_temp.position = mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108))
+		else:
+			fab_temp.position = mouse_pos - Vector2i(54, 108)
 
 # open file and create recipe dictionary
 func load_recipes() -> void:
@@ -40,24 +46,30 @@ func load_recipes() -> void:
 	else:
 		recipes = json.data
 
-func add_resource(name: String, quantity: int) -> int:
-	if name not in materials.keys():
-		materials[name] = quantity
+func add_material(mat_name: String, quantity: int) -> int:
+	if mat_name not in materials.keys():
+		materials[mat_name] = quantity
 	else:
-		materials[name] += quantity
+		materials[mat_name] += quantity
 	
 	EventBus.materials_update.emit()
-	return materials[name]
+	return materials[mat_name]
 
-func create_object(name: String, location: Vector2) -> bool:
+func create_object(result_name: String, location: Vector2) -> bool:
+	
+	# mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108)) + Vector2i(54, 108)
+
+	if recipes[result_name]["snap-to-grid"]:
+		location -= Vector2(Vector2i((int(location.x) % 108), (int(location.y) % 108)) - Vector2i(54, 108))
+
 	if not active or not get_tree().root.get_node("Main/FabricateTemplate").valid or (location - RoomManager.get_player().position).length() > fab_range:
 		return false
 	
-	if name not in recipes.keys():
-		print("fabricator ~ create_object(): can't create object of name ", name, " because it doesn't exist")
+	if result_name not in recipes.keys():
+		print("fabricator ~ create_object(): can't create object of name ", result_name, " because it doesn't exist")
 		return false
 	
-	var recipe: Dictionary = recipes[name]["recipe"]
+	var recipe: Dictionary = recipes[result_name]["recipe"]
 
 	for key in recipe.keys():
 		if key not in materials.keys():
@@ -69,7 +81,7 @@ func create_object(name: String, location: Vector2) -> bool:
 	for key in recipe.keys():
 		materials[key] -= recipe[key]
 	
-	RoomManager.spawn_object(recipes[name]["result"], location)
+	RoomManager.spawn_object(recipes[result_name]["object_name"], location)
 	
 	print(materials)
 	
@@ -82,17 +94,20 @@ func _on_player_death() -> void:
 	EventBus.materials_update.emit()
 	# may need to update this to save material count at start of level
 
-func get_mat_count(name: String) -> int:
-	if name not in materials.keys():
+func get_mat_count(mat_name: String) -> int:
+	if mat_name not in materials.keys():
 		return 0
 	
-	return materials[name]
+	return materials[mat_name]
 
-func learn_recipe(name: String) -> void:
-	known_recipes.append(name)
+func learn_recipe(recipe_name: String) -> void:
+	known_recipes.append(recipe_name)
 
-	var recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
-	for recipe in recipes:
+	var ui_recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
+	for recipe in ui_recipes:
 		print(recipe.result_name)
-		if recipe.result_name == name:
-			recipe.show() 
+		if recipe.result_name == recipe_name:
+			recipe.show()
+
+func _on_recipe_select(recipe: Recipe) -> void:
+	snap_temp = recipes[recipe.result_name]["snap-to-grid"]

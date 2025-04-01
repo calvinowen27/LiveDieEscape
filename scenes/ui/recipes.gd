@@ -7,7 +7,6 @@ func _ready() -> void:
 	recipes = get_tree().get_nodes_in_group("Recipes")
 	
 	(recipes[recipe_idx] as Recipe).select()
-	EventBus.recipe_select.emit(recipes[recipe_idx] as Recipe)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_recipe_up"):

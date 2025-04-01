@@ -12,7 +12,7 @@ func _ready() -> void:
 		hide()
 	
 	init_recipe()
-
+	
 func _process(_delta: float) -> void:
 	if RoomManager.get_curr_room() == null or not RoomManager.get_curr_room().is_valid():
 		return
@@ -27,18 +27,17 @@ func init_recipe() -> void:
 	var recipe: Dictionary = Fabricator.recipes[result_name]["recipe"]
 	
 	$Panel/Result.texture = texture
-	
+	$Panel/ResultName.text = result_name
+
 	for key in recipe.keys():
 		var material = load("res://scenes/ui/recipe_material.tscn").instantiate()
 		$Panel/Materials.add_child(material)
 		material.get_node("Quantity").text = "x%d" % recipe[key]
 		material.get_node("TextureRect").texture = load("res://resources/art/%s.png" % key)
 	
-	$Panel/ResultName.text = result_name
-
 func try_create() -> bool:
 	var mouse_pos = Vector2i(get_viewport().get_mouse_position())
-	return Fabricator.create_object(result_name, mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108)) + Vector2i(54, 108))
+	return Fabricator.create_object(result_name, mouse_pos)
 
 func select() -> void:
 	selected = true

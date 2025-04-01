@@ -43,5 +43,5 @@ func _on_body_entered(body: Node2D) -> void:
 		hide()
 		$CollisionShape2D.call_deferred("set_disabled", true)
 		if _is_fab_mat:
-			Fabricator.add_resource(_fab_mat_name, 1)
+			Fabricator.add_material(_fab_mat_name, 1)
 		#$CollisionShape2D.disabled = true

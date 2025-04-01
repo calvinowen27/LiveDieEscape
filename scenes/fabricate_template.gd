@@ -21,3 +21,4 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_recipe_select(recipe: Recipe) -> void:
 	$Sprite2D.texture = recipe.texture
+	
