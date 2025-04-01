@@ -61,6 +61,24 @@ texture_under = ExtResource("2_cchs2")
 texture_progress = ExtResource("2_cchs2")
 tint_under = Color(0, 0, 0, 1)
 
+[node name="Label" type="Label" parent="InteractLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -371.5
+offset_top = -132.429
+offset_right = 371.5
+offset_bottom = -87.4286
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+
 [node name="InteractArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0

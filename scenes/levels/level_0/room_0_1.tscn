@@ -33,7 +33,7 @@ position = Vector2(534, 306)
 position = Vector2(536, 312)
 
 [node name="LightningMine" parent="." index="9" instance=ExtResource("4_nkqly")]
-position = Vector2(378, 810)
+position = Vector2(378, 769)
 
 [node name="LightningMine2" parent="." index="10" instance=ExtResource("4_nkqly")]
-position = Vector2(600.5, 810)
+position = Vector2(600.5, 769)

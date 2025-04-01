@@ -10,10 +10,12 @@ size = Vector2(108, 108)
 script = ExtResource("1_no2fe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 54)
 shape = SubResource("RectangleShape2D_wpf1e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(6.75, 6.75)
 texture = ExtResource("1_bafst")
+offset = Vector2(0, 8)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

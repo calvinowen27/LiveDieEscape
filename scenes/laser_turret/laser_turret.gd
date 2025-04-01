@@ -101,6 +101,7 @@ func _on_force_field_interactable_interact() -> void:
 	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
 
 	Fabricator.learn_recipe("Force Field Emitter")
+	$ForceFieldInteractable.set_active(false)
 
 func _on_scrap_interactable_interact() -> void:
 	Fabricator.add_material("scrap", 5)
