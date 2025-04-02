@@ -27,13 +27,19 @@ position = Vector2(66, 540)
 _door_idx = 2
 
 [node name="Guard" parent="." index="7" instance=ExtResource("3_juvhb")]
-position = Vector2(534, 306)
+position = Vector2(534, 502)
 
 [node name="GuardResetPos" type="Marker2D" parent="." index="8"]
-position = Vector2(536, 312)
+position = Vector2(536, 504)
 
 [node name="LightningMine" parent="." index="9" instance=ExtResource("4_nkqly")]
-position = Vector2(378, 769)
+position = Vector2(378, 648)
 
 [node name="LightningMine2" parent="." index="10" instance=ExtResource("4_nkqly")]
-position = Vector2(600.5, 769)
+position = Vector2(488, 769)
+
+[node name="LightningMine3" parent="." index="11" instance=ExtResource("4_nkqly")]
+position = Vector2(270, 432)
+
+[node name="LightningMine4" parent="." index="12" instance=ExtResource("4_nkqly")]
+position = Vector2(810, 540)

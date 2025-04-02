@@ -22,6 +22,13 @@ func die() -> void:
 	EventBus.player_death.emit()
 	Inventory.clear()
 
+	for child in get_children():
+		print("child ", child)
+		if child is Lightning:
+			print("removing lightning")
+			remove_child(child)
+			child.queue_free()
+
 func _on_room_change(_level_idx: int, _room_idx: int) -> void:
 	$PlayerState/DashCooldownTimer.stop()
 	$PlayerState/DashCooldownTimer.timeout.emit()
