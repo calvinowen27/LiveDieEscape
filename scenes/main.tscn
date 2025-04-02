@@ -82,7 +82,7 @@ texture = ExtResource("6_4tal3")
 offset = Vector2(8, 8)
 
 [node name="Square" type="Polygon2D" parent="FabricateTemplate/Sprite2D"]
-color = Color(0.152941, 0.521569, 1, 0.592157)
+color = Color(0.878431, 0, 0, 0.592157)
 polygon = PackedVector2Array(0, 0, 0, 16, 16, 16, 16, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FabricateTemplate"]

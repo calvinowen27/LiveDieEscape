@@ -7,11 +7,18 @@ var invalid_objs: Array
 func _ready() -> void:
 	EventBus.recipe_select.connect(_on_recipe_select)
 
+	# Fabricator.set_fab_temp(self)
+
+func update() -> void:
+	if Fabricator.can_craft():
+		$Sprite2D/Square.color = Color(0x2785ff97)
+	else:
+		$Sprite2D/Square.color = Color(0xe0000097)
+
 func _on_body_entered(body: Node2D) -> void:
 	if body is RigidBody2D:
 		valid = false
 		invalid_objs.append(body)
-
 
 func _on_body_exited(body: Node2D) -> void:
 	if body in invalid_objs:
@@ -21,4 +28,5 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_recipe_select(recipe: Recipe) -> void:
 	$Sprite2D.texture = recipe.texture
-	
+
+	update()

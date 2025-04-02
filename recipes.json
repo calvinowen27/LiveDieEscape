@@ -8,7 +8,8 @@
     },
     "Disruptor": {
         "recipe": {
-            "scrap": 5
+            "scrap": 3,
+            "antenna": 1
         },
         "snap-to-grid": false,
         "object_name": "disruptor_world"

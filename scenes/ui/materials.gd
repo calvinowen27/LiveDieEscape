@@ -7,7 +7,8 @@ func _ready() -> void:
 	var children = get_children()
 	materials["rubble"] = children[0]
 	materials["scrap"] = children[1]
-	materials["force_field_emitter"] = children[2]
+	materials["antenna"] = children[2]
+	materials["force_field_emitter"] = children[3]
 	
 	for key in materials.keys():
 		var material = materials[key]

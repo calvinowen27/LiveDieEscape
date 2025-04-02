@@ -10,24 +10,33 @@ var fab_range: int = 200 # idk this can change
 
 var active: bool = false
 
+var _curr_recipe: Recipe
 var snap_temp: bool = true
+
+var fab_temp: Node2D
+
+var ui_recipes: Array
 
 func _ready() -> void:
 	EventBus.player_death.connect(_on_player_death)
 	EventBus.recipe_select.connect(_on_recipe_select)
 	
+	EventBus.start_game.connect(_on_game_start)
+
 	load_recipes()
 
 func _process(_delta: float) -> void:
+	if fab_temp == null:
+		return
+
 	if Input.is_action_just_pressed("fabricate"):
 		active = not active
 		if active:
-			get_tree().root.get_node("Main/FabricateTemplate").show()
+			fab_temp.show()
 		else:
-			get_tree().root.get_node("Main/FabricateTemplate").hide()
+			fab_temp.hide()
 	
 	if active and Game.is_game_running():
-		var fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
 		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
 		if snap_temp:
 			fab_temp.position = mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108))
@@ -53,6 +62,9 @@ func add_material(mat_name: String, quantity: int) -> int:
 		materials[mat_name] += quantity
 	
 	EventBus.materials_update.emit()
+
+	fab_temp.update()
+
 	return materials[mat_name]
 
 func create_object(result_name: String, location: Vector2) -> bool:
@@ -62,7 +74,7 @@ func create_object(result_name: String, location: Vector2) -> bool:
 	if recipes[result_name]["snap-to-grid"]:
 		location -= Vector2(Vector2i((int(location.x) % 108), (int(location.y) % 108)) - Vector2i(54, 108))
 
-	if not active or not get_tree().root.get_node("Main/FabricateTemplate").valid or (location - RoomManager.get_player().position).length() > fab_range:
+	if not active or not fab_temp.valid or (location - RoomManager.get_player().position).length() > fab_range:
 		return false
 	
 	if result_name not in recipes.keys():
@@ -86,13 +98,30 @@ func create_object(result_name: String, location: Vector2) -> bool:
 	print(materials)
 	
 	EventBus.materials_update.emit()
+
+	fab_temp.update()
+	
+	return true
+
+func can_craft() -> bool:
+	var recipe = recipes[_curr_recipe.result_name]["recipe"] 
+	for key in recipe.keys():
+		if get_mat_count(key) < recipe[key]:
+			return false
 	
 	return true
 
 func _on_player_death() -> void:
 	materials.clear()
 	EventBus.materials_update.emit()
+	fab_temp.update()
 	# may need to update this to save material count at start of level
+
+func _on_game_start() -> void:
+	fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
+	ui_recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
+
+	_curr_recipe = ui_recipes[0] as Recipe
 
 func get_mat_count(mat_name: String) -> int:
 	if mat_name not in materials.keys():
@@ -103,11 +132,17 @@ func get_mat_count(mat_name: String) -> int:
 func learn_recipe(recipe_name: String) -> void:
 	known_recipes.append(recipe_name)
 
-	var ui_recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
 	for recipe in ui_recipes:
 		print(recipe.result_name)
 		if recipe.result_name == recipe_name:
 			recipe.show()
 
 func _on_recipe_select(recipe: Recipe) -> void:
+	_curr_recipe = recipe
 	snap_temp = recipes[recipe.result_name]["snap-to-grid"]
+
+func get_curr_recipe() -> Recipe:
+	return _curr_recipe
+
+func set_fab_temp(fab_temp_: Node2D) -> void:
+	fab_temp = fab_temp_

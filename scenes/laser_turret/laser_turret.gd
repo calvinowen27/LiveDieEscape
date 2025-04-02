@@ -105,6 +105,7 @@ func _on_force_field_interactable_interact() -> void:
 
 func _on_scrap_interactable_interact() -> void:
 	Fabricator.add_material("scrap", 5)
+	Fabricator.add_material("antenna", 1)
 	$ScrapInteractable.set_active(false)
 
 func get_start_rotation() -> int:
