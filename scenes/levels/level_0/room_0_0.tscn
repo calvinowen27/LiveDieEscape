@@ -64,16 +64,27 @@ y_sort_enabled = false
 position = Vector2(588, 567)
 
 [node name="Rubble" parent="." index="12" instance=ExtResource("9_777nx")]
-position = Vector2(711, 948)
+position = Vector2(946, 868)
 
 [node name="Rubble2" parent="." index="13" instance=ExtResource("9_777nx")]
-position = Vector2(831, 948)
+position = Vector2(948, 162)
 
 [node name="Rubble3" parent="." index="14" instance=ExtResource("9_777nx")]
-position = Vector2(571, 942)
+position = Vector2(945, 1019)
 
 [node name="Rubble4" parent="." index="15" instance=ExtResource("9_777nx")]
-position = Vector2(442, 945)
+position = Vector2(128, 1017)
 
 [node name="RotatingLaserTurret" parent="." index="16" instance=ExtResource("10_ogppi")]
 position = Vector2(305, 524)
+
+[node name="LaserTurret2" parent="." index="17" instance=ExtResource("4_psar8")]
+position = Vector2(248, 772)
+
+[node name="LaserTurretState" parent="LaserTurret2" index="1"]
+_initial_state = "LaserTurretBroken"
+
+[editable path="LaserTurret2"]
+[editable path="LaserTurret2/ForceFieldInteractable"]
+[editable path="LaserTurret2/ControlInteractable"]
+[editable path="LaserTurret2/ScrapInteractable"]

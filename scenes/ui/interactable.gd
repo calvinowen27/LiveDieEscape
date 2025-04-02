@@ -9,15 +9,15 @@ var _interactable = false
 @export var _hold_to_interact = false # if true, duration is $InteractTimer
 var _interacting = false
 
-var _interact_timer: Timer
-var _progress_bar: TextureProgressBar
+@export var _interact_timer: Timer
+@export var _progress_bar: TextureProgressBar
 
 signal interact
 signal interactable_set(val: bool)
 
 func _ready() -> void:
-	_interact_timer = $InteractTimer
-	_progress_bar = $InteractLabel/TextureProgressBar
+	#_interact_timer = $InteractTimer
+	#_progress_bar = $InteractLabel/TextureProgressBar
 
 	EventBus.change_room.connect(_on_room_change)
 

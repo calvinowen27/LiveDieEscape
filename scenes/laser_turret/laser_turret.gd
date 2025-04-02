@@ -16,8 +16,7 @@ func _ready() -> void:
 
 	# $RayCast2D/Laser/ZOrdering.init_marker($RayCast2D/Laser, $RayCast2D/Laser/ZOrderingMarker)
 
-	$ForceFieldInteractable.set_active(false)
-	$ScrapInteractable.set_active(false)
+	
 
 	$ControlInteractable.set_active(_rotating)
 
@@ -62,7 +61,6 @@ func die() -> void:
 		return
 	
 	$LaserTurretState.die()
-	$ScrapInteractable.set_active(true)
 
 func enable_turret() -> void:
 	$LaserTurretState.enable_turret()

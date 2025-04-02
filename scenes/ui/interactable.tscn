@@ -13,8 +13,10 @@ corner_radius_bottom_left = 35
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chpaw"]
 size = Vector2(80.6667, 136.573)
 
-[node name="Interactable" type="Node2D"]
+[node name="Interactable" type="Node2D" node_paths=PackedStringArray("_interact_timer", "_progress_bar")]
 script = ExtResource("1_gx48w")
+_interact_timer = NodePath("InteractTimer")
+_progress_bar = NodePath("InteractLabel/TextureProgressBar")
 
 [node name="InteractLabel" type="Label" parent="."]
 visible = false
