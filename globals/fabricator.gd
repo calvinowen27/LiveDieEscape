@@ -29,13 +29,15 @@ func _process(_delta: float) -> void:
 	if fab_temp == null:
 		return
 
+	# show or hide fabricate template
 	if Input.is_action_just_pressed("fabricate"):
-		active = not active
+		active = not active # keep track of whether we can fabricate or not with left click
 		if active:
 			fab_temp.show()
 		else:
 			fab_temp.hide()
 	
+	# move fabricate template with grid snapping if necessary (if active)
 	if active and Game.is_game_running():
 		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
 		if snap_temp:
@@ -55,6 +57,7 @@ func load_recipes() -> void:
 	else:
 		recipes = json.data
 
+# add quantity of material to materials Dictionary
 func add_material(mat_name: String, quantity: int) -> int:
 	if mat_name not in materials.keys():
 		materials[mat_name] = quantity
@@ -71,9 +74,11 @@ func create_object(result_name: String, location: Vector2) -> bool:
 	
 	# mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108)) + Vector2i(54, 108)
 
+	# snap to grid if necessary
 	if recipes[result_name]["snap-to-grid"]:
 		location -= Vector2(Vector2i((int(location.x) % 108), (int(location.y) % 108)) - Vector2i(54, 108))
 
+	# check if crafting is valid
 	if not active or not fab_temp.valid or (location - RoomManager.get_player().position).length() > fab_range:
 		return false
 	
@@ -83,6 +88,7 @@ func create_object(result_name: String, location: Vector2) -> bool:
 	
 	var recipe: Dictionary = recipes[result_name]["recipe"]
 
+	# make sure enough of all materials for recipe
 	for key in recipe.keys():
 		if key not in materials.keys():
 			print("fabricator ~ create_object(): resource ", key, " not present in materials dictionary")
@@ -90,15 +96,16 @@ func create_object(result_name: String, location: Vector2) -> bool:
 		if recipe[key] > materials[key]:
 			return false
 	
+	# update material counts
 	for key in recipe.keys():
 		materials[key] -= recipe[key]
 	
+	# spawn resulting object
 	RoomManager.spawn_object(recipes[result_name]["object_name"], location)
-	
-	print(materials)
 	
 	EventBus.materials_update.emit()
 
+	# update fabricate template color if necessary
 	fab_temp.update()
 	
 	return true
@@ -118,31 +125,32 @@ func _on_player_death() -> void:
 	# may need to update this to save material count at start of level
 
 func _on_game_start() -> void:
+	# set fabricate template and recipes ui elements
 	fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
 	ui_recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
 
 	_curr_recipe = ui_recipes[0] as Recipe
 
+# return quantity of material or 0 if none
 func get_mat_count(mat_name: String) -> int:
 	if mat_name not in materials.keys():
 		return 0
 	
 	return materials[mat_name]
 
-func learn_recipe(recipe_name: String) -> void:
-	known_recipes.append(recipe_name)
+# add recipe name to known recipes if not already learned
+func learn_recipe(reuslt_name: String) -> void:
+	known_recipes.append(reuslt_name)
 
 	for recipe in ui_recipes:
 		print(recipe.result_name)
-		if recipe.result_name == recipe_name:
+		if recipe.result_name == reuslt_name:
 			recipe.show()
 
 func _on_recipe_select(recipe: Recipe) -> void:
+	# set curr recipe and whether fabricate template snaps to grid
 	_curr_recipe = recipe
 	snap_temp = recipes[recipe.result_name]["snap-to-grid"]
 
 func get_curr_recipe() -> Recipe:
 	return _curr_recipe
-
-func set_fab_temp(fab_temp_: Node2D) -> void:
-	fab_temp = fab_temp_
