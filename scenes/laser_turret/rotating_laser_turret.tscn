@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgd3y5lei25j1"]
+[gd_scene load_steps=3 format=3 uid="uid://bgd3y5lei25j1"]
 
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="1_qll3u"]
+[ext_resource type="Texture2D" uid="uid://ccfpvpjj463tm" path="res://resources/art/antenna.png" id="2_i3o8m"]
 
 [node name="RotatingLaserTurret" instance=ExtResource("1_qll3u")]
 _movable = true
@@ -8,6 +9,11 @@ _rotating = true
 
 [node name="LaserTurretActivated" parent="LaserTurretState" index="2"]
 _seconds_per_rotation = 3.0
+
+[node name="Antenna" type="Sprite2D" parent="Sprite2D" index="1"]
+z_index = 1
+position = Vector2(0, -22)
+texture = ExtResource("2_i3o8m")
 
 [editable path="ForceFieldInteractable"]
 [editable path="ControlInteractable"]
