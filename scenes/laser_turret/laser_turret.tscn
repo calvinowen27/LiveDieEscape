@@ -341,7 +341,6 @@ collide_with_areas = true
 script = ExtResource("2_5f8wt")
 
 [node name="Laser" type="Sprite2D" parent="RayCast2D"]
-z_index = 4096
 texture = ExtResource("8_1af6w")
 offset = Vector2(-32, 0)
 
