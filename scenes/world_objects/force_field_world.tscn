@@ -4,16 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://d0ap21dfgwhvq" path="res://resources/art/force_field.png" id="1_3nrmy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6jjv"]
-radius = 16.0312
+radius = 109.073
 
 [node name="ForceFieldWorld" type="Area2D"]
-scale = Vector2(6.75, 6.75)
 script = ExtResource("1_3butm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g6jjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6.75, 6.75)
 texture = ExtResource("1_3nrmy")
 
 [node name="Timer" type="Timer" parent="."]

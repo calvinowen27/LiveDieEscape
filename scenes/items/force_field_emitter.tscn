@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://oeqvilovte4h"]
 
 [ext_resource type="PackedScene" uid="uid://c1j10o3evpi4" path="res://scenes/items/item.tscn" id="1_3fuml"]
-[ext_resource type="Texture2D" uid="uid://6dutydhkateq" path="res://resources/art/force_field_emitter.png" id="2_rahs2"]
+[ext_resource type="Texture2D" uid="uid://6dutydhkateq" path="res://resources/art/force_field_emitter_item.png" id="2_rahs2"]
 
 [node name="ForceFieldEmitter" instance=ExtResource("1_3fuml")]
 _item_name = "Field Emitter"

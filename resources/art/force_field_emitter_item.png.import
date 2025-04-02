@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bej8nd2oo3nxr"
-path="res://.godot/imported/force_field_emitter.png-1a9b45b0dc30af026aed781ba93de89a.ctex"
+uid="uid://6dutydhkateq"
+path="res://.godot/imported/force_field_emitter_item.png-52d5341ca26dcf77a08607406d0c9445.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/art/force_field_emitter.png"
-dest_files=["res://.godot/imported/force_field_emitter.png-1a9b45b0dc30af026aed781ba93de89a.ctex"]
+source_file="res://resources/art/force_field_emitter_item.png"
+dest_files=["res://.godot/imported/force_field_emitter_item.png-52d5341ca26dcf77a08607406d0c9445.ctex"]
 
 [params]
 

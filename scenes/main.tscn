@@ -79,9 +79,10 @@ script = ExtResource("5_c2pln")
 [node name="Sprite2D" type="Sprite2D" parent="FabricateTemplate"]
 clip_children = 2
 texture = ExtResource("6_4tal3")
-offset = Vector2(8, 8)
+offset = Vector2(8, 11)
 
 [node name="Square" type="Polygon2D" parent="FabricateTemplate/Sprite2D"]
+position = Vector2(0, 3.11111)
 color = Color(0.878431, 0, 0, 0.592157)
 polygon = PackedVector2Array(0, 0, 0, 16, 16, 16, 16, 0)
 

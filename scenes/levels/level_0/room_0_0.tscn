@@ -77,7 +77,3 @@ position = Vector2(442, 945)
 
 [node name="RotatingLaserTurret" parent="." index="16" instance=ExtResource("10_ogppi")]
 position = Vector2(305, 524)
-
-[node name="LaserTurret2" parent="." index="17" instance=ExtResource("4_psar8")]
-position = Vector2(547, 389)
-_start_rotation = 90
