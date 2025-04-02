@@ -12,6 +12,7 @@ var active: bool = false
 
 var _curr_recipe: Recipe
 var snap_temp: bool = true
+var mouse_in_range: bool = false
 
 var fab_temp: Node2D
 
@@ -40,6 +41,15 @@ func _process(_delta: float) -> void:
 	# move fabricate template with grid snapping if necessary (if active)
 	if active and Game.is_game_running():
 		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
+		if (Vector2(mouse_pos) - RoomManager.get_player().position).length() > fab_range:
+			if mouse_in_range:
+				mouse_in_range = false
+				fab_temp.update()
+		else:
+			if not mouse_in_range:
+				mouse_in_range = true
+				fab_temp.update()
+		
 		if snap_temp:
 			fab_temp.position = mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108))
 		else:
@@ -79,7 +89,7 @@ func create_object(result_name: String, location: Vector2) -> bool:
 		location -= Vector2(Vector2i((int(location.x) % 108), (int(location.y) % 108)) - Vector2i(54, 108))
 
 	# check if crafting is valid
-	if not active or not fab_temp.valid or (location - RoomManager.get_player().position).length() > fab_range:
+	if not active or not fab_temp.valid or not mouse_in_range:
 		return false
 	
 	if result_name not in recipes.keys():
@@ -111,6 +121,9 @@ func create_object(result_name: String, location: Vector2) -> bool:
 	return true
 
 func can_craft() -> bool:
+	if not mouse_in_range:
+		return false
+	
 	var recipe = recipes[_curr_recipe.result_name]["recipe"] 
 	for key in recipe.keys():
 		if get_mat_count(key) < recipe[key]:
