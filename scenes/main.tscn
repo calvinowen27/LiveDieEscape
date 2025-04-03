@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dviw650xtb18v"]
+[gd_scene load_steps=5 format=3 uid="uid://dviw650xtb18v"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_khhrq"]
 [ext_resource type="PackedScene" uid="uid://b3m15d5m7d5rl" path="res://scenes/ui/hud.tscn" id="2_b7633"]
 [ext_resource type="PackedScene" uid="uid://bicclg6frtano" path="res://scenes/ui/text_box.tscn" id="3_4pxxy"]
 [ext_resource type="PackedScene" uid="uid://c22i7cl5i4ebq" path="res://scenes/ui/pause_menu.tscn" id="4_j1i6a"]
-[ext_resource type="Script" path="res://scenes/fabricate_template.gd" id="5_c2pln"]
-[ext_resource type="Texture2D" uid="uid://cico8t12jclmb" path="res://resources/art/wall.png" id="6_4tal3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwtr3"]
-size = Vector2(15.1111, 15.1111)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_khhrq")
@@ -70,26 +65,5 @@ offset_right = 784.0
 offset_bottom = 211.0
 grow_vertical = 2
 
-[node name="FabricateTemplate" type="Area2D" parent="."]
-visible = false
+[node name="FabricateTemplate" type="Node2D" parent="."]
 scale = Vector2(6.75, 6.75)
-collision_layer = 0
-script = ExtResource("5_c2pln")
-
-[node name="Sprite2D" type="Sprite2D" parent="FabricateTemplate"]
-clip_children = 2
-texture = ExtResource("6_4tal3")
-offset = Vector2(8, 11)
-
-[node name="Square" type="Polygon2D" parent="FabricateTemplate/Sprite2D"]
-position = Vector2(0, 3.11111)
-color = Color(0.878431, 0, 0, 0.592157)
-polygon = PackedVector2Array(0, 0, 0, 16, 16, 16, 16, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FabricateTemplate"]
-visible = false
-position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_vwtr3")
-
-[connection signal="body_entered" from="FabricateTemplate" to="FabricateTemplate" method="_on_body_entered"]
-[connection signal="body_exited" from="FabricateTemplate" to="FabricateTemplate" method="_on_body_exited"]

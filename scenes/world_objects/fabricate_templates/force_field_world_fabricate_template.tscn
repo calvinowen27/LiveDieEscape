@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsexghfe208di"]
+
+[ext_resource type="PackedScene" uid="uid://dthd65iifnui1" path="res://scenes/world_objects/fabricate_templates/fabricate_template.tscn" id="1_7v7xy"]
+[ext_resource type="Texture2D" uid="uid://bej8nd2oo3nxr" path="res://resources/art/force_field_emitter.png" id="2_m6muh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybp8k"]
+size = Vector2(8, 5)
+
+[node name="ForceFieldWorldFabricateTemplate" instance=ExtResource("1_7v7xy")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+visible = false
+shape = SubResource("RectangleShape2D_ybp8k")
+disabled = true
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_m6muh")
+offset = Vector2(8, 3)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlvjgcyx7ok1e"]
+
+[ext_resource type="PackedScene" uid="uid://dthd65iifnui1" path="res://scenes/world_objects/fabricate_templates/fabricate_template.tscn" id="1_3y0ej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to804"]
+size = Vector2(8, 5)
+
+[node name="DisruptorFabricateTemplate" instance=ExtResource("1_3y0ej")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_to804")
+
+[node name="Sprite2D" parent="." index="1"]
+offset = Vector2(8, 3)
+
+[node name="Square" parent="Sprite2D" index="0"]
+position = Vector2(0, -5)

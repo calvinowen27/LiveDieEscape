@@ -43,6 +43,18 @@ func select() -> void:
 	selected = true
 	$Panel/Outline.show()
 
+	var fab_temp_parent = get_tree().root.get_node("Main/FabricateTemplate")
+
+	# if Fabricator.fab_temp != null:
+	# 	fab_temp_parent.remove_child(Fabricator.fab_temp)
+	
+	for child in fab_temp_parent.get_children():
+		fab_temp_parent.remove_child(child)
+	
+	fab_temp_parent.add_child(load("res://scenes/world_objects/fabricate_templates/%s_fabricate_template.tscn" % Fabricator.recipes[result_name]["object_name"]).instantiate())
+
+	EventBus.recipe_select.emit(self as Recipe)
+
 func deselect() -> void:
 	selected = false
 	$Panel/Outline.hide()

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://lbk2b74mpyrh"]
+
+[ext_resource type="PackedScene" uid="uid://dthd65iifnui1" path="res://scenes/world_objects/fabricate_templates/fabricate_template.tscn" id="1_faokq"]
+[ext_resource type="Texture2D" uid="uid://cico8t12jclmb" path="res://resources/art/wall.png" id="2_e6lbe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7aqel"]
+size = Vector2(16, 5.5)
+
+[node name="WallFabricateTemplate" instance=ExtResource("1_faokq")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(8, 13.25)
+shape = SubResource("RectangleShape2D_7aqel")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(8, 8)
+texture = ExtResource("2_e6lbe")
+offset = Vector2(0, 0)
+
+[node name="Square" parent="Sprite2D" index="0"]
+position = Vector2(-8, -8)

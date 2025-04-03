@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name FabricateTemplate
+
 var valid: bool = true
 
 var invalid_objs: Array
@@ -10,9 +12,12 @@ func _ready() -> void:
 	# Fabricator.set_fab_temp(self)
 
 func update() -> void:
+	print("update")
 	if Fabricator.can_craft():
+		print("can craft")
 		$Sprite2D/Square.color = Color(0x2785ff97)
 	else:
+		print("can not craft")
 		$Sprite2D/Square.color = Color(0xe0000097)
 
 func _on_body_entered(body: Node2D) -> void:
@@ -27,6 +32,6 @@ func _on_body_exited(body: Node2D) -> void:
 			valid = true
 
 func _on_recipe_select(recipe: Recipe) -> void:
-	$Sprite2D.texture = recipe.texture
+	# $Sprite2D.texture = recipe.texture
 
 	update()

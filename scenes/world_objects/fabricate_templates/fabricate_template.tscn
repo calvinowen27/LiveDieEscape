@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dthd65iifnui1"]
+
+[ext_resource type="Script" path="res://scenes/fabricate_template.gd" id="1_rs0u4"]
+[ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="1_xx365"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh42p"]
+size = Vector2(8, 5)
+
+[node name="FabricateTemplate" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_rs0u4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fh42p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(-8, -8)
+texture = ExtResource("1_xx365")
+offset = Vector2(8, 8)
+
+[node name="Square" type="Polygon2D" parent="Sprite2D"]
+polygon = PackedVector2Array(0, 0, 0, 16, 16, 16, 16, 0)

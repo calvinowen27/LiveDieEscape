@@ -14,7 +14,7 @@ var _curr_recipe: Recipe
 var snap_temp: bool = true
 var mouse_in_range: bool = false
 
-var fab_temp: Node2D
+var fab_temp: FabricateTemplate
 
 var ui_recipes: Array
 
@@ -40,20 +40,23 @@ func _process(_delta: float) -> void:
 	
 	# move fabricate template with grid snapping if necessary (if active)
 	if active and Game.is_game_running():
+		# print("active and game running")
 		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
 		if (Vector2(mouse_pos) - RoomManager.get_player().position).length() > fab_range:
 			if mouse_in_range:
 				mouse_in_range = false
 				fab_temp.update()
+				print("out of range")
 		else:
 			if not mouse_in_range:
 				mouse_in_range = true
 				fab_temp.update()
+				print("in range")
 		
 		if snap_temp:
-			fab_temp.position = mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108))
+			fab_temp.get_parent().position = mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108))
 		else:
-			fab_temp.position = mouse_pos - Vector2i(54, 108)
+			fab_temp.get_parent().position = mouse_pos
 
 # open file and create recipe dictionary
 func load_recipes() -> void:
@@ -139,7 +142,7 @@ func _on_player_death() -> void:
 
 func _on_game_start() -> void:
 	# set fabricate template and recipes ui elements
-	fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
+	# fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
 	ui_recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
 
 	_curr_recipe = ui_recipes[0] as Recipe
@@ -164,6 +167,12 @@ func _on_recipe_select(recipe: Recipe) -> void:
 	# set curr recipe and whether fabricate template snaps to grid
 	_curr_recipe = recipe
 	snap_temp = recipes[recipe.result_name]["snap-to-grid"]
+	if fab_temp != null:
+		fab_temp.queue_free()
+	
+	fab_temp = get_tree().root.get_node("Main/FabricateTemplate").get_child(0) as FabricateTemplate
+
+	fab_temp.visible = active
 
 func get_curr_recipe() -> Recipe:
 	return _curr_recipe

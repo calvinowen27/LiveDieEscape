@@ -13,8 +13,8 @@ freeze = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(6.75, 6.75)
 texture = ExtResource("1_a54f4")
-offset = Vector2(0, -5)
+offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -23.5)
 shape = SubResource("RectangleShape2D_vxsn3")
