@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bcfdg2re003ai" path="res://scenes/acid/acid.tscn" id="3_keonb"]
 
 [node name="Room0_2" instance=ExtResource("1_rcvgy")]
+_room_idx = 2
 
 [node name="Walls" parent="." index="1"]
 tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAJAAkAAAACAAIAAAAJAAAAAAACAAAAAAAAAAkAAAAAAAIAAAABAAkAAAABAAIAAAACAAkAAAABAAIAAAADAAkAAAABAAIAAAAEAAkAAAABAAIAAAAFAAkAAAABAAIAAAAGAAkAAAABAAIAAAAHAAkAAAABAAIAAAAIAAkAAAABAAIAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAJAAQAAAACAAEAAAAJAAUAAAACAAEAAAAJAAYAAAACAAEAAAAJAAcAAAACAAEAAAAJAAgAAAACAAEAAAA=")
@@ -14,18 +15,11 @@ position = Vector2(231, 550)
 
 [node name="Door0" parent="." index="4" instance=ExtResource("2_hf2v4")]
 position = Vector2(66, 540)
-_door_idx = 0
-_locked = false
-_consume_key = false
-_locked_texture = null
 
 [node name="Door1" parent="." index="5" instance=ExtResource("2_hf2v4")]
 position = Vector2(540, 67)
 rotation = 1.5708
 _door_idx = 1
-_locked = false
-_consume_key = false
-_locked_texture = null
 
 [node name="AcidContainer" type="Node2D" parent="." index="6"]
 

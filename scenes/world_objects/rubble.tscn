@@ -28,6 +28,9 @@ offset = Vector2(0, -8)
 [node name="Interactable" parent="." instance=ExtResource("2_7j77j")]
 _hold_to_interact = true
 
+[node name="Label" parent="Interactable/InteractLabel" index="2"]
+text = "Take"
+
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
 position = Vector2(1.5, -26.5)
 shape = SubResource("RectangleShape2D_o56fr")

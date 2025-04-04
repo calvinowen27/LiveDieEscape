@@ -39,16 +39,20 @@ func _ready() -> void:
 
 
 func attempt_open() -> void:
+	print("attempt open")
 	if _active:
+		print("door is active")
 		# check for correct key in inventory
 		var key_found = false
 		var keys = Inventory.get_items_of_group("Keys")
 		for key in keys:
+			print("looking at key")
 			if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
 				# unlock and next room
+				print("key found")
 				key_found = true
 				unlock()
-				next_room()
+				# next_room.call_deferred()
 				# $Interactable.set_interactable(true)
 				if _consume_key:
 					Inventory.del_item(key)
@@ -62,19 +66,21 @@ func next_room() -> void:
 	_active = false
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:
-	# if next room is this door's room, start activation timer for door
+	# make sure door and room are valid and match, then activate
 	var parent_room = get_parent()
 	var valid = parent_room.is_valid()
 	if valid and parent_room.get_level_idx() == level_idx and parent_room.get_room_idx() == room_idx:
 		_active = true
 
 func unlock() -> void:
-	Sprite2D.texture = _unlocked_texture
+	$Sprite2D.frame_coords.y = 0
+	# $Sprite2D.texture = _unlocked_texture
 	$RigidBody2D/CollisionShape2D.disabled = true
 	_locked = false
 	
 	# deactivate interactable (only for unlocking)
 	$Interactable.set_active(false)
+	print("set active")
 
 func is_locked() -> bool:
 	return _locked

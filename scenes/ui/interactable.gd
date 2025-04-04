@@ -82,11 +82,11 @@ func set_active(val: bool) -> void:
 	_is_active = val
 	
 	if not val:
-		$InteractLabel.visible = false
+		$InteractLabel.hide()
 		_interacting = false
 		_progress_bar.value = 0
 	elif _player_in_range:
-		$InteractLabel.visible = true
+		$InteractLabel.show()
 
 func _on_interact_timer_timeout() -> void:
 	set_active(false)
