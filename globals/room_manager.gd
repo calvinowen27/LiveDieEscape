@@ -103,6 +103,7 @@ func get_room(level_idx: int, room_idx: int) -> Room:
 
 func guard_reset() -> void:
 	set_curr_room(0, 0, -1)
+	get_player().reset.call_deferred()
 
 	#_player.queue_teleport(_curr_room.get_node("%PlayerResetPos").position);
 

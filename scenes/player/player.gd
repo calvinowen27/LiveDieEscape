@@ -17,6 +17,13 @@ func _ready() -> void:
 
 	EventBus.change_room.connect(_on_room_change)
 
+func reset() -> void:
+	for child in get_children():
+		if child is Lightning:
+			child.queue_free()
+	
+	StatManager.reset_stats()
+
 func die() -> void:
 	# EventBus.level_reset.emit(0)
 	EventBus.player_death.emit()

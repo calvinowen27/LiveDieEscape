@@ -26,7 +26,7 @@ func change_stat(stat: String, new_val: float) -> bool:
 			print_debug("change_stat(): stat %s not in _stats.keys()" % stat)
 			return false
 	
-	_stat_changes.append([stat, new_val])
+	_stat_changes.append([stat, new_val, false])
 
 	_stats[stat] = new_val
 
@@ -60,5 +60,6 @@ func revert_stat_change(stat: String, check_val: float) -> bool:
 
 func reset_stats() -> void:
 	_stats.clear()
+	_stat_changes.clear()
 
 	_stats = _base_stats.duplicate(true)
