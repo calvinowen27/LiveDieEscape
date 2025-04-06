@@ -3,7 +3,14 @@ extends GuardState
 var _move_dir: Vector2
 @export var _move_speed: int
 
-var _player_reset = false
+var _target_pos: Vector2
+
+var _key_in_range: bool = true
+var _player_in_range: bool = false
+
+var _following_player: bool = false
+
+var _player_reset: bool = false
 
 var _level: int
 var _room: int
@@ -15,10 +22,13 @@ func _ready() -> void:
 	EventBus.change_room.connect(_on_room_change)
 
 func update(_delta: float) -> String:
-	var player_pos = RoomManager.get_player().global_position
+	# var player_pos = RoomManager.get_player().global_position
 	var speed = 100 + _move_speed * 15
 
-	_move_dir = (player_pos - _rigidbody.global_position).normalized()
+	if _following_player:
+		_target_pos = RoomManager.get_player().position
+
+	_move_dir = (_target_pos - _rigidbody.global_position).normalized()
 	_rigidbody.linear_velocity = _move_dir * speed
 
 	var disruptors = get_tree().get_nodes_in_group("Disruptors")
@@ -27,6 +37,13 @@ func update(_delta: float) -> String:
 			disruptor.use()
 			get_node("../GuardDisrupted").init(disruptor)
 			return "GuardDisrupted"
+	
+	var reset_marker = get_node("../../../GuardResetPos")
+	if _target_pos == reset_marker.position and _key_in_range and _player_in_range and (_rigidbody.position - reset_marker.position).length() <= 3:
+		_target_pos = RoomManager.get_player().position
+		_following_player = true
+	# if not _player_in_range:
+	# 	_target_pos = reset_marker.position
 
 	return name
 
@@ -47,3 +64,36 @@ func _on_guard_body_entered(body: Node) -> void:
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if level_idx == _level and room_idx == _room:
 		_player_reset = false
+
+func _on_guard_area_body_entered(body: Node) -> void:
+	if body == RoomManager.get_player():
+		_player_in_range = true
+
+		if _key_in_range:
+			# _target_pos = body.position
+			_following_player = true
+		else:
+			var reset_marker = get_node("../../../GuardResetPos")
+			_target_pos = reset_marker.position
+			_following_player = false
+
+func _on_guard_area_body_exited(body: Node) -> void:
+	if body == RoomManager.get_player():
+		_player_in_range = false
+		_following_player = false
+
+		var reset_marker = get_node("../../../GuardResetPos")
+		_target_pos = reset_marker.position
+
+func _on_guard_area_area_entered(area: Area2D) -> void:
+	if _rigidbody != null and area == _rigidbody.get_key():
+		_key_in_range = true
+		# if _player_in_range:
+		# 	_target_pos = RoomManager.get_player().position
+
+func _on_guard_area_area_exited(area: Area2D) -> void:
+	if _rigidbody != null and area == _rigidbody.get_key():
+		_key_in_range = false
+		_following_player = false
+		var reset_marker = get_node("../../../GuardResetPos")
+		_target_pos = reset_marker.position

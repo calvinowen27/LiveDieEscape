@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@export var _key: Area2D
+
 var _queue_teleport = Vector2.ZERO
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -10,3 +12,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 func queue_teleport(pos: Vector2) -> void:
 	_queue_teleport = pos
+
+func get_key() -> Area2D:
+	return _key

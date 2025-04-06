@@ -12,7 +12,7 @@ radius = 38.0
 height = 114.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1m64"]
-radius = 497.197
+radius = 337.013
 
 [node name="Guard" type="RigidBody2D"]
 y_sort_enabled = true
@@ -43,13 +43,17 @@ _move_speed = 3
 
 [node name="GuardDisrupted" parent="GuardState" instance=ExtResource("6_v3b3x")]
 
-[node name="ActivationArea" type="Area2D" parent="."]
+[node name="GuardArea" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GuardArea"]
 shape = SubResource("CircleShape2D_o1m64")
 
 [connection signal="body_entered" from="." to="GuardState/GuardFollowPlayer" method="_on_guard_body_entered"]
 [connection signal="body_entered" from="." to="GuardState/GuardDisrupted" method="_on_guard_body_entered"]
-[connection signal="body_entered" from="ActivationArea" to="GuardState" method="_on_activation_area_body_entered"]
-[connection signal="body_exited" from="ActivationArea" to="GuardState" method="_on_activation_area_body_exited"]
+[connection signal="area_entered" from="GuardArea" to="GuardState/GuardFollowPlayer" method="_on_guard_area_area_entered"]
+[connection signal="area_exited" from="GuardArea" to="GuardState/GuardFollowPlayer" method="_on_guard_area_area_exited"]
+[connection signal="body_entered" from="GuardArea" to="GuardState" method="_on_guard_area_body_entered"]
+[connection signal="body_entered" from="GuardArea" to="GuardState/GuardFollowPlayer" method="_on_guard_area_body_entered"]
+[connection signal="body_exited" from="GuardArea" to="GuardState" method="_on_guard_area_body_exited"]
+[connection signal="body_exited" from="GuardArea" to="GuardState/GuardFollowPlayer" method="_on_guard_area_body_exited"]
