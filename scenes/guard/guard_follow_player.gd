@@ -31,7 +31,9 @@ func update(_delta: float) -> String:
 		if _rigidbody.get_key().is_picked_up():
 			_key_picked_up = true
 
-	if not _player_in_range and not _key_picked_up:
+	var reset_marker = get_node("../../../GuardResetPos")
+
+	if not _player_in_range and not _key_picked_up and _target_pos == reset_marker.position and (_rigidbody.position - reset_marker.position).length() <= 3:
 		return "GuardIdle"
 
 	var speed = 100 + _move_speed * 15
@@ -41,7 +43,10 @@ func update(_delta: float) -> String:
 		set_player_follow_pos()
 
 	_move_dir = (_target_pos - _rigidbody.global_position).normalized()
-	_rigidbody.linear_velocity = _move_dir * speed
+	if (_rigidbody.position - _target_pos).length() <= 3:
+		_rigidbody.linear_velocity = Vector2.ZERO
+	else:
+		_rigidbody.linear_velocity = _move_dir * speed
 
 	var disruptors = get_tree().get_nodes_in_group("Disruptors")
 	for disruptor in disruptors:
@@ -50,7 +55,6 @@ func update(_delta: float) -> String:
 			get_node("../GuardDisrupted").init(disruptor)
 			return "GuardDisrupted"
 	
-	var reset_marker = get_node("../../../GuardResetPos")
 	if _target_pos == reset_marker.position and _key_in_range and _player_in_range and (_rigidbody.position - reset_marker.position).length() <= 3:
 		# _target_pos = RoomManager.get_player().position
 		set_player_follow_pos()

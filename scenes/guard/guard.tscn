@@ -40,6 +40,7 @@ _initial_state = "GuardIdle"
 
 [node name="GuardFollowPlayer" parent="GuardState" instance=ExtResource("4_h1kgr")]
 _move_speed = 3
+_initial_state = null
 
 [node name="GuardDisrupted" parent="GuardState" instance=ExtResource("6_v3b3x")]
 
