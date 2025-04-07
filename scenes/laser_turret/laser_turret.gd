@@ -14,10 +14,6 @@ func _ready() -> void:
 	# $ZOrdering.init($Sprite2D)
 	$RayCast2D/Laser.visible = false
 
-	# $RayCast2D/Laser/ZOrdering.init_marker($RayCast2D/Laser, $RayCast2D/Laser/ZOrderingMarker)
-
-	
-
 	$ControlInteractable.set_active(_rotating)
 
 	var rotation_rads = (_start_rotation % 360) * TWO_PI / 360

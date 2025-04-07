@@ -294,8 +294,8 @@ linear_damp = 100.0
 script = ExtResource("1_ktj7o")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, -47)
-scale = Vector2(3.04198, 3.69915)
+position = Vector2(0, -57)
+scale = Vector2(3.15, 4.815)
 polygon = PackedVector2Array(-5, 0, 5, 0, 8, 3, 8, 6, 5, 9, -5, 9, -8, 6, -8, 3)
 
 [node name="LaserTurretState" parent="." node_paths=PackedStringArray("_turret", "_animation_player", "_laser_sprite", "_laser_raycast") instance=ExtResource("3_geuje")]
@@ -415,7 +415,7 @@ position = Vector2(-1, -31)
 shape = SubResource("RectangleShape2D_2uoln")
 
 [node name="CenterMarker" type="Marker2D" parent="."]
-position = Vector2(0, -54)
+position = Vector2(0, -53)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
 [connection signal="interact" from="ForceFieldInteractable" to="." method="_on_force_field_interactable_interact"]
