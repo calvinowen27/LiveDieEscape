@@ -15,6 +15,8 @@ var _id
 @export var _is_fab_mat: bool = false
 @export var _fab_mat_name: String
 
+var _picked_up: bool = false
+
 func _ready() -> void:
 	_id = _next_id
 	_next_id += 1
@@ -45,3 +47,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if _is_fab_mat:
 			Fabricator.add_material(_fab_mat_name, 1)
 		#$CollisionShape2D.disabled = true
+		_picked_up = true
+
+func is_picked_up() -> bool:
+	return _picked_up

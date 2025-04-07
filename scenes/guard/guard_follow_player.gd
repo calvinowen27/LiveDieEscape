@@ -7,6 +7,7 @@ var _target_pos: Vector2
 
 var _key_in_range: bool = true
 var _player_in_range: bool = false
+var _key_picked_up: bool = false
 
 var _following_player: bool = false
 
@@ -23,8 +24,20 @@ func _ready() -> void:
 
 func update(_delta: float) -> String:
 	# var player_pos = RoomManager.get_player().global_position
+	
+	if _key_picked_up:
+		_following_player = true
+	else:
+		if _rigidbody.get_key().is_picked_up():
+			_key_picked_up = true
+
+	if not _player_in_range and not _key_picked_up:
+		return "GuardIdle"
+
 	var speed = 100 + _move_speed * 15
 
+	print(_key_picked_up)
+	
 	if _following_player:
 		# _target_pos = RoomManager.get_player().position
 		set_player_follow_pos()
@@ -71,7 +84,7 @@ func _on_guard_area_body_entered(body: Node) -> void:
 	if body == RoomManager.get_player():
 		_player_in_range = true
 
-		if _key_in_range:
+		if _key_in_range or _key_picked_up:
 			# _target_pos = body.position
 			_following_player = true
 		else:
@@ -81,11 +94,13 @@ func _on_guard_area_body_entered(body: Node) -> void:
 
 func _on_guard_area_body_exited(body: Node) -> void:
 	if body == RoomManager.get_player():
-		_player_in_range = false
-		_following_player = false
+		if not _key_picked_up:
+			print("leave player alone")
+			_player_in_range = false
+			_following_player = false
 
-		var reset_marker = get_node("../../../GuardResetPos")
-		_target_pos = reset_marker.position
+			var reset_marker = get_node("../../../GuardResetPos")
+			_target_pos = reset_marker.position
 
 func _on_guard_area_area_entered(area: Area2D) -> void:
 	if _rigidbody != null and area == _rigidbody.get_key():
@@ -95,6 +110,10 @@ func _on_guard_area_area_entered(area: Area2D) -> void:
 
 func _on_guard_area_area_exited(area: Area2D) -> void:
 	if _rigidbody != null and area == _rigidbody.get_key():
+		if _rigidbody.get_key().is_picked_up():
+			_key_picked_up = true
+			return
+		
 		_key_in_range = false
 		_following_player = false
 		var reset_marker = get_node("../../../GuardResetPos")
@@ -102,6 +121,9 @@ func _on_guard_area_area_exited(area: Area2D) -> void:
 
 func set_player_follow_pos() -> Vector2:
 	var player = RoomManager.get_player()
-	_target_pos = player.position + ((_rigidbody.get_key().position - player.position) / 2)
+	if _key_picked_up:
+		_target_pos = player.position
+	else:
+		_target_pos = player.position + ((_rigidbody.get_key().position - player.position) / 2)
 	get_node("../../Polygon2D").global_position = _target_pos
 	return _target_pos
