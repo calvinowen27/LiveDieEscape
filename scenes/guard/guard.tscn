@@ -49,6 +49,11 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GuardArea"]
 shape = SubResource("CircleShape2D_o1m64")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-11, 30)
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(-10, 0, 10, 0, 0, 15)
+
 [connection signal="body_entered" from="." to="GuardState/GuardFollowPlayer" method="_on_guard_body_entered"]
 [connection signal="body_entered" from="." to="GuardState/GuardDisrupted" method="_on_guard_body_entered"]
 [connection signal="area_entered" from="GuardArea" to="GuardState/GuardFollowPlayer" method="_on_guard_area_area_entered"]

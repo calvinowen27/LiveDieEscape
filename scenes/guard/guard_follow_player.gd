@@ -26,7 +26,8 @@ func update(_delta: float) -> String:
 	var speed = 100 + _move_speed * 15
 
 	if _following_player:
-		_target_pos = RoomManager.get_player().position
+		# _target_pos = RoomManager.get_player().position
+		set_player_follow_pos()
 
 	_move_dir = (_target_pos - _rigidbody.global_position).normalized()
 	_rigidbody.linear_velocity = _move_dir * speed
@@ -40,7 +41,8 @@ func update(_delta: float) -> String:
 	
 	var reset_marker = get_node("../../../GuardResetPos")
 	if _target_pos == reset_marker.position and _key_in_range and _player_in_range and (_rigidbody.position - reset_marker.position).length() <= 3:
-		_target_pos = RoomManager.get_player().position
+		# _target_pos = RoomManager.get_player().position
+		set_player_follow_pos()
 		_following_player = true
 	# if not _player_in_range:
 	# 	_target_pos = reset_marker.position
@@ -97,3 +99,9 @@ func _on_guard_area_area_exited(area: Area2D) -> void:
 		_following_player = false
 		var reset_marker = get_node("../../../GuardResetPos")
 		_target_pos = reset_marker.position
+
+func set_player_follow_pos() -> Vector2:
+	var player = RoomManager.get_player()
+	_target_pos = player.position + ((_rigidbody.get_key().position - player.position) / 2)
+	get_node("../../Polygon2D").global_position = _target_pos
+	return _target_pos
