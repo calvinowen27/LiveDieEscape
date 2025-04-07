@@ -35,8 +35,6 @@ func update(_delta: float) -> String:
 		return "GuardIdle"
 
 	var speed = 100 + _move_speed * 15
-
-	print(_key_picked_up)
 	
 	if _following_player:
 		# _target_pos = RoomManager.get_player().position
@@ -95,7 +93,6 @@ func _on_guard_area_body_entered(body: Node) -> void:
 func _on_guard_area_body_exited(body: Node) -> void:
 	if body == RoomManager.get_player():
 		if not _key_picked_up:
-			print("leave player alone")
 			_player_in_range = false
 			_following_player = false
 
