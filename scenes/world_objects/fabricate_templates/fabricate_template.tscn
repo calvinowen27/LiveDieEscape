@@ -21,3 +21,6 @@ offset = Vector2(8, 8)
 
 [node name="Square" type="Polygon2D" parent="Sprite2D"]
 polygon = PackedVector2Array(0, 0, 0, 16, 16, 16, 16, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
