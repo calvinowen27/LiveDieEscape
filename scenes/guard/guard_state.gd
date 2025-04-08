@@ -34,6 +34,17 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 
 	super.enable()
 
+# search for available disruptor to be disrupted by
+func _disruptor_found() -> bool:
+	var disruptors = get_tree().get_nodes_in_group("Disruptors")
+	for disruptor in disruptors:
+		if not disruptor.in_use():
+			disruptor.use()
+			get_node("../GuardDisrupted").init(disruptor)
+			return true
+	
+	return false
+
 # func _on_guard_area_body_exited(body:Node2D) -> void:
 # 	if body == RoomManager.get_player() and _curr_state.name == "GuardFollowPlayer":
 # 		_set_curr_state("GuardIdle")

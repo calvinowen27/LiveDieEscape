@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwfp4uu7bds7i"]
+[gd_scene load_steps=10 format=3 uid="uid://bwfp4uu7bds7i"]
 
 [ext_resource type="Texture2D" uid="uid://dsn77dja8lky4" path="res://resources/art/guard.png" id="1_45w1c"]
 [ext_resource type="Script" path="res://scenes/guard/guard.gd" id="1_t1dok"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwisyklm77mc5" path="res://scenes/guard/guard_idle.tscn" id="3_sq0rg"]
 [ext_resource type="PackedScene" uid="uid://871s4ssyqa6l" path="res://scenes/guard/guard_follow_player.tscn" id="4_h1kgr"]
 [ext_resource type="PackedScene" uid="uid://j7ntys5pqt2x" path="res://scenes/guard/guard_disrupted.tscn" id="6_v3b3x"]
+[ext_resource type="PackedScene" uid="uid://c5pxjvx82s25d" path="res://scenes/guard/guard_return.tscn" id="7_pde3w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1mse"]
 radius = 38.0
@@ -40,9 +41,15 @@ _initial_state = "GuardIdle"
 
 [node name="GuardFollowPlayer" parent="GuardState" instance=ExtResource("4_h1kgr")]
 _move_speed = 3
+_target_stop_range = 3
 _initial_state = null
 
 [node name="GuardDisrupted" parent="GuardState" instance=ExtResource("6_v3b3x")]
+
+[node name="GuardReturn" parent="GuardState" instance=ExtResource("7_pde3w")]
+_move_speed = 3
+_follow_reset_range = 15
+_idle_reset_range = 5
 
 [node name="GuardArea" type="Area2D" parent="."]
 collision_layer = 0
