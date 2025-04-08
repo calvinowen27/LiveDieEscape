@@ -5,6 +5,7 @@ extends PlayerState
 var _dash_ticks_elapsed = 0
 
 var _dashing = false
+var _dash_dir: Vector2
 
 func _ready() -> void:
 	pass
@@ -22,6 +23,11 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 
 	_dash_ticks_elapsed = 0
 	_dashing = true
+
+	# set dash direction based on input or last movement direction
+	_dash_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if _dash_dir == Vector2.ZERO:
+		_dash_dir = get_node("../../").get_last_move_dir()
 
 func update(_delta: float) -> String:
 	if dash().x > 0:
@@ -43,12 +49,8 @@ func update(_delta: float) -> String:
 	return name
 
 func dash() -> Vector2:
-	var dash_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if dash_dir == Vector2.ZERO:
-		dash_dir = get_node("../../").get_last_move_dir()
-	
 	var speed = StatManager.get_stat("speed")
 	var speed_mult = StatManager.get_stat("speed_mult")
-	_rigidbody.linear_velocity = dash_dir * (300 + speed * 20) * dash_speed_mult * speed_mult
+	_rigidbody.linear_velocity = _dash_dir * (300 + speed * 20) * dash_speed_mult * speed_mult
 
-	return dash_dir
+	return _dash_dir
