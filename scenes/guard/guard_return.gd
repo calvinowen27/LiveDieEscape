@@ -38,6 +38,7 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 
 	_reset_pos = get_node("../../../GuardResetPos").position
 
+# monitor player in range
 func _on_guard_area_body_entered(body: Node) -> void:
 	if body == RoomManager.get_player():
 		_player_in_range = true
@@ -46,6 +47,7 @@ func _on_guard_area_body_exited(body: Node) -> void:
 	if body == RoomManager.get_player():
 		_player_in_range = false
 
+# monitor key in range
 func _on_guard_area_area_entered(area: Area2D) -> void:
 	if _rigidbody != null and area == _rigidbody.get_key():
 		_key_in_range = true

@@ -40,16 +40,16 @@ _initial_state = "GuardIdle"
 [node name="GuardIdle" parent="GuardState" instance=ExtResource("3_sq0rg")]
 
 [node name="GuardFollowPlayer" parent="GuardState" instance=ExtResource("4_h1kgr")]
+_initial_state = null
 _move_speed = 3
 _target_stop_range = 3
-_initial_state = null
 
 [node name="GuardDisrupted" parent="GuardState" instance=ExtResource("6_v3b3x")]
 
 [node name="GuardReturn" parent="GuardState" instance=ExtResource("7_pde3w")]
 _move_speed = 3
-_follow_reset_range = 15
-_idle_reset_range = 5
+_follow_reset_range = 3
+_idle_reset_range = 3
 
 [node name="GuardArea" type="Area2D" parent="."]
 collision_layer = 0

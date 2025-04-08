@@ -27,7 +27,8 @@ func update(_delta: float) -> String:
 	if _disruptor_found():
 		return "GuardDisrupted"
 	
-	if not _player_in_range and not _key_picked_up:
+	# return to key if the player is far enough away or key is out of range
+	if (not _player_in_range and not _key_picked_up) or not _key_in_range:
 		return "GuardReturn"
 
 	update_target_pos()
