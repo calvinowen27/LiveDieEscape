@@ -36,7 +36,7 @@ func update(_delta: float) -> String:
 	# else:
 	# 	_rigidbody.linear_velocity = _move_dir * speed
 
-	var acceleration = 5
+	var acceleration = 10
 	var dist_to_target = (_rigidbody.position - _target_pos).length()
 	if dist_to_target <= 25:
 			acceleration *= -int(25 / dist_to_target)
