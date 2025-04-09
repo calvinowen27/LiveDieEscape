@@ -11,7 +11,7 @@ var _room_idx = 0
 @export var _locked = false
 @export var _consume_key = false
 
-@export var _unlocked_texture: Texture2D
+var _player_touching: bool = false
 
 var _active = false # if door can be used
 
@@ -82,6 +82,9 @@ func unlock() -> void:
 	$Interactable.set_active(false)
 	print("set active")
 
+	if _player_touching:
+		next_room()
+
 func is_locked() -> bool:
 	return _locked
 
@@ -89,5 +92,12 @@ func get_room_idx() -> int:
 	return _room_idx
 
 func _on_body_entered(body: Node2D) -> void:
-	if body == RoomManager.get_player() and not _locked:
-		next_room()
+	if body == RoomManager.get_player():
+		_player_touching = true
+
+		if not _locked:
+			next_room()
+
+func _on_body_exited(body: Node2D) -> void:
+	if body == RoomManager.get_player():
+		_player_touching = false

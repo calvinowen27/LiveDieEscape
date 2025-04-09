@@ -15,7 +15,6 @@ size = Vector2(82, 216)
 
 [node name="Door" type="Area2D"]
 script = ExtResource("1_wxue2")
-_unlocked_texture = ExtResource("2_1ga3h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-12.5, 0)
@@ -72,5 +71,6 @@ shape = SubResource("RectangleShape2D_gqor5")
 disabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 
 [editable path="Interactable"]
