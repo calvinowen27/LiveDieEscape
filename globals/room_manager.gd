@@ -101,7 +101,12 @@ func get_room(level_idx: int, room_idx: int) -> Room:
 
 	return new_room
 
+func reset_room(level_idx: int, room_idx: int) -> void:
+	_rooms[level_idx][room_idx].queue_free.call_deferred()
+	_rooms[level_idx][room_idx] = null
+
 func guard_reset() -> void:
+	reset_room(_curr_level, _curr_room_idx)
 	set_curr_room(0, 0, -1)
 	get_player().reset.call_deferred()
 

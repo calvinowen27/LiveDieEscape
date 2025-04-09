@@ -38,8 +38,8 @@ func update(_delta: float) -> String:
 
 	var acceleration = 10
 	var dist_to_target = (_rigidbody.position - _target_pos).length()
-	if dist_to_target <= 25:
-			acceleration *= -int(25 / dist_to_target)
+	if dist_to_target <= 15:
+			acceleration *= -int(15 / dist_to_target)
 
 	_rigidbody.linear_velocity += _move_dir * acceleration
 
@@ -63,6 +63,10 @@ func _on_guard_body_entered(body: Node) -> void:
 		if reset_marker != null:
 			_rigidbody.queue_teleport(reset_marker.position)
 		
+		var key = _rigidbody.get_key()
+		if key != null and Inventory.contains_item(key):
+			Inventory.del_item(key)
+
 		RoomManager.guard_reset()
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:
