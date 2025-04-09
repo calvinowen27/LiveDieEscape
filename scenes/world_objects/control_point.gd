@@ -40,7 +40,7 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	
 	_update_control()
 
-func _on_item_pickup(_item: Item, _idx: int) -> void:
+func _on_item_pickup(_item: Item) -> void:
 	_update_control()
 
 func _update_control() -> void:

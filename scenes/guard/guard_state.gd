@@ -44,11 +44,3 @@ func _disruptor_found() -> bool:
 			return true
 	
 	return false
-
-# func _on_guard_area_body_exited(body:Node2D) -> void:
-# 	if body == RoomManager.get_player() and _curr_state.name == "GuardFollowPlayer":
-# 		_set_curr_state("GuardIdle")
-
-# func _on_guard_area_body_entered(body:Node2D) -> void:
-# 	if body == RoomManager.get_player() and _curr_state.name == "GuardIdle":
-# 		_set_curr_state("GuardFollowPlayer")

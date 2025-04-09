@@ -48,6 +48,7 @@ func _on_body_entered(body: Node2D) -> void:
 			Fabricator.add_material(_fab_mat_name, 1)
 		#$CollisionShape2D.disabled = true
 		_picked_up = true
+		EventBus.item_pickup.emit(self)
 
 func is_picked_up() -> bool:
 	return _picked_up

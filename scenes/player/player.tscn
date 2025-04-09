@@ -641,7 +641,6 @@ script = ExtResource("2_4s0rh")
 _initial_state = "PlayerIdle"
 
 [node name="PlayerIdle" parent="PlayerState" instance=ExtResource("2_ml3m3")]
-_initial_state = null
 
 [node name="PlayerWalk" parent="PlayerState" instance=ExtResource("1_5cvwq")]
 

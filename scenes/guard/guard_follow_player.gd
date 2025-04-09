@@ -7,10 +7,6 @@ var _move_dir: Vector2
 
 var _target_pos: Vector2
 
-var _key_in_range: bool = true
-var _player_in_range: bool = false
-var _key_picked_up: bool = false
-
 var _player_reset: bool = false
 
 var _level: int
@@ -21,25 +17,37 @@ func _ready() -> void:
 	_room = RoomManager.get_curr_room_idx()
 	
 	EventBus.change_room.connect(_on_room_change)
-	EventBus.item_pickup.connect(_on_item_pickup)
 
 func update(_delta: float) -> String:
 	if _disruptor_found():
 		return "GuardDisrupted"
 	
 	# return to key if the player is far enough away or key is out of range
-	if (not _player_in_range and not _key_picked_up) or not _key_in_range:
+	if not _rigidbody.key_picked_up() and (not _rigidbody.player_in_range()  or not _rigidbody.key_in_range()):
 		return "GuardReturn"
 
 	update_target_pos()
 
 	# move
-	var speed = 100 + _move_speed * 15
+	# var speed = 100 + _move_speed * 15
 	_move_dir = (_target_pos - _rigidbody.global_position).normalized()
-	if (_rigidbody.position - _target_pos).length() <= _target_stop_range:
+	# if (_rigidbody.position - _target_pos).length() <= _target_stop_range:
+	# 	_rigidbody.linear_velocity = Vector2.ZERO
+	# else:
+	# 	_rigidbody.linear_velocity = _move_dir * speed
+
+	var acceleration = 5
+	var dist_to_target = (_rigidbody.position - _target_pos).length()
+	if dist_to_target <= 25:
+			acceleration *= -int(25 / dist_to_target)
+
+	_rigidbody.linear_velocity += _move_dir * acceleration
+
+	if _rigidbody.linear_velocity.length() > 100 + _move_speed * 15:
+		_rigidbody.linear_velocity = _rigidbody.linear_velocity.normalized() * (100 + _move_speed * 15)
+
+	if dist_to_target <= _target_stop_range:
 		_rigidbody.linear_velocity = Vector2.ZERO
-	else:
-		_rigidbody.linear_velocity = _move_dir * speed
 
 	return name
 
@@ -62,31 +70,11 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if level_idx == _level and room_idx == _room:
 		_player_reset = false
 
-func _on_item_pickup(item: Item, _idx: int) -> void:
-	if item == _rigidbody.get_key():
-		_key_picked_up = true
-
-func _on_guard_area_body_entered(body: Node) -> void:
-	if body == RoomManager.get_player():
-		_player_in_range = true
-
-func _on_guard_area_body_exited(body: Node) -> void:
-	if body == RoomManager.get_player():
-		_player_in_range = false
-
-func _on_guard_area_area_entered(area: Area2D) -> void:
-	if _rigidbody != null and area == _rigidbody.get_key():
-		_key_in_range = true
-
-func _on_guard_area_area_exited(area: Area2D) -> void:
-	if _rigidbody != null and area == _rigidbody.get_key():
-		_key_in_range = false
-
 func update_target_pos() -> Vector2:
 	var player = RoomManager.get_player()
 
 	# go to player if key is gone, otherwise go between player and key
-	if _key_picked_up:
+	if _rigidbody.key_picked_up():
 		_target_pos = player.position
 	else:
 		_target_pos = player.position + ((_rigidbody.get_key().position - player.position) / 2)

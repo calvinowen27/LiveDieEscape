@@ -8,9 +8,6 @@ var _reset_pos: Vector2
 @export var _follow_reset_range: int
 @export var _idle_reset_range: int
 
-var _key_in_range: bool = true
-var _player_in_range: bool = false
-
 func _ready() -> void:
 	pass
 
@@ -18,10 +15,13 @@ func update(_delta: float) -> String:
 	# check for disruption
 	if _disruptor_found():
 		return "GuardDisrupted"
+	
+	if _rigidbody.key_picked_up():
+		return "GuardFollowPlayer"
 
 	# close enough to reset pos to follow player again? idle?
 	var dist_to_reset = (_reset_pos - _rigidbody.position).length()
-	if dist_to_reset <= _follow_reset_range and _player_in_range and _key_in_range:
+	if dist_to_reset <= _follow_reset_range and _rigidbody.player_in_range() and _rigidbody.key_in_range():
 		return "GuardFollowPlayer"
 	elif dist_to_reset <= _idle_reset_range:
 		return "GuardIdle"
@@ -37,21 +37,3 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 	super.guard_state_enable(rigidbody, animation_player)
 
 	_reset_pos = get_node("../../../GuardResetPos").position
-
-# monitor player in range
-func _on_guard_area_body_entered(body: Node) -> void:
-	if body == RoomManager.get_player():
-		_player_in_range = true
-
-func _on_guard_area_body_exited(body: Node) -> void:
-	if body == RoomManager.get_player():
-		_player_in_range = false
-
-# monitor key in range
-func _on_guard_area_area_entered(area: Area2D) -> void:
-	if _rigidbody != null and area == _rigidbody.get_key():
-		_key_in_range = true
-
-func _on_guard_area_area_exited(area: Area2D) -> void:
-	if _rigidbody != null and area == _rigidbody.get_key():
-		_key_in_range = false

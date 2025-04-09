@@ -30,9 +30,9 @@ func die() -> void:
 	Inventory.clear()
 
 	for child in get_children():
-		print("child ", child)
+		# print("child ", child)
 		if child is Lightning:
-			print("removing lightning")
+			# print("removing lightning")
 			remove_child(child)
 			child.queue_free()
 
