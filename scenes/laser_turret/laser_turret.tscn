@@ -358,6 +358,7 @@ position = Vector2(0, -38)
 _temporary = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
+_hold_to_interact = null
 
 [node name="InteractLabel" parent="ForceFieldInteractable" index="0"]
 offset_top = -26.0
@@ -398,6 +399,7 @@ position = Vector2(1.5, -32)
 shape = SubResource("RectangleShape2D_bf8md")
 
 [node name="ScrapInteractable" parent="." instance=ExtResource("11_emy65")]
+_hold_to_interact = null
 
 [node name="InteractLabel" parent="ScrapInteractable" index="0"]
 offset_top = -26.0

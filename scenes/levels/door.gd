@@ -19,7 +19,6 @@ func _init() -> void:
 	EventBus.change_room.connect(_on_room_change)
 	
 func _ready() -> void:
-	# _room_idx = RoomManager.get_curr_room_idx()
 	_room_idx = get_parent().get_room_idx()
 
 	# initialize interactable node
@@ -37,23 +36,16 @@ func _ready() -> void:
 	elif abs(rotation - PI/2) <= 0.1:
 		$Sprite2D.frame_coords.x = 2
 
-
 func attempt_open() -> void:
-	print("attempt open")
 	if _active:
-		print("door is active")
 		# check for correct key in inventory
 		var key_found = false
 		var keys = Inventory.get_items_of_group("Keys")
 		for key in keys:
-			print("looking at key")
 			if key.unlocks_door(RoomManager.get_curr_level(), _room_idx, _door_idx):
 				# unlock and next room
-				print("key found")
 				key_found = true
 				unlock()
-				# next_room.call_deferred()
-				# $Interactable.set_interactable(true)
 				if _consume_key:
 					Inventory.del_item(key)
 				break
@@ -62,6 +54,8 @@ func attempt_open() -> void:
 			$Interactable.set_active(true)
 
 func next_room() -> void:
+	# await get_tree().create_timer(1).timeout
+	# await get_tree().process_frame
 	RoomManager.door_entered(_door_idx)
 	_active = false
 
@@ -77,10 +71,6 @@ func unlock() -> void:
 	# $Sprite2D.texture = _unlocked_texture
 	$RigidBody2D/CollisionShape2D.disabled = true
 	_locked = false
-	
-	# deactivate interactable (only for unlocking)
-	$Interactable.set_active(false)
-	print("set active")
 
 	if _player_touching:
 		next_room()

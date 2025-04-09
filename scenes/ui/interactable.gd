@@ -29,8 +29,8 @@ func _ready() -> void:
 		_progress_bar.visible = false
 		#$InteractLabel.text = "Hold  E  to Interact"
 
-func _process(_delta: float) -> void:
-	if _player_in_range and not _interactable:
+func _process(delta: float) -> void:
+	if _player_in_range and not _interactable and _is_active:
 		if RoomManager.get_player().can_interact_with(self):
 			_set_interactable(true)
 		else:
@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 	# check for player interaction
 	if Input.is_action_just_pressed("interact") and _player_in_range and _is_active:
 		if not _hold_to_interact:
-			interact.emit()
+			_interact()
 		elif _interact_timer.is_stopped():
 			_interact_timer.start()
 			_interacting = true
@@ -80,7 +80,7 @@ func is_active() -> bool:
 
 func set_active(val: bool) -> void:
 	_is_active = val
-	
+
 	if not val:
 		$InteractLabel.hide()
 		_interacting = false
@@ -89,6 +89,9 @@ func set_active(val: bool) -> void:
 		$InteractLabel.show()
 
 func _on_interact_timer_timeout() -> void:
+	_interact()
+
+func _interact() -> void:
 	set_active(false)
 	interact.emit()
 	_interacting = false

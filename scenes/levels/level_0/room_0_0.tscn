@@ -84,6 +84,12 @@ position = Vector2(248, 772)
 [node name="LaserTurretState" parent="LaserTurret2" index="1"]
 _initial_state = "LaserTurretBroken"
 
+[node name="ForceFieldInteractable" parent="LaserTurret2" index="6"]
+_hold_to_interact = null
+
+[node name="ScrapInteractable" parent="LaserTurret2" index="8"]
+_hold_to_interact = null
+
 [editable path="LaserTurret2"]
 [editable path="LaserTurret2/ForceFieldInteractable"]
 [editable path="LaserTurret2/ControlInteractable"]

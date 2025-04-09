@@ -20,7 +20,6 @@ func set_curr_room(level_idx: int, room_idx: int, next_door_idx: int) -> void:
 
 	_change_room(new_room, next_door_idx)
 
-
 	# used for things affected by room change
 	EventBus.change_room.emit.bind(level_idx, room_idx).call_deferred()
 
