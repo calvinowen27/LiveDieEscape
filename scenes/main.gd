@@ -1,9 +1,9 @@
 extends Node
 
-#func _ready() -> void:
-	#print(SceneManager.get_curr_scene())
-	#RoomManager.set_curr_room(0, 0)
+var _hud: Control
 
-#func _process(_delta: float) -> void:
-	#if Input.is_action_just_pressed("interact"):
-		#RoomManager.get_curr_room().reboot_room()
+func _ready() -> void:
+	_hud = %HUD
+
+func get_HUD() -> Control:
+	return _hud

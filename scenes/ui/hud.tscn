@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dn61cof1tymen" path="res://scenes/ui/map_ui.tscn" id="4_6dcsy"]
 [ext_resource type="PackedScene" uid="uid://uth7vm3vhpkr" path="res://scenes/ui/powerup_icon.tscn" id="5_ad1hm"]
 [ext_resource type="Script" path="res://scenes/ui/dead_panel.gd" id="6_pvhjm"]
-[ext_resource type="PackedScene" uid="uid://b1rymmt6a7bom" path="res://scenes/ui/recipes.tscn" id="7_tgksy"]
+[ext_resource type="PackedScene" uid="uid://b1rymmt6a7bom" path="res://scenes/ui/recipe_display.tscn" id="7_tgksy"]
 [ext_resource type="PackedScene" uid="uid://cfcn3onsdwndo" path="res://scenes/ui/materials.tscn" id="8_dniww"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kacm3"]
@@ -17,20 +17,9 @@ font_size = 24
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypmao"]
 bg_color = Color(0.178212, 0.178212, 0.178212, 1)
 
-[node name="HUD" type="Control"]
-z_index = 4096
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = -960.0
-offset_bottom = -540.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HUD" type="ReferenceRect"]
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_kx0v1")
 
 [node name="Back" type="Panel" parent="."]
@@ -40,8 +29,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 840.0
-offset_bottom = 1080.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 820.0
+offset_bottom = 1060.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kacm3")
@@ -52,8 +43,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -201.5
-offset_right = 201.5
+offset_left = -221.5
+offset_right = 181.5
 offset_bottom = 270.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
@@ -84,9 +75,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 85.0
+offset_left = 65.0
 offset_top = 135.0
-offset_right = 443.0
+offset_right = 423.0
 offset_bottom = 493.0
 grow_horizontal = 2
 
@@ -189,7 +180,8 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 64
 text = "You Died!"
 
-[node name="Recipes" parent="." instance=ExtResource("7_tgksy")]
+[node name="RecipeDisplay" parent="." instance=ExtResource("7_tgksy")]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = 14.0
 offset_top = 760.0

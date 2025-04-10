@@ -10,7 +10,7 @@ var fab_range: int = 200 # idk this can change
 
 var active: bool = false
 
-var _curr_recipe: Recipe
+var _curr_recipe: RecipeCell
 var snap_temp: bool = true
 var mouse_in_range: bool = false
 
@@ -143,9 +143,10 @@ func _on_player_death() -> void:
 func _on_game_start() -> void:
 	# set fabricate template and recipes ui elements
 	# fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
-	ui_recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
+	# ui_recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
+	ui_recipes = Game.get_HUD().get_recipe_display().get_recipe_cells()
 
-	_curr_recipe = ui_recipes[0] as Recipe
+	_curr_recipe = ui_recipes[0] as RecipeCell
 
 # return quantity of material or 0 if none
 func get_mat_count(mat_name: String) -> int:
@@ -163,7 +164,7 @@ func learn_recipe(reuslt_name: String) -> void:
 		if recipe.result_name == reuslt_name:
 			recipe.show()
 
-func _on_recipe_select(recipe: Recipe) -> void:
+func _on_recipe_select(recipe: RecipeCell) -> void:
 	# set curr recipe and whether fabricate template snaps to grid
 	_curr_recipe = recipe
 	snap_temp = recipes[recipe.result_name]["snap-to-grid"]
@@ -174,5 +175,5 @@ func _on_recipe_select(recipe: Recipe) -> void:
 
 	fab_temp.visible = active
 
-func get_curr_recipe() -> Recipe:
+func get_curr_recipe() -> RecipeCell:
 	return _curr_recipe

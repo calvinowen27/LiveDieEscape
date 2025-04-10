@@ -27,6 +27,7 @@ Inventory="*res://globals/inventory.gd"
 LevelManager="*res://globals/level_manager.gd"
 PowerupManager="*res://globals/powerup_manager.gd"
 Fabricator="*res://globals/fabricator.gd"
+Recipes="*res://globals/recipes.gd"
 
 [display]
 

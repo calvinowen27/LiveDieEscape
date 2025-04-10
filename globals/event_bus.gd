@@ -9,4 +9,4 @@ signal player_respawn
 signal powerup_pickup(powerup_name: String)
 signal powerup_over(powerup_name: String)
 signal materials_update
-signal recipe_select(recipe: Recipe)
+signal recipe_select(recipe: RecipeCell)

@@ -35,7 +35,7 @@ func _on_body_exited(body: Node2D) -> void:
 			print("valid")
 			update()
 
-func _on_recipe_select(_recipe: Recipe) -> void:
+func _on_recipe_select(_recipe: RecipeCell) -> void:
 	# $Sprite2D.texture = recipe.texture
 
 	update()

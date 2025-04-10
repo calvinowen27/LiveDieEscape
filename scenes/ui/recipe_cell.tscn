@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cufkkek8fdseh"]
 
-[ext_resource type="Script" path="res://scenes/ui/recipe.gd" id="1_5cohx"]
-[ext_resource type="Texture2D" uid="uid://cico8t12jclmb" path="res://resources/art/wall.png" id="2_hk1sk"]
+[ext_resource type="Script" path="res://scenes/ui/recipe_cell.gd" id="1_fjshq"]
+[ext_resource type="Texture2D" uid="uid://cico8t12jclmb" path="res://resources/art/wall.png" id="2_lkuug"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji30k"]
 bg_color = Color(0.17881, 0.17881, 0.17881, 1)
@@ -22,14 +22,14 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="Recipe" type="Control" groups=["Recipes"]]
+[node name="RecipeHolder" type="Control" groups=["Recipes"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5cohx")
+script = ExtResource("1_fjshq")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -43,7 +43,7 @@ offset_left = 9.0
 offset_top = 4.0
 offset_right = 101.0
 offset_bottom = 96.0
-texture = ExtResource("2_hk1sk")
+texture = ExtResource("2_lkuug")
 
 [node name="Materials" type="VBoxContainer" parent="Panel"]
 layout_mode = 0

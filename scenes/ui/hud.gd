@@ -62,3 +62,6 @@ func _on_powerup_over(powerup_name: String) -> void:
 			icon.visible = false
 			_powerup_icons.erase(powerup_name)
 			break
+
+func get_recipe_display() -> Control:
+	return %RecipeDisplay

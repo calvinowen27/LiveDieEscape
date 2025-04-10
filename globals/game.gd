@@ -4,6 +4,8 @@ var _is_game_running = false
 var _is_game_paused = false
 var _is_player_dead = false
 
+var _main: Node
+
 func restart_game() -> void:
 	SceneManager.switch_scene_to("ui/title_screen")
 	_is_game_running = false
@@ -26,6 +28,7 @@ func _on_game_start() -> void:
 	if not _is_game_running:
 		# switch scene to main
 		SceneManager.switch_scene_to("main")
+		_main = get_tree().root.get_node("Main")
 		_is_game_running = true
 		EventBus.level_reset.emit(RoomManager.get_curr_level())
 		RoomManager.set_curr_room(0, 0, -1)
@@ -39,3 +42,6 @@ func _on_player_death() -> void:
 
 func is_player_dead() -> bool:
 	return _is_player_dead
+
+func get_HUD() -> Control:
+	return _main.get_HUD()
