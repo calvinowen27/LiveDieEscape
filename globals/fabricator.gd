@@ -156,12 +156,12 @@ func get_mat_count(mat_name: String) -> int:
 	return materials[mat_name]
 
 # add recipe name to known recipes if not already learned
-func learn_recipe(reuslt_name: String) -> void:
-	known_recipes.append(reuslt_name)
+func learn_recipe(result_name: String) -> void:
+	known_recipes.append(result_name)
 
 	for recipe in ui_recipes:
 		print(recipe.result_name)
-		if recipe.result_name == reuslt_name:
+		if recipe.result_name == result_name:
 			recipe.show()
 
 func _on_recipe_select(recipe: RecipeCell) -> void:

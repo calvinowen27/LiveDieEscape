@@ -29,9 +29,10 @@ func init_recipe_cells() -> void:
 	# number of initialized recipes
 	_recipe_count = idx
 	
-	# hide uninitialized cells
-	for i in range(idx, _recipe_cells.size()):
-		_recipe_cells[i].hide()
+	# hide uninitialized or unknown cells
+	for cell in _recipe_cells:
+		if cell.result_name == null or cell.result_name not in Fabricator.known_recipes:
+			cell.hide()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_recipe_up"):

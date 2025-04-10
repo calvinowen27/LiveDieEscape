@@ -9,13 +9,6 @@ var selected: bool = false
 
 var _recipe_manager: Control
 
-func _ready() -> void:
-	# if result_name not in Fabricator.known_recipes:
-	# 	hide()
-	
-	# init_recipe()
-	pass
-
 func init_recipe(recipe_manager: Control) -> void:
 	_recipe_manager = recipe_manager
 
@@ -28,10 +21,10 @@ func init_recipe(recipe_manager: Control) -> void:
 	$Panel/ResultName.text = result_name
 
 	for key in recipe.keys():
-		var material = load("res://scenes/ui/recipe_material.tscn").instantiate()
-		$Panel/Materials.add_child(material)
-		material.get_node("Quantity").text = "x%d" % recipe[key]
-		material.get_node("TextureRect").texture = load("res://resources/art/%s.png" % key)
+		var recipe_material = load("res://scenes/ui/recipe_material.tscn").instantiate()
+		$Panel/Materials.add_child(recipe_material)
+		recipe_material.get_node("Quantity").text = "x%d" % recipe[key]
+		recipe_material.get_node("TextureRect").texture = load("res://resources/art/%s.png" % key)
 
 func _process(_delta: float) -> void:
 	if RoomManager.get_curr_room() == null or not RoomManager.get_curr_room().is_valid():
