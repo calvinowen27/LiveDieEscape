@@ -4,8 +4,8 @@
             "rubble": 3
         },
         "snap-to-grid": true,
-        "object_name": "wall_block",
-        "result_texture": "res://resources/art/wall.png"
+        "object-name": "wall_block",
+        "result-texture": "res://resources/art/wall.png"
     },
     "Disruptor": {
         "recipe": {
@@ -13,15 +13,15 @@
             "antenna": 1
         },
         "snap-to-grid": false,
-        "object_name": "disruptor_world",
-        "result_texture": "res://resources/art/disruptor.png"
+        "object-name": "disruptor_world",
+        "result-texture": "res://resources/art/disruptor.png"
     },
     "Force Field Emitter": {
         "recipe": {
             "force_field_emitter": 1
         },
         "snap-to-grid": false,
-        "object_name": "force_field_world",
-        "result_texture": "res://resources/art/force_field_emitter_item.png"
+        "object-name": "force_field_world",
+        "result-texture": "res://resources/art/force_field_emitter_item.png"
     }
 }

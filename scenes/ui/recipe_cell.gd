@@ -12,10 +12,10 @@ var _recipe_manager: Control
 func init_recipe(recipe_manager: Control) -> void:
 	_recipe_manager = recipe_manager
 
-	if result_name not in Fabricator.recipes.keys():
+	if result_name not in Recipes.get_recipes().keys():
 		return
 	
-	var recipe: Dictionary = Fabricator.recipes[result_name]["recipe"]
+	var recipe: Dictionary = Recipes.get_recipe(result_name)
 	
 	$Panel/Result.texture = texture
 	$Panel/ResultName.text = result_name
@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 
 func try_create() -> bool:
 	var mouse_pos = Vector2i(get_viewport().get_mouse_position())
-	return Fabricator.create_object(result_name, mouse_pos)
+	return Fabricator.try_create_object(result_name, mouse_pos)
 
 func select() -> void:
 	selected = true
@@ -49,7 +49,7 @@ func select() -> void:
 	for child in fab_temp_parent.get_children():
 		fab_temp_parent.remove_child(child)
 	
-	fab_temp_parent.add_child(load("res://scenes/world_objects/fabricate_templates/%s_fabricate_template.tscn" % Fabricator.recipes[result_name]["object_name"]).instantiate())
+	fab_temp_parent.add_child(load("res://scenes/world_objects/fabricate_templates/%s_fabricate_template.tscn" % Recipes.get_recipe_object_name(result_name)).instantiate())
 
 	EventBus.recipe_select.emit(self as RecipeCell)
 

@@ -21,7 +21,7 @@ func init_recipe_cells() -> void:
 
 		var cell = _recipe_cells[idx]
 		cell.result_name = result_name
-		cell.texture = load(recipes[result_name]["result_texture"])
+		cell.texture = Recipes.get_recipe_result_texture(result_name)
 		cell.init_recipe(self)
 
 		idx += 1
