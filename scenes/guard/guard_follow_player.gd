@@ -31,21 +31,22 @@ func update(_delta: float) -> String:
 	# move
 	# var speed = 100 + _move_speed * 15
 	_move_dir = (_target_pos - _rigidbody.global_position).normalized()
-	# if (_rigidbody.position - _target_pos).length() <= _target_stop_range:
-	# 	_rigidbody.linear_velocity = Vector2.ZERO
-	# else:
-	# 	_rigidbody.linear_velocity = _move_dir * speed
 
+	# acceleration based movement
 	var acceleration = 10
 	var dist_to_target = (_rigidbody.position - _target_pos).length()
+
+	# if close to target position decelerate
 	if dist_to_target <= 15:
 			acceleration *= -int(15 / dist_to_target)
 
 	_rigidbody.linear_velocity += _move_dir * acceleration
 
+	# cap speed
 	if _rigidbody.linear_velocity.length() > 100 + _move_speed * 15:
 		_rigidbody.linear_velocity = _rigidbody.linear_velocity.normalized() * (100 + _move_speed * 15)
 
+	# stop if at target
 	if dist_to_target <= _target_stop_range:
 		_rigidbody.linear_velocity = Vector2.ZERO
 
@@ -84,5 +85,5 @@ func update_target_pos() -> Vector2:
 		_target_pos = player.position + ((_rigidbody.get_key().position - player.position) / 2)
 	
 	# just for testing
-	get_node("../../Polygon2D").global_position = _target_pos
+	# get_node("../../Polygon2D").global_position = _target_pos
 	return _target_pos
