@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://d2vq4hr8231h1"]
+[gd_scene load_steps=5 format=4 uid="uid://d2vq4hr8231h1"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_birqc"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_6udcl"]
-[ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="3_rtkny"]
+[ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="3_huyet"]
+[ext_resource type="PackedScene" uid="uid://co87vsw0tevrl" path="res://scenes/items/key.tscn" id="4_srxaa"]
 
 [node name="Room0_5" instance=ExtResource("1_birqc")]
 _room_idx = 5
@@ -28,33 +29,14 @@ _door_idx = 2
 _locked = true
 _consume_key = true
 
-[node name="LaserTurret" parent="." index="7" instance=ExtResource("3_rtkny")]
-position = Vector2(247, 896)
+[node name="Guard" parent="." index="7" node_paths=PackedStringArray("_key") instance=ExtResource("3_huyet")]
+position = Vector2(406, 410)
+_key = NodePath("../Key")
 
-[node name="LaserTurret2" parent="." index="8" instance=ExtResource("3_rtkny")]
-position = Vector2(468, 888)
-_start_rotation = 45
+[node name="Key" parent="." index="8" instance=ExtResource("4_srxaa")]
+position = Vector2(174, 214)
+_room = 5
+_door = 1
 
-[node name="LaserTurret3" parent="." index="9" instance=ExtResource("3_rtkny")]
-position = Vector2(651, 891)
-_start_rotation = 90
-
-[node name="LaserTurret4" parent="." index="10" instance=ExtResource("3_rtkny")]
-position = Vector2(836, 883)
-_start_rotation = 135
-
-[node name="LaserTurret5" parent="." index="11" instance=ExtResource("3_rtkny")]
-position = Vector2(245, 283)
-_start_rotation = 180
-
-[node name="LaserTurret6" parent="." index="12" instance=ExtResource("3_rtkny")]
-position = Vector2(441, 290)
-_start_rotation = 225
-
-[node name="LaserTurret7" parent="." index="13" instance=ExtResource("3_rtkny")]
-position = Vector2(629, 289)
-_start_rotation = 270
-
-[node name="LaserTurret8" parent="." index="14" instance=ExtResource("3_rtkny")]
-position = Vector2(845, 274)
-_start_rotation = 315
+[node name="GuardResetPos" type="Marker2D" parent="." index="9"]
+position = Vector2(406, 410)

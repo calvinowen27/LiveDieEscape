@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://g5dssf7icumf"]
+[gd_scene load_steps=8 format=4 uid="uid://g5dssf7icumf"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_obo4y"]
 [ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_0nwva"]
@@ -6,10 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cswdcqu3qpxk3" path="res://resources/art/projectile.png" id="4_8j3m3"]
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="4_psar8"]
 [ext_resource type="Texture2D" uid="uid://dsq443rblek0l" path="res://resources/art/sentry_turret.png" id="6_hjyt8"]
-[ext_resource type="PackedScene" uid="uid://d0vgmox072m1a" path="res://scenes/sentry_turret/sentry_turret.tscn" id="7_1y1gk"]
-[ext_resource type="PackedScene" uid="uid://oeqvilovte4h" path="res://scenes/items/force_field_emitter.tscn" id="8_0h50a"]
 [ext_resource type="PackedScene" uid="uid://crc3567q3vy3t" path="res://scenes/world_objects/rubble.tscn" id="9_777nx"]
-[ext_resource type="PackedScene" uid="uid://bgd3y5lei25j1" path="res://scenes/laser_turret/rotating_laser_turret.tscn" id="10_ogppi"]
 
 [node name="Room0_0" instance=ExtResource("1_obo4y")]
 
@@ -47,50 +44,25 @@ scale = Vector2(6.75, 6.75)
 texture = ExtResource("6_hjyt8")
 hframes = 4
 
-[node name="LaserTurret" parent="." index="9" instance=ExtResource("4_psar8")]
-position = Vector2(303, 252)
-_start_rotation = 180
-_movable = true
-
-[node name="SentryTurret" parent="." index="10" instance=ExtResource("7_1y1gk")]
-position = Vector2(901, 587)
-_track_player = false
-_oscillate_speed = 500.0
-_oscillate_end_pos = Vector2(750, 720)
-_setup_rotation = 270
-
-[node name="ForceFieldEmitter" parent="." index="11" instance=ExtResource("8_0h50a")]
-y_sort_enabled = false
-position = Vector2(588, 567)
-
-[node name="Rubble" parent="." index="12" instance=ExtResource("9_777nx")]
+[node name="Rubble" parent="." index="9" instance=ExtResource("9_777nx")]
 position = Vector2(946, 868)
 
-[node name="Rubble2" parent="." index="13" instance=ExtResource("9_777nx")]
+[node name="Rubble2" parent="." index="10" instance=ExtResource("9_777nx")]
 position = Vector2(948, 162)
 
-[node name="Rubble3" parent="." index="14" instance=ExtResource("9_777nx")]
+[node name="Rubble3" parent="." index="11" instance=ExtResource("9_777nx")]
 position = Vector2(945, 1019)
 
-[node name="Rubble4" parent="." index="15" instance=ExtResource("9_777nx")]
+[node name="Rubble4" parent="." index="12" instance=ExtResource("9_777nx")]
 position = Vector2(128, 1017)
 
-[node name="RotatingLaserTurret" parent="." index="16" instance=ExtResource("10_ogppi")]
-position = Vector2(305, 524)
+[node name="LaserTurret" parent="." index="13" instance=ExtResource("4_psar8")]
+position = Vector2(313, 279)
 
-[node name="LaserTurret2" parent="." index="17" instance=ExtResource("4_psar8")]
-position = Vector2(248, 772)
-
-[node name="LaserTurretState" parent="LaserTurret2" index="1"]
+[node name="LaserTurretState" parent="LaserTurret" index="1"]
 _initial_state = "LaserTurretBroken"
 
-[node name="ForceFieldInteractable" parent="LaserTurret2" index="6"]
-_hold_to_interact = null
-
-[node name="ScrapInteractable" parent="LaserTurret2" index="8"]
-_hold_to_interact = null
-
-[editable path="LaserTurret2"]
-[editable path="LaserTurret2/ForceFieldInteractable"]
-[editable path="LaserTurret2/ControlInteractable"]
-[editable path="LaserTurret2/ScrapInteractable"]
+[editable path="LaserTurret"]
+[editable path="LaserTurret/ForceFieldInteractable"]
+[editable path="LaserTurret/ControlInteractable"]
+[editable path="LaserTurret/ScrapInteractable"]
