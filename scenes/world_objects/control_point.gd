@@ -102,6 +102,7 @@ func _on_control_button_pressed(room_idx: int) -> void:
 
 func _on_interact() -> void:
 	$UI.visible = !$UI.visible
+	$Interactable.set_active(true)
 
 func _on_interactable_set(val: bool) -> void:
 	if not val:
