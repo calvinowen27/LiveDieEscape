@@ -1,5 +1,7 @@
 extends GuardState
 
+const BASE_SPEED_MULT: int = 20
+
 var _move_dir: Vector2
 @export var _move_speed: int
 
@@ -28,7 +30,7 @@ func update(_delta: float) -> String:
 	
 	# move
 	_move_dir = (_reset_pos - _rigidbody.position).normalized()
-	var speed = 100 + _move_speed * 15
+	var speed = _move_speed * BASE_SPEED_MULT
 	_rigidbody.linear_velocity = _move_dir * speed
 
 	return name
@@ -36,4 +38,4 @@ func update(_delta: float) -> String:
 func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
 	super.guard_state_enable(rigidbody, animation_player)
 
-	_reset_pos = get_node("../../../GuardResetPos").position
+	_reset_pos = _rigidbody.get_start_pos()

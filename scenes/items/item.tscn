@@ -4,18 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://8bmbgotkrd78" path="res://resources/art/item_glow.png" id="7_xudgq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wplvq"]
-radius = 25.1794
+radius = 7.07107
 
 [node name="Item" type="Area2D"]
 y_sort_enabled = true
 script = ExtResource("1_cwod5")
 
 [node name="ItemGlow" type="Sprite2D" parent="."]
-scale = Vector2(4.5, 4.5)
 texture = ExtResource("7_xudgq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wplvq")

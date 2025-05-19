@@ -49,15 +49,17 @@ script = ExtResource("4_76xm2")
 [node name="GuardFollowPlayer" type="Node" parent="GuardState"]
 script = ExtResource("5_sj0gv")
 _move_speed = 3
-_base_acceleration = 2.75
+_target_stop_range = null
+_base_acceleration = 6.0
+_initial_state = null
 
 [node name="GuardDisrupted" type="Node" parent="GuardState"]
 script = ExtResource("6_072c0")
-_move_speed = 1
+_move_speed = 3
 
 [node name="GuardReturn" type="Node" parent="GuardState"]
 script = ExtResource("7_hwn3v")
-_move_speed = 1
+_move_speed = 3
 _follow_reset_range = 6
 _idle_reset_range = 3
 

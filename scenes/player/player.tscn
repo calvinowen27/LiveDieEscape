@@ -652,7 +652,6 @@ script = ExtResource("5_3ldpg")
 
 [node name="PlayerDash" type="Node" parent="PlayerState"]
 script = ExtResource("6_h60mf")
-dash_speed_mult = 4
 
 [node name="DashCooldownTimer" type="Timer" parent="PlayerState"]
 wait_time = 2.5

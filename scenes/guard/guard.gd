@@ -30,6 +30,9 @@ func queue_teleport(pos: Vector2) -> void:
 func queue_reset() -> void:
 	queue_teleport(_start_pos)
 
+func get_start_pos() -> Vector2:
+	return _start_pos
+
 func get_item() -> Area2D:
 	return _item
 

@@ -39,19 +39,17 @@ func update(_delta: float) -> String:
 
 	var acceleration = _base_acceleration
 
-	# if close to target position decelerate
-	if dist_to_target <= 5:
-		acceleration *= -int(5 / dist_to_target)
-	
 	_rigidbody.linear_velocity += _move_dir * acceleration
+
+	# if close to target position decelerate
+	if dist_to_target <= 10:
+		_rigidbody.linear_velocity *= dist_to_target / float(10)
+		print(acceleration)
 
 	# cap speed
 	if _rigidbody.linear_velocity.length() > _move_speed * BASE_SPEED_MULT:
 		_rigidbody.linear_velocity = _rigidbody.linear_velocity.normalized() * _move_speed * BASE_SPEED_MULT
-
-	if absf(_rigidbody.linear_velocity.normalized().angle_to_point(_target_pos)) > PI/4:
-		_rigidbody.linear_velocity = _move_dir * acceleration
-
+	
 	# stop if at target
 	if dist_to_target <= _target_stop_range:
 		_rigidbody.linear_velocity = Vector2.ZERO
