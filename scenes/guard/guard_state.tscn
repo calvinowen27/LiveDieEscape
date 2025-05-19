@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw8c30c07yift"]
-
-[ext_resource type="Script" path="res://scenes/guard/guard_state.gd" id="1_iuls6"]
-
-[node name="GuardState" type="Node"]
-script = ExtResource("1_iuls6")

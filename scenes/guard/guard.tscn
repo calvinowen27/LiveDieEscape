@@ -2,18 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://dsn77dja8lky4" path="res://resources/art/guard.png" id="1_45w1c"]
 [ext_resource type="Script" path="res://scenes/guard/guard.gd" id="1_t1dok"]
-[ext_resource type="PackedScene" uid="uid://cw8c30c07yift" path="res://scenes/guard/guard_state.tscn" id="2_of4ti"]
-[ext_resource type="PackedScene" uid="uid://bwisyklm77mc5" path="res://scenes/guard/guard_idle.tscn" id="3_sq0rg"]
-[ext_resource type="PackedScene" uid="uid://871s4ssyqa6l" path="res://scenes/guard/guard_follow_player.tscn" id="4_h1kgr"]
-[ext_resource type="PackedScene" uid="uid://j7ntys5pqt2x" path="res://scenes/guard/guard_disrupted.tscn" id="6_v3b3x"]
-[ext_resource type="PackedScene" uid="uid://c5pxjvx82s25d" path="res://scenes/guard/guard_return.tscn" id="7_pde3w"]
+[ext_resource type="Script" path="res://scenes/guard/guard_state.gd" id="3_pcr38"]
+[ext_resource type="Script" path="res://scenes/guard/guard_idle.gd" id="4_76xm2"]
+[ext_resource type="Script" path="res://scenes/guard/guard_follow_player.gd" id="5_sj0gv"]
+[ext_resource type="Script" path="res://scenes/guard/guard_disrupted.gd" id="6_072c0"]
+[ext_resource type="Script" path="res://scenes/guard/guard_return.gd" id="7_hwn3v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1mse"]
-radius = 38.0
-height = 114.0
+radius = 5.0
+height = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1m64"]
-radius = 337.013
+radius = 94.0
 
 [node name="Guard" type="RigidBody2D"]
 y_sort_enabled = true
@@ -25,30 +25,13 @@ script = ExtResource("1_t1dok")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_45w1c")
-offset = Vector2(0, -74)
+offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -36.5)
-rotation = -1.5708
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_q1mse")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="GuardState" parent="." instance=ExtResource("2_of4ti")]
-_initial_state = "GuardIdle"
-
-[node name="GuardIdle" parent="GuardState" instance=ExtResource("3_sq0rg")]
-
-[node name="GuardFollowPlayer" parent="GuardState" instance=ExtResource("4_h1kgr")]
-_move_speed = 3
-_target_stop_range = 5
-
-[node name="GuardDisrupted" parent="GuardState" instance=ExtResource("6_v3b3x")]
-
-[node name="GuardReturn" parent="GuardState" instance=ExtResource("7_pde3w")]
-_move_speed = 3
-_follow_reset_range = 3
-_idle_reset_range = 3
 
 [node name="GuardArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -56,10 +39,27 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GuardArea"]
 shape = SubResource("CircleShape2D_o1m64")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(-11, 30)
-color = Color(1, 0, 1, 1)
-polygon = PackedVector2Array(-10, 0, 10, 0, 0, 15)
+[node name="GuardState" type="Node" parent="."]
+script = ExtResource("3_pcr38")
+_initial_state = "GuardIdle"
+
+[node name="GuardIdle" type="Node" parent="GuardState"]
+script = ExtResource("4_76xm2")
+
+[node name="GuardFollowPlayer" type="Node" parent="GuardState"]
+script = ExtResource("5_sj0gv")
+_move_speed = 3
+_base_acceleration = 2.75
+
+[node name="GuardDisrupted" type="Node" parent="GuardState"]
+script = ExtResource("6_072c0")
+_move_speed = 1
+
+[node name="GuardReturn" type="Node" parent="GuardState"]
+script = ExtResource("7_hwn3v")
+_move_speed = 1
+_follow_reset_range = 6
+_idle_reset_range = 3
 
 [connection signal="body_entered" from="." to="GuardState/GuardFollowPlayer" method="_on_guard_body_entered"]
 [connection signal="body_entered" from="." to="GuardState/GuardDisrupted" method="_on_guard_body_entered"]

@@ -16,12 +16,12 @@ func update(_delta: float) -> String:
 	if _disruptor_found():
 		return "GuardDisrupted"
 	
-	if _rigidbody.key_picked_up():
+	if _rigidbody.item_picked_up():
 		return "GuardFollowPlayer"
 
 	# close enough to reset pos to follow player again? idle?
 	var dist_to_reset = (_reset_pos - _rigidbody.position).length()
-	if dist_to_reset <= _follow_reset_range and _rigidbody.player_in_range() and _rigidbody.key_in_range():
+	if dist_to_reset <= _follow_reset_range and _rigidbody.player_in_range() and _rigidbody.item_in_range():
 		return "GuardFollowPlayer"
 	elif dist_to_reset <= _idle_reset_range:
 		return "GuardIdle"

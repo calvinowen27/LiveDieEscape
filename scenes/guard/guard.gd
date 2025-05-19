@@ -1,15 +1,22 @@
 extends RigidBody2D
 
-@export var _key: Area2D
+@export var _item: Area2D
 
-var _key_in_range: bool = true
-var _key_picked_up: bool = false
+var _item_in_range: bool = true
+var _item_picked_up: bool = false
+
 var _player_in_range: bool = false
 
 var _queue_teleport = Vector2.ZERO
 
+var _start_pos: Vector2
+
+@onready var _level_idx: int = RoomManager.get_curr_level()
+@onready var _room_idx: int = RoomManager.get_curr_room_idx()
+
 func _ready() -> void:
 	EventBus.item_pickup.connect(_on_item_pickup)
+	EventBus.change_room.connect(_on_room_change)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _queue_teleport != Vector2.ZERO:
@@ -20,12 +27,19 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func queue_teleport(pos: Vector2) -> void:
 	_queue_teleport = pos
 
-func get_key() -> Area2D:
-	return _key
+func queue_reset() -> void:
+	queue_teleport(_start_pos)
+
+func get_item() -> Area2D:
+	return _item
+
+func _on_room_change(level_idx: int, room_idx: int):
+	if level_idx == _level_idx and room_idx == _room_idx:
+		_start_pos = position
 
 func _on_item_pickup(item: Item) -> void:
-	if item == _key:
-		_key_picked_up = true
+	if item == _item:
+		_item_picked_up = true
 
 func _on_guard_area_body_entered(body: Node) -> void:
 	if body == RoomManager.get_player():
@@ -36,18 +50,18 @@ func _on_guard_area_body_exited(body: Node) -> void:
 		_player_in_range = false
 
 func _on_guard_area_area_entered(area: Area2D) -> void:
-	if area == _key:
-		_key_in_range = true
+	if area == _item:
+		_item_in_range = true
 
 func _on_guard_area_area_exited(area: Area2D) -> void:
-	if area == _key:
-		_key_in_range = false
+	if area == _item:
+		_item_in_range = false
 
 func player_in_range() -> bool:
 	return _player_in_range
 
-func key_in_range() -> bool:
-	return _key_in_range
+func item_in_range() -> bool:
+	return _item_in_range
 
-func key_picked_up() -> bool:
-	return _key_picked_up
+func item_picked_up() -> bool:
+	return _item == null or _item_picked_up

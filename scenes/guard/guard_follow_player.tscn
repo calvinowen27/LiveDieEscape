@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://871s4ssyqa6l"]
-
-[ext_resource type="PackedScene" uid="uid://cw8c30c07yift" path="res://scenes/guard/guard_state.tscn" id="1_e0hx7"]
-[ext_resource type="Script" path="res://scenes/guard/guard_follow_player.gd" id="2_rnxpt"]
-
-[node name="GuardFollowPlayer" instance=ExtResource("1_e0hx7")]
-script = ExtResource("2_rnxpt")
-_move_speed = 0

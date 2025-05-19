@@ -1,9 +1,12 @@
 extends GuardState
 
-var _move_dir: Vector2
-@export var _move_speed: int
+const BASE_SPEED_MULT: int = 20
 
+var _move_dir: Vector2
+
+@export var _move_speed: int
 @export var _target_stop_range: int
+@export var _base_acceleration: float
 
 var _target_pos: Vector2
 
@@ -22,29 +25,32 @@ func update(_delta: float) -> String:
 	if _disruptor_found():
 		return "GuardDisrupted"
 	
-	# return to key if the player is far enough away or key is out of range
-	if not _rigidbody.key_picked_up() and (not _rigidbody.player_in_range()  or not _rigidbody.key_in_range()):
+	# return to item if the player is far enough away or item is out of range
+	if not _rigidbody.item_picked_up() and (not _rigidbody.player_in_range()  or not _rigidbody.item_in_range()):
 		return "GuardReturn"
 
 	update_target_pos()
 
 	# move
-	# var speed = 100 + _move_speed * 15
 	_move_dir = (_target_pos - _rigidbody.global_position).normalized()
 
 	# acceleration based movement
-	var acceleration = 10
 	var dist_to_target = (_rigidbody.position - _target_pos).length()
 
-	# if close to target position decelerate
-	if dist_to_target <= 15:
-			acceleration *= -int(15 / dist_to_target)
+	var acceleration = _base_acceleration
 
+	# if close to target position decelerate
+	if dist_to_target <= 5:
+		acceleration *= -int(5 / dist_to_target)
+	
 	_rigidbody.linear_velocity += _move_dir * acceleration
 
 	# cap speed
-	if _rigidbody.linear_velocity.length() > 100 + _move_speed * 15:
-		_rigidbody.linear_velocity = _rigidbody.linear_velocity.normalized() * (100 + _move_speed * 15)
+	if _rigidbody.linear_velocity.length() > _move_speed * BASE_SPEED_MULT:
+		_rigidbody.linear_velocity = _rigidbody.linear_velocity.normalized() * _move_speed * BASE_SPEED_MULT
+
+	if absf(_rigidbody.linear_velocity.normalized().angle_to_point(_target_pos)) > PI/4:
+		_rigidbody.linear_velocity = _move_dir * acceleration
 
 	# stop if at target
 	if dist_to_target <= _target_stop_range:
@@ -60,13 +66,11 @@ func _on_guard_body_entered(body: Node) -> void:
 		_player_reset = true
 		
 		# reset the guard and player position
-		var reset_marker = get_node("../../../GuardResetPos")
-		if reset_marker != null:
-			_rigidbody.queue_teleport(reset_marker.position)
+		_rigidbody.queue_reset()
 		
-		var key = _rigidbody.get_key()
-		if key != null and Inventory.contains_item(key):
-			Inventory.del_item(key)
+		var item = _rigidbody.get_item()
+		if item != null and Inventory.contains_item(item):
+			Inventory.del_item(item)
 
 		RoomManager.guard_reset()
 
@@ -78,11 +82,11 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 func update_target_pos() -> Vector2:
 	var player = RoomManager.get_player()
 
-	# go to player if key is gone, otherwise go between player and key
-	if _rigidbody.key_picked_up():
+	# go to player if item is gone, otherwise go between player and item
+	if _rigidbody.item_picked_up():
 		_target_pos = player.position
 	else:
-		_target_pos = player.position + ((_rigidbody.get_key().position - player.position) / 2)
+		_target_pos = player.position + ((_rigidbody.get_item().position - player.position) / 2)
 	
 	# just for testing
 	# get_node("../../Polygon2D").global_position = _target_pos
