@@ -647,10 +647,12 @@ _initial_state = "PlayerIdle"
 [node name="PlayerIdle" parent="PlayerState" instance=ExtResource("2_ml3m3")]
 
 [node name="PlayerWalk" parent="PlayerState" instance=ExtResource("1_5cvwq")]
+_speed = 3
 
 [node name="PlayerDash" parent="PlayerState" instance=ExtResource("6_mx61r")]
 dash_speed_mult = 4
 dash_ticks = 10
+_speed = 3
 
 [node name="DashCooldownTimer" type="Timer" parent="PlayerState"]
 wait_time = 2.5
