@@ -44,7 +44,6 @@ func update(_delta: float) -> String:
 	# if close to target position decelerate
 	if dist_to_target <= 10:
 		_rigidbody.linear_velocity *= dist_to_target / float(10)
-		print(acceleration)
 
 	# cap speed
 	if _rigidbody.linear_velocity.length() > _move_speed * BASE_SPEED_MULT:
