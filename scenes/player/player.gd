@@ -1,18 +1,18 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 class_name Player
 
-var _queue_teleport = Vector2.ZERO
+# var _queue_teleport = Vector2.ZERO
 
 var _last_move_dir: Vector2
 
 var _interactables_touching: Array
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	if _queue_teleport != Vector2.ZERO:
-		state.transform = Transform2D(0.0, _queue_teleport)
-		state.linear_velocity = Vector2.ZERO # also only edit linear_velocity in _integrate_forces
-		_queue_teleport = Vector2.ZERO
+# func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+# 	if _queue_teleport != Vector2.ZERO:
+# 		state.transform = Transform2D(0.0, _queue_teleport)
+# 		state.linear_velocity = Vector2.ZERO # also only edit linear_velocity in _integrate_forces
+# 		_queue_teleport = Vector2.ZERO
 
 func _ready() -> void:
 	# $ZOrdering.init($Sprite2D)
@@ -42,12 +42,13 @@ func _on_room_change(_level_idx: int, _room_idx: int) -> void:
 	$PlayerState/DashCooldownTimer.stop()
 	$PlayerState/DashCooldownTimer.timeout.emit()
 
-func queue_teleport(pos: Vector2) -> void:
-	_queue_teleport = pos
+# func queue_teleport(pos: Vector2) -> void:
+# 	_queue_teleport = pos
 
 func teleport(pos: Vector2) -> void:
 	position = pos
-	linear_velocity = Vector2.ZERO
+	# linear_velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 
 func set_last_move_dir(dir: Vector2) -> void:
 	_last_move_dir = dir

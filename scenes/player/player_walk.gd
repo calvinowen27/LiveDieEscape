@@ -6,16 +6,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func state_init() -> void:
-	super.state_init()
+# enable state and pass necessary references
+func player_state_enable(sprite: Sprite2D, character: CharacterBody2D, animation_player: AnimationPlayer) -> void:
+	super.player_state_enable(sprite, character, animation_player)
 
-	var last_move_dir = get_node("../../").get_last_move_dir()
+	var last_move_dir = character.get_last_move_dir()
 	
 	_play_animation(_animation_player, last_move_dir)
-
-# enable state and pass necessary references
-func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
-	super.player_state_enable(sprite, rigidbody, animation_player)
 
 func update(_delta: float) -> String:
 	move()
@@ -39,20 +36,20 @@ func _on_dash_cooldown_timer_timeout() -> void:
 func _play_animation(animation_player: AnimationPlayer, move_dir: Vector2) -> void:
 	if move_dir.y > 0:
 		if move_dir.x > 0:
-			animation_player.play("player_walk_right")
+			animation_player.play("player/player_walk_right")
 		elif move_dir.x < 0:
-			animation_player.play("player_walk_left")
+			animation_player.play("player/player_walk_left")
 		else:
-			animation_player.play("player_walk_down")
+			animation_player.play("player/player_walk_down")
 	elif move_dir.y < 0:
 		if move_dir.x > 0:
-			animation_player.play("player_walk_up_right")
+			animation_player.play("player/player_walk_up_right")
 		elif move_dir.x < 0:
-			animation_player.play("player_walk_up_left")
+			animation_player.play("player/player_walk_up_left")
 		else:
-			animation_player.play("player_walk_up")
+			animation_player.play("player/player_walk_up")
 	else:
 		if move_dir.x > 0:
-			animation_player.play("player_walk_right")
+			animation_player.play("player/player_walk_right")
 		else:
-			animation_player.play("player_walk_left")
+			animation_player.play("player/player_walk_left")
