@@ -4,9 +4,9 @@ class_name PlayerState
 
 const BASE_SPEED_MULT: int = 20
 
-var _character: CharacterBody2D
-var _sprite: Sprite2D
-var _animation_player: AnimationPlayer
+@export var _character: CharacterBody2D
+@export var _sprite: Sprite2D
+@export var _animation_player: AnimationPlayer
 
 var _move_dir: Vector2
 
@@ -30,10 +30,7 @@ func _set_curr_state(new_state_name: String) -> State:
 		return null
 	
 	if _curr_state != null:
-		var rigidbody = get_parent()
-		var sprite = rigidbody.get_node("Sprite2D")
-		var animation_player = rigidbody.get_node("AnimationPlayer")
-		_curr_state.player_state_enable(sprite, rigidbody, animation_player)
+		_curr_state.player_state_enable(_sprite, _character, _animation_player)
 
 	return new_state
 

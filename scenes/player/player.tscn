@@ -47,8 +47,11 @@ _data = {
 motion_mode = 1
 script = ExtResource("1_fa2xx")
 
-[node name="PlayerState" type="Node" parent="."]
+[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("_character", "_sprite", "_animation_player")]
 script = ExtResource("3_k6lhe")
+_character = NodePath("..")
+_sprite = NodePath("../Sprite2D")
+_animation_player = NodePath("../AnimationPlayer")
 _initial_state = "PlayerIdle"
 
 [node name="PlayerIdle" type="Node" parent="PlayerState"]
