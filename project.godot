@@ -18,16 +18,16 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://globals/scene_manager.gd"
 Game="*res://globals/game.gd"
+SceneManager="*res://globals/scene_manager.gd"
 EventBus="*res://globals/event_bus.gd"
 RoomManager="*res://globals/room_manager.gd"
 StatManager="*res://globals/stat_manager.gd"
 Inventory="*res://globals/inventory.gd"
-LevelManager="*res://globals/level_manager.gd"
 PowerupManager="*res://globals/powerup_manager.gd"
 Fabricator="*res://globals/fabricator.gd"
 Recipes="*res://globals/recipes.gd"
+LevelManager="*res://globals/level_manager.gd"
 
 [display]
 
@@ -110,3 +110,4 @@ scan={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+viewport/hdr_2d=true

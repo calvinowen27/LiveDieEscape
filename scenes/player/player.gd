@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name Player
+
 var _queue_teleport = Vector2.ZERO
 
 var _last_move_dir: Vector2

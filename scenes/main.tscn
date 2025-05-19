@@ -8,35 +8,17 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_khhrq")
 
-[node name="Background" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="GameRect" type="ReferenceRect" parent="Background"]
+[node name="GameRect" type="ReferenceRect" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 1080.0
 
-[node name="ColorRect" type="ColorRect" parent="Background/GameRect"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="FabricateTemplate" type="Node2D" parent="."]
+scale = Vector2(6.75, 6.75)
 
-[node name="HUD" parent="." instance=ExtResource("2_b7633")]
-unique_name_in_owner = true
-offset_left = 1080.0
-offset_right = 1080.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextBox" parent="." instance=ExtResource("3_4pxxy")]
+[node name="TextBox" parent="CanvasLayer" instance=ExtResource("3_4pxxy")]
 unique_name_in_owner = true
 visible = false
 offset_left = 182.0
@@ -45,7 +27,7 @@ offset_right = 427.0
 offset_bottom = 924.0
 scale = Vector2(3, 3)
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_j1i6a")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_j1i6a")]
 visible = false
 z_index = 4096
 anchors_preset = 4
@@ -57,5 +39,7 @@ offset_right = 784.0
 offset_bottom = 211.0
 grow_vertical = 2
 
-[node name="FabricateTemplate" type="Node2D" parent="."]
-scale = Vector2(6.75, 6.75)
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("2_b7633")]
+unique_name_in_owner = true
+offset_left = 1080.0
+offset_right = 1920.0

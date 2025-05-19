@@ -1,7 +1,6 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://yol7g56jqnv2"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://yol7g56jqnv2"]
 
 [ext_resource type="Texture2D" uid="uid://nc2vvd6w52m7" path="res://resources/art/wall-sheet.png" id="1_qht8t"]
-[ext_resource type="Texture2D" uid="uid://cwgxl3bln5qxq" path="res://resources/art/ground_tiles.png" id="2_0g1vt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fgq6j"]
 friction = 0.0
@@ -27,20 +26,7 @@ texture = ExtResource("1_qht8t")
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 3.98438, -8, 3.9375, 1.625, 8, 1.6875, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmhok"]
-texture = ExtResource("2_0g1vt")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-
 [resource]
 physics_layer_0/collision_layer = 3
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_fgq6j")
 sources/0 = SubResource("TileSetAtlasSource_ybi60")
-sources/1 = SubResource("TileSetAtlasSource_fmhok")

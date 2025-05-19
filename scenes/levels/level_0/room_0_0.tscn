@@ -1,68 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://g5dssf7icumf"]
+[gd_scene load_steps=2 format=3 uid="uid://cqfohri388daj"]
 
-[ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_obo4y"]
-[ext_resource type="PackedScene" uid="uid://78xjhgygrik8" path="res://scenes/levels/door.tscn" id="2_0nwva"]
-[ext_resource type="Texture2D" uid="uid://biodi138uf1oh" path="res://resources/art/player3.png" id="4_5vjo2"]
-[ext_resource type="Texture2D" uid="uid://cswdcqu3qpxk3" path="res://resources/art/projectile.png" id="4_8j3m3"]
-[ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="4_psar8"]
-[ext_resource type="Texture2D" uid="uid://dsq443rblek0l" path="res://resources/art/sentry_turret.png" id="6_hjyt8"]
-[ext_resource type="PackedScene" uid="uid://crc3567q3vy3t" path="res://scenes/world_objects/rubble.tscn" id="9_777nx"]
+[ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_bhqsv"]
 
-[node name="Room0_0" instance=ExtResource("1_obo4y")]
+[node name="Room0_0" instance=ExtResource("1_bhqsv")]
 
-[node name="Walls" parent="." index="1"]
-position = Vector2(0, -1)
-tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAJAAkAAAACAAIAAAAJAAAAAAACAAAAAAAAAAkAAAAAAAIAAAABAAkAAAABAAIAAAACAAkAAAABAAIAAAADAAkAAAABAAIAAAAEAAkAAAABAAIAAAAFAAkAAAABAAIAAAAGAAkAAAABAAIAAAAHAAkAAAABAAIAAAAIAAkAAAABAAIAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAJAAQAAAACAAEAAAAJAAUAAAACAAEAAAAJAAYAAAACAAEAAAAJAAcAAAACAAEAAAAJAAgAAAACAAEAAAA=")
-
-[node name="Player" parent="." index="3"]
-position = Vector2(399, 711)
-
-[node name="PlayerSpawn" type="Marker2D" parent="." index="4"]
-position = Vector2(515, 688)
-
-[node name="Door0" parent="." index="5" instance=ExtResource("2_0nwva")]
-position = Vector2(540, 65)
-rotation = 1.5708
-
-[node name="Sprite2D" type="Sprite2D" parent="." index="6"]
-visible = false
-position = Vector2(780, 667)
-scale = Vector2(6.75, 6.75)
-texture = ExtResource("4_5vjo2")
-
-[node name="Sprite2D2" type="Sprite2D" parent="." index="7"]
-visible = false
-position = Vector2(444, 378)
-scale = Vector2(6.75, 6.75)
-texture = ExtResource("4_8j3m3")
-offset = Vector2(0.5, 0.5)
-
-[node name="Sprite2D3" type="Sprite2D" parent="." index="8"]
-visible = false
-position = Vector2(868, 224)
-scale = Vector2(6.75, 6.75)
-texture = ExtResource("6_hjyt8")
-hframes = 4
-
-[node name="Rubble" parent="." index="9" instance=ExtResource("9_777nx")]
-position = Vector2(946, 868)
-
-[node name="Rubble2" parent="." index="10" instance=ExtResource("9_777nx")]
-position = Vector2(948, 162)
-
-[node name="Rubble3" parent="." index="11" instance=ExtResource("9_777nx")]
-position = Vector2(945, 1019)
-
-[node name="Rubble4" parent="." index="12" instance=ExtResource("9_777nx")]
-position = Vector2(128, 1017)
-
-[node name="LaserTurret" parent="." index="13" instance=ExtResource("4_psar8")]
-position = Vector2(313, 279)
-
-[node name="LaserTurretState" parent="LaserTurret" index="1"]
-_initial_state = "LaserTurretBroken"
-
-[editable path="LaserTurret"]
-[editable path="LaserTurret/ForceFieldInteractable"]
-[editable path="LaserTurret/ControlInteractable"]
-[editable path="LaserTurret/ScrapInteractable"]
+[node name="PlayerSpawn" type="Marker2D" parent="." index="3"]
+position = Vector2(61, 69)

@@ -58,7 +58,7 @@ func move() -> void:
 	var speed_mult = StatManager.get_stat("speed_mult")
 
 	# what is this why are there no constants
-	_rigidbody.linear_velocity = _move_dir * (150 + speed * 20) * speed_mult
+	_rigidbody.linear_velocity = _move_dir * (speed * 20) * speed_mult
 
 func _on_room_change(_level_idx: int, _room_idx):
 	# to prevent dash through door bug

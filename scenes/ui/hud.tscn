@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3m15d5m7d5rl"]
+[gd_scene load_steps=9 format=3 uid="uid://b3m15d5m7d5rl"]
 
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_kx0v1"]
 [ext_resource type="PackedScene" uid="uid://bw4ivehrt8j0t" path="res://scenes/ui/dash_progress_bar.tscn" id="3_3grgp"]
 [ext_resource type="PackedScene" uid="uid://dn61cof1tymen" path="res://scenes/ui/map_ui.tscn" id="4_6dcsy"]
-[ext_resource type="PackedScene" uid="uid://uth7vm3vhpkr" path="res://scenes/ui/powerup_icon.tscn" id="5_ad1hm"]
 [ext_resource type="Script" path="res://scenes/ui/dead_panel.gd" id="6_pvhjm"]
 [ext_resource type="PackedScene" uid="uid://b1rymmt6a7bom" path="res://scenes/ui/recipe_display.tscn" id="7_tgksy"]
 [ext_resource type="PackedScene" uid="uid://cfcn3onsdwndo" path="res://scenes/ui/materials.tscn" id="8_dniww"]
@@ -11,15 +10,12 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kacm3"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_tltay"]
-font_size = 24
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypmao"]
 bg_color = Color(0.178212, 0.178212, 0.178212, 1)
 
 [node name="HUD" type="ReferenceRect"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 840.0
+offset_bottom = 1080.0
 script = ExtResource("1_kx0v1")
 
 [node name="Back" type="Panel" parent="."]
@@ -29,38 +25,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 820.0
-offset_bottom = 1060.0
+offset_left = -420.0
+offset_top = -540.0
+offset_right = 420.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kacm3")
-
-[node name="StatsLabel" type="Label" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -221.5
-offset_right = 181.5
-offset_bottom = 270.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 64
-text = "health: 0
-speed: 0
-endurance: 0"
-horizontal_alignment = 1
-
-[node name="Panel" type="Panel" parent="StatsLabel"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="DashProgressBar" parent="." instance=ExtResource("3_3grgp")]
 layout_mode = 2
@@ -75,70 +46,11 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 65.0
-offset_top = 135.0
-offset_right = 423.0
-offset_bottom = 493.0
+offset_left = -191.0
+offset_top = 83.0
+offset_right = 167.0
+offset_bottom = 441.0
 grow_horizontal = 2
-
-[node name="RoomTimerLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 471.0
-offset_top = 115.0
-offset_right = 713.0
-offset_bottom = 332.0
-theme_override_font_sizes/font_size = 32
-
-[node name="Powerups" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 347.0
-offset_top = 524.0
-offset_right = 710.0
-offset_bottom = 611.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Powerups"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PowerupIcon" parent="Powerups/HBoxContainer" instance=ExtResource("5_ad1hm")]
-visible = false
-custom_minimum_size = Vector2(88, 88)
-layout_mode = 2
-
-[node name="PowerupIcon2" parent="Powerups/HBoxContainer" instance=ExtResource("5_ad1hm")]
-visible = false
-custom_minimum_size = Vector2(88, 88)
-layout_mode = 2
-
-[node name="PowerupIcon3" parent="Powerups/HBoxContainer" instance=ExtResource("5_ad1hm")]
-visible = false
-custom_minimum_size = Vector2(88, 88)
-layout_mode = 2
-
-[node name="PowerupIcon4" parent="Powerups/HBoxContainer" instance=ExtResource("5_ad1hm")]
-visible = false
-custom_minimum_size = Vector2(88, 88)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Powerups"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -57.5
-offset_top = -4.0
-offset_right = 57.5
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Powerups"
-label_settings = SubResource("LabelSettings_tltay")
 
 [node name="DeadPanel" type="Panel" parent="."]
 process_mode = 3
