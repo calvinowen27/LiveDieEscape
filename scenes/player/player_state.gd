@@ -2,9 +2,7 @@ extends State
 
 class_name PlayerState
 
-const SPEED_MULT: int = 20
-
-@export var _speed: int
+const BASE_SPEED_MULT: int = 20
 
 var _rigidbody: RigidBody2D
 var _sprite: Sprite2D
@@ -15,7 +13,6 @@ var _move_dir: Vector2
 var _can_dash = true
 
 func _ready() -> void:
-	# _set_curr_state("PlayerIdle")
 	super._ready()
 
 	EventBus.change_room.connect(_on_room_change)
@@ -57,9 +54,12 @@ func move() -> void:
 		_rigidbody.set_last_move_dir(_move_dir)
 	
 	_move_dir = new_dir
+
+	var speed = StatManager.get_stat("speed")
+	var speed_mult = StatManager.get_stat("speed_mult")
 	
 	# what is this why are there no constants
-	_rigidbody.linear_velocity = _move_dir * (_speed * SPEED_MULT)
+	_rigidbody.linear_velocity = _move_dir * (speed * BASE_SPEED_MULT) * speed_mult
 
 func _on_room_change(_level_idx: int, _room_idx):
 	# to prevent dash through door bug

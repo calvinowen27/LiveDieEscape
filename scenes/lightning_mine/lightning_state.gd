@@ -2,13 +2,11 @@ extends State
 
 class_name LightningState
 
-@export var _animation_player: AnimationPlayer
-@export var _sprite: Sprite2D
+var _animation_player: AnimationPlayer
+var _sprite: Sprite2D
 
 func _ready() -> void:
 	super._ready()
-
-	_set_curr_state("LightningGo")
 
 	EventBus.change_room.connect(_on_room_change)
 
@@ -22,13 +20,15 @@ func _set_curr_state(new_state_name: String) -> State:
 	
 	# enable new state
 	if _curr_state != null:
-		_curr_state.lightning_state_enable(_animation_player, _sprite)
+		var sprite = get_parent()
+		var animation_player = sprite.get_node("AnimationPlayer")
+		_curr_state.lightning_state_enable(sprite, animation_player)
 
 	return new_state
 
-func lightning_state_enable(animation_player: AnimationPlayer, sprite: Sprite2D) -> void:
-	_animation_player = animation_player
+func lightning_state_enable(sprite: Sprite2D, animation_player: AnimationPlayer) -> void:
 	_sprite = sprite
+	_animation_player = animation_player
 
 	super.enable()
 

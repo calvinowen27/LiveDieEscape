@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm4hfgb3fo55w"]
-
-[ext_resource type="Script" path="res://scenes/lightning_mine/lightning_state.gd" id="1_rlv3n"]
-
-[node name="LightningState" type="Node"]
-script = ExtResource("1_rlv3n")

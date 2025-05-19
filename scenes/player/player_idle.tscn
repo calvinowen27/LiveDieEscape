@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx4duiho1gprs"]
-
-[ext_resource type="PackedScene" uid="uid://c3ta8j7vd1u2w" path="res://scenes/player/player_state.tscn" id="1_7xlar"]
-[ext_resource type="Script" path="res://scenes/player/player_idle.gd" id="1_jgy17"]
-
-[node name="PlayerIdle" instance=ExtResource("1_7xlar")]
-script = ExtResource("1_jgy17")

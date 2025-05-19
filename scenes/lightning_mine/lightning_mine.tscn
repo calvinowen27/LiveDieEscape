@@ -4,17 +4,16 @@
 [ext_resource type="Script" path="res://scenes/lightning_mine/lightning_mine.gd" id="1_no2fe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpf1e"]
-size = Vector2(108, 108)
+size = Vector2(16, 16)
 
 [node name="LightningMine" type="Area2D"]
 script = ExtResource("1_no2fe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 54)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_wpf1e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(6.75, 6.75)
 texture = ExtResource("1_bafst")
 offset = Vector2(0, 8)
 

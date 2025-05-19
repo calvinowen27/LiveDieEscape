@@ -49,6 +49,9 @@ func update(_delta: float) -> String:
 	return name
 
 func dash() -> Vector2:
-	_rigidbody.linear_velocity = _dash_dir * (_speed * SPEED_MULT) * dash_speed_mult
+	var speed = StatManager.get_stat("speed")
+	var speed_mult = StatManager.get_stat("speed_mult")
+
+	_rigidbody.linear_velocity = _dash_dir * (speed * BASE_SPEED_MULT) * speed_mult * dash_speed_mult
 
 	return _dash_dir

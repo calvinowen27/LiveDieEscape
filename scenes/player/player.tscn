@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=3 uid="uid://dsjw11gafshw3"]
 
-[ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
-[ext_resource type="Script" path="res://scenes/player/player_state.gd" id="2_4s0rh"]
-[ext_resource type="PackedScene" uid="uid://dx4duiho1gprs" path="res://scenes/player/player_idle.tscn" id="2_ml3m3"]
-[ext_resource type="PackedScene" uid="uid://c661v61raotsm" path="res://scenes/player/player_dash.tscn" id="6_mx61r"]
+[ext_resource type="Script" path="res://scenes/player/player_state.gd" id="3_k6lhe"]
+[ext_resource type="Script" path="res://scenes/player/player_idle.gd" id="4_m28yt"]
+[ext_resource type="Script" path="res://scenes/player/player_walk.gd" id="5_3ldpg"]
+[ext_resource type="Script" path="res://scenes/player/player_dash.gd" id="6_h60mf"]
 [ext_resource type="Texture2D" uid="uid://biodi138uf1oh" path="res://resources/art/player3.png" id="6_vrsab"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w0vmm"]
@@ -641,18 +641,18 @@ lock_rotation = true
 script = ExtResource("1_fa2xx")
 
 [node name="PlayerState" type="Node" parent="."]
-script = ExtResource("2_4s0rh")
+script = ExtResource("3_k6lhe")
 _initial_state = "PlayerIdle"
 
-[node name="PlayerIdle" parent="PlayerState" instance=ExtResource("2_ml3m3")]
+[node name="PlayerIdle" type="Node" parent="PlayerState"]
+script = ExtResource("4_m28yt")
 
-[node name="PlayerWalk" parent="PlayerState" instance=ExtResource("1_5cvwq")]
-_speed = 3
+[node name="PlayerWalk" type="Node" parent="PlayerState"]
+script = ExtResource("5_3ldpg")
 
-[node name="PlayerDash" parent="PlayerState" instance=ExtResource("6_mx61r")]
+[node name="PlayerDash" type="Node" parent="PlayerState"]
+script = ExtResource("6_h60mf")
 dash_speed_mult = 4
-dash_ticks = 10
-_speed = 3
 
 [node name="DashCooldownTimer" type="Timer" parent="PlayerState"]
 wait_time = 2.5
@@ -672,6 +672,3 @@ shape = SubResource("CapsuleShape2D_3t6uc")
 libraries = {
 "": SubResource("AnimationLibrary_0qodp")
 }
-
-[connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerIdle" method="_on_dash_cooldown_timer_timeout"]
-[connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerWalk" method="_on_dash_cooldown_timer_timeout"]

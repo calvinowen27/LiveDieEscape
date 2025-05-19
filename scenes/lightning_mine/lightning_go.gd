@@ -16,8 +16,8 @@ func update(_delta: float) -> String:
 	
 	return "LightningBuzz"
 
-func lightning_state_enable(animation_player: AnimationPlayer, sprite: Sprite2D) -> void:
-	super.lightning_state_enable(animation_player, sprite)
+func lightning_state_enable(sprite: Sprite2D, animation_player: AnimationPlayer) -> void:
+	super.lightning_state_enable(sprite, animation_player)
 	
 	animation_player.play("lightning_go")
 

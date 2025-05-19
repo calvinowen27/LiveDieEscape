@@ -8,8 +8,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func lightning_state_enable(animation_player: AnimationPlayer, sprite: Sprite2D) -> void:
-	super.lightning_state_enable(animation_player, sprite)
+func lightning_state_enable(sprite: Sprite2D, animation_player: AnimationPlayer) -> void:
+	super.lightning_state_enable(sprite, animation_player)
 	
 	animation_player.play("lightning_buzz")
 	$AliveTimer.start()
@@ -19,7 +19,7 @@ func lightning_state_enable(animation_player: AnimationPlayer, sprite: Sprite2D)
 func _on_alive_timer_timeout() -> void:
 	StatManager.revert_stat_change("speed_mult", _altered_speed_mult)
 
-	get_node("../../").die()
+	_sprite.die()
 
 func get_altered_speed_mult() -> float:
 	return _altered_speed_mult

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://cqfohri388daj"]
+[gd_scene load_steps=3 format=4 uid="uid://cqfohri388daj"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_bhqsv"]
+[ext_resource type="PackedScene" uid="uid://bsd15uocf3nk3" path="res://scenes/lightning_mine/lightning_mine.tscn" id="2_l62fq"]
 
 [node name="Room0_0" instance=ExtResource("1_bhqsv")]
 
@@ -12,3 +13,6 @@ tile_map_data = PackedByteArray("AAD8//3/AAAAAAAAAAD8//7/AAAAAAEAAAD8////AAAAAAE
 
 [node name="PlayerSpawn" type="Marker2D" parent="." index="3"]
 position = Vector2(61, 69)
+
+[node name="LightningMine" parent="." index="5" instance=ExtResource("2_l62fq")]
+position = Vector2(149, 66)

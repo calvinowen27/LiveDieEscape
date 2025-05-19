@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://diu482trt1qi3" path="res://resources/art/lightning-sheet.png" id="1_ns8fu"]
 [ext_resource type="Script" path="res://scenes/lightning_mine/lightning.gd" id="2_oi58f"]
-[ext_resource type="PackedScene" uid="uid://cm4hfgb3fo55w" path="res://scenes/lightning_mine/lightning_state.tscn" id="3_r4rcn"]
-[ext_resource type="PackedScene" uid="uid://chq43v8mlq2kb" path="res://scenes/lightning_mine/lightning_go.tscn" id="4_akt5g"]
-[ext_resource type="PackedScene" uid="uid://ddjlp2vdyhqr0" path="res://scenes/lightning_mine/lightning_buzz.tscn" id="5_64l7y"]
+[ext_resource type="Script" path="res://scenes/lightning_mine/lightning_state.gd" id="3_x33al"]
+[ext_resource type="Script" path="res://scenes/lightning_mine/lightning_go.gd" id="4_kr3fq"]
+[ext_resource type="Script" path="res://scenes/lightning_mine/lightning_buzz.gd" id="5_iuahx"]
 
 [sub_resource type="Animation" id="Animation_w8bri"]
 length = 0.001
@@ -66,7 +66,6 @@ _data = {
 
 [node name="Lightning" type="Sprite2D"]
 z_index = 4096
-scale = Vector2(5.25, 6.75)
 texture = ExtResource("1_ns8fu")
 offset = Vector2(0, -8)
 hframes = 4
@@ -78,10 +77,22 @@ libraries = {
 "": SubResource("AnimationLibrary_p26dt")
 }
 
-[node name="LightningState" parent="." node_paths=PackedStringArray("_animation_player", "_sprite") instance=ExtResource("3_r4rcn")]
-_animation_player = NodePath("../AnimationPlayer")
-_sprite = NodePath("..")
+[node name="LightningState" type="Node" parent="."]
+script = ExtResource("3_x33al")
+_initial_state = "LightningGo"
 
-[node name="LightningGo" parent="LightningState" instance=ExtResource("4_akt5g")]
+[node name="LightningGo" type="Node" parent="LightningState"]
+script = ExtResource("4_kr3fq")
 
-[node name="LightningBuzz" parent="LightningState" instance=ExtResource("5_64l7y")]
+[node name="TransitionTimer" type="Timer" parent="LightningState/LightningGo"]
+one_shot = true
+
+[node name="LightningBuzz" type="Node" parent="LightningState"]
+script = ExtResource("5_iuahx")
+
+[node name="AliveTimer" type="Timer" parent="LightningState/LightningBuzz"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="LightningState/LightningGo/TransitionTimer" to="LightningState/LightningGo" method="_on_transition_timer_timeout"]
+[connection signal="timeout" from="LightningState/LightningBuzz/AliveTimer" to="LightningState/LightningBuzz" method="_on_alive_timer_timeout"]

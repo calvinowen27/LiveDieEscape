@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c661v61raotsm"]
-
-[ext_resource type="PackedScene" uid="uid://c3ta8j7vd1u2w" path="res://scenes/player/player_state.tscn" id="1_1mvm6"]
-[ext_resource type="Script" path="res://scenes/player/player_dash.gd" id="2_ettpc"]
-
-[node name="PlayerDash" instance=ExtResource("1_1mvm6")]
-script = ExtResource("2_ettpc")
-dash_speed_mult = 5
-dash_ticks = 1

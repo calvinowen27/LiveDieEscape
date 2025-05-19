@@ -36,7 +36,7 @@ func change_stat(stat: String, new_val: float) -> bool:
 func revert_stat_change(stat: String, check_val: float) -> bool:
 	var found_idx: int = -1
 	for i in range(_stat_changes.size()):
-		if _stat_changes[i][0] == stat and _stat_changes[i][1] == check_val:
+		if _stat_changes[i][0] == stat and absf(_stat_changes[i][1] - check_val) < 0.01:
 			found_idx = i
 	
 	if found_idx == -1:
