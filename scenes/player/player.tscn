@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=23 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="PackedScene" uid="uid://c8qusfhw71qlq" path="res://scenes/player/player_walk.tscn" id="1_5cvwq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w0vmm"]
 friction = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3t6uc"]
+radius = 3.0
+height = 8.0
 
 [sub_resource type="Animation" id="Animation_npcyp"]
 length = 0.001
@@ -652,14 +656,15 @@ dash_ticks = 10
 wait_time = 2.5
 one_shot = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-3, 0, 3, 0, 4, -0.940734, 4, -4, 3, -5, -3, -5, -4, -4, -4, -0.940734)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("6_vrsab")
 offset = Vector2(0, -8)
 hframes = 6
 frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_3t6uc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

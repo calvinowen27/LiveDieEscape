@@ -27,7 +27,7 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 	# set dash direction based on input or last movement direction
 	_dash_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if _dash_dir == Vector2.ZERO:
-		_dash_dir = get_node("../../").get_last_move_dir()
+		_dash_dir = _rigidbody.get_last_move_dir()
 
 func update(_delta: float) -> String:
 	if dash().x > 0:
