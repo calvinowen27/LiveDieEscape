@@ -4,7 +4,7 @@ class_name PlayerState
 
 const BASE_SPEED_MULT: int = 20
 
-@export var _character: CharacterBody2D
+@export var _rigidbody: RigidBody2D
 @export var _sprite: Sprite2D
 @export var _animation_player: AnimationPlayer
 
@@ -30,14 +30,14 @@ func _set_curr_state(new_state_name: String) -> State:
 		return null
 	
 	if _curr_state != null:
-		_curr_state.player_state_enable(_sprite, _character, _animation_player)
+		_curr_state.player_state_enable(_sprite, _rigidbody, _animation_player)
 
 	return new_state
 
 # enable state and pass necessary references
-func player_state_enable(sprite: Sprite2D, character: CharacterBody2D, animation_player: AnimationPlayer) -> void:
+func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
 	_sprite = sprite
-	_character = character
+	_rigidbody = rigidbody
 	_animation_player = animation_player
 	
 	super.enable()
@@ -48,15 +48,14 @@ func move() -> void:
 	var new_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if new_dir != _move_dir and _move_dir != Vector2.ZERO:
-		_character.set_last_move_dir(_move_dir)
+		_rigidbody.set_last_move_dir(_move_dir)
 	
 	_move_dir = new_dir
 
 	var speed = StatManager.get_stat("speed")
 	var speed_mult = StatManager.get_stat("speed_mult")
 	
-	_character.velocity = _move_dir * (speed * BASE_SPEED_MULT) * speed_mult
-	_character.move_and_slide()
+	_rigidbody.linear_velocity = _move_dir * (speed * BASE_SPEED_MULT) * speed_mult
 
 func _on_room_change(_level_idx: int, _room_idx):
 	# to prevent dash through door bug

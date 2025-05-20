@@ -21,7 +21,7 @@ func _ready() -> void:
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _queue_teleport != Vector2.ZERO:
 		state.transform = Transform2D(0.0, _queue_teleport)
-		state.linear_velocity = Vector2.ZERO # also only edit linear_velocity in _integrate_forces
+		state.linear_velocity = Vector2.ZERO
 		_queue_teleport = Vector2.ZERO
 
 func queue_teleport(pos: Vector2) -> void:

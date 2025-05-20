@@ -7,10 +7,10 @@ func _process(_delta: float) -> void:
 	pass
 
 # enable state and pass necessary references
-func player_state_enable(sprite: Sprite2D, character: CharacterBody2D, animation_player: AnimationPlayer) -> void:
-	super.player_state_enable(sprite, character, animation_player)
+func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
+	super.player_state_enable(sprite, rigidbody, animation_player)
 
-	var last_move_dir = character.get_last_move_dir()
+	var last_move_dir = rigidbody.get_last_move_dir()
 	
 	_play_animation(_animation_player, last_move_dir)
 

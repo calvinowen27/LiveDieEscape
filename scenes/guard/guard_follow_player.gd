@@ -1,15 +1,5 @@
 extends GuardState
 
-const BASE_SPEED_MULT: int = 20
-
-var _move_dir: Vector2
-
-@export var _move_speed: int
-@export var _target_stop_range: int
-@export var _base_acceleration: float
-
-var _target_pos: Vector2
-
 var _player_reset: bool = false
 
 var _level: int
@@ -31,27 +21,7 @@ func update(_delta: float) -> String:
 
 	update_target_pos()
 
-	# move
-	_move_dir = (_target_pos - _rigidbody.global_position).normalized()
-
-	# acceleration based movement
-	var dist_to_target = (_rigidbody.position - _target_pos).length()
-
-	var acceleration = _base_acceleration
-
-	_rigidbody.linear_velocity += _move_dir * acceleration
-
-	# if close to target position decelerate
-	if dist_to_target <= 10:
-		_rigidbody.linear_velocity *= dist_to_target / float(10)
-
-	# cap speed
-	if _rigidbody.linear_velocity.length() > _move_speed * BASE_SPEED_MULT:
-		_rigidbody.linear_velocity = _rigidbody.linear_velocity.normalized() * _move_speed * BASE_SPEED_MULT
-	
-	# stop if at target
-	if dist_to_target <= _target_stop_range:
-		_rigidbody.linear_velocity = Vector2.ZERO
+	move()
 
 	return name
 
@@ -59,16 +29,17 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 	super.guard_state_enable(rigidbody, animation_player)
 
 func _on_guard_body_entered(body: Node) -> void:
-	if body == RoomManager.get_player() and not _player_reset:
+	if body == RoomManager.get_player(): # and not _player_reset: TODO: figure this out
 		_player_reset = true
-		
-		# reset the guard and player position
-		_rigidbody.queue_reset()
 		
 		var item = _rigidbody.get_item()
 		if item != null and Inventory.contains_item(item):
 			Inventory.del_item(item)
 
+		# reset the guard position
+		_rigidbody.queue_reset()
+
+		# resets the player position and room
 		RoomManager.guard_reset()
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:

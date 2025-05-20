@@ -6,17 +6,17 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func player_state_enable(sprite: Sprite2D, character: CharacterBody2D, animation_player: AnimationPlayer) -> void:
-	super.player_state_enable(sprite, character, animation_player)
+func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_player: AnimationPlayer) -> void:
+	super.player_state_enable(sprite, rigidbody, animation_player)
 
-	var last_move_dir = _character.get_last_move_dir()
+	var last_move_dir = _rigidbody.get_last_move_dir()
 
 	_play_animation(_animation_player, last_move_dir)
 
 func update(_delta: float) -> String:
 	var move_vec = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-	var last_move_dir = _character.get_last_move_dir()
+	var last_move_dir = _rigidbody.get_last_move_dir()
 
 	_play_animation(_animation_player, last_move_dir)
 	

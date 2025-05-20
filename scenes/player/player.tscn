@@ -43,13 +43,14 @@ _data = {
 "player_walk_up_right": ExtResource("18_gus2v")
 }
 
-[node name="Player" type="CharacterBody2D"]
-motion_mode = 1
+[node name="Player" type="RigidBody2D"]
+gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_fa2xx")
 
-[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("_character", "_sprite", "_animation_player")]
+[node name="PlayerState" type="Node" parent="." node_paths=PackedStringArray("_rigidbody", "_sprite", "_animation_player")]
 script = ExtResource("3_k6lhe")
-_character = NodePath("..")
+_rigidbody = NodePath("..")
 _sprite = NodePath("../Sprite2D")
 _animation_player = NodePath("../AnimationPlayer")
 _initial_state = "PlayerIdle"

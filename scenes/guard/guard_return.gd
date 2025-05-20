@@ -1,10 +1,5 @@
 extends GuardState
 
-const BASE_SPEED_MULT: int = 20
-
-var _move_dir: Vector2
-@export var _move_speed: int
-
 var _reset_pos: Vector2
 
 @export var _follow_reset_range: int
@@ -28,10 +23,7 @@ func update(_delta: float) -> String:
 	elif dist_to_reset <= _idle_reset_range:
 		return "GuardIdle"
 	
-	# move
-	_move_dir = (_reset_pos - _rigidbody.position).normalized()
-	var speed = _move_speed * BASE_SPEED_MULT
-	_rigidbody.linear_velocity = _move_dir * speed
+	move()
 
 	return name
 
@@ -39,3 +31,4 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 	super.guard_state_enable(rigidbody, animation_player)
 
 	_reset_pos = _rigidbody.get_start_pos()
+	_target_pos = _reset_pos

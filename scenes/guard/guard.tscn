@@ -16,7 +16,6 @@ height = 10.0
 radius = 94.0
 
 [node name="Guard" type="RigidBody2D"]
-y_sort_enabled = true
 gravity_scale = 0.0
 lock_rotation = true
 contact_monitor = true
@@ -32,6 +31,7 @@ position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_q1mse")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 
 [node name="GuardArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -39,8 +39,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GuardArea"]
 shape = SubResource("CircleShape2D_o1m64")
 
-[node name="GuardState" type="Node" parent="."]
+[node name="GuardState" type="Node" parent="." node_paths=PackedStringArray("_animation_player")]
 script = ExtResource("3_pcr38")
+_animation_player = NodePath("../AnimationPlayer")
 _initial_state = "GuardIdle"
 
 [node name="GuardIdle" type="Node" parent="GuardState"]
@@ -49,22 +50,23 @@ script = ExtResource("4_76xm2")
 [node name="GuardFollowPlayer" type="Node" parent="GuardState"]
 script = ExtResource("5_sj0gv")
 _move_speed = 3
-_target_stop_range = null
+_target_stop_range = 6
 _base_acceleration = 6.0
-_initial_state = null
 
 [node name="GuardDisrupted" type="Node" parent="GuardState"]
 script = ExtResource("6_072c0")
 _move_speed = 3
+_base_acceleration = 6.0
 
 [node name="GuardReturn" type="Node" parent="GuardState"]
 script = ExtResource("7_hwn3v")
-_move_speed = 3
 _follow_reset_range = 6
 _idle_reset_range = 3
+_move_speed = 3
+_target_stop_range = 6
+_base_acceleration = 6.0
 
 [connection signal="body_entered" from="." to="GuardState/GuardFollowPlayer" method="_on_guard_body_entered"]
-[connection signal="body_entered" from="." to="GuardState/GuardDisrupted" method="_on_guard_body_entered"]
 [connection signal="area_entered" from="GuardArea" to="." method="_on_guard_area_area_entered"]
 [connection signal="area_exited" from="GuardArea" to="." method="_on_guard_area_area_exited"]
 [connection signal="body_entered" from="GuardArea" to="." method="_on_guard_area_body_entered"]
