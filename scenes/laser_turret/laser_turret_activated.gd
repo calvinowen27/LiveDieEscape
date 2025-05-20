@@ -24,9 +24,9 @@ func update(delta: float) -> String:
 	# this whole section is bad, no constants or anything
 	# idk should prob fix but it works so i'll leave it for now
 	# it looks better a lil
-	_laser_raycast.position = _turret.get_node("CenterMarker").position + Vector2(-cos(_laser_rotation) * 27, -sin(_laser_rotation) * 27)
+	_laser_raycast.global_position = _turret.get_node("CenterMarker").global_position + Vector2(-cos(_laser_rotation) * 6, -sin(_laser_rotation))
 	_laser_raycast.target_position = _laser_raycast.position + Vector2(-cos(_laser_rotation) * _target_len, -sin(_laser_rotation) * _target_len)
-	var spark = _turret.get_node("Sprite2D/Spark")
+	var spark = _laser_raycast.get_node("Spark")
 
 	# spark.position = _laser_raycast.position
 	spark.global_position = _laser_raycast.global_position
@@ -47,7 +47,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	
 	laser_sprite.visible = true
 	laser_raycast.enabled = true
-	_turret.get_node("Sprite2D/Spark").visible = true
+	laser_raycast.get_node("Spark").visible = true
 	animation_player.play("laser_turret_spark")
 
 	if _turret.is_rotating():
@@ -58,9 +58,13 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 		animation_player.play("laser_turret_activated_rotating")
 
 		_laser_rotation = 0
-		_laser_raycast.position = _turret.get_node("CenterMarker").position + Vector2(-27, 0)
+		_laser_raycast.position = _turret.get_node("CenterMarker").position + Vector2(-6, 0)
 		_laser_raycast.target_position = _laser_raycast.position + Vector2(-_target_len, 0)
 		_laser_sprite.rotation = _laser_rotation
 	else:
 		var rotation_rads = (_turret.get_start_rotation() % 360) * TWO_PI / 360
-		_turret.get_node("Sprite2D").frame_coords = Vector2i((int)((rotation_rads / TWO_PI) * 8), 0)
+		_turret.get_node("Sprite2D").frame_coords = Vector2i((int)((rotation_rads / TWO_PI) * 1.25), 0)
+	
+	# print(_turret.get_node("CenterMarker").global_position)
+	# print(_laser_raycast.global_position)
+	# print(RoomManager.get_player().global_position)

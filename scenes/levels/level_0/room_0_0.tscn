@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://cqfohri388daj"]
+[gd_scene load_steps=7 format=4 uid="uid://cqfohri388daj"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_bhqsv"]
 [ext_resource type="PackedScene" uid="uid://co87vsw0tevrl" path="res://scenes/items/key.tscn" id="2_dv1o0"]
 [ext_resource type="PackedScene" uid="uid://bsd15uocf3nk3" path="res://scenes/lightning_mine/lightning_mine.tscn" id="2_l62fq"]
 [ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="3_byd21"]
+[ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="5_ce412"]
+[ext_resource type="PackedScene" uid="uid://mk5265f2a6g4" path="res://spark.tscn" id="6_jc5kv"]
 
 [node name="Room0_0" instance=ExtResource("1_bhqsv")]
 
@@ -16,6 +18,9 @@ tile_map_data = PackedByteArray("AAD8//3/AAAAAAAAAAD8//7/AAAAAAEAAAD8////AAAAAAE
 [node name="PlayerSpawn" type="Marker2D" parent="." index="3"]
 position = Vector2(61, 69)
 
+[node name="Camera" parent="." index="4"]
+position = Vector2(61, 69)
+
 [node name="LightningMine" parent="." index="5" instance=ExtResource("2_l62fq")]
 position = Vector2(149, 66)
 
@@ -25,3 +30,9 @@ _item = NodePath("../Key")
 
 [node name="Key" parent="." index="7" instance=ExtResource("2_dv1o0")]
 position = Vector2(-17, -4)
+
+[node name="LaserTurret" parent="." index="8" instance=ExtResource("5_ce412")]
+position = Vector2(99, 26)
+
+[node name="SparkParticle" parent="." index="9" instance=ExtResource("6_jc5kv")]
+position = Vector2(73, 12)

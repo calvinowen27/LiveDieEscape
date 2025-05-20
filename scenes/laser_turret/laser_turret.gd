@@ -21,16 +21,16 @@ func _ready() -> void:
 	# using rotation to calculate positions of everything, spark, raycast, etc.
 	$RayCast2D/Laser.rotation = rotation_rads
 	var laser_raycast = $RayCast2D
-	laser_raycast.position = $CenterMarker.position + Vector2(-cos(rotation_rads) * 44, -sin(rotation_rads) * 13)
-	$Sprite2D/Spark.position = Vector2(2 - cos(rotation_rads) * 6, -sin(rotation_rads) * 3.5)
+	laser_raycast.position = $CenterMarker.position + Vector2(-cos(rotation_rads) * 7, -sin(rotation_rads) * 5)
+	$RayCast2D/Spark.global_position = laser_raycast.global_position
 	laser_raycast.target_position = Vector2(-cos(rotation_rads) * 1000, -sin(rotation_rads) * 1000)
 	
 	if $RayCast2D/Laser/ZOrderingMarker.global_position.y > global_position.y:
 		$RayCast2D/Laser.z_index = 1
-		$Sprite2D/Spark.z_index = 0
+		# $RayCast2D/Spark.z_index = 0
 	else:
 		$RayCast2D/Laser.z_index = 0
-		$Sprite2D/Spark.z_index = -1
+		# $RayCast2D/Spark.z_index = -1
 	
 func reboot() -> void:
 	$LaserTurretState.reboot()

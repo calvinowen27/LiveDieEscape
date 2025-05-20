@@ -1,19 +1,22 @@
-[gd_scene load_steps=28 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=29 format=3 uid="uid://kfqi07twfc48"]
 
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_laser.gd" id="2_5f8wt"]
-[ext_resource type="PackedScene" uid="uid://drsdpgl44jwak" path="res://scenes/laser_turret/laser_turret_state.tscn" id="3_geuje"]
-[ext_resource type="PackedScene" uid="uid://cbm8r2br40wp2" path="res://scenes/laser_turret/laser_turret_activated.tscn" id="4_tnb3m"]
-[ext_resource type="PackedScene" uid="uid://b2rvce3d4esii" path="res://scenes/laser_turret/laser_turret_idle.tscn" id="4_wk736"]
-[ext_resource type="PackedScene" uid="uid://ppik0l0qoman" path="res://scenes/laser_turret/laser_turret_priming.tscn" id="5_ncfwj"]
 [ext_resource type="Texture2D" uid="uid://dhwrv3ysnfn6s" path="res://resources/art/laser.png" id="8_1af6w"]
-[ext_resource type="PackedScene" uid="uid://c4vy0snfseejl" path="res://scenes/laser_turret/laser_turret_breaking.tscn" id="8_5xx7w"]
-[ext_resource type="PackedScene" uid="uid://d0frovt5s2v47" path="res://scenes/laser_turret/laser_turret_rebooting.tscn" id="8_624xb"]
-[ext_resource type="Texture2D" uid="uid://bidqsr7cq3ous" path="res://resources/art/laser-turret-sheet.png" id="8_mog6t"]
-[ext_resource type="PackedScene" uid="uid://4jrsvenkhj7t" path="res://scenes/laser_turret/laser_turret_broken.tscn" id="9_26jlu"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_state.gd" id="8_4ubsm"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_idle.gd" id="9_6nrb1"]
 [ext_resource type="Texture2D" uid="uid://doxgdovkblqq3" path="res://resources/art/laser_turret3.png" id="9_ugmcm"]
 [ext_resource type="PackedScene" uid="uid://dwqiyol6kfj14" path="res://scenes/world_objects/force_field_world.tscn" id="10_1s3u2"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_priming.gd" id="10_23qgv"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="11_emy65"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_activated.gd" id="11_v6txi"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_breaking.gd" id="12_64v7l"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_broken.gd" id="13_e2fu3"]
+[ext_resource type="PackedScene" uid="uid://mk5265f2a6g4" path="res://spark.tscn" id="14_s5ij3"]
+[ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_rebooting.gd" id="14_xcw4x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pjw2"]
+size = Vector2(10, 7)
 
 [sub_resource type="Animation" id="Animation_uc08l"]
 length = 0.001
@@ -66,26 +69,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Spark:frame_coords")
+tracks/4/path = NodePath(".:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 6)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(6.75, 6.75)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_oqmuh"]
@@ -173,7 +164,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(6.75, 6.75), Vector2(6.75, 5.75), Vector2(6.75, 6.75)]
+"values": [Vector2(1, 1), Vector2(1, 0.85), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_d2sdy"]
@@ -188,7 +179,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -25, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -7, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.720312, 1, 1.3)
 }
 tracks/1/type = "bezier"
@@ -199,7 +190,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(6.75, -0.25, 0, 0.25, 0, 5.75, -0.25, 0, 0.25, 0, 7.75, -0.25, 0, 0.25, 0, 5.75, -0.25, 0, 0.25, 0, 6.75, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.85, -0.25, 0, 0.25, 0, 1.15, -0.25, 0, 0.25, 0, 0.85, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.720312, 1, 1.3)
 }
 tracks/2/type = "bezier"
@@ -210,7 +201,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(6.75, -0.25, 0, 0.25, 0, 6.75, -0.25, 0, 0.25, 0, 6.75, -0.25, 0, 0.25, 0, 6.75, -0.25, 0, 0.25, 0, 6.75, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 0.720312, 1, 1.3)
 }
 tracks/3/type = "value"
@@ -225,36 +216,12 @@ tracks/3/keys = {
 "update": 1,
 "values": [Vector2i(0, 1)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Spark:frame_coords")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6), Vector2i(4, 6), Vector2i(5, 6), Vector2i(6, 6), Vector2i(7, 6), Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6)]
-}
 
 [sub_resource type="Animation" id="Animation_afdqy"]
 resource_name = "laser_turret_spark"
 length = 0.8
 loop_mode = 1
 step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Spark:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6), Vector2i(4, 6), Vector2i(5, 6), Vector2i(6, 6), Vector2i(7, 6)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sa0ud"]
 _data = {
@@ -293,47 +260,18 @@ linear_damp_mode = 1
 linear_damp = 100.0
 script = ExtResource("1_ktj7o")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, -57)
-scale = Vector2(3.15, 4.815)
-polygon = PackedVector2Array(-5, 0, 5, 0, 8, 3, 8, 6, 5, 9, -5, 9, -8, 6, -8, 3)
-
-[node name="LaserTurretState" parent="." node_paths=PackedStringArray("_turret", "_animation_player", "_laser_sprite", "_laser_raycast") instance=ExtResource("3_geuje")]
-_turret = NodePath("..")
-_animation_player = NodePath("../AnimationPlayer")
-_laser_sprite = NodePath("../RayCast2D/Laser")
-_laser_raycast = NodePath("../RayCast2D")
-_initial_state = "LaserTurretPriming"
-
-[node name="LaserTurretIdle" parent="LaserTurretState" instance=ExtResource("4_wk736")]
-
-[node name="LaserTurretPriming" parent="LaserTurretState" instance=ExtResource("5_ncfwj")]
-
-[node name="LaserTurretActivated" parent="LaserTurretState" instance=ExtResource("4_tnb3m")]
-_seconds_per_rotation = 2.0
-
-[node name="LaserTurretBreaking" parent="LaserTurretState" instance=ExtResource("8_5xx7w")]
-
-[node name="LaserTurretBroken" parent="LaserTurretState" instance=ExtResource("9_26jlu")]
-
-[node name="LaserTurretRebooting" parent="LaserTurretState" instance=ExtResource("8_624xb")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_3pjw2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(6.75, 6.75)
 texture = ExtResource("9_ugmcm")
 offset = Vector2(0, -8)
 hframes = 8
 vframes = 3
 
-[node name="Spark" type="Sprite2D" parent="Sprite2D"]
-texture = ExtResource("8_mog6t")
-offset = Vector2(0.5, -8)
-hframes = 22
-vframes = 8
-frame = 132
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-44, -54)
+position = Vector2(-7, -8)
 enabled = false
 target_position = Vector2(-1000, 0)
 collision_mask = 7
@@ -341,11 +279,14 @@ collide_with_areas = true
 script = ExtResource("2_5f8wt")
 
 [node name="Laser" type="Sprite2D" parent="RayCast2D"]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_1af6w")
 offset = Vector2(-32, 0)
 
 [node name="ZOrderingMarker" type="Marker2D" parent="RayCast2D/Laser"]
 position = Vector2(-161, 0)
+
+[node name="Spark" parent="RayCast2D" instance=ExtResource("14_s5ij3")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -354,16 +295,16 @@ libraries = {
 }
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
-position = Vector2(0, -38)
+position = Vector2(0, -8)
 _temporary = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
 _hold_to_interact = null
 
 [node name="InteractLabel" parent="ForceFieldInteractable" index="0"]
-offset_top = -26.0
+offset_top = -187.0
 offset_right = 18.0
-offset_bottom = 62.0
+offset_bottom = -99.0
 scale = Vector2(0.4, 0.4)
 label_settings = SubResource("LabelSettings_cs2rg")
 
@@ -384,8 +325,8 @@ position = Vector2(-1, -31)
 _hold_to_interact = true
 
 [node name="InteractLabel" parent="ControlInteractable" index="0"]
-offset_top = -26.0
-offset_bottom = 62.0
+offset_top = -187.0
+offset_bottom = -99.0
 scale = Vector2(0.4, 0.4)
 
 [node name="TextureProgressBar" parent="ControlInteractable/InteractLabel" index="1"]
@@ -402,8 +343,8 @@ shape = SubResource("RectangleShape2D_bf8md")
 _hold_to_interact = null
 
 [node name="InteractLabel" parent="ScrapInteractable" index="0"]
-offset_top = -26.0
-offset_bottom = 62.0
+offset_top = -187.0
+offset_bottom = -99.0
 scale = Vector2(0.4, 0.4)
 
 [node name="TextureProgressBar" parent="ScrapInteractable/InteractLabel" index="1"]
@@ -417,7 +358,33 @@ position = Vector2(-1, -31)
 shape = SubResource("RectangleShape2D_2uoln")
 
 [node name="CenterMarker" type="Marker2D" parent="."]
-position = Vector2(0, -53)
+position = Vector2(0, -8)
+
+[node name="LaserTurretState" type="Node" parent="." node_paths=PackedStringArray("_turret", "_animation_player", "_laser_sprite", "_laser_raycast")]
+script = ExtResource("8_4ubsm")
+_turret = NodePath("..")
+_animation_player = NodePath("../AnimationPlayer")
+_laser_sprite = NodePath("../RayCast2D/Laser")
+_laser_raycast = NodePath("../RayCast2D")
+_initial_state = "LaserTurretPriming"
+
+[node name="LaserTurretIdle" type="Node" parent="LaserTurretState"]
+script = ExtResource("9_6nrb1")
+
+[node name="LaserTurretPriming" type="Node" parent="LaserTurretState"]
+script = ExtResource("10_23qgv")
+
+[node name="LaserTurretActivated" type="Node" parent="LaserTurretState"]
+script = ExtResource("11_v6txi")
+
+[node name="LaserTurretBreaking" type="Node" parent="LaserTurretState"]
+script = ExtResource("12_64v7l")
+
+[node name="LaserTurretBroken" type="Node" parent="LaserTurretState"]
+script = ExtResource("13_e2fu3")
+
+[node name="LaserTurretRebooting" type="Node" parent="LaserTurretState"]
+script = ExtResource("14_xcw4x")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
 [connection signal="interact" from="ForceFieldInteractable" to="." method="_on_force_field_interactable_interact"]
