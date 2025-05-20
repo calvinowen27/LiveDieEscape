@@ -25,4 +25,5 @@ y_sort_origin = 8
 position = Vector2(61, 69)
 
 [node name="Camera" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("4_62vh6")]
+unique_name_in_owner = true
 _player = NodePath("../Player")

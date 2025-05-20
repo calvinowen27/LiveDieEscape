@@ -14,8 +14,7 @@ offset_right = 1080.0
 offset_bottom = 1080.0
 
 [node name="FabricateTemplate" type="Node2D" parent="."]
-y_sort_enabled = true
-scale = Vector2(6.75, 6.75)
+z_index = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

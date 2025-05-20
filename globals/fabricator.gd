@@ -4,7 +4,7 @@ var _materials: Dictionary
 
 var known_recipes: Array = ["Wall", "Disruptor"]
 
-var fab_range: int = 200 # idk this can change
+var fab_range: int = 20 # idk this can change
 
 var active: bool = false
 
@@ -30,6 +30,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("fabricate"):
 		active = not active # keep track of whether we can fabricate or not with left click
 		if active:
+			print("showing fab temp")
 			fab_temp.show()
 		else:
 			fab_temp.hide()
@@ -37,20 +38,20 @@ func _process(_delta: float) -> void:
 	# move fabricate template with grid snapping if necessary (if active)
 	if active and Game.is_game_running():
 		# print("active and game running")
-		var mouse_pos = Vector2i(get_viewport().get_mouse_position())
+		
+		var mouse_pos = Vector2i(Game.get_camera().get_local_mouse_position() + Game.get_camera().position)
+		# print(mouse_pos)
 		if (Vector2(mouse_pos) - RoomManager.get_player().position).length() > fab_range:
 			if mouse_in_range:
 				mouse_in_range = false
 				fab_temp.update()
-				print("out of range")
 		else:
 			if not mouse_in_range:
 				mouse_in_range = true
 				fab_temp.update()
-				print("in range")
 		
 		if _snap_temp:
-			fab_temp.get_parent().position = mouse_pos - Vector2i((mouse_pos.x % 108), (mouse_pos.y % 108))
+			fab_temp.get_parent().position = mouse_pos - Vector2i((mouse_pos.x % 16), (mouse_pos.y % 16))
 		else:
 			fab_temp.get_parent().position = mouse_pos
 
