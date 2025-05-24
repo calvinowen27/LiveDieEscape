@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=4 uid="uid://dba8521dhd5ro"]
+[gd_scene load_steps=7 format=4 uid="uid://dba8521dhd5ro"]
 
 [ext_resource type="Script" path="res://scenes/levels/room.gd" id="1_x3vux"]
 [ext_resource type="TileSet" uid="uid://d4ch8klrb4wr2" path="res://resources/ground_tileset.tres" id="2_0shak"]
 [ext_resource type="PackedScene" uid="uid://dsjw11gafshw3" path="res://scenes/player/player.tscn" id="2_5go6s"]
 [ext_resource type="TileSet" uid="uid://yol7g56jqnv2" path="res://resources/wall_tileset.tres" id="3_1uoo3"]
 [ext_resource type="PackedScene" uid="uid://bntpcu04qfn23" path="res://camera.tscn" id="4_62vh6"]
+
+[sub_resource type="Environment" id="Environment_434td"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/4 = 1.0
+glow_levels/6 = 1.0
+glow_levels/7 = 1.0
+glow_blend_mode = 0
 
 [node name="Room" type="Node2D" groups=["Rooms"]]
 y_sort_enabled = true
@@ -27,3 +37,9 @@ position = Vector2(61, 69)
 [node name="Camera" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("4_62vh6")]
 unique_name_in_owner = true
 _player = NodePath("../Player")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_434td")
+
+[node name="LaserTurrets" type="Node" parent="."]
+unique_name_in_owner = true

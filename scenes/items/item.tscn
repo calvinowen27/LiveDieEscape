@@ -8,14 +8,19 @@ radius = 7.07107
 
 [node name="Item" type="Area2D"]
 y_sort_enabled = true
+collision_layer = 32
 script = ExtResource("1_cwod5")
 
 [node name="ItemGlow" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1.5, 1, 0, 1)
 texture = ExtResource("7_xudgq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.75, 1.2, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_wplvq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

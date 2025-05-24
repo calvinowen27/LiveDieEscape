@@ -44,6 +44,7 @@ _data = {
 }
 
 [node name="Player" type="RigidBody2D"]
+collision_layer = 45
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_fa2xx")

@@ -15,7 +15,6 @@ script = ExtResource("2_0ouem")
 [node name="Interactable" parent="." instance=ExtResource("1_yc462")]
 
 [node name="InteractLabel" parent="Interactable" index="0"]
-visible = false
 offset_top = -47.4
 offset_bottom = 40.6
 scale = Vector2(0.1, 0.1)

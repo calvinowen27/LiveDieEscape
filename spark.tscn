@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://mk5265f2a6g4"]
 
 [sub_resource type="Curve" id="Curve_w5jdk"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.285945), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.997996, 0.511013), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_xogu5"]
-offsets = PackedFloat32Array(0, 0.69969, 0.996904)
-colors = PackedColorArray(2, 0, 0, 1, 2, 0, 0, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.848073, 0.996904)
+colors = PackedColorArray(1.5, 0, 0, 1, 1.5, 0, 0, 1, 1, 1, 1, 0)
 
 [node name="SparkParticle" type="CPUParticles2D"]
 z_index = 1
@@ -19,5 +19,5 @@ gravity = Vector2(0, 100)
 initial_velocity_min = 20.0
 initial_velocity_max = 30.0
 scale_amount_curve = SubResource("Curve_w5jdk")
-color = Color(1, 0, 0, 1)
+color = Color(1.5, 0, 0, 1)
 color_ramp = SubResource("Gradient_xogu5")

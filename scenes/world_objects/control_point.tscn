@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://kjrb8k6r0cfo"]
+[gd_scene load_steps=10 format=3 uid="uid://kjrb8k6r0cfo"]
 
 [ext_resource type="Script" path="res://scenes/world_objects/control_point.gd" id="1_l6bys"]
 [ext_resource type="Texture2D" uid="uid://c0e3dmlouj6k8" path="res://resources/art/control_point.png" id="1_othg3"]
+[ext_resource type="PackedScene" uid="uid://bd71ji4dj52s2" path="res://scenes/ui/laser_turret_control.tscn" id="2_6ly4e"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="3_vym52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6sy0"]
-size = Vector2(90, 64)
+size = Vector2(18, 22)
 
 [sub_resource type="FontVariation" id="FontVariation_ogj1f"]
 variation_embolden = 1.0
@@ -15,21 +16,24 @@ font = SubResource("FontVariation_ogj1f")
 font_size = 64
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr4sg"]
-size = Vector2(129, 141.208)
+size = Vector2(146.667, 212)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxp68"]
 
 [node name="ControlPoint" type="RigidBody2D"]
 y_sort_enabled = true
+collision_layer = 13
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
 script = ExtResource("1_l6bys")
+_laser_turret_control = ExtResource("2_6ly4e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_s6sy0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
 texture = ExtResource("1_othg3")
 offset = Vector2(0, -14)
 
@@ -58,25 +62,24 @@ mouse_filter = 1
 position = Vector2(0, -36)
 
 [node name="CollisionShape2D" parent="Interactable/InteractArea" index="0"]
-position = Vector2(0, 17.3958)
+position = Vector2(0, -18.0001)
 shape = SubResource("RectangleShape2D_hr4sg")
 
-[node name="UI" type="Panel" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
 visible = false
 z_index = 4096
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -195.0
-offset_top = -190.0
-offset_right = 195.0
-offset_bottom = 190.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -840.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxp68")
 
-[node name="Label" type="Label" parent="UI"]
+[node name="Label" type="Label" parent="CanvasLayer/UI"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -88,7 +91,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "Reboot Turrets (10s)"
 
-[node name="GridContainer" type="GridContainer" parent="UI"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/UI"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 104.0

@@ -5,38 +5,45 @@ const control_button_unavailable_text = "Room %d\nControl\nUnavailable"
 const control_button_available_text = "Room %d\nControl\nAvailable"
 
 @export var _control_rooms: Array[int]
+@export var _control_room: int
+
+@export var _laser_turret_control: PackedScene
 
 var _level: int
 var _room: int
 
 var _control_buttons = {}
 
+@onready var _ui: Control = %UI
+@onready var _interactable: Node2D = $Interactable
+
 func _ready() -> void:
 	# initialize interactable signals
-	$Interactable.interact.connect(_on_interact)
-	$Interactable.interactable_set.connect(_on_interactable_set)
+	_interactable.interact.connect(_on_interact)
+	_interactable.interactable_set.connect(_on_interactable_set)
 
 	EventBus.change_room.connect(_on_room_change)
 	EventBus.item_pickup.connect(_on_item_pickup)
 	
-	_create_control_buttons()
-
 	_level = RoomManager.get_curr_level()
 	_room = RoomManager.get_curr_room_idx()
 
+	_create_control_buttons()
+
+
 func _create_control_buttons() -> void:
-	var control_button = preload(control_button_path)
-	
-	for room in _control_rooms:
-		var new_button = control_button.instantiate()
-		_control_buttons[room] = [new_button, false, false]
-		new_button.text = control_button_unavailable_text % room
-		$UI/GridContainer.add_child(new_button)
-		new_button.pressed.connect(_on_control_button_pressed.bind(room))
+	var control_room = RoomManager.get_room(_level, _control_room)
+
+	if control_room != null:
+		var laser_turrets = control_room.get_node("%LaserTurrets").get_children()
+		for turret in laser_turrets:
+			var new_control = _laser_turret_control.instantiate()
+			_ui.add_child(new_control)
+			new_control.position = (turret.global_position / max(control_room.get_width(), control_room.get_height())) * 1080
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	if not (level_idx == _level and room_idx == _room):
-		$UI.visible = false
+		_ui.visible = false
 	
 	_update_control()
 
@@ -101,9 +108,9 @@ func _on_control_button_pressed(room_idx: int) -> void:
 		RoomManager.reboot_room(_level, room_idx)
 
 func _on_interact() -> void:
-	$UI.visible = !$UI.visible
-	$Interactable.set_active(true)
+	_ui.visible = !_ui.visible
+	_interactable.set_active(true)
 
 func _on_interactable_set(val: bool) -> void:
 	if not val:
-		$UI.visible = false
+		_ui.visible = false

@@ -5,6 +5,8 @@ class_name Room
 @export var _level_idx: int
 @export var _room_idx: int
 
+@export var _dimensions: Vector2
+
 var _is_valid = true
 
 var _laser_turrets: Array[Node]
@@ -39,3 +41,12 @@ func set_invalid() -> void:
 
 func is_valid() -> bool:
 	return _is_valid
+
+func get_dimensions() -> Vector2:
+	return _dimensions
+
+func get_width() -> float:
+	return _dimensions.x
+
+func get_height() -> float:
+	return _dimensions.y
