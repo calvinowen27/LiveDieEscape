@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=24 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
 [ext_resource type="Script" path="res://scenes/player/player_state.gd" id="3_k6lhe"]
@@ -19,6 +19,9 @@
 [ext_resource type="Animation" uid="uid://b76q58u651l5a" path="res://resources/animations/player/player_walk_up.tres" id="16_p2575"]
 [ext_resource type="Animation" uid="uid://dlsiffxngnwrg" path="res://resources/animations/player/player_walk_up_left.tres" id="17_r4fw6"]
 [ext_resource type="Animation" uid="uid://cmysf5sjumew5" path="res://resources/animations/player/player_walk_up_right.tres" id="18_gus2v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hpofx"]
+friction = 0.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3t6uc"]
 radius = 3.0
@@ -44,7 +47,9 @@ _data = {
 }
 
 [node name="Player" type="RigidBody2D"]
+y_sort_enabled = true
 collision_layer = 45
+physics_material_override = SubResource("PhysicsMaterial_hpofx")
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_fa2xx")

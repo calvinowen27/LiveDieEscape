@@ -63,7 +63,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 		_laser_sprite.rotation = _laser_rotation
 	else:
 		var rotation_rads = (_turret.get_start_rotation() % 360) * TWO_PI / 360
-		_turret.get_node("Sprite2D").frame_coords = Vector2i((int)((rotation_rads / TWO_PI) * 1.25), 0)
+		_turret.get_node("Sprite2D").frame_coords = Vector2i((int)((rotation_rads / TWO_PI) * 8), 0)
 	
 	# print(_turret.get_node("CenterMarker").global_position)
 	# print(_laser_raycast.global_position)

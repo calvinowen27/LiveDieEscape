@@ -8,8 +8,16 @@ var _control_point: ControlPoint
 var _is_usable: bool = false
 var _is_enabled: bool = true
 
+@onready var _button: Button = $Button
+
+# @export var _button_not_usable_color: Color
+@export var _button_turret_enabled_color: Color
+@export var _button_turret_disabled_color: Color
+@export var _button_hover_offset_color: Color
+
 func _ready() -> void:
-	$Button.disabled = true
+	_button.disabled = true
+	_set_button_color(_button_turret_enabled_color)
 
 func init(laser_turret: LaserTurret, control_point: ControlPoint) -> void:
 	_laser_turret = laser_turret
@@ -25,17 +33,22 @@ func _on_button_pressed() -> void:
 	_laser_turret.toggle()
 
 	if _is_enabled:
-		var stylebox = $Button.get_theme_stylebox("normal").duplicate()
-		stylebox.bg_color = Color(0, 1, 0, 0.5)
-		$Button.add_theme_stylebox_override("normal", stylebox)
+		_set_button_color(_button_turret_enabled_color)
 	else:
-		var stylebox = $Button.get_theme_stylebox("normal").duplicate()
-		stylebox.bg_color = Color(1, 0, 0, 0.5)
-		$Button.add_theme_stylebox_override("normal", stylebox)
+		_set_button_color(_button_turret_disabled_color)
+
+func _set_button_color(color: Color) -> void:
+	var normal_stylebox = _button.get_theme_stylebox("normal").duplicate()
+	normal_stylebox.bg_color = color
+	_button.add_theme_stylebox_override("normal", normal_stylebox)
+	
+	var hover_stylebox = _button.get_theme_stylebox("hover").duplicate()
+	hover_stylebox.bg_color = (color + _button_hover_offset_color) / 2
+	_button.add_theme_stylebox_override("hover", hover_stylebox)
 
 func obtained_id() -> void:
 	_is_usable = true
-	$Button.disabled = false
+	_button.disabled = false
 
 func is_usable() -> bool:
 	return _is_usable

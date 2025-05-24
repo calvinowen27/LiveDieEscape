@@ -9,7 +9,7 @@ offsets = PackedFloat32Array(0, 0.848073, 0.996904)
 colors = PackedColorArray(1.5, 0, 0, 1, 1.5, 0, 0, 1, 1, 1, 1, 0)
 
 [node name="SparkParticle" type="CPUParticles2D"]
-z_index = 1
+y_sort_enabled = true
 amount = 3
 lifetime = 0.5
 randomness = 0.45

@@ -38,8 +38,9 @@ position = Vector2(61, 69)
 unique_name_in_owner = true
 _player = NodePath("../Player")
 
+[node name="LaserTurrets" type="Node2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_434td")
-
-[node name="LaserTurrets" type="Node" parent="."]
-unique_name_in_owner = true
