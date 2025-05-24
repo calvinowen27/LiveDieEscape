@@ -65,6 +65,7 @@ _data = {
 }
 
 [node name="Lightning" type="Sprite2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
 z_index = 4096
 texture = ExtResource("1_ns8fu")
 offset = Vector2(0, -8)
