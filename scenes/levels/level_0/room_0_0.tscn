@@ -20,7 +20,7 @@ tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAA
 position = Vector2(133, 107)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." index="3"]
-position = Vector2(61, 69)
+position = Vector2(134, 109)
 
 [node name="Camera" parent="." index="4"]
 position = Vector2(61, 69)

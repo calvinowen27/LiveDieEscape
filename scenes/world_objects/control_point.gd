@@ -21,8 +21,6 @@ func _ready() -> void:
 
 	EventBus.learn_security_id.connect(_on_security_id_learned)
 
-	# _create_control_buttons()
-
 func init() -> void:
 	_create_control_buttons()
 

@@ -13,7 +13,7 @@ radius = 5.0
 height = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1m64"]
-radius = 94.0
+radius = 75.0067
 
 [node name="Guard" type="RigidBody2D"]
 collision_layer = 13
@@ -35,7 +35,6 @@ shape = SubResource("CapsuleShape2D_q1mse")
 root_node = NodePath("")
 
 [node name="GuardArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GuardArea"]
