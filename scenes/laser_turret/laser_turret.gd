@@ -63,6 +63,13 @@ func enable_turret() -> void:
 	
 	$ForceFieldInteractable.set_active(false)
 
+func toggle() -> void:
+	if $LaserTurretState.is_broken(): return
+	if $LaserTurretState.get_curr_state().name == "LaserTurretIdle":
+		$LaserTurretState.enable_turret()
+	else:
+		$LaserTurretState.disable_turret()
+
 # drop force field emitter if haven't already
 # func _on_interactable_interact() -> void:
 # 	var ff = $ForceFieldWorld
