@@ -32,6 +32,21 @@ position = Vector2(149, 66)
 position = Vector2(113, 149)
 _movable = true
 
+[node name="LaserTurret2" parent="LaserTurrets" index="1" instance=ExtResource("5_ce412")]
+position = Vector2(253, 80)
+_start_rotation = 0
+_movable = true
+
+[node name="LaserTurret3" parent="LaserTurrets" index="2" instance=ExtResource("5_ce412")]
+position = Vector2(64, 173)
+_start_rotation = 180
+_movable = true
+
+[node name="LaserTurret4" parent="LaserTurrets" index="3" instance=ExtResource("5_ce412")]
+position = Vector2(62, 107)
+_start_rotation = 270
+_movable = true
+
 [node name="Key" parent="." index="7" instance=ExtResource("2_dv1o0")]
 position = Vector2(44, 43)
 

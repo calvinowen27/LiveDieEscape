@@ -8,3 +8,4 @@ signal player_death
 signal player_respawn
 signal materials_update
 signal recipe_select(recipe: RecipeCell)
+signal learn_security_id(id: int)

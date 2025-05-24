@@ -9,26 +9,14 @@ class_name Room
 
 var _is_valid = true
 
-var _laser_turrets: Array[Node]
+@onready var _laser_turrets: Array[Node] = %LaserTurrets.get_children()
 
 func _ready() -> void:
-	_laser_turrets = get_tree().get_nodes_in_group("LaserTurrets")
+	# _laser_turrets = %LaserTurrets.get_children()
 
-func enable_room() -> void:
-	for turret in _laser_turrets:
-		turret.enable_turret()
-
-func disable_room() -> void:
-	for turret in _laser_turrets:
-		turret.disable_turret()
-
-func start_reboot_room() -> void:
-	for turret in _laser_turrets:
-		turret.start_reboot()
-
-func end_reboot_room() -> void:
-	for turret in _laser_turrets:
-		turret.end_reboot()
+	var control_points = get_tree().get_nodes_in_group("ControlPoints")
+	for point in control_points:
+		point.init()
 
 func get_level_idx() -> int:
 	return _level_idx
@@ -50,3 +38,6 @@ func get_width() -> float:
 
 func get_height() -> float:
 	return _dimensions.y
+
+func get_laser_turrets() -> Array[Node]:
+	return _laser_turrets

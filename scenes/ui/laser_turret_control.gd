@@ -24,6 +24,7 @@ func init(laser_turret: LaserTurret, control_point: ControlPoint) -> void:
 	_control_point = control_point
 	var control_room = _control_point.get_room()
 
+	# TODO: constantsa
 	position = (laser_turret.global_position / max(control_room.get_width(), control_room.get_height())) * 1080
 
 func _on_button_pressed() -> void:
@@ -42,6 +43,7 @@ func _set_button_color(color: Color) -> void:
 	normal_stylebox.bg_color = color
 	_button.add_theme_stylebox_override("normal", normal_stylebox)
 	
+	# average hover offset color with current color (just a bit grayed out)
 	var hover_stylebox = _button.get_theme_stylebox("hover").duplicate()
 	hover_stylebox.bg_color = (color + _button_hover_offset_color) / 2
 	_button.add_theme_stylebox_override("hover", hover_stylebox)
@@ -49,6 +51,9 @@ func _set_button_color(color: Color) -> void:
 func obtained_id() -> void:
 	_is_usable = true
 	_button.disabled = false
+
+func has_id(id: int) -> bool:
+	return id == _laser_turret.get_id()
 
 func is_usable() -> bool:
 	return _is_usable

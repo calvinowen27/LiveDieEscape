@@ -20,7 +20,7 @@ size = Vector2(146.667, 212)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxp68"]
 
-[node name="ControlPoint" type="RigidBody2D"]
+[node name="ControlPoint" type="RigidBody2D" groups=["ControlPoints"]]
 y_sort_enabled = true
 collision_layer = 13
 gravity_scale = 0.0
@@ -100,5 +100,8 @@ offset_bottom = 374.0
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 20
 columns = 3
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
+[connection signal="interactable_set" from="Interactable" to="." method="_on_interactable_interactable_set"]
 
 [editable path="Interactable"]

@@ -10,9 +10,14 @@ var _item_dropped: bool = false
 @export var _movable: bool = false
 @export var _rotating: bool = false
 
+static var _next_id: int = 1
+@onready var _id: int = _next_id
+
 func _ready() -> void:
 	# $ZOrdering.init($Sprite2D)
 	$RayCast2D/Laser.visible = false
+
+	_next_id += 1
 
 	# $ControlInteractable.set_active(_rotating)
 
@@ -66,14 +71,15 @@ func die() -> void:
 # 	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
 
 func _on_control_interactable_interact() -> void:
-	if not _rotating:
-		return
+	EventBus.learn_security_id.emit(_id)
+	# if not _rotating:
+	# 	return
 	
-	# spawn control chip
-	var control_chip = RoomManager.instantiate_item("control_chip", position + Vector2(0, 60))
-	control_chip.set_control(RoomManager.get_curr_level(), RoomManager.get_curr_room_idx())
+	# # spawn control chip
+	# var control_chip = RoomManager.instantiate_item("control_chip", position + Vector2(0, 60))
+	# control_chip.set_control(RoomManager.get_curr_level(), RoomManager.get_curr_room_idx())
 	
-	disable_turret()
+	# disable_turret()
 
 # drop force field emitter if haven't already
 func _on_force_field_interactable_interact() -> void:
@@ -101,3 +107,6 @@ func is_movable() -> bool:
 
 func is_rotating() -> bool:
 	return _rotating;
+
+func get_id() -> int:
+	return _id
