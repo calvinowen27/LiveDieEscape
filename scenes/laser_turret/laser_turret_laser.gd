@@ -16,6 +16,7 @@ func _physics_process(_delta: float) -> void:
 	var distance = global_position.distance_to(collision_point)
 	
 	$Laser.scale.x = distance / (64 * global_scale.x) # 64 is pixel width of laser sprite
+	$SparkEnd.position = collision_point
 	
 	var found_collider = get_collider()
 	

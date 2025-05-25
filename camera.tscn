@@ -7,3 +7,5 @@ offset = Vector2(80, -25)
 zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 script = ExtResource("1_rphte")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

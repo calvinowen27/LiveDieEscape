@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=26 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
 [ext_resource type="Script" path="res://scenes/player/player_state.gd" id="3_k6lhe"]
@@ -19,6 +19,7 @@
 [ext_resource type="Animation" uid="uid://b76q58u651l5a" path="res://resources/animations/player/player_walk_up.tres" id="16_p2575"]
 [ext_resource type="Animation" uid="uid://dlsiffxngnwrg" path="res://resources/animations/player/player_walk_up_left.tres" id="17_r4fw6"]
 [ext_resource type="Animation" uid="uid://cmysf5sjumew5" path="res://resources/animations/player/player_walk_up_right.tres" id="18_gus2v"]
+[ext_resource type="AudioStream" uid="uid://04gykhl5mdil" path="res://resources/player_walk.ogg" id="20_fcvwj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hpofx"]
 friction = 0.5
@@ -27,7 +28,13 @@ friction = 0.5
 radius = 3.0
 height = 8.0
 
+[sub_resource type="Animation" id="Animation_kc5pb"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0qodp"]
+_data = {
+"RESET": SubResource("Animation_kc5pb")
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5rlwv"]
 _data = {
@@ -90,6 +97,9 @@ libraries = {
 "": SubResource("AnimationLibrary_0qodp"),
 "player": SubResource("AnimationLibrary_5rlwv")
 }
+
+[node name="WalkingSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_fcvwj")
 
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerIdle" method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerWalk" method="_on_dash_cooldown_timer_timeout"]

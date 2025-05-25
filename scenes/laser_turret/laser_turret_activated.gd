@@ -48,7 +48,8 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	laser_sprite.visible = true
 	laser_raycast.enabled = true
 	laser_raycast.get_node("Spark").visible = true
-	animation_player.play("laser_turret_spark")
+
+	turret.get_node("LaserSfx2D").play()
 
 	if _turret.is_rotating():
 		# has to be after super cuz it gets set to 1 there

@@ -16,6 +16,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 		_turret.set_deferred("freeze", false)
 	
 	_turret.get_node("Sprite2D/Spark").visible = false
+	_turret.get_node("Sprite2D/SparkEnd").visible = false
 
 	var rotation_rads = (_turret.get_start_rotation() % 360) * TWO_PI / 360
 

@@ -40,6 +40,9 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_laser_sprite = laser_sprite
 	_laser_raycast = laser_raycast
 
+	if name != "LaserTurretActivated":
+		turret.get_node("LaserSfx2D").stop()
+
 	#_turret.freeze = true
 	_turret.set_deferred("freeze", true)
 	

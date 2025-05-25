@@ -39,6 +39,9 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 	_sprite = sprite
 	_rigidbody = rigidbody
 	_animation_player = animation_player
+
+	if name != "PlayerWalk":
+		_rigidbody.get_node("WalkingSfx").stop()
 	
 	super.enable()
 
