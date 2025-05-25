@@ -325,21 +325,21 @@ text = "Salvage Force Field Emitter"
 [node name="CollisionShape2D" parent="ForceFieldInteractable/InteractArea" index="0"]
 position = Vector2(-1, -31)
 
-[node name="ControlInteractable" parent="." instance=ExtResource("11_emy65")]
-_hold_to_interact = true
+[node name="IDInteractable" parent="." instance=ExtResource("11_emy65")]
 
-[node name="InteractLabel" parent="ControlInteractable" index="0"]
+[node name="InteractLabel" parent="IDInteractable" index="0"]
+visible = true
 offset_top = -187.0
 offset_bottom = -99.0
 scale = Vector2(0.4, 0.4)
 
-[node name="TextureProgressBar" parent="ControlInteractable/InteractLabel" index="1"]
+[node name="TextureProgressBar" parent="IDInteractable/InteractLabel" index="1"]
 scale = Vector2(3, 3)
 
-[node name="Label" parent="ControlInteractable/InteractLabel" index="2"]
-text = "Take Control Chip"
+[node name="Label" parent="IDInteractable/InteractLabel" index="2"]
+text = "Get Security ID"
 
-[node name="CollisionShape2D" parent="ControlInteractable/InteractArea" index="0"]
+[node name="CollisionShape2D" parent="IDInteractable/InteractArea" index="0"]
 position = Vector2(1.5, -32)
 shape = SubResource("RectangleShape2D_bf8md")
 
@@ -398,9 +398,9 @@ max_distance = 100.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
 [connection signal="interact" from="ForceFieldInteractable" to="." method="_on_force_field_interactable_interact"]
-[connection signal="interact" from="ControlInteractable" to="." method="_on_control_interactable_interact"]
+[connection signal="interact" from="IDInteractable" to="." method="_on_control_interactable_interact"]
 [connection signal="interact" from="ScrapInteractable" to="." method="_on_scrap_interactable_interact"]
 
 [editable path="ForceFieldInteractable"]
-[editable path="ControlInteractable"]
+[editable path="IDInteractable"]
 [editable path="ScrapInteractable"]
