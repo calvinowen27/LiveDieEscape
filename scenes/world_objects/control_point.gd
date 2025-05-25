@@ -21,6 +21,10 @@ func _ready() -> void:
 
 	EventBus.learn_security_id.connect(_on_security_id_learned)
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("escape"):
+		_ui.visible = false
+
 func init() -> void:
 	_create_control_buttons()
 
@@ -29,16 +33,13 @@ func _create_control_buttons() -> void:
 
 	if control_room != null:
 		var laser_turrets = control_room.get_laser_turrets()
-		# var a = false
+
+		# for each laser turret, create a new control button and initialize it
 		for turret in laser_turrets:
 			var new_control = _laser_turret_control.instantiate()
 			_control_buttons.append(new_control)
 			new_control.init(turret, self)
 			_ui.add_child(new_control)
-			# TEMP:
-			# if !a:
-			# 	new_control.obtained_id()
-			# 	a = true
 
 func get_level_idx() -> int:
 	return _level

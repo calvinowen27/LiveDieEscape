@@ -13,7 +13,8 @@ func player_state_enable(sprite: Sprite2D, rigidbody: RigidBody2D, animation_pla
 	var last_move_dir = rigidbody.get_last_move_dir()
 	
 	_play_animation(_animation_player, last_move_dir)
-	_rigidbody.get_node("WalkingSfx").play()
+	if _rigidbody.get_node("WalkingSfx").is_inside_tree():
+		_rigidbody.get_node("WalkingSfx").play()
 
 func update(_delta: float) -> String:
 	move()
