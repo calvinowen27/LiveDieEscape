@@ -31,12 +31,12 @@ func update(delta: float) -> String:
 	# spark.position = _laser_raycast.position
 	spark.global_position = _laser_raycast.global_position
 
-	if _laser_raycast.get_node("Laser/ZOrderingMarker").global_position.y > _turret.global_position.y:
-		_laser_sprite.z_index = 1
-		spark.z_index = 0
-	else:
-		_laser_sprite.z_index = 0
-		spark.z_index = -1
+	# if _laser_raycast.get_node("Laser/ZOrderingMarker").global_position.y > _turret.global_position.y:
+	# 	_laser_sprite.z_index = 1
+	# 	spark.z_index = 0
+	# else:
+	# 	_laser_sprite.z_index = 0
+	# 	spark.z_index = -1
 
 	_laser_sprite.rotation = _laser_rotation
 
@@ -48,6 +48,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	laser_sprite.visible = true
 	laser_raycast.enabled = true
 	laser_raycast.get_node("Spark").visible = true
+	laser_raycast.get_node("SparkEnd").visible = true
 
 	turret.get_node("LaserSfx2D").play()
 

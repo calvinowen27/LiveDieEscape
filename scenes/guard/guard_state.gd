@@ -62,6 +62,19 @@ func move() -> void:
 	# stop if at target
 	if dist_to_target <= _target_stop_range:
 		_rigidbody.linear_velocity = Vector2.ZERO
+	
+	# TODO: i feel like this isn't great
+	if _rigidbody.linear_velocity.x > 0:
+		_animation_player.play("guard_walk_right")
+		if not _rigidbody.get_node("WalkSfx2D").playing:
+			_rigidbody.get_node("WalkSfx2D").play()
+	elif _rigidbody.linear_velocity.x < 0:
+		_animation_player.play("guard_walk_left")
+		if not _rigidbody.get_node("WalkSfx2D").playing:
+			_rigidbody.get_node("WalkSfx2D").play()
+	else:
+		_animation_player.play("guard_idle")
+		_rigidbody.get_node("WalkSfx2D").stop()
 
 # search for available disruptor to be disrupted by
 func _disruptor_found() -> bool:

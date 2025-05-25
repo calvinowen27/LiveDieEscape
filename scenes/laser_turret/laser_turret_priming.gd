@@ -18,5 +18,5 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 
 	if rotation_rads != 0:
 		_laser_raycast.get_node("SparkEnd").visible = false
-		_laser_raycast.get_node("Spark").visible = true
+		_laser_raycast.get_node("Spark").visible = false
 		_turret.get_node("Sprite2D").frame_coords = Vector2i((int)((rotation_rads / TWO_PI) * 8), 0)

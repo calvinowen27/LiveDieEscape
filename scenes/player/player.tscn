@@ -85,7 +85,7 @@ one_shot = true
 texture = ExtResource("6_vrsab")
 offset = Vector2(0, -8)
 hframes = 6
-frame = 1
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -100,6 +100,7 @@ libraries = {
 
 [node name="WalkingSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_fcvwj")
+volume_db = -10.0
 
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerIdle" method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerWalk" method="_on_dash_cooldown_timer_timeout"]
