@@ -287,9 +287,6 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_1af6w")
 offset = Vector2(-32, 0)
 
-[node name="ZOrderingMarker" type="Marker2D" parent="RayCast2D/Laser"]
-position = Vector2(-161, 0)
-
 [node name="Spark" parent="RayCast2D" instance=ExtResource("14_s5ij3")]
 position = Vector2(-1, 0)
 
@@ -302,7 +299,7 @@ libraries = {
 }
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
-position = Vector2(0, -8)
+position = Vector2(0, -9)
 _temporary = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
