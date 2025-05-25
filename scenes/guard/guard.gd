@@ -9,14 +9,13 @@ var _player_in_range: bool = false
 
 var _queue_teleport = Vector2.ZERO
 
-var _start_pos: Vector2
+@onready var _start_pos: Vector2 = position
 
 @onready var _level_idx: int = RoomManager.get_curr_level()
 @onready var _room_idx: int = RoomManager.get_curr_room_idx()
 
 func _ready() -> void:
 	EventBus.item_pickup.connect(_on_item_pickup)
-	EventBus.change_room.connect(_on_room_change)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _queue_teleport != Vector2.ZERO:
@@ -35,10 +34,6 @@ func get_start_pos() -> Vector2:
 
 func get_item() -> Area2D:
 	return _item
-
-func _on_room_change(level_idx: int, room_idx: int):
-	if level_idx == _level_idx and room_idx == _room_idx:
-		_start_pos = position
 
 func _on_item_pickup(item: Item) -> void:
 	if item == _item:
