@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="1_wbj4d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngpep"]
-radius = 19.0
-height = 54.0
+radius = 3.0
+height = 8.0
 
 [node name="DisruptorWorld" type="RigidBody2D" groups=["Disruptors"]]
 y_sort_enabled = true
@@ -15,11 +15,9 @@ freeze = true
 script = ExtResource("1_vwjsd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ngpep")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(6.75, 6.75)
 texture = ExtResource("1_wbj4d")
 offset = Vector2(0, -5)

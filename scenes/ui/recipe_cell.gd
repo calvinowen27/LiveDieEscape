@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 		try_create()
 
 func try_create() -> bool:
-	var mouse_pos = Vector2i(get_viewport().get_mouse_position())
+	var mouse_pos = Vector2i(Game.get_camera().get_local_mouse_position() + Game.get_camera().position)
 	return Fabricator.try_create_object(result_name, mouse_pos)
 
 func select() -> void:

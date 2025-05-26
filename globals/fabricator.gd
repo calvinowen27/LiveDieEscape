@@ -71,7 +71,7 @@ func add_material(mat_name: String, quantity: int) -> int:
 func try_create_object(result_name: String, location: Vector2) -> bool:
 	# snap to grid if necessary
 	if Recipes.get_recipe_snap_to_grid(result_name):
-		location -= Vector2(Vector2i((int(location.x) % 108), (int(location.y) % 108)) - Vector2i(54, 108))
+		location -= Vector2(Vector2i((int(location.x) % 16), (int(location.y) % 16)) - Vector2i(8, 16))
 
 	# check if crafting is valid
 	if not active or not fab_temp.valid or not mouse_in_range:
