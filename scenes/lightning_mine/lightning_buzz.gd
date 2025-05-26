@@ -8,6 +8,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func update(_delta: float) -> String:
+	$BuzzSfx.volume_db = -2 * $AliveTimer.wait_time / $AliveTimer.time_left
+	
+	return "LightningBuzz"
+
 func lightning_state_enable(sprite: Sprite2D, animation_player: AnimationPlayer) -> void:
 	super.lightning_state_enable(sprite, animation_player)
 	

@@ -21,6 +21,8 @@ func lightning_state_enable(sprite: Sprite2D, animation_player: AnimationPlayer)
 	
 	animation_player.play("lightning_go")
 
+	$GoSfx.play()
+
 	_transition = false
 	$TransitionTimer.start()
 

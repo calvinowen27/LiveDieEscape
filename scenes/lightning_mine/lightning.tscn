@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c56iqshopjhc4"]
+[gd_scene load_steps=12 format=3 uid="uid://c56iqshopjhc4"]
 
 [ext_resource type="Texture2D" uid="uid://diu482trt1qi3" path="res://resources/art/lightning-sheet.png" id="1_ns8fu"]
 [ext_resource type="Script" path="res://scenes/lightning_mine/lightning.gd" id="2_oi58f"]
 [ext_resource type="Script" path="res://scenes/lightning_mine/lightning_state.gd" id="3_x33al"]
 [ext_resource type="Script" path="res://scenes/lightning_mine/lightning_go.gd" id="4_kr3fq"]
 [ext_resource type="Script" path="res://scenes/lightning_mine/lightning_buzz.gd" id="5_iuahx"]
+[ext_resource type="AudioStream" uid="uid://b4xf7pum54br0" path="res://resources/shock_go.ogg" id="5_t2ik4"]
+[ext_resource type="AudioStream" uid="uid://bm4a3lpph2k33" path="res://resources/shock_buzz.ogg" id="7_phth8"]
 
 [sub_resource type="Animation" id="Animation_w8bri"]
 length = 0.001
@@ -19,6 +21,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightningState/LightningBuzz/BuzzSfx:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7d5rj"]
@@ -37,6 +51,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 1), Vector2i(2, 1), Vector2i(1, 1), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(0, 1), Vector2i(3, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LightningState/LightningBuzz/BuzzSfx:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_l5m1y"]
@@ -88,12 +114,18 @@ script = ExtResource("4_kr3fq")
 [node name="TransitionTimer" type="Timer" parent="LightningState/LightningGo"]
 one_shot = true
 
+[node name="GoSfx" type="AudioStreamPlayer" parent="LightningState/LightningGo"]
+stream = ExtResource("5_t2ik4")
+
 [node name="LightningBuzz" type="Node" parent="LightningState"]
 script = ExtResource("5_iuahx")
 
 [node name="AliveTimer" type="Timer" parent="LightningState/LightningBuzz"]
 wait_time = 5.0
 one_shot = true
+
+[node name="BuzzSfx" type="AudioStreamPlayer" parent="LightningState/LightningBuzz"]
+stream = ExtResource("7_phth8")
 
 [connection signal="timeout" from="LightningState/LightningGo/TransitionTimer" to="LightningState/LightningGo" method="_on_transition_timer_timeout"]
 [connection signal="timeout" from="LightningState/LightningBuzz/AliveTimer" to="LightningState/LightningBuzz" method="_on_alive_timer_timeout"]
