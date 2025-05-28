@@ -38,6 +38,8 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	super.laser_turret_state_enable(turret, animation_player, laser_sprite, laser_raycast)
 	
 	_turret.set_ID_accessible(false)
+	_turret.get_force_field().set_penetrable(false)
+
 	laser_sprite.visible = true
 	laser_raycast.enabled = true
 	laser_raycast.get_node("Spark").visible = true

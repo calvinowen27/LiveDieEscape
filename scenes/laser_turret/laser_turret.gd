@@ -56,8 +56,7 @@ func toggle() -> void:
 		_state.disable_turret()
 
 func die() -> void:
-	if _state.is_broken():
-		return
+	if _state.is_broken(): return
 	
 	_state.die()
 
@@ -98,3 +97,6 @@ func is_rotating() -> bool:
 
 func get_id() -> int:
 	return _id
+
+func get_force_field() -> ForceField:
+	return $ForceFieldWorld
