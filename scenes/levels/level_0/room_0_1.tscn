@@ -11,7 +11,7 @@ _room_idx = 1
 [node name="Walls" parent="." index="1"]
 tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAJAAkAAAACAAIAAAAJAAAAAAACAAAAAAAAAAkAAAAAAAIAAAABAAkAAAABAAIAAAACAAkAAAABAAIAAAADAAkAAAABAAIAAAAGAAkAAAABAAIAAAAHAAkAAAABAAIAAAAIAAkAAAABAAIAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAJAAYAAAACAAEAAAAJAAcAAAACAAEAAAAJAAgAAAACAAEAAAA=")
 
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="2"]
 position = Vector2(541, 854)
 
 [node name="Door0" parent="." index="4" instance=ExtResource("2_6rxug")]
@@ -36,9 +36,8 @@ _seconds_per_rotation = 5.0
 
 [node name="LaserTurret" parent="." index="8" instance=ExtResource("4_mfoo1")]
 position = Vector2(888, 888)
-_start_rotation = 90
 
 [editable path="RotatingLaserTurret"]
 [editable path="RotatingLaserTurret/ForceFieldInteractable"]
-[editable path="RotatingLaserTurret/ControlInteractable"]
+[editable path="RotatingLaserTurret/IDInteractable"]
 [editable path="RotatingLaserTurret/ScrapInteractable"]

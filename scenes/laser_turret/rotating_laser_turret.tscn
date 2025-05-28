@@ -7,14 +7,14 @@
 _movable = true
 _rotating = true
 
-[node name="LaserTurretActivated" parent="LaserTurretState" index="2"]
-_seconds_per_rotation = 3.0
-
-[node name="Antenna" type="Sprite2D" parent="Sprite2D" index="1"]
+[node name="Antenna" type="Sprite2D" parent="Sprite2D" index="0"]
 z_index = 1
 position = Vector2(0, -22)
 texture = ExtResource("2_i3o8m")
 
+[node name="LaserTurretActivated" parent="LaserTurretState" index="2"]
+_seconds_per_rotation = 3.0
+
 [editable path="ForceFieldInteractable"]
-[editable path="ControlInteractable"]
+[editable path="IDInteractable"]
 [editable path="ScrapInteractable"]
