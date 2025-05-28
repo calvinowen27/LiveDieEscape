@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dug1pnwtgu0v7"]
+[gd_scene load_steps=10 format=3 uid="uid://dug1pnwtgu0v7"]
 
 [ext_resource type="Script" path="res://scenes/world_objects/shock_bomb.gd" id="1_e8kse"]
 [ext_resource type="Texture2D" uid="uid://bc1l85vjbt1w" path="res://resources/art/shock_bomb.png" id="1_ng1bi"]
 [ext_resource type="Texture2D" uid="uid://1b717sgpgyvw" path="res://resources/art/shock_bomb_lightning_sheet.png" id="2_1wvn0"]
+[ext_resource type="AudioStream" uid="uid://b4xf7pum54br0" path="res://resources/shock_go.ogg" id="4_yyc21"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xa1d"]
 radius = 6.0
@@ -36,6 +37,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("LightningSfx2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_emfrm"]
 resource_name = "shock_bomb_detonate"
@@ -61,6 +74,18 @@ tracks/1/path = NodePath("Lightning:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LightningSfx2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -108,6 +133,9 @@ libraries = {
 [node name="AliveTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="LightningSfx2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yyc21")
 
 [connection signal="body_entered" from="ShockRange" to="." method="_on_shock_range_body_entered"]
 [connection signal="body_exited" from="ShockRange" to="." method="_on_shock_range_body_exited"]
