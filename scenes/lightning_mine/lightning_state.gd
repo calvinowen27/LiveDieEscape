@@ -2,8 +2,9 @@ extends State
 
 class_name LightningState
 
-var _animation_player: AnimationPlayer
+var _lightning: Lightning
 var _sprite: Sprite2D
+var _animation_player: AnimationPlayer
 
 func _ready() -> void:
 	super._ready()
@@ -22,11 +23,12 @@ func _set_curr_state(new_state_name: String) -> State:
 	if _curr_state != null:
 		var sprite = get_parent()
 		var animation_player = sprite.get_node("AnimationPlayer")
-		_curr_state.lightning_state_enable(sprite, animation_player)
+		_curr_state.lightning_state_enable(sprite, sprite, animation_player)
 
 	return new_state
 
-func lightning_state_enable(sprite: Sprite2D, animation_player: AnimationPlayer) -> void:
+func lightning_state_enable(lightning: Lightning, sprite: Sprite2D, animation_player: AnimationPlayer) -> void:
+	_lightning = lightning
 	_sprite = sprite
 	_animation_player = animation_player
 

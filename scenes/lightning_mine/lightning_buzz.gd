@@ -13,16 +13,18 @@ func update(_delta: float) -> String:
 	
 	return "LightningBuzz"
 
-func lightning_state_enable(sprite: Sprite2D, animation_player: AnimationPlayer) -> void:
-	super.lightning_state_enable(sprite, animation_player)
+func lightning_state_enable(lightning: Lightning, sprite: Sprite2D, animation_player: AnimationPlayer) -> void:
+	super.lightning_state_enable(lightning, sprite, animation_player)
 	
 	animation_player.play("lightning_buzz")
 	$AliveTimer.start()
 
-	StatManager.change_stat("speed_mult", _altered_speed_mult)
+	if _lightning.on_player():
+		StatManager.change_stat("speed_mult", _altered_speed_mult)
 
 func _on_alive_timer_timeout() -> void:
-	StatManager.revert_stat_change("speed_mult", _altered_speed_mult)
+	if _lightning.on_player():
+		StatManager.revert_stat_change("speed_mult", _altered_speed_mult)
 
 	_sprite.die()
 

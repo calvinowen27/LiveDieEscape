@@ -10,7 +10,10 @@ func _on_body_entered(body: Node2D) -> void:
 		_trigger_on_body(body)
 
 func _trigger_on_body(body: Node2D) -> void:
-	body.add_child(load("res://scenes/lightning_mine/lightning.tscn").instantiate())
+	var lightning = load("res://scenes/lightning_mine/lightning.tscn").instantiate()
+	body.add_child(lightning)
+	lightning.init(body)
+	
 	_triggered = true
 	_sprite.frame_coords.x = 1 # switch to disabled sprite
 
