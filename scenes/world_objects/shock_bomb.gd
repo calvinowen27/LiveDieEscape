@@ -18,6 +18,8 @@ func _process(_delta: float) -> void:
 				node.shock()
 		_nodes_in_range.clear()
 
+# TODO: note to self, add placing object "thunk" kinda sound
+
 func _on_alive_timer_timeout() -> void:
 	# _detonating = false
 	# _animation_player.play("RESET")

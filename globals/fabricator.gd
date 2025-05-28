@@ -30,7 +30,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("fabricate"):
 		active = not active # keep track of whether we can fabricate or not with left click
 		if active:
-			print("showing fab temp")
 			fab_temp.show()
 		else:
 			fab_temp.hide()
