@@ -55,31 +55,16 @@ func _on_id_interactable_interact() -> void:
 	EventBus.learn_security_id.emit(_id)
 
 # drop force field emitter if haven't already
-func _on_force_field_interactable_interact() -> void:
-	# destroy force field
-	if has_node("ForceFieldWorld"):
-		var ff = $ForceFieldWorld
-		remove_child(ff)
-		ff.queue_free()
-
-	# give player force field materials
+func _on_force_field_salvage_interact() -> void:
+	try_destroy_force_field()
+	
 	Fabricator.learn_recipe("Force Field Emitter")
-	Fabricator.add_material("force_field_emitter", 1)
 
 	set_force_field_accessible(false)
 
-# give player scrap
-func _on_scrap_interactable_interact() -> void:
-	Fabricator.add_material("scrap", 5)
-	Fabricator.add_material("antenna", 1)
-
-	set_scrap_accessible(false)
-
-## set accessibility of interatables
+## set accessibility of interactables
 func set_scrap_accessible(val: bool) -> void:
-	var scrap_interactable = $ScrapInteractable
-	if scrap_interactable != null and  val != scrap_interactable.is_active():
-		scrap_interactable.set_active(val)
+	$ScrapSalvage.set_active(val)
 
 func set_ID_accessible(val: bool) -> void:
 	var id_interactable = $IDInteractable
@@ -87,9 +72,7 @@ func set_ID_accessible(val: bool) -> void:
 		id_interactable.set_active(val)
 
 func set_force_field_accessible(val: bool) -> void:
-	var force_field_interactable = $ForceFieldInteractable
-	if force_field_interactable != null and val != force_field_interactable.is_active():
-		force_field_interactable.set_active(val)
+	$ForceFieldSalvage.set_active(val)
 
 ## set if player can move through force field
 func set_force_field_penetrable(val: bool) -> void:
@@ -108,5 +91,13 @@ func is_rotating() -> bool:
 func get_id() -> int:
 	return _id
 
+func try_destroy_force_field() -> void:
+	# destroy force field
+	if has_node("ForceFieldWorld"):
+		var ff = $ForceFieldWorld
+		remove_child.bind(ff).call_deferred()
+		ff.queue_free.call_deferred()
+
 func get_force_field() -> ForceField:
+	if not has_node("ForceFieldWorld"): return null
 	return $ForceFieldWorld

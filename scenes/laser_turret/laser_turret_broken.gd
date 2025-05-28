@@ -24,7 +24,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_turret.set_force_field_accessible(false)
 	_turret.set_ID_accessible(false)
 	
-	if _turret.has_node("ForceFieldWorld"):
-		_turret.remove_child.bind(_turret.get_node("ForceFieldWorld")).call_deferred()
+	# remove force field
+	_turret.try_destroy_force_field()
 
 	animation_player.play("laser_turret_broken")

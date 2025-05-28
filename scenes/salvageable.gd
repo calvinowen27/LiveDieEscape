@@ -1,10 +1,14 @@
 extends Node2D
 
+class_name Salvageable
+
 @export var _materials: Dictionary
 
 @export var _base_area_collider: CollisionShape2D
 @export var _expand_interact_area: bool = true
 @export var _interact_area_scale: Vector2 = Vector2(1.5, 1.5)
+
+signal interact
 
 func _ready() -> void:
 	# duplicate base area collider and set proper scale and position to match shape
@@ -26,6 +30,10 @@ func _on_interactable_interact() -> void:
 	# add materials to fabricator
 	for key in _materials.keys():
 		Fabricator.add_material(key, _materials[key])
+	
+	interact.emit()
 
 func set_active(val: bool) -> void:
+	if not has_node("Interactable"): return
+	
 	$Interactable.set_active(val)

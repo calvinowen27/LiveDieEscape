@@ -60,4 +60,3 @@ _item = NodePath("../Key")
 [editable path="LaserTurrets/LaserTurret3"]
 [editable path="LaserTurrets/LaserTurret3/ForceFieldInteractable"]
 [editable path="LaserTurrets/LaserTurret3/IDInteractable"]
-[editable path="LaserTurrets/LaserTurret3/ScrapInteractable"]

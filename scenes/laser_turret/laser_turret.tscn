@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://kfqi07twfc48"]
+[gd_scene load_steps=30 format=3 uid="uid://kfqi07twfc48"]
 
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret.gd" id="1_ktj7o"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_laser.gd" id="2_5f8wt"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_shocked.gd" id="15_fb24r"]
 [ext_resource type="AudioStream" uid="uid://dklfn4re5o82p" path="res://resources/laser.ogg" id="15_fnox4"]
 [ext_resource type="PackedScene" uid="uid://b4ji33csiycpw" path="res://scenes/shockable.tscn" id="17_wtm67"]
+[ext_resource type="PackedScene" uid="uid://bnu0w00oruxsx" path="res://scenes/salvageable.tscn" id="18_h3g8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pjw2"]
 size = Vector2(10, 7)
@@ -238,17 +239,7 @@ _data = {
 "laser_turret_spark": SubResource("Animation_afdqy")
 }
 
-[sub_resource type="FontVariation" id="FontVariation_ogj1f"]
-variation_embolden = 1.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_cs2rg"]
-font = SubResource("FontVariation_ogj1f")
-font_size = 64
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bf8md"]
-size = Vector2(80.6667, 136.573)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2uoln"]
 size = Vector2(80.6667, 136.573)
 
 [node name="LaserTurret" type="RigidBody2D" groups=["LaserTurrets"]]
@@ -306,29 +297,6 @@ position = Vector2(0, -8.1)
 scale = Vector2(0.65, 0.65)
 _temporary = false
 
-[node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
-_one_time = true
-
-[node name="InteractLabel" parent="ForceFieldInteractable" index="0"]
-offset_top = -187.0
-offset_right = 18.0
-offset_bottom = -99.0
-scale = Vector2(0.4, 0.4)
-label_settings = SubResource("LabelSettings_cs2rg")
-
-[node name="TextureProgressBar" parent="ForceFieldInteractable/InteractLabel" index="1"]
-offset_left = 5.0
-offset_top = 28.375
-offset_right = 37.0
-offset_bottom = 60.375
-scale = Vector2(3, 3)
-
-[node name="Label" parent="ForceFieldInteractable/InteractLabel" index="2"]
-text = "Salvage Force Field Emitter"
-
-[node name="CollisionShape2D" parent="ForceFieldInteractable/InteractArea" index="0"]
-position = Vector2(-1, -31)
-
 [node name="IDInteractable" parent="." instance=ExtResource("11_emy65")]
 _one_time = true
 
@@ -347,23 +315,18 @@ text = "Get Security ID"
 position = Vector2(1.5, -32)
 shape = SubResource("RectangleShape2D_bf8md")
 
-[node name="ScrapInteractable" parent="." instance=ExtResource("11_emy65")]
-_one_time = true
+[node name="ForceFieldSalvage" parent="." node_paths=PackedStringArray("_base_area_collider") instance=ExtResource("18_h3g8t")]
+_materials = {
+"force_field_emitter": 1
+}
+_base_area_collider = NodePath("../CollisionShape2D")
 
-[node name="InteractLabel" parent="ScrapInteractable" index="0"]
-offset_top = -187.0
-offset_bottom = -99.0
-scale = Vector2(0.4, 0.4)
-
-[node name="TextureProgressBar" parent="ScrapInteractable/InteractLabel" index="1"]
-scale = Vector2(3, 3)
-
-[node name="Label" parent="ScrapInteractable/InteractLabel" index="2"]
-text = "Salvage Scrap"
-
-[node name="CollisionShape2D" parent="ScrapInteractable/InteractArea" index="0"]
-position = Vector2(-1, -31)
-shape = SubResource("RectangleShape2D_2uoln")
+[node name="ScrapSalvage" parent="." node_paths=PackedStringArray("_base_area_collider") instance=ExtResource("18_h3g8t")]
+_materials = {
+"antenna": 1,
+"scrap": 5
+}
+_base_area_collider = NodePath("../CollisionShape2D")
 
 [node name="CenterMarker" type="Marker2D" parent="."]
 position = Vector2(0, -8)
@@ -405,10 +368,7 @@ max_distance = 100.0
 [node name="Shockable" parent="." instance=ExtResource("17_wtm67")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
-[connection signal="interact" from="ForceFieldInteractable" to="." method="_on_force_field_interactable_interact"]
 [connection signal="interact" from="IDInteractable" to="." method="_on_id_interactable_interact"]
-[connection signal="interact" from="ScrapInteractable" to="." method="_on_scrap_interactable_interact"]
+[connection signal="interact" from="ForceFieldSalvage" to="." method="_on_force_field_salvage_interact"]
 
-[editable path="ForceFieldInteractable"]
 [editable path="IDInteractable"]
-[editable path="ScrapInteractable"]

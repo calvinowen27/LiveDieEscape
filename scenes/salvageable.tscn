@@ -10,4 +10,9 @@ script = ExtResource("1_cdb4y")
 _hold_to_interact = true
 _one_time = true
 
+[node name="Label" parent="Interactable/InteractLabel" index="2"]
+text = "Salvage"
+
 [connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]
+
+[editable path="Interactable"]

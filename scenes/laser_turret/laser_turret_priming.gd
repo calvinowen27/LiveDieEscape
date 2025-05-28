@@ -15,8 +15,8 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_laser_sprite.visible = false
 	_laser_raycast.enabled = false
 
-	_turret.get_node("ForceFieldInteractable").set_active(false)
-	_turret.get_node("ScrapInteractable").set_active(false)
+	_turret.set_force_field_accessible(false)
+	_turret.set_scrap_accessible(false)
 	
 	animation_player.play("laser_turret_priming")
 
