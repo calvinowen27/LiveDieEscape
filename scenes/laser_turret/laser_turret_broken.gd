@@ -16,9 +16,9 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_laser_raycast.get_node("Spark").visible = false
 	_laser_raycast.get_node("SparkEnd").visible = false
 
-	_turret.get_node("ScrapInteractable").set_active(true)
-	_turret.get_node("ForceFieldInteractable").set_active(false)
-	_turret.get_node("IDInteractable").set_active(false)
+	_turret.set_scrap_accessible(true)
+	_turret.set_force_field_accessible(false)
+	_turret.set_ID_accessible(false)
 	
 	if _turret.has_node("ForceFieldWorld"):
 	#var ff_world_child = _turret.get_node("ForceFieldWorld")

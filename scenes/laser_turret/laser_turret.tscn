@@ -305,7 +305,7 @@ scale = Vector2(0.65, 0.65)
 _temporary = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
-_hold_to_interact = null
+_one_time = true
 
 [node name="InteractLabel" parent="ForceFieldInteractable" index="0"]
 offset_top = -187.0
@@ -328,6 +328,7 @@ text = "Salvage Force Field Emitter"
 position = Vector2(-1, -31)
 
 [node name="IDInteractable" parent="." instance=ExtResource("11_emy65")]
+_one_time = true
 
 [node name="InteractLabel" parent="IDInteractable" index="0"]
 offset_top = -187.0
@@ -345,7 +346,7 @@ position = Vector2(1.5, -32)
 shape = SubResource("RectangleShape2D_bf8md")
 
 [node name="ScrapInteractable" parent="." instance=ExtResource("11_emy65")]
-_hold_to_interact = null
+_one_time = true
 
 [node name="InteractLabel" parent="ScrapInteractable" index="0"]
 offset_top = -187.0

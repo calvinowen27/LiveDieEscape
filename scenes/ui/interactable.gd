@@ -9,6 +9,8 @@ var _interactable = false
 @export var _hold_to_interact = false # if true, duration is $InteractTimer
 var _interacting = false
 
+@export var _one_time: bool = false
+
 @export var _interact_timer: Timer
 @export var _progress_bar: TextureProgressBar
 
@@ -96,6 +98,9 @@ func _interact() -> void:
 	interact.emit()
 	_interacting = false
 	_progress_bar.value = 0
+	
+	if _one_time:
+		self.queue_free()
 
 func _on_room_change(_level_idx: int, _room_idx: int) -> void:
 	_set_interactable(false)

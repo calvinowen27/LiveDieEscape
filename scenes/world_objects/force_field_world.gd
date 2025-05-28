@@ -28,3 +28,6 @@ func set_penetrable(val: bool) -> void:
 		_rigidbody.set_collision_layer_value(1, false)
 	else:
 		_rigidbody.set_collision_layer_value(1, true)
+
+func is_penetrable() -> bool:
+	return _penetrable

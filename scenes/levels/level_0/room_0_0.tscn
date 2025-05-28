@@ -43,6 +43,12 @@ position = Vector2(80, 161)
 _start_rotation = 180
 _movable = true
 
+[node name="ForceFieldInteractable" parent="LaserTurrets/LaserTurret3" index="5"]
+_hold_to_interact = false
+
+[node name="ScrapInteractable" parent="LaserTurrets/LaserTurret3" index="7"]
+_hold_to_interact = false
+
 [node name="LaserTurretState" parent="LaserTurrets/LaserTurret3" index="9"]
 _initial_state = "LaserTurretBroken"
 
