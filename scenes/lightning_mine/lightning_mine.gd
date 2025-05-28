@@ -29,3 +29,4 @@ func _on_salvage_interactable_interact() -> void:
 	# TODO: this stuff should be stored in a file
 	Fabricator.add_material("scrap", 2)
 	Fabricator.add_material("rubble", 1)
+	Fabricator.add_material("capacitor", 1)
