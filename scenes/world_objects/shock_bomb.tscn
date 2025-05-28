@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj5mojsket7cm"]
+[gd_scene load_steps=9 format=3 uid="uid://dug1pnwtgu0v7"]
 
 [ext_resource type="Script" path="res://scenes/world_objects/shock_bomb.gd" id="1_e8kse"]
 [ext_resource type="Texture2D" uid="uid://bc1l85vjbt1w" path="res://resources/art/shock_bomb.png" id="1_ng1bi"]
@@ -9,6 +9,33 @@ radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1683u"]
 radius = 27.0
+
+[sub_resource type="Animation" id="Animation_so0u2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lightning:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lightning:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_emfrm"]
 resource_name = "shock_bomb_detonate"
@@ -40,33 +67,6 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_so0u2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lightning:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Lightning:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l141u"]
 _data = {
 "RESET": SubResource("Animation_so0u2"),
@@ -96,6 +96,7 @@ shape = SubResource("CircleShape2D_1683u")
 
 [node name="Lightning" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(1.5, 1.5, 1.5, 1)
 texture = ExtResource("2_1wvn0")
 hframes = 4
 
