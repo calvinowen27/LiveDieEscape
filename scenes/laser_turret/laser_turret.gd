@@ -16,10 +16,6 @@ static var _next_id: int = 1
 @onready var _state: LaserTurretState = $LaserTurretState
 @onready var _force_field: ForceField = $ForceFieldWorld
 
-@onready var _scrap_interactable: Interactable = $ScrapInteractable
-@onready var _force_field_interactable: Interactable = $ForceFieldInteractable
-@onready var _id_interactable: Interactable = $IDInteractable
-
 func _ready() -> void:
 	# $ZOrdering.init($Sprite2D)
 	$RayCast2D/Laser.visible = false
@@ -41,12 +37,14 @@ func disable_turret() -> void:
 	_state.disable_turret()
 
 	if not _item_dropped:
-		$ForceFieldInteractable.set_active(true)
+		# $ForceFieldInteractable.set_active(true)
+		set_force_field_accessible(true)
 
 func enable_turret() -> void:
 	_state.enable_turret()
 	
-	$ForceFieldInteractable.set_active(false)
+	# $ForceFieldInteractable.set_active(false)
+	set_force_field_accessible(false)
 
 func shock() -> void:
 	if _state.is_broken(): return
@@ -80,28 +78,34 @@ func _on_force_field_interactable_interact() -> void:
 	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
 
 	Fabricator.learn_recipe("Force Field Emitter")
-	_force_field_interactable.set_active(false)
+	# _force_field_interactable.set_active(false)
+	set_force_field_accessible(false)
 
 func _on_scrap_interactable_interact() -> void:
 	Fabricator.add_material("scrap", 5)
 	Fabricator.add_material("antenna", 1)
-	$ScrapInteractable.set_active(false)
+	# $ScrapInteractable.set_active(false)
+	set_scrap_accessible(false)
 
 func set_scrap_accessible(val: bool) -> void:
-	if _scrap_interactable != null and  val != _scrap_interactable.is_active():
-		_scrap_interactable.set_active(val)
+	var scrap_interactable = $ScrapInteractable
+	if scrap_interactable != null and  val != scrap_interactable.is_active():
+		scrap_interactable.set_active(val)
 
 func set_ID_accessible(val: bool) -> void:
-	if _id_interactable != null and  val != _id_interactable.is_active():
-		_id_interactable.set_active(val)
+	var id_interactable = $IDInteractable
+	if id_interactable != null and  val != id_interactable.is_active():
+		id_interactable.set_active(val)
 
 func set_force_field_accessible(val: bool) -> void:
-	if _force_field_interactable != null and val != _force_field_interactable.is_active():
-		_force_field_interactable.set_active(val)
+	var force_field_interactable = $ForceFieldInteractable
+	if force_field_interactable != null and val != force_field_interactable.is_active():
+		force_field_interactable.set_active(val)
 
 func set_force_field_penetrable(val: bool) -> void:
-	if _force_field != null and _force_field.is_penetrable() != val:
-		_force_field.set_penetrable(val)
+	var force_field = $ForceFieldWorld
+	if force_field != null and force_field.is_penetrable() != val:
+		force_field.set_penetrable(val)
 
 func get_start_rotation() -> int:
 	return _start_rotation

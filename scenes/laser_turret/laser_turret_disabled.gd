@@ -10,7 +10,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	super.laser_turret_state_enable(turret, animation_player, laser_sprite, laser_raycast)
 	
 	_turret.set_ID_accessible(false)
-	_turret.set_force_field_accessible(true)
+	_turret.set_force_field_penetrable(true)
 
 	laser_sprite.visible = false
 	laser_raycast.enabled = false
