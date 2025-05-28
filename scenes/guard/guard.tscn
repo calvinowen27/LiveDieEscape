@@ -200,6 +200,7 @@ stream = ExtResource("8_iqoru")
 max_distance = 250.0
 
 [connection signal="body_entered" from="." to="GuardState/GuardFollowPlayer" method="_on_guard_body_entered"]
+[connection signal="body_entered" from="." to="GuardState/GuardDisrupted" method="_on_guard_body_entered"]
 [connection signal="area_entered" from="GuardArea" to="." method="_on_guard_area_area_entered"]
 [connection signal="area_exited" from="GuardArea" to="." method="_on_guard_area_area_exited"]
 [connection signal="body_entered" from="GuardArea" to="." method="_on_guard_area_body_entered"]
