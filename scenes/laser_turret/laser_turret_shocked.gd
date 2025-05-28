@@ -26,10 +26,12 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_laser_raycast.get_node("Spark").visible = false
 	_laser_raycast.get_node("SparkEnd").visible = false
 
-	$ShockTimer.start()
+	# $ShockTimer.start()
 
 	# TODO: no
-	turret.add_child(load("res://scenes/lightning_mine/lightning.tscn").instantiate())
+	var lightning = load("res://scenes/lightning_mine/lightning.tscn").instantiate()
+	turret.add_child(lightning)
+	lightning.get_node("LightningState/LightningBuzz/AliveTimer").timeout.connect(_on_shock_timer_timeout)
 
 func _on_shock_timer_timeout() -> void:
 	_done = true

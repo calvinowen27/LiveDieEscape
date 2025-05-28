@@ -19,8 +19,9 @@ func _process(_delta: float) -> void:
 		_nodes_in_range.clear()
 
 func _on_alive_timer_timeout() -> void:
-	_detonating = false
-	_animation_player.play("RESET")
+	# _detonating = false
+	# _animation_player.play("RESET")
+	self.queue_free()
 
 func detonate() -> void:
 	_detonating = true
