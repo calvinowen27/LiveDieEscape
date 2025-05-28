@@ -4,7 +4,7 @@ var _materials: Dictionary
 
 var _known_recipes: Array[String] = ["Wall", "Disruptor"]
 
-var fab_range: int = 20 # idk this can change
+var fab_range: int = 64 # idk this can change
 
 var active: bool = false
 
