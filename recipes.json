@@ -23,5 +23,14 @@
         "snap-to-grid": false,
         "object-name": "force_field_world",
         "result-texture": "res://resources/art/force_field_emitter_item.png"
+    },
+	"Shock Bomb": {
+        "recipe": {
+            "scrap": 2,
+			"antenna": 1
+        },
+        "snap-to-grid": false,
+        "object-name": "shock_bomb",
+        "result-texture": "res://resources/art/shock_bomb.png"
     }
 }

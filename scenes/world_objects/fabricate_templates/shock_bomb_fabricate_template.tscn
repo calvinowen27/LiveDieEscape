@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://da1is5tugmjps"]
+
+[ext_resource type="PackedScene" uid="uid://dthd65iifnui1" path="res://scenes/world_objects/fabricate_templates/fabricate_template.tscn" id="1_a3shi"]
+[ext_resource type="Texture2D" uid="uid://bc1l85vjbt1w" path="res://resources/art/shock_bomb.png" id="2_hkab7"]
+
+[node name="ShockBombFabricateTemplate" instance=ExtResource("1_a3shi")]
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_hkab7")

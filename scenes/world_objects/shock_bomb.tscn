@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://1b717sgpgyvw" path="res://resources/art/shock_bomb_lightning_sheet.png" id="2_1wvn0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xa1d"]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1683u"]
 radius = 27.0
@@ -74,6 +74,7 @@ _data = {
 }
 
 [node name="ShockBomb" type="RigidBody2D"]
+y_sort_enabled = true
 collision_layer = 15
 gravity_scale = 0.0
 lock_rotation = true
@@ -84,6 +85,7 @@ script = ExtResource("1_e8kse")
 texture = ExtResource("1_ng1bi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_4xa1d")
 
 [node name="ShockRange" type="Area2D" parent="."]

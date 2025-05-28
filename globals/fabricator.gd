@@ -2,7 +2,7 @@ extends Node
 
 var _materials: Dictionary
 
-var known_recipes: Array = ["Wall", "Disruptor"]
+var known_recipes: Array = ["Wall", "Disruptor", "Shock Bomb"]
 
 var fab_range: int = 20 # idk this can change
 
