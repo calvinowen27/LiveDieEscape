@@ -30,8 +30,7 @@ func init(laser_turret: LaserTurret, control_point: ControlPoint) -> void:
 func _on_button_pressed() -> void:
 	if !_is_usable: return
 
-	_is_enabled = !_is_enabled
-	_laser_turret.toggle()
+	_is_enabled = _laser_turret.toggle()
 
 	if _is_enabled:
 		_set_button_color(_button_turret_enabled_color)
