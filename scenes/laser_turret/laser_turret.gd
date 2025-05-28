@@ -50,7 +50,7 @@ func shock() -> void:
 
 func toggle() -> void:
 	if _state.is_broken(): return
-	if _state.get_curr_state().name == "LaserTurretIdle":
+	if _state.get_curr_state().name == "LaserTurretDisabled":
 		_state.enable_turret()
 	else:
 		_state.disable_turret()
