@@ -10,7 +10,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	super.laser_turret_state_enable(turret, animation_player, laser_sprite, laser_raycast)
 	
 	_turret.set_ID_accessible(false)
-	_turret.get_force_field().set_penetrable(false)
+	_turret.get_force_field().set_penetrable(true)
 
 	laser_sprite.visible = false
 	laser_raycast.enabled = false
@@ -18,8 +18,8 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	if _turret.is_movable():
 		_turret.set_deferred("freeze", false)
 	
-	_turret.get_node("Sprite2D/Spark").visible = false
-	_turret.get_node("Sprite2D/SparkEnd").visible = false
+	_laser_raycast.get_node("Spark").visible = false
+	_laser_raycast.get_node("SparkEnd").visible = false
 
 	var rotation_rads = (_turret.get_start_rotation() % 360) * TWO_PI / 360
 

@@ -79,7 +79,7 @@ func end_reboot() -> void:
 func disable_turret() -> void:
 	if is_broken(): return
 
-	_set_curr_state("LaserTurretIdle")
+	_set_curr_state("LaserTurretDisabled")
 
 func enable_turret() -> void:
 	if is_broken(): return

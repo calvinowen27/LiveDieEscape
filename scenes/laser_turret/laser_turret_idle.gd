@@ -12,7 +12,6 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_turret.set_ID_accessible(false)
 	_turret.get_force_field().set_penetrable(false)
 
-	# animation_player.play("laser_turret_idle")
 	laser_sprite.visible = false
 	laser_raycast.enabled = false
 

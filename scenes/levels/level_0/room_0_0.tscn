@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cqfohri388daj"]
+[gd_scene load_steps=8 format=4 uid="uid://cqfohri388daj"]
 
 [ext_resource type="PackedScene" uid="uid://dba8521dhd5ro" path="res://scenes/levels/room.tscn" id="1_bhqsv"]
 [ext_resource type="PackedScene" uid="uid://co87vsw0tevrl" path="res://scenes/items/key.tscn" id="2_dv1o0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwfp4uu7bds7i" path="res://scenes/guard/guard.tscn" id="3_byd21"]
 [ext_resource type="PackedScene" uid="uid://kfqi07twfc48" path="res://scenes/laser_turret/laser_turret.tscn" id="5_ce412"]
 [ext_resource type="PackedScene" uid="uid://kjrb8k6r0cfo" path="res://scenes/world_objects/control_point.tscn" id="6_cwuc0"]
+[ext_resource type="PackedScene" uid="uid://cj5mojsket7cm" path="res://scenes/world_objects/shock_bomb.tscn" id="7_584u8"]
 
 [node name="Room0_0" instance=ExtResource("1_bhqsv")]
 _dimensions = Vector2(320, 255)
@@ -46,9 +47,6 @@ _movable = true
 [node name="LaserTurretState" parent="LaserTurrets/LaserTurret3" index="9"]
 _initial_state = "LaserTurretBroken"
 
-[node name="LaserTurretPriming" parent="LaserTurrets/LaserTurret3/LaserTurretState" index="1"]
-_initial_state = ""
-
 [node name="LaserTurret4" parent="LaserTurrets" index="3" instance=ExtResource("5_ce412")]
 position = Vector2(186, 207)
 _start_rotation = 270
@@ -63,6 +61,9 @@ position = Vector2(285, 230)
 [node name="Guard" parent="." index="10" node_paths=PackedStringArray("_item") instance=ExtResource("3_byd21")]
 position = Vector2(82, 190)
 _item = NodePath("../Key")
+
+[node name="ShockBomb" parent="." index="11" instance=ExtResource("7_584u8")]
+position = Vector2(205, 191)
 
 [editable path="LaserTurrets/LaserTurret3"]
 [editable path="LaserTurrets/LaserTurret3/ForceFieldInteractable"]
