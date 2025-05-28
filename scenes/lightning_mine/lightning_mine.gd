@@ -14,6 +14,11 @@ func _trigger_on_body(body: Node2D) -> void:
 	_triggered = true
 	_sprite.frame_coords.x = 1 # switch to disabled sprite
 
+	# might not be the best place for this
+	if body is LaserTurret:
+		body.shock()
+
 func _on_salvage_interactable_interact() -> void:
+	# TODO: this stuff should be stored in a file
 	Fabricator.add_material("scrap", 2)
 	Fabricator.add_material("rubble", 1)

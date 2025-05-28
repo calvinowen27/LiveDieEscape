@@ -13,6 +13,8 @@ var _item_dropped: bool = false
 static var _next_id: int = 1
 @onready var _id: int = _next_id
 
+@onready var _state: LaserTurretState = $LaserTurretState
+
 func _ready() -> void:
 	# $ZOrdering.init($Sprite2D)
 	$RayCast2D/Laser.visible = false
@@ -31,28 +33,33 @@ func _ready() -> void:
 	laser_raycast.target_position = Vector2(-cos(rotation_rads) * 1000, -sin(rotation_rads) * 1000)
 	
 func disable_turret() -> void:
-	$LaserTurretState.disable_turret()
+	_state.disable_turret()
 
 	if not _item_dropped:
 		$ForceFieldInteractable.set_active(true)
 
 func enable_turret() -> void:
-	$LaserTurretState.enable_turret()
+	_state.enable_turret()
 	
 	$ForceFieldInteractable.set_active(false)
 
+func shock() -> void:
+	if _state.is_broken(): return
+
+	_state.shock()
+
 func toggle() -> void:
-	if $LaserTurretState.is_broken(): return
-	if $LaserTurretState.get_curr_state().name == "LaserTurretIdle":
-		$LaserTurretState.enable_turret()
+	if _state.is_broken(): return
+	if _state.get_curr_state().name == "LaserTurretIdle":
+		_state.enable_turret()
 	else:
-		$LaserTurretState.disable_turret()
+		_state.disable_turret()
 
 func die() -> void:
-	if $LaserTurretState.is_broken():
+	if _state.is_broken():
 		return
 	
-	$LaserTurretState.die()
+	_state.die()
 
 # security ID is learned
 func _on_id_interactable_interact() -> void:
@@ -75,6 +82,10 @@ func _on_scrap_interactable_interact() -> void:
 	Fabricator.add_material("scrap", 5)
 	Fabricator.add_material("antenna", 1)
 	$ScrapInteractable.set_active(false)
+
+func set_ID_accessible(val: bool) -> void:
+	if val != $IDInteractable.is_active():
+		$IDInteractable.set_active(val)
 
 func get_start_rotation() -> int:
 	return _start_rotation

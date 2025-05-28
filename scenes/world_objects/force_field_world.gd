@@ -5,9 +5,10 @@ class_name ForceField
 @export var _temporary: bool = true
 @export var _penetrable: bool = true
 
+@onready var _rigidbody: RigidBody2D = $RigidBody2D
+
 func _ready() -> void:
-	if _penetrable:
-		$RigidBody2D.set_collision_layer_value(1, false)
+	set_penetrable(_penetrable)
 
 func _on_timer_timeout() -> void:
 	if _temporary:
@@ -20,3 +21,10 @@ func _handle_projectile(body: Node2D) -> void:
 
 func _on_area_2d_body_entered(body:Node2D) -> void:
 	_handle_projectile(body)
+
+func set_penetrable(val: bool) -> void:
+	_penetrable = val
+	if _penetrable:
+		_rigidbody.set_collision_layer_value(1, false)
+	else:
+		_rigidbody.set_collision_layer_value(1, true)

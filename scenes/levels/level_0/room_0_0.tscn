@@ -46,6 +46,9 @@ _movable = true
 [node name="LaserTurretState" parent="LaserTurrets/LaserTurret3" index="9"]
 _initial_state = "LaserTurretBroken"
 
+[node name="LaserTurretPriming" parent="LaserTurrets/LaserTurret3/LaserTurretState" index="1"]
+_initial_state = ""
+
 [node name="LaserTurret4" parent="LaserTurrets" index="3" instance=ExtResource("5_ce412")]
 position = Vector2(186, 207)
 _start_rotation = 270
