@@ -20,7 +20,16 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_turret.set_ID_accessible(true)
 	_turret.get_force_field().set_penetrable(true)
 
+	laser_sprite.visible = false
+	laser_raycast.enabled = false
+	
+	_laser_raycast.get_node("Spark").visible = false
+	_laser_raycast.get_node("SparkEnd").visible = false
+
 	$ShockTimer.start()
+
+	# TODO: no
+	turret.add_child(load("res://scenes/lightning_mine/lightning.tscn").instantiate())
 
 func _on_shock_timer_timeout() -> void:
 	_done = true
