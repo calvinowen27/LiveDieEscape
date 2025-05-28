@@ -300,6 +300,7 @@ libraries = {
 
 [node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
 position = Vector2(0, -9)
+scale = Vector2(0.65, 0.65)
 _temporary = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
