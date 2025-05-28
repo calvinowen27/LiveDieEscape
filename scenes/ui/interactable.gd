@@ -10,6 +10,7 @@ var _interactable = false
 var _interacting = false
 
 @export var _one_time: bool = false
+var _one_time_done: bool = false
 
 @export var _interact_timer: Timer
 @export var _progress_bar: TextureProgressBar
@@ -81,6 +82,9 @@ func is_active() -> bool:
 	return _is_active
 
 func set_active(val: bool) -> void:
+	if _one_time_done:
+		return
+
 	_is_active = val
 
 	if not val:
@@ -94,13 +98,16 @@ func _on_interact_timer_timeout() -> void:
 	_interact()
 
 func _interact() -> void:
+	if _one_time_done:
+		return
+	
 	set_active(false)
 	interact.emit()
 	_interacting = false
 	_progress_bar.value = 0
 	
 	if _one_time:
-		self.queue_free()
+		_one_time_done = true
 
 func _on_room_change(_level_idx: int, _room_idx: int) -> void:
 	_set_interactable(false)

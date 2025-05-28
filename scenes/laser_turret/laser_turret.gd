@@ -36,15 +36,8 @@ func _ready() -> void:
 func disable_turret() -> void:
 	_state.disable_turret()
 
-	if not _item_dropped:
-		# $ForceFieldInteractable.set_active(true)
-		set_force_field_accessible(true)
-
 func enable_turret() -> void:
 	_state.enable_turret()
-	
-	# $ForceFieldInteractable.set_active(false)
-	set_force_field_accessible(false)
 
 func shock() -> void:
 	if _state.is_broken(): return
@@ -103,9 +96,9 @@ func set_force_field_accessible(val: bool) -> void:
 		force_field_interactable.set_active(val)
 
 func set_force_field_penetrable(val: bool) -> void:
-	var force_field = $ForceFieldWorld
-	if force_field != null and force_field.is_penetrable() != val:
-		force_field.set_penetrable(val)
+	# var force_field = $ForceFieldWorld
+	if _force_field != null and _force_field.is_penetrable() != val:
+		_force_field.set_penetrable(val)
 
 func get_start_rotation() -> int:
 	return _start_rotation
