@@ -50,10 +50,13 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 
 	animation_player.speed_scale = 1
 
-# activate turret when finished priming
+# state transitions from animation endings
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	# priming --> activated
 	if anim_name == "laser_turret_priming" and _curr_state.name == "LaserTurretPriming":
 		_set_curr_state("LaserTurretActivated")
+
+	# breaking --> broken
 	elif anim_name == "laser_turret_breaking":
 		_set_curr_state("LaserTurretBroken")
 
@@ -65,17 +68,6 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 		get_parent().disable_turret()
 		get_parent().enable_turret()
 
-func start_reboot() -> void:
-	if is_broken(): return
-
-	_set_curr_state("LaserTurretRebooting")
-
-func end_reboot() -> void:
-	if is_broken(): return
-	
-	if _curr_state.name == "LaserTurretRebooting":
-		_set_curr_state("LaserTurretPriming")
-	
 func disable_turret() -> void:
 	if is_broken(): return
 

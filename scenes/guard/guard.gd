@@ -17,6 +17,7 @@ var _queue_teleport = Vector2.ZERO
 func _ready() -> void:
 	EventBus.item_pickup.connect(_on_item_pickup)
 
+# queue teleport teleports the guard when it's safe (due to rigidbody constraints)
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if _queue_teleport != Vector2.ZERO:
 		state.transform = Transform2D(0.0, _queue_teleport)

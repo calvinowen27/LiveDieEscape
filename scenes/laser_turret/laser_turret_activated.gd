@@ -40,12 +40,12 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_turret.set_ID_accessible(false)
 	_turret.set_force_field_penetrable(false)
 
-	laser_sprite.visible = true
-	laser_raycast.enabled = true
-	laser_raycast.get_node("Spark").visible = true
-	laser_raycast.get_node("SparkEnd").visible = true
+	_laser_sprite.visible = true
+	_laser_raycast.enabled = true
+	_laser_raycast.get_node("Spark").visible = true
+	_laser_raycast.get_node("SparkEnd").visible = true
 
-	turret.get_node("LaserSfx2D").play()
+	_turret.get_node("LaserSfx2D").play()
 
 	if _turret.is_rotating():
 		# has to be after super cuz it gets set to 1 there

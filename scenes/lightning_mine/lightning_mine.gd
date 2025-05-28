@@ -4,15 +4,18 @@ var _triggered: bool = false
 @onready var _sprite: Sprite2D = $Sprite2D
 
 func _on_body_entered(body: Node2D) -> void:
+	# one time trigger
 	if _triggered: return
 	
+	# only shock player or laser turrets (can change later)
 	if body == RoomManager.get_player() or body is LaserTurret:
 		_trigger_on_body(body)
 
 func _trigger_on_body(body: Node2D) -> void:
-	if not body.has_node("Shockable"):
-		return
+	# check if body can be shocked
+	if not body.has_node("Shockable"): return
 
+	# shock the body
 	body.get_node("Shockable").shock()
 
 	_triggered = true

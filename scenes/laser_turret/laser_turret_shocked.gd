@@ -9,6 +9,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func update(_delta: float) -> String:
+	# once shock timer is over, switch back to activated state
 	if _done:
 		return "LaserTurretActivated"
 	
@@ -27,9 +28,10 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	_laser_raycast.get_node("SparkEnd").visible = false
 
 	# TODO: i still don't like this
-	var lightning = _turret.get_node("Schockable").shock()
+	var lightning = _turret.get_node("Shockable").shock()
 	# especially this:
 	lightning.get_node("LightningState/LightningBuzz/AliveTimer").timeout.connect(_on_shock_timer_timeout)
 
+# once shock timer is over, switch back to activated state
 func _on_shock_timer_timeout() -> void:
 	_done = true

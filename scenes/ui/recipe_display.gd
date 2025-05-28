@@ -17,8 +17,6 @@ func init_recipe_cells() -> void:
 	# initialize recipe cell names and textures
 	var idx = 0
 	for result_name in recipes.keys():
-		# print("init recipe ", result_name)
-
 		var cell = _recipe_cells[idx]
 		cell.result_name = result_name
 		cell.texture = Recipes.get_recipe_result_texture(result_name)
@@ -35,6 +33,7 @@ func init_recipe_cells() -> void:
 			cell.hide()
 
 func _process(_delta: float) -> void:
+	# selected recipe changes when action pressed (scroll up/down)
 	if Input.is_action_just_pressed("change_recipe_up"):
 		var new_recipe_idx = (_selected_recipe_idx + 1) % _recipe_count
 		var new_recipe = _recipe_cells[new_recipe_idx] as RecipeCell
