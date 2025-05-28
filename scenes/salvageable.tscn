@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnu0w00oruxsx"]
+
+[ext_resource type="Script" path="res://scenes/salvageable.gd" id="1_cdb4y"]
+[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="1_iefst"]
+
+[node name="Salvageable" type="Node2D"]
+script = ExtResource("1_cdb4y")
+
+[node name="Interactable" parent="." instance=ExtResource("1_iefst")]
+_hold_to_interact = true
+_one_time = true
+
+[connection signal="interact" from="Interactable" to="." method="_on_interactable_interact"]

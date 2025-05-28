@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsd15uocf3nk3"]
+[gd_scene load_steps=5 format=3 uid="uid://bsd15uocf3nk3"]
 
 [ext_resource type="Texture2D" uid="uid://yuu4awo3bpbf" path="res://resources/art/lightning_mine.png" id="1_bafst"]
 [ext_resource type="Script" path="res://scenes/lightning_mine/lightning_mine.gd" id="1_no2fe"]
-[ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="3_cn6g7"]
+[ext_resource type="PackedScene" uid="uid://bnu0w00oruxsx" path="res://scenes/salvageable.tscn" id="3_c36e5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpf1e"]
 size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjnjl"]
-size = Vector2(107, 106.667)
 
 [node name="LightningMine" type="Area2D"]
 z_index = -1
@@ -16,25 +13,20 @@ collision_layer = 0
 script = ExtResource("1_no2fe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_wpf1e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bafst")
-offset = Vector2(0, 8)
+offset = Vector2(0, -8)
 hframes = 2
 
-[node name="SalvageInteractable" parent="." instance=ExtResource("3_cn6g7")]
-_hold_to_interact = true
-
-[node name="Label" parent="SalvageInteractable/InteractLabel" index="2"]
-text = "Salvage"
-
-[node name="CollisionShape2D" parent="SalvageInteractable/InteractArea" index="0"]
-position = Vector2(-0.166675, 53.3333)
-shape = SubResource("RectangleShape2D_hjnjl")
+[node name="Salvageable" parent="." node_paths=PackedStringArray("_base_area_collider") instance=ExtResource("3_c36e5")]
+_materials = {
+"capacitor": 1,
+"rubble": 1,
+"scrap": 2
+}
+_base_area_collider = NodePath("../CollisionShape2D")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="interact" from="SalvageInteractable" to="." method="_on_salvage_interactable_interact"]
-
-[editable path="SalvageInteractable"]

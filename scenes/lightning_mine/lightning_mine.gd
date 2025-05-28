@@ -24,6 +24,9 @@ func _trigger_on_body(body: Node2D) -> void:
 	# might not be the best place for this
 	if body is LaserTurret:
 		body.shock()
+	
+	# enable salvage
+	$Salvageable.set_active(true)
 
 func _on_salvage_interactable_interact() -> void:
 	# TODO: this stuff should be stored in a file
