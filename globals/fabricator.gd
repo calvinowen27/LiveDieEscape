@@ -2,7 +2,7 @@ extends Node
 
 var _materials: Dictionary
 
-var known_recipes: Array = ["Wall", "Disruptor", "Shock Bomb"]
+var _known_recipes: Array[String] = ["Wall", "Disruptor"]
 
 var fab_range: int = 20 # idk this can change
 
@@ -127,12 +127,18 @@ func get_mat_count(mat_name: String) -> int:
 
 # add recipe name to known _recipes if not already learned
 func learn_recipe(result_name: String) -> void:
-	known_recipes.append(result_name)
+	_known_recipes.append(result_name)
 
 	for recipe in ui_recipes:
 		print(recipe.result_name)
 		if recipe.result_name == result_name:
 			recipe.show()
+
+func knows_recipe(result_name: String) -> bool:
+	return result_name in _known_recipes
+
+func get_known_recipes() -> Array[String]:
+	return _known_recipes
 
 func _on_recipe_select(recipe: RecipeCell) -> void:
 	# set curr recipe and whether fabricate template snaps to grid

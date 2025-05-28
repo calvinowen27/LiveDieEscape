@@ -17,5 +17,5 @@ func get_body() -> Node2D:
 	return _body
 
 func on_player() -> bool:
-	return _body == RoomManager.get_player()
+	return _body is Player
 

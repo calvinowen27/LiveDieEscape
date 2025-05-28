@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ji33csiycpw"]
+
+[ext_resource type="Script" path="res://scenes/shockable.gd" id="1_yshhg"]
+[ext_resource type="PackedScene" uid="uid://c56iqshopjhc4" path="res://scenes/lightning_mine/lightning.tscn" id="2_2b8ao"]
+
+[node name="Shockable" type="Node"]
+script = ExtResource("1_yshhg")
+_lightning_scene = ExtResource("2_2b8ao")

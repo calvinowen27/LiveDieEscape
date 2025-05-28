@@ -10,10 +10,11 @@ func _on_body_entered(body: Node2D) -> void:
 		_trigger_on_body(body)
 
 func _trigger_on_body(body: Node2D) -> void:
-	var lightning = load("res://scenes/lightning_mine/lightning.tscn").instantiate()
-	body.add_child(lightning)
-	lightning.init(body)
-	
+	if not body.has_node("Shockable"):
+		return
+
+	body.get_node("Shockable").shock()
+
 	_triggered = true
 	_sprite.frame_coords.x = 1 # switch to disabled sprite
 

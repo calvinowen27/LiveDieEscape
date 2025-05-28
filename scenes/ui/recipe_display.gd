@@ -31,7 +31,7 @@ func init_recipe_cells() -> void:
 	
 	# hide uninitialized or unknown cells
 	for cell in _recipe_cells:
-		if cell.result_name == null or cell.result_name not in Fabricator.known_recipes:
+		if cell.result_name == null or not Fabricator.knows_recipe(cell.result_name):
 			cell.hide()
 
 func _process(_delta: float) -> void:

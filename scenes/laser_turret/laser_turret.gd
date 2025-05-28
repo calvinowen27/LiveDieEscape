@@ -68,7 +68,8 @@ func _on_force_field_interactable_interact() -> void:
 
 	_item_dropped = true
 
-	RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
+	# RoomManager.instantiate_item("force_field_emitter", position + Vector2(0, 60))
+	Fabricator.add_material("force_field_emitter", 1)
 
 	Fabricator.learn_recipe("Force Field Emitter")
 	# _force_field_interactable.set_active(false)
