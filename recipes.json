@@ -27,7 +27,8 @@
 	"Shock Bomb": {
         "recipe": {
             "scrap": 2,
-			"antenna": 1
+			"antenna": 1,
+            "capacitor": 1
         },
         "snap-to-grid": false,
         "object-name": "shock_bomb",
