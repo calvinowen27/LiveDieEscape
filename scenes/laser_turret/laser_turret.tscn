@@ -303,7 +303,6 @@ libraries = {
 position = Vector2(0, -8.1)
 scale = Vector2(0.65, 0.65)
 _temporary = false
-_penetrable = false
 
 [node name="ForceFieldInteractable" parent="." instance=ExtResource("11_emy65")]
 _hold_to_interact = null
@@ -389,15 +388,15 @@ script = ExtResource("12_64v7l")
 [node name="LaserTurretBroken" type="Node" parent="LaserTurretState"]
 script = ExtResource("13_e2fu3")
 
+[node name="LaserTurretDisabled" type="Node" parent="LaserTurretState"]
+script = ExtResource("15_48nyh")
+
 [node name="LaserTurretShocked" type="Node" parent="LaserTurretState"]
 script = ExtResource("15_fb24r")
 
 [node name="ShockTimer" type="Timer" parent="LaserTurretState/LaserTurretShocked"]
 wait_time = 4.0
 one_shot = true
-
-[node name="LaserTurretDisabled" type="Node" parent="LaserTurretState"]
-script = ExtResource("15_48nyh")
 
 [node name="LaserSfx2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_fnox4")
