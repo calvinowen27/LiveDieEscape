@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfcn3onsdwndo"]
+
+[ext_resource type="Script" path="res://scenes/ui/material_display.gd" id="1_6j32a"]
+[ext_resource type="PackedScene" uid="uid://csku3tqcwkiq" path="res://scenes/ui/recipe_material.tscn" id="2_miqjq"]
+
+[node name="MaterialDisplay" type="GridContainer"]
+offset_right = 158.0
+offset_bottom = 132.0
+scale = Vector2(1.25, 1.25)
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 48
+columns = 2
+script = ExtResource("1_6j32a")
+
+[node name="RecipeMaterial" parent="." instance=ExtResource("2_miqjq")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeMaterial2" parent="." instance=ExtResource("2_miqjq")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeMaterial3" parent="." instance=ExtResource("2_miqjq")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeMaterial4" parent="." instance=ExtResource("2_miqjq")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeMaterial5" parent="." instance=ExtResource("2_miqjq")]
+visible = false
+layout_mode = 2
+
+[node name="RecipeMaterial6" parent="." instance=ExtResource("2_miqjq")]
+visible = false
+layout_mode = 2

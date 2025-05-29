@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dn61cof1tymen" path="res://scenes/ui/map_ui.tscn" id="4_6dcsy"]
 [ext_resource type="Script" path="res://scenes/ui/dead_panel.gd" id="6_pvhjm"]
 [ext_resource type="PackedScene" uid="uid://b1rymmt6a7bom" path="res://scenes/ui/recipe_display.tscn" id="7_tgksy"]
-[ext_resource type="PackedScene" uid="uid://cfcn3onsdwndo" path="res://scenes/ui/materials.tscn" id="8_dniww"]
+[ext_resource type="PackedScene" uid="uid://cfcn3onsdwndo" path="res://scenes/ui/material_display.tscn" id="8_dniww"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kacm3"]
 bg_color = Color(0, 0, 0, 1)
@@ -100,7 +100,8 @@ offset_top = 760.0
 offset_right = 636.0
 offset_bottom = 1042.0
 
-[node name="Materials" parent="." instance=ExtResource("8_dniww")]
+[node name="MaterialDisplay" parent="." instance=ExtResource("8_dniww")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 642.0
 offset_top = 761.0

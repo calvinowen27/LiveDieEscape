@@ -1,7 +1,14 @@
 extends Control
 
+class_name HUD
+
+@onready var _material_display: Control = %MaterialDisplay
+
 func _process(_delta: float) -> void:
 	update()
+
+func init() -> void:
+	_material_display.init()
 
 # update all nodes in HUD
 func update() -> void:

@@ -58,5 +58,4 @@ position = Vector2(82, 190)
 _item = NodePath("../Key")
 
 [editable path="LaserTurrets/LaserTurret3"]
-[editable path="LaserTurrets/LaserTurret3/ForceFieldInteractable"]
 [editable path="LaserTurrets/LaserTurret3/IDInteractable"]

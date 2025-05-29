@@ -1,7 +1,10 @@
 extends Node
 
-@onready var _hud: Control = %HUD
+@onready var _hud: HUD = %HUD
 @onready var _fab_mat_manager: FabricateMaterialManager = %FabricateMaterialManager
+
+func init() -> void:
+	_hud.init()
 
 func get_HUD() -> Control:
 	return _hud

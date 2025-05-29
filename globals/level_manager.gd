@@ -1,5 +1,7 @@
 extends Node
 
+const LEVEL_FILE_PATH: String = "res://levels.json"
+
 var _level_info = {}
 
 var _curr_level: int
@@ -18,8 +20,9 @@ func load_level(level: int):
 	
 	_curr_level = level
 
+# load level file into _level_info dictionary
 func load_level_file(level: int):
-	var file = FileAccess.open("res://levels.json", FileAccess.READ)
+	var file = FileAccess.open(LEVEL_FILE_PATH, FileAccess.READ)
 	var content = file.get_as_text()
 
 	var json = JSON.new()

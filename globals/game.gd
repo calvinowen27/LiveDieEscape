@@ -29,6 +29,8 @@ func _on_game_start() -> void:
 		# switch scene to main
 		SceneManager.switch_scene_to("main")
 		_main = get_tree().root.get_node("Main")
+		_main.init()
+
 		_is_game_running = true
 		EventBus.level_reset.emit(RoomManager.get_curr_level())
 		RoomManager.set_curr_room(0, 0, -1)
