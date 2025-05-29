@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwqiyol6kfj14"]
 
-[ext_resource type="Script" path="res://scenes/world_objects/force_field_world.gd" id="1_3butm"]
-[ext_resource type="Texture2D" uid="uid://d0ap21dfgwhvq" path="res://resources/art/force_field.png" id="1_3nrmy"]
+[ext_resource type="Script" path="res://scenes/world_objects/force_field.gd" id="1_u4ex6"]
+[ext_resource type="Texture2D" uid="uid://d0ap21dfgwhvq" path="res://resources/art/force_field.png" id="2_jvvmr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6jjv"]
 radius = 16.0312
 
-[node name="ForceFieldWorld" type="Node2D"]
-script = ExtResource("1_3butm")
+[node name="ForceField" type="Node2D"]
+script = ExtResource("1_u4ex6")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 15
@@ -30,7 +30,7 @@ collision_mask = 15
 shape = SubResource("CircleShape2D_g6jjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3nrmy")
+texture = ExtResource("2_jvvmr")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0

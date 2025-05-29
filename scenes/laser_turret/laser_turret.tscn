@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_state.gd" id="8_4ubsm"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_idle.gd" id="9_6nrb1"]
 [ext_resource type="Texture2D" uid="uid://doxgdovkblqq3" path="res://resources/art/laser_turret3.png" id="9_ugmcm"]
-[ext_resource type="PackedScene" uid="uid://dwqiyol6kfj14" path="res://scenes/world_objects/force_field_world.tscn" id="10_1s3u2"]
+[ext_resource type="PackedScene" uid="uid://dwqiyol6kfj14" path="res://scenes/world_objects/force_field.tscn" id="10_1s3u2"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_priming.gd" id="10_23qgv"]
 [ext_resource type="PackedScene" uid="uid://dsv72jbnb84xt" path="res://scenes/ui/interactable.tscn" id="11_emy65"]
 [ext_resource type="Script" path="res://scenes/laser_turret/laser_turret_activated.gd" id="11_v6txi"]
@@ -294,7 +294,7 @@ libraries = {
 "": SubResource("AnimationLibrary_sa0ud")
 }
 
-[node name="ForceFieldWorld" parent="." instance=ExtResource("10_1s3u2")]
+[node name="ForceField" parent="." instance=ExtResource("10_1s3u2")]
 position = Vector2(0, -8.1)
 scale = Vector2(0.65, 0.65)
 _temporary = false

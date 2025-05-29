@@ -13,7 +13,7 @@ static var _next_id: int = 1
 @onready var _id: int = _next_id
 
 @onready var _state: LaserTurretState = $LaserTurretState
-@onready var _force_field: ForceField = $ForceFieldWorld
+@onready var _force_field: ForceField = $ForceField
 
 func _ready() -> void:
 	_next_id += 1
@@ -107,11 +107,11 @@ func get_id() -> int:
 
 func try_destroy_force_field() -> void:
 	# destroy force field
-	if has_node("ForceFieldWorld"):
-		var ff = $ForceFieldWorld
+	if has_node("ForceField"):
+		var ff = $ForceField
 		remove_child.bind(ff).call_deferred()
 		ff.queue_free.call_deferred()
 
 func get_force_field() -> ForceField:
-	if not has_node("ForceFieldWorld"): return null
-	return $ForceFieldWorld
+	if not has_node("ForceField"): return null
+	return $ForceField

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://u6kgsfv5enfh"]
 
-[ext_resource type="Script" path="res://scenes/world_objects/disruptor_world.gd" id="1_vwjsd"]
-[ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="1_wbj4d"]
+[ext_resource type="Script" path="res://scenes/world_objects/disruptor.gd" id="1_mqt17"]
+[ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="2_h14hk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngpep"]
 radius = 3.0
@@ -10,19 +10,19 @@ height = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ki3cp"]
 radius = 76.0066
 
-[node name="DisruptorWorld" type="RigidBody2D" groups=["Disruptors"]]
+[node name="Disruptor" type="RigidBody2D" groups=["Disruptors"]]
 y_sort_enabled = true
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
-script = ExtResource("1_vwjsd")
+script = ExtResource("1_mqt17")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ngpep")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_wbj4d")
+texture = ExtResource("2_h14hk")
 offset = Vector2(0, -5)
 
 [node name="DetectionArea" type="Area2D" parent="."]
