@@ -48,3 +48,6 @@ func get_HUD() -> Control:
 
 func get_camera() -> Camera2D:
 	return _main.get_camera()
+
+func get_fabricate_material_manager() -> FabricateMaterialManager:
+	return _main.get_fabricate_material_manager()

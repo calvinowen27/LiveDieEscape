@@ -65,6 +65,8 @@ func add_material(mat_name: String, quantity: int) -> int:
 
 	fab_temp.update()
 
+	Game.get_fabricate_material_manager().spawn_material_get(mat_name, quantity)
+
 	return _materials[mat_name]
 
 func try_create_object(result_name: String, location: Vector2) -> bool:

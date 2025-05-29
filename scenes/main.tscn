@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dviw650xtb18v"]
+[gd_scene load_steps=6 format=3 uid="uid://dviw650xtb18v"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_khhrq"]
 [ext_resource type="PackedScene" uid="uid://b3m15d5m7d5rl" path="res://scenes/ui/hud.tscn" id="2_b7633"]
 [ext_resource type="PackedScene" uid="uid://bicclg6frtano" path="res://scenes/ui/text_box.tscn" id="3_4pxxy"]
 [ext_resource type="PackedScene" uid="uid://c22i7cl5i4ebq" path="res://scenes/ui/pause_menu.tscn" id="4_j1i6a"]
+[ext_resource type="PackedScene" uid="uid://dn4qptankjib8" path="res://scenes/fabricate_material_manager.tscn" id="5_1t1rq"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_khhrq")
@@ -43,3 +44,6 @@ grow_vertical = 2
 unique_name_in_owner = true
 offset_left = 1080.0
 offset_right = 1920.0
+
+[node name="FabricateMaterialManager" parent="." instance=ExtResource("5_1t1rq")]
+unique_name_in_owner = true

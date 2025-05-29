@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://dn4qptankjib8"]
+
+[ext_resource type="Script" path="res://scenes/fabricate_material.gd" id="1_f0ccf"]
+[ext_resource type="Script" path="res://scenes/fabricate_material_manager.gd" id="1_t5u6g"]
+[ext_resource type="Texture2D" uid="uid://jtur1rwu0vfm" path="res://resources/art/rubble.png" id="2_8p1vf"]
+[ext_resource type="PackedScene" uid="uid://c4av2v5uvqgia" path="res://scenes/material_get.tscn" id="2_lv4jk"]
+[ext_resource type="Texture2D" uid="uid://bm37k6wvgh6oo" path="res://resources/art/scrap.png" id="5_yipu7"]
+[ext_resource type="Texture2D" uid="uid://cdr3q4c1rm2ik" path="res://resources/art/capacitor.png" id="6_5mala"]
+[ext_resource type="Texture2D" uid="uid://bej8nd2oo3nxr" path="res://resources/art/force_field_emitter.png" id="7_b7him"]
+[ext_resource type="Texture2D" uid="uid://ccfpvpjj463tm" path="res://resources/art/antenna.png" id="8_g5bci"]
+
+[node name="FabricateMaterialManager" type="Node"]
+script = ExtResource("1_t5u6g")
+_material_get_scene = ExtResource("2_lv4jk")
+_material_get_spawn_offset = Vector2(10, -5)
+
+[node name="Rubble" type="Node" parent="."]
+script = ExtResource("1_f0ccf")
+_texture = ExtResource("2_8p1vf")
+_name = "rubble"
+
+[node name="Scrap" type="Node" parent="."]
+script = ExtResource("1_f0ccf")
+_texture = ExtResource("5_yipu7")
+_name = "scrap"
+
+[node name="Capacitor" type="Node" parent="."]
+script = ExtResource("1_f0ccf")
+_texture = ExtResource("6_5mala")
+_name = "capacitor"
+
+[node name="ForceFieldEmitter" type="Node" parent="."]
+script = ExtResource("1_f0ccf")
+_texture = ExtResource("7_b7him")
+_name = "force_field_emitter"
+
+[node name="Antenna" type="Node" parent="."]
+script = ExtResource("1_f0ccf")
+_texture = ExtResource("8_g5bci")
+_name = "antenna"
