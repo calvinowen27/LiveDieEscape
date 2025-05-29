@@ -8,15 +8,16 @@ func init(fab_material: FabricateMaterial, quantity: int, start_pos: Vector2 = V
 	_fab_material = fab_material
 
 	$MaterialParticle.texture = _fab_material.get_texture()
-	$QuantityParticle.texture.region = Rect2i(quantity * 16, 0, 16, 16) # each digit is 16x16 in spritesheet
+	$QuantityParticle.texture.region = Rect2(quantity * 16, 0, 16, 16) # each digit is 16x16 in spritesheet
 
 	position = start_pos
-	
+
 	visible = false
 
 func start() -> void:
 	$MaterialParticle.emitting = true
 	$QuantityParticle.emitting = true
+
 	visible = true
 
 # kill on end
