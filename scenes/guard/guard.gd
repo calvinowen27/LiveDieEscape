@@ -14,6 +14,8 @@ var _queue_teleport = Vector2.ZERO
 @onready var _level_idx: int = RoomManager.get_curr_level()
 @onready var _room_idx: int = RoomManager.get_curr_room_idx()
 
+@onready var _state: GuardState = $GuardState
+
 func _ready() -> void:
 	EventBus.item_pickup.connect(_on_item_pickup)
 
@@ -55,6 +57,9 @@ func _on_guard_area_area_entered(area: Area2D) -> void:
 func _on_guard_area_area_exited(area: Area2D) -> void:
 	if area == _item:
 		_item_in_range = false
+
+func _on_disruptable_disruption(disruptor:Disruptor) -> void:
+	_state.disrupt(disruptor)
 
 func player_in_range() -> bool:
 	return _player_in_range

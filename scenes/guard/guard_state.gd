@@ -40,6 +40,11 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 
 	super.enable()
 
+func disrupt(disruptor: Disruptor) -> void:
+	var new_state = get_node("GuardDisrupted")
+	new_state.init(disruptor)
+	_set_curr_state("GuardDisrupted")
+
 func move() -> void:
 	# move
 	_move_dir = (_target_pos - _rigidbody.global_position).normalized()
@@ -75,14 +80,3 @@ func move() -> void:
 	else:
 		_animation_player.play("guard_idle")
 		_rigidbody.get_node("WalkSfx2D").stop()
-
-# search for available disruptor to be disrupted by
-func _disruptor_found() -> bool:
-	var disruptors = get_tree().get_nodes_in_group("Disruptors")
-	for disruptor in disruptors:
-		if not disruptor.in_use():
-			disruptor.use()
-			get_node("../GuardDisrupted").init(disruptor)
-			return true
-	
-	return false

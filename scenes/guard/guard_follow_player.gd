@@ -12,9 +12,6 @@ func _ready() -> void:
 	EventBus.change_room.connect(_on_room_change)
 
 func update(_delta: float) -> String:
-	if _disruptor_found():
-		return "GuardDisrupted"
-	
 	# return to item if the player is far enough away or item is out of range
 	if not _rigidbody.item_picked_up() and (not _rigidbody.player_in_range()  or not _rigidbody.item_in_range()):
 		return "GuardReturn"

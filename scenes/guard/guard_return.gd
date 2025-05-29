@@ -9,10 +9,6 @@ func _ready() -> void:
 	pass
 
 func update(_delta: float) -> String:
-	# check for disruption
-	if _disruptor_found():
-		return "GuardDisrupted"
-	
 	if _rigidbody.item_picked_up():
 		return "GuardFollowPlayer"
 

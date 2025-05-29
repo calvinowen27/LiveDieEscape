@@ -21,7 +21,7 @@ func guard_state_enable(rigidbody: RigidBody2D, animation_player: AnimationPlaye
 	super.guard_state_enable(rigidbody, animation_player)
 
 func _on_guard_body_entered(body: Node) -> void:
-	if body == _disruptor:
-		body.queue_free()
+	if body is Disruptor:
+		body.die()
 		_disruptor = null
 		

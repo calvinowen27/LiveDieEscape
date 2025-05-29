@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bwfp4uu7bds7i"]
+[gd_scene load_steps=17 format=3 uid="uid://bwfp4uu7bds7i"]
 
 [ext_resource type="Texture2D" uid="uid://dsn77dja8lky4" path="res://resources/art/guard.png" id="1_45w1c"]
 [ext_resource type="Script" path="res://scenes/guard/guard.gd" id="1_t1dok"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/guard/guard_follow_player.gd" id="5_sj0gv"]
 [ext_resource type="Script" path="res://scenes/guard/guard_disrupted.gd" id="6_072c0"]
 [ext_resource type="Script" path="res://scenes/guard/guard_return.gd" id="7_hwn3v"]
+[ext_resource type="PackedScene" uid="uid://odt1p78l1jly" path="res://scenes/disruptable.tscn" id="8_hoqbs"]
 [ext_resource type="AudioStream" uid="uid://biyeia31cwdp7" path="res://resources/guard_walk.ogg" id="8_iqoru"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1mse"]
@@ -195,6 +196,8 @@ _move_speed = 2
 _target_stop_range = 6
 _base_acceleration = 6.0
 
+[node name="Disruptable" parent="." instance=ExtResource("8_hoqbs")]
+
 [node name="WalkSfx2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_iqoru")
 max_distance = 250.0
@@ -205,3 +208,4 @@ max_distance = 250.0
 [connection signal="area_exited" from="GuardArea" to="." method="_on_guard_area_area_exited"]
 [connection signal="body_entered" from="GuardArea" to="." method="_on_guard_area_body_entered"]
 [connection signal="body_exited" from="GuardArea" to="." method="_on_guard_area_body_exited"]
+[connection signal="disruption" from="Disruptable" to="." method="_on_disruptable_disruption"]

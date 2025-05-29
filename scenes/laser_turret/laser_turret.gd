@@ -27,6 +27,9 @@ func _ready() -> void:
 	$RayCast2D/Spark.global_position = laser_raycast.global_position
 	laser_raycast.target_position = Vector2(-cos(rotation_rads) * _laser_raycast_length, -sin(rotation_rads) * _laser_raycast_length)
 
+	# initial force field penetrable set
+	set_force_field_penetrable(false)
+
 ## wrappers for state changing
 func disable_turret() -> void:
 	_state.disable_turret()
@@ -62,6 +65,12 @@ func _on_force_field_salvage_interact() -> void:
 
 	set_force_field_accessible(false)
 
+func _on_disruptable_disruption(_disruptor: Disruptor) -> void:
+	_state.disrupt()
+
+func _on_disruptable_end_disruption(_disruptor: Disruptor) -> void:
+	_state.enable_turret()
+
 ## set accessibility of interactables
 func set_scrap_accessible(val: bool) -> void:
 	$ScrapSalvage.set_active(val)
@@ -78,6 +87,11 @@ func set_force_field_accessible(val: bool) -> void:
 func set_force_field_penetrable(val: bool) -> void:
 	if _force_field != null and _force_field.is_penetrable() != val:
 		_force_field.set_penetrable(val)
+	
+		if val:
+			remove_collision_exception_with(_force_field.get_node("RigidBody2D"))
+		else:
+			add_collision_exception_with(_force_field.get_node("RigidBody2D"))
 
 func get_start_rotation() -> int:
 	return _start_rotation

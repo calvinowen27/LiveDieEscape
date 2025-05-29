@@ -19,13 +19,16 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 	super.laser_turret_state_enable(turret, animation_player, laser_sprite, laser_raycast)
 	
 	_turret.set_ID_accessible(true)
-	_turret.set_force_field_penetrable(true)
+	_turret.try_destroy_force_field()
 
-	laser_sprite.visible = false
-	laser_raycast.enabled = false
+	_laser_sprite.visible = false
+	_laser_raycast.enabled = false
 	
 	_laser_raycast.get_node("Spark").visible = false
 	_laser_raycast.get_node("SparkEnd").visible = false
+
+	if _turret.is_movable():
+		_turret.set_deferred("freeze", false)
 
 	# TODO: i still don't like this
 	var lightning = _turret.get_node("Shockable").shock()

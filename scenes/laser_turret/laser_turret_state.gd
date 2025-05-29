@@ -44,7 +44,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 		turret.get_node("LaserSfx2D").stop()
 
 	#_turret.freeze = true
-	_turret.set_deferred("freeze", true)
+	# _turret.set_deferred("freeze", true)
 	
 	super.enable()
 
@@ -82,6 +82,11 @@ func shock() -> void:
 	if is_broken(): return
 
 	_set_curr_state("LaserTurretShocked")
+
+func disrupt() -> void:
+	if is_broken(): return
+
+	_set_curr_state("LaserTurretDisrupted")
 
 func die() -> void:
 	if is_broken(): return
