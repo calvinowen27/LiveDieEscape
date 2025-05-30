@@ -179,7 +179,7 @@ script = ExtResource("4_76xm2")
 
 [node name="GuardFollowPlayer" type="Node" parent="GuardState"]
 script = ExtResource("5_sj0gv")
-_move_speed = 2
+_move_speed = 3
 _target_stop_range = 6
 _base_acceleration = 6.0
 

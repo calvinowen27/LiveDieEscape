@@ -13,7 +13,7 @@
             "antenna": 1
         },
         "snap-to-grid": false,
-        "object-name": "disruptor_world",
+        "object-name": "disruptor",
         "result-texture": "res://resources/art/disruptor.png"
     },
     "Force Field Emitter": {
@@ -21,7 +21,7 @@
             "force_field_emitter": 1
         },
         "snap-to-grid": false,
-        "object-name": "force_field_world",
+        "object-name": "force_field",
         "result-texture": "res://resources/art/force_field_emitter_item.png"
     },
 	"Shock Bomb": {

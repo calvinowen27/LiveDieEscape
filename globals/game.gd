@@ -9,6 +9,7 @@ var _main: Node
 func restart_game() -> void:
 	SceneManager.switch_scene_to("ui/title_screen")
 	_is_game_running = false
+	Fabricator.clear_materials()
 
 # returns new state of game pause
 func toggle_game_paused() -> bool:

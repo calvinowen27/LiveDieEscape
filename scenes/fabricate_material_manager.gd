@@ -52,5 +52,12 @@ func get_fabricate_material(mat_name: String) -> FabricateMaterial:
 	print("fabricate_materials(): material %s doesn't exist" % mat_name)
 	return null
 
+func get_fabricate_material_texture(mat_name: String) -> Texture2D:
+	var fab_mat = get_fabricate_material(mat_name)
+
+	if fab_mat == null: return null
+
+	return fab_mat.get_texture()
+
 func get_fabricate_materials() -> Array[FabricateMaterial]:
 	return _fabricate_materials

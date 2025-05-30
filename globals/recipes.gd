@@ -66,7 +66,7 @@ func can_craft_recipe(result_name: String, materials: Dictionary, update_materia
 	var recipe = get_recipe(result_name)
 	for key in recipe.keys():
 		if key not in materials.keys():
-			print("recipes ~ can_craft_recipe(): resource ", key, " not present in materials dictionary")
+			# print("recipes ~ can_craft_recipe(): resource ", key, " not present in materials dictionary")
 			return false
 		if recipe[key] > materials[key]:
 			return false

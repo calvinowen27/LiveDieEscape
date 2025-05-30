@@ -3,12 +3,14 @@ extends Control
 class_name HUD
 
 @onready var _material_display: Control = %MaterialDisplay
+@onready var _recipe_display: Control = %RecipeDisplay
 
 func _process(_delta: float) -> void:
 	update()
 
 func init() -> void:
 	_material_display.init()
+	_recipe_display.init()
 
 # update all nodes in HUD
 func update() -> void:
@@ -20,4 +22,4 @@ func update_dash_bar() -> void:
 	dash_bar.value = dash_bar.max_value - int(dash_timer.time_left / dash_timer.wait_time * dash_bar.max_value)
 
 func get_recipe_display() -> Control:
-	return %RecipeDisplay
+	return _recipe_display

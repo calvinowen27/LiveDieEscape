@@ -7,8 +7,8 @@ var _recipe_count: int
 func _ready() -> void:
 	_recipe_cells = get_tree().get_nodes_in_group("Recipes")
 
+func init() -> void:
 	init_recipe_cells()
-	
 	select(_recipe_cells[_selected_recipe_idx] as RecipeCell)
 
 func init_recipe_cells() -> void:

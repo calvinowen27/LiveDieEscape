@@ -36,10 +36,7 @@ func _process(_delta: float) -> void:
 	
 	# move fabricate template with grid snapping if necessary (if active)
 	if active and Game.is_game_running():
-		# print("active and game running")
-		
 		var mouse_pos = Vector2i(Game.get_camera().get_local_mouse_position() + Game.get_camera().position)
-		# print(mouse_pos)
 		if (Vector2(mouse_pos) - RoomManager.get_player().position).length() > fab_range:
 			if mouse_in_range:
 				mouse_in_range = false
@@ -113,11 +110,8 @@ func _on_player_death() -> void:
 	# may need to update this to save material count at start of level
 
 func _on_game_start() -> void:
-	# set fabricate template and _recipes ui elements
-	# fab_temp = get_tree().root.get_node("Main/FabricateTemplate")
-	# ui_recipes = get_tree().root.get_node("Main/HUDRect/HUD/Recipes/GridContainer").get_children()
+	# select first recipe at start
 	ui_recipes = Game.get_HUD().get_recipe_display().get_recipe_cells()
-
 	_curr_recipe = ui_recipes[0] as RecipeCell
 
 # return quantity of material or 0 if none
@@ -132,7 +126,6 @@ func learn_recipe(result_name: String) -> void:
 	_known_recipes.append(result_name)
 
 	for recipe in ui_recipes:
-		print(recipe.result_name)
 		if recipe.result_name == result_name:
 			recipe.show()
 
@@ -149,9 +142,13 @@ func _on_recipe_select(recipe: RecipeCell) -> void:
 	if fab_temp != null:
 		fab_temp.queue_free()
 	
+	# TODO: fix this
 	fab_temp = get_tree().root.get_node("Main/FabricateTemplate").get_child(0) as FabricateTemplate
 
 	fab_temp.visible = active
 
 func get_curr_recipe() -> RecipeCell:
 	return _curr_recipe
+
+func clear_materials() -> void:
+	_materials.clear()

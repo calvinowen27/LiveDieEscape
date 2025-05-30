@@ -2,8 +2,12 @@ extends Control
 
 class_name RecipeCell
 
+const FABRICATE_TEMPLATE_PATH: String = "res://scenes/world_objects/fabricate_templates/%s_fabricate_template.tscn"
+
 @export var result_name: String
 @export var texture: Texture2D
+
+@export var _recipe_material_scene: PackedScene
 
 var selected: bool = false
 
@@ -21,10 +25,10 @@ func init_recipe(recipe_manager: Control) -> void:
 	$Panel/ResultName.text = result_name
 
 	for key in recipe.keys():
-		var recipe_material = load("res://scenes/ui/recipe_material.tscn").instantiate()
+		var recipe_material = _recipe_material_scene.instantiate()
 		$Panel/Materials.add_child(recipe_material)
 		recipe_material.get_node("Quantity").text = "x%d" % recipe[key]
-		recipe_material.get_node("TextureRect").texture = load("res://resources/art/%s.png" % key)
+		recipe_material.get_node("TextureRect").texture = Game.get_fabricate_material_manager().get_fabricate_material_texture(key)
 
 func _process(_delta: float) -> void:
 	if RoomManager.get_curr_room() == null or not RoomManager.get_curr_room().is_valid():
@@ -49,7 +53,7 @@ func select() -> void:
 	for child in fab_temp_parent.get_children():
 		fab_temp_parent.remove_child(child)
 	
-	fab_temp_parent.add_child(load("res://scenes/world_objects/fabricate_templates/%s_fabricate_template.tscn" % Recipes.get_recipe_object_name(result_name)).instantiate())
+	fab_temp_parent.add_child(load(FABRICATE_TEMPLATE_PATH % Recipes.get_recipe_object_name(result_name)).instantiate())
 
 	EventBus.recipe_select.emit(self as RecipeCell)
 
