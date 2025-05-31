@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 		# shock all nodes in range (if not shocked already)
 		for node in _nodes_in_range:
 			if node.has_node("Shockable"):
-				node.get_node("Shockable").shock()
+				node.get_node("Shockable").emit_shock()
 		_nodes_in_range.clear()
 
 # TODO: note to self, add placing object "thunk" kinda sound

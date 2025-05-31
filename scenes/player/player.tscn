@@ -107,3 +107,4 @@ volume_db = -10.0
 
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerIdle" method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="PlayerState/DashCooldownTimer" to="PlayerState/PlayerWalk" method="_on_dash_cooldown_timer_timeout"]
+[connection signal="shock" from="Shockable" to="." method="_on_shockable_shock"]

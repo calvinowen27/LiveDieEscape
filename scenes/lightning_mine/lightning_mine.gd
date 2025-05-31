@@ -16,14 +16,14 @@ func _trigger_on_body(body: Node2D) -> void:
 	if not body.has_node("Shockable"): return
 
 	# shock the body
-	body.get_node("Shockable").shock()
+	body.get_node("Shockable").emit_shock()
 
 	_triggered = true
 	_sprite.frame_coords.x = 1 # switch to disabled sprite
 
 	# might not be the best place for this
-	if body is LaserTurret:
-		body.shock()
+	# if body is LaserTurret:
+	# 	body.shock()
 	
 	# enable salvage
 	$Salvageable.set_active(true)

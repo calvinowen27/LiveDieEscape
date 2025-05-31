@@ -376,6 +376,7 @@ max_distance = 100.0
 [connection signal="animation_finished" from="AnimationPlayer" to="LaserTurretState" method="_on_animation_player_animation_finished"]
 [connection signal="interact" from="IDInteractable" to="." method="_on_id_interactable_interact"]
 [connection signal="interact" from="ForceFieldSalvage" to="." method="_on_force_field_salvage_interact"]
+[connection signal="shock" from="Shockable" to="." method="_on_shockable_shock"]
 [connection signal="disruption" from="Disruptable" to="." method="_on_disruptable_disruption"]
 [connection signal="end_disruption" from="Disruptable" to="." method="_on_disruptable_end_disruption"]
 

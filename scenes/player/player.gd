@@ -58,3 +58,10 @@ func remove_interactable_touching(interactable: Interactable) -> void:
 
 func can_interact_with(interactable: Interactable) -> bool:
 	return interactable in _interactables_touching and _interactables_touching.size() == 1
+
+func _on_shockable_shock(lightning: Lightning) -> void:
+	lightning.get_node("LightningState/LightningGo/TransitionTimer").timeout.connect(_on_lightning_transition)
+
+func _on_lightning_transition() -> void:
+	Fabricator.learn_recipe("Shock Bomb")
+
