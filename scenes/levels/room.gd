@@ -41,3 +41,10 @@ func get_height() -> float:
 
 func get_laser_turrets() -> Array[Node]:
 	return _laser_turrets
+
+func get_door(door_idx: int) -> Door:
+	for door in %Doors.get_children():
+		if (door as Door).get_idx() == door_idx:
+			return door as Door
+
+	return null 

@@ -19,7 +19,7 @@ func _init() -> void:
 	EventBus.change_room.connect(_on_room_change)
 	
 func _ready() -> void:
-	_room_idx = get_parent().get_room_idx()
+	_room_idx = RoomManager.get_curr_room_idx()
 
 	# initialize interactable node
 	var interactable = $Interactable
@@ -61,7 +61,7 @@ func next_room() -> void:
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	# make sure door and room are valid and match, then activate
-	var parent_room = get_parent()
+	var parent_room = get_parent().get_parent() # TODO: i don't like this
 	var valid = parent_room.is_valid()
 	if valid and parent_room.get_level_idx() == level_idx and parent_room.get_room_idx() == room_idx:
 		_active = true
@@ -91,3 +91,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body == RoomManager.get_player():
 		_player_touching = false
+
+func get_idx() -> int:
+	return _door_idx

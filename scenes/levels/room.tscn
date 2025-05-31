@@ -42,5 +42,8 @@ _player = NodePath("../Player")
 unique_name_in_owner = true
 y_sort_enabled = true
 
+[node name="Doors" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_434td")
