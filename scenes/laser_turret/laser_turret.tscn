@@ -255,7 +255,6 @@ freeze_mode = 1
 linear_damp_mode = 1
 linear_damp = 100.0
 script = ExtResource("1_ktj7o")
-_start_rotation = 90
 _movable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

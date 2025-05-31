@@ -31,10 +31,10 @@ position = Vector2(153, 137)
 
 [node name="LaserTurret" parent="LaserTurrets" index="0" instance=ExtResource("5_ce412")]
 position = Vector2(203, 104)
+_start_rotation = 90
 
 [node name="LaserTurret2" parent="LaserTurrets" index="1" instance=ExtResource("5_ce412")]
 position = Vector2(269, 79)
-_start_rotation = 0
 
 [node name="LaserTurret3" parent="LaserTurrets" index="2" instance=ExtResource("5_ce412")]
 position = Vector2(80, 161)
