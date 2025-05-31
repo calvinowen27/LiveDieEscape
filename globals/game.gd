@@ -46,7 +46,7 @@ func _on_player_death() -> void:
 func is_player_dead() -> bool:
 	return _is_player_dead
 
-func get_HUD() -> Control:
+func get_HUD() -> HUD:
 	return _main.get_HUD()
 
 func get_camera() -> Camera2D:

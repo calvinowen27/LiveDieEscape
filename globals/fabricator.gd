@@ -128,6 +128,8 @@ func learn_recipe(result_name: String) -> void:
 	for recipe in ui_recipes:
 		if recipe.result_name == result_name:
 			recipe.show()
+	
+	Game.get_HUD().get_recipe_display().on_recipe_learned(result_name)
 
 func knows_recipe(result_name: String) -> bool:
 	return result_name in _known_recipes

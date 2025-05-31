@@ -5,7 +5,7 @@ const RECIPES_FILE_PATH: String = "res://recipes.json"
 # contains recipe info, key is result name
 var _recipes: Dictionary
 
-func _ready() -> void:
+func _init() -> void:
 	load_recipes_from_file()
 
 # load recipes from file into _recipes dictionary
