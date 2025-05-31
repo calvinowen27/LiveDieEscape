@@ -1,5 +1,9 @@
 extends Node
 
+const ROOM_SCENE_PATH: String = "res://scenes/levels/level_%d/room_%d_%d.tscn"
+const ITEM_SCENE_PATH: String = "res://scenes/items/%s.tscn"
+const WORLD_OBJ_SCENE_PATH: String = "res://scenes/world_objects/%s.tscn"
+
 @export var _curr_level: int
 var _curr_room: Room
 var _curr_room_idx: int
@@ -56,7 +60,7 @@ func _change_room(new_room: Room, next_door_idx: int):
 func move_player_to_door(next_door: Door) -> void:
 	# spawn location position is relative to parent, global position is what we want
 	if next_door != null:
-		_player.teleport(next_door.get_node("SpawnLocation").global_position)
+		_player.teleport(next_door.get_spawn_location())
 
 func try_move_player_to_spawn() -> void:
 	var player_spawn = _curr_room.get_node("PlayerSpawn")
@@ -69,7 +73,6 @@ func get_door(door_idx: int) -> Door:
 # get room node associated with level and room idx, if room doesn't exist, create and store it
 func get_room(level_idx: int, room_idx: int) -> Room:
 	if level_idx != _curr_level:
-		print("get room clear level")
 		LevelManager.clear_level(_curr_level)
 		_curr_level = level_idx
 		LevelManager.load_level(level_idx)
@@ -94,7 +97,7 @@ func get_room(level_idx: int, room_idx: int) -> Room:
 		level_rooms.append(null)
 
 	# load and instantiate appropriate room
-	var new_room_resource = load("res://scenes/levels/level_%d/room_%d_%d.tscn" % [level_idx, level_idx, room_idx])
+	var new_room_resource = load(ROOM_SCENE_PATH % [level_idx, level_idx, room_idx])
 	var new_room = new_room_resource.instantiate()
 
 	level_rooms[room_idx] = new_room
@@ -113,7 +116,7 @@ func guard_reset() -> void:
 	#_player.queue_teleport(_curr_room.get_node("%PlayerResetPos").position);
 
 func instantiate_item(item_name: String, position: Vector2) -> Item:
-	var item = load("res://scenes/items/%s.tscn" % item_name).instantiate()
+	var item = load(ITEM_SCENE_PATH % item_name).instantiate()
 	
 	_curr_room.add_child(item)
 	item.position = position
@@ -121,7 +124,7 @@ func instantiate_item(item_name: String, position: Vector2) -> Item:
 	return item
 
 func spawn_object(object_name: String, position: Vector2) -> Node2D:
-	var obj = load("res://scenes/world_objects/%s.tscn" % object_name).instantiate()
+	var obj = load(WORLD_OBJ_SCENE_PATH % object_name).instantiate()
 	_curr_room.add_child(obj)
 	obj.position = position
 	return obj

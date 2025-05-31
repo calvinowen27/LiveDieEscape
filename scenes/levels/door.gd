@@ -81,6 +81,9 @@ func is_locked() -> bool:
 func get_room_idx() -> int:
 	return _room_idx
 
+func get_spawn_location() -> Vector2:
+	return $SpawnLocation.global_position
+
 func _on_body_entered(body: Node2D) -> void:
 	if body == RoomManager.get_player():
 		_player_touching = true
