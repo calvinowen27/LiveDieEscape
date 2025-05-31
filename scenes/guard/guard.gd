@@ -11,9 +11,6 @@ var _queue_teleport = Vector2.ZERO
 
 @onready var _start_pos: Vector2 = position
 
-@onready var _level_idx: int = RoomManager.get_curr_level()
-@onready var _room_idx: int = RoomManager.get_curr_room_idx()
-
 @onready var _state: GuardState = $GuardState
 
 func _ready() -> void:

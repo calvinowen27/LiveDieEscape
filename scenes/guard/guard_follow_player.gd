@@ -34,10 +34,11 @@ func _on_guard_body_entered(body: Node) -> void:
 			Inventory.del_item(item)
 
 		# reset the guard position
-		_rigidbody.queue_reset()
+		# _rigidbody.queue_reset()
 
 		# resets the player position and room
-		RoomManager.guard_reset()
+		# RoomManager.guard_reset()
+		RoomManager.get_player().die()
 
 func _on_room_change(level_idx: int, room_idx: int) -> void:
 	# if this room, player reset is over
