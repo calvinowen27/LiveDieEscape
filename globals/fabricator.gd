@@ -123,6 +123,8 @@ func get_mat_count(mat_name: String) -> int:
 
 # add recipe name to known _recipes if not already learned
 func learn_recipe(result_name: String) -> void:
+	if result_name in _known_recipes: return
+	
 	_known_recipes.append(result_name)
 
 	for recipe in ui_recipes:
