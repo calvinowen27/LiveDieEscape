@@ -37,7 +37,7 @@ func _on_game_start() -> void:
 		RoomManager.set_curr_room(0, 0, -1)
 
 func _on_player_respawn() -> void:
-	EventBus.level_reset.emit(0)
+	# EventBus.level_reset.emit(0)
 	_is_player_dead = false
 
 func _on_player_death() -> void:

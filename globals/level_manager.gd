@@ -7,7 +7,7 @@ var _level_info = {}
 var _curr_level: int
 
 func _ready() -> void:
-	EventBus.level_reset.connect(_on_level_reset)
+	# EventBus.level_reset.connect(_on_level_reset)
 
 	load_level(0)
 

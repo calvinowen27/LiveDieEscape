@@ -13,6 +13,13 @@ var _rooms = {}
 
 var _room_timers = {}
 
+var _room_start_materials: Dictionary
+var _room_start_door: int
+var _room_start_stat_changes: Array[Array]
+
+func _ready() -> void:
+	EventBus.player_respawn.connect(_on_player_respawn)
+
 func get_player() -> Node2D:
 	return _player
 
@@ -56,6 +63,10 @@ func _change_room(new_room: Room, next_door_idx: int):
 		move_player_to_door(next_door)
 	else:
 		try_move_player_to_spawn()
+	
+	_room_start_materials = Fabricator.get_materials_copy()
+	_room_start_door = next_door_idx
+	_room_start_stat_changes = StatManager.get_stat_changes_copy()
 
 func move_player_to_door(next_door: Door) -> void:
 	# spawn location position is relative to parent, global position is what we want
@@ -107,6 +118,16 @@ func get_room(level_idx: int, room_idx: int) -> Room:
 func reset_room(level_idx: int, room_idx: int) -> void:
 	_rooms[level_idx][room_idx].queue_free.call_deferred()
 	_rooms[level_idx][room_idx] = null
+
+func reset_curr_room() -> void:
+	Fabricator.set_materials(_room_start_materials)
+	StatManager.set_stat_changes(_room_start_stat_changes)
+
+	reset_room(_curr_level, _curr_room_idx)
+	set_curr_room(_curr_level, _curr_room_idx, _room_start_door)
+
+func _on_player_respawn() -> void:
+	reset_curr_room()
 
 func guard_reset() -> void:
 	reset_room(_curr_level, _curr_room_idx)

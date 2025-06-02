@@ -66,6 +66,11 @@ func add_material(mat_name: String, quantity: int) -> int:
 
 	return _materials[mat_name]
 
+func set_materials(new_materials: Dictionary) -> void:
+	_materials = new_materials.duplicate()
+
+	EventBus.materials_update.emit()
+
 func try_create_object(result_name: String, location: Vector2) -> bool:
 	# snap to grid if necessary
 	if Recipes.get_recipe_snap_to_grid(result_name):
@@ -156,3 +161,6 @@ func get_curr_recipe() -> RecipeCell:
 
 func clear_materials() -> void:
 	_materials.clear()
+
+func get_materials_copy() -> Dictionary:
+	return _materials.duplicate()
