@@ -41,7 +41,7 @@ func try_create() -> bool:
 	var mouse_pos = Vector2i(Game.get_camera().get_local_mouse_position() + Game.get_camera().position)
 	return Fabricator.try_create_object(result_name, mouse_pos)
 
-func select() -> void:
+func select() -> FabricateTemplate:
 	selected = true
 	$Panel/Outline.show()
 
@@ -53,9 +53,11 @@ func select() -> void:
 	for child in fab_temp_parent.get_children():
 		fab_temp_parent.remove_child(child)
 	
-	fab_temp_parent.add_child(load(FABRICATE_TEMPLATE_PATH % Recipes.get_recipe_object_name(result_name)).instantiate())
+	var fab_temp = load(FABRICATE_TEMPLATE_PATH % Recipes.get_recipe_object_name(result_name)).instantiate() as FabricateTemplate
+	fab_temp_parent.add_child(fab_temp)
 
 	EventBus.recipe_select.emit(self as RecipeCell)
+	return fab_temp
 
 func deselect() -> void:
 	selected = false

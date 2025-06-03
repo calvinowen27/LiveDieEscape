@@ -6,12 +6,17 @@ var valid: bool = true
 
 var invalid_objs: Array
 
+var _range: float = 0
+
+@export var _object_name: String
+
 func _ready() -> void:
 	EventBus.recipe_select.connect(_on_recipe_select)
 
-	# Fabricator.set_fab_temp(self)
+	set_range(ObjectManager.get_object_range(_object_name))
 
 func update() -> void:
+	# TODO: clean all this up
 	# print("update")
 	if Fabricator.can_craft() and valid:
 		# print("can craft")
@@ -39,3 +44,13 @@ func _on_recipe_select(_recipe: RecipeCell) -> void:
 	# $Sprite2D.texture = recipe.texture
 
 	update()
+
+func set_range(range_: float) -> void:
+	_range = range_
+
+	if _range < 0: return
+
+
+	$Range.scale.x = _range * 2 / $Range.texture.get_width()
+	$Range.scale.y = _range * 2 / $Range.texture.get_width()
+	$Range.visible = true

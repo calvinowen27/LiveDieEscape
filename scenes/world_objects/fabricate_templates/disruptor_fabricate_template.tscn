@@ -6,6 +6,7 @@
 size = Vector2(8, 5)
 
 [node name="DisruptorFabricateTemplate" instance=ExtResource("1_3y0ej")]
+_object_name = "Disruptor"
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 0.5)

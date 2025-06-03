@@ -18,7 +18,7 @@ func load_recipes_from_file():
 	if error == OK:
 		_recipes = json.data
 	else:
-		print("level_manager ~ JSON Parse Error: ", json.get_error_message(), " in ", json.dat, " at line ", json.get_error_line())
+		print("recipes ~ JSON Parse Error: ", json.get_error_message(), " in ", json.dat, " at line ", json.get_error_line())
 
 func get_recipes() -> Dictionary:
 	return _recipes
@@ -59,6 +59,13 @@ func get_recipe_result_texture(result_name: String) -> Texture2D:
 		return null
 	
 	return load(_recipes[result_name]["result-texture"])
+
+func get_world_object_range(result_name: String) -> float:
+	if result_name not in _recipes.keys():
+		print("recipes ~ get_world_object_range(): can't get range for ", result_name, " because it doesn't exist.")
+		return -1
+	
+	return _recipes[result_name]["range"]
 
 # check if recipe can be crafted with the materials passed
 # if update_materials is true, the materials needed will be subtracted from the materials passed

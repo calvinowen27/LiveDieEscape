@@ -1,15 +1,25 @@
-extends RigidBody2D
+extends WorldObject
 
 class_name Disruptor
 
 var _disrupting: Array[Disruptable]
+
+func _ready() -> void:
+	super._ready()
+
+	set_range(_data["range"])
+
+func set_range(range_: float) -> void:
+	var col_shape = $DetectionArea/CollisionShape2D
+	col_shape.scale.x = range_
+	col_shape.scale.y = range_
 
 func die() -> void:
 	# stop disrupting everything and then destroy self
 	for disruptable in _disrupting:
 		disruptable.end_disrupt(self)
 	
-	self.queue_free()
+	super.die()
 
 # start disrupting anything in range
 func _on_detection_area_body_entered(body: Node2D) -> void:

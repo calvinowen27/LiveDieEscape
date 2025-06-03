@@ -1,35 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://u6kgsfv5enfh"]
+[gd_scene load_steps=6 format=3 uid="uid://t8eaakrq2t3f"]
 
+[ext_resource type="PackedScene" uid="uid://cu8t7nsyhe00i" path="res://scenes/world_objects/world_object.tscn" id="1_co5uk"]
 [ext_resource type="Script" path="res://scenes/world_objects/disruptor.gd" id="1_mqt17"]
 [ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="2_h14hk"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngpep"]
-radius = 3.0
-height = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_fun6m"]
+resource_local_to_scene = true
+radius = 4.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ki3cp"]
-radius = 76.0066
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2un0"]
+radius = 1.0
 
-[node name="Disruptor" type="RigidBody2D" groups=["Disruptors"]]
-y_sort_enabled = true
-gravity_scale = 0.0
-lock_rotation = true
-freeze = true
+[node name="Disruptor" instance=ExtResource("1_co5uk")]
 script = ExtResource("1_mqt17")
+_object_name = "Disruptor"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_ngpep")
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_fun6m")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_h14hk")
 offset = Vector2(0, -5)
 
-[node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 0
+[node name="DetectionArea" type="Area2D" parent="." index="2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_ki3cp")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_r2un0")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

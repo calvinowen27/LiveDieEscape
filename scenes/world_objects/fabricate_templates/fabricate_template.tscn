@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dthd65iifnui1"]
+[gd_scene load_steps=5 format=3 uid="uid://dthd65iifnui1"]
 
-[ext_resource type="Script" path="res://scenes/fabricate_template.gd" id="1_rs0u4"]
+[ext_resource type="Script" path="res://scenes/world_objects/fabricate_templates/fabricate_template.gd" id="1_rs0u4"]
 [ext_resource type="Texture2D" uid="uid://15qtp7vwriea" path="res://resources/art/disruptor.png" id="1_xx365"]
+[ext_resource type="Texture2D" uid="uid://bnarjdglxh6nn" path="res://resources/art/fabricate_range.png" id="3_iw0v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh42p"]
 size = Vector2(8, 5)
@@ -21,6 +22,11 @@ offset = Vector2(8, 8)
 
 [node name="Square" type="Polygon2D" parent="Sprite2D"]
 polygon = PackedVector2Array(0, 0, 0, 16, 16, 16, 16, 0)
+
+[node name="Range" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0, 0.541176, 1, 0.356863)
+texture = ExtResource("3_iw0v1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
