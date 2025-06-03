@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn4nygk4ycnp4"]
+[gd_scene load_steps=4 format=3 uid="uid://cn4nygk4ycnp4"]
 
+[ext_resource type="Script" path="res://scenes/world_objects/wall_block.gd" id="1_2d3ux"]
 [ext_resource type="Texture2D" uid="uid://cico8t12jclmb" path="res://resources/art/wall.png" id="1_a54f4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxsn3"]
@@ -9,6 +10,8 @@ size = Vector2(108, 47)
 gravity_scale = 0.0
 lock_rotation = true
 freeze = true
+script = ExtResource("1_2d3ux")
+_object_name = "Wall"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(6.75, 6.75)

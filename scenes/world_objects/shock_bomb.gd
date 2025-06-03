@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends WorldObject
 
 var _detonating: bool = false
 

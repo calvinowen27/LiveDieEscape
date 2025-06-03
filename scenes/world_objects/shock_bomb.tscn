@@ -105,6 +105,7 @@ gravity_scale = 0.0
 lock_rotation = true
 freeze = true
 script = ExtResource("1_e8kse")
+_object_name = "Shock Bomb"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ng1bi")

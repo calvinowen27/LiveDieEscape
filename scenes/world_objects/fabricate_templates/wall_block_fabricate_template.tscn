@@ -6,7 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7aqel"]
 size = Vector2(16, 5.5)
 
-[node name="WallFabricateTemplate" instance=ExtResource("1_faokq")]
+[node name="WallBlockFabricateTemplate" instance=ExtResource("1_faokq")]
+_object_name = "Wall"
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(8, 13.25)

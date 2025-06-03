@@ -1,4 +1,7 @@
 {
+	"Wall": {
+		"range": -1
+	},
 	"Disruptor": {
 		"range": 75
 	},
