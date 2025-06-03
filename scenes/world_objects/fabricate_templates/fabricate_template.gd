@@ -13,8 +13,6 @@ var _range: float = 0
 func _ready() -> void:
 	EventBus.recipe_select.connect(_on_recipe_select)
 
-	set_range(ObjectManager.get_object_range(_object_name))
-
 func update() -> void:
 	# TODO: clean all this up
 	# print("update")
@@ -24,6 +22,8 @@ func update() -> void:
 	else:
 		# print("can not craft")
 		$Sprite2D/Square.color = Color(0xe0000097)
+	
+	set_range(ObjectManager.get_object_range(_object_name))
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is RigidBody2D:
