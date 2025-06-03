@@ -1,5 +1,8 @@
 {
 	"Disruptor": {
 		"range": 75
+	},
+	"Shock Bomb": {
+		"range": 27
 	}
 }
