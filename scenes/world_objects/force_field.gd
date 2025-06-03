@@ -1,11 +1,9 @@
-extends Node2D
+extends WorldObject
 
 class_name ForceField
 
 @export var _temporary: bool = true
 @export var _penetrable: bool = true
-
-@onready var _rigidbody: RigidBody2D = $RigidBody2D
 
 func _ready() -> void:
 	set_penetrable(_penetrable)
@@ -25,9 +23,9 @@ func _on_area_2d_body_entered(body:Node2D) -> void:
 func set_penetrable(val: bool) -> void:
 	_penetrable = val
 	if _penetrable:
-		_rigidbody.set_collision_layer_value(1, false)
+		set_collision_layer_value(1, false)
 	else:
-		_rigidbody.set_collision_layer_value(1, true)
+		set_collision_layer_value(1, true)
 
 func is_penetrable() -> bool:
 	return _penetrable

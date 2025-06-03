@@ -13,6 +13,8 @@ var _stat_changes: Array[Array] = []
 func _ready() -> void:
 	_stats = _base_stats.duplicate(true)
 
+	EventBus.start_game.connect(_on_game_start)
+
 func get_stat(stat: String) -> float:
 	if stat not in _stats.keys():
 		print_debug("get_stat(): stat %s not in _stats.keys()" % stat)
@@ -74,3 +76,6 @@ func reset_stats() -> void:
 	_stat_changes.clear()
 
 	_stats = _base_stats.duplicate(true)
+
+func _on_game_start() -> void:
+	reset_stats()

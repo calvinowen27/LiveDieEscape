@@ -69,12 +69,12 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 		get_parent().enable_turret()
 
 func disable_turret() -> void:
-	if is_broken(): return
+	if is_broken() or is_disrupted(): return
 
 	_set_curr_state("LaserTurretDisabled")
 
 func enable_turret() -> void:
-	if is_broken(): return
+	if is_broken() or is_disrupted(): return
 
 	_set_curr_state("LaserTurretPriming")
 
@@ -92,6 +92,9 @@ func die() -> void:
 	if is_broken(): return
 
 	_set_curr_state("LaserTurretBreaking")
+
+func is_disrupted() -> bool:
+	return _curr_state.name == "LaserTurretDisrupted"
 
 func is_broken() -> bool:
 	return _curr_state.name == "LaserTurretBreaking" or _curr_state.name == "LaserTurretBroken"

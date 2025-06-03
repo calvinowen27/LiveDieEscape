@@ -91,9 +91,9 @@ func set_force_field_penetrable(val: bool) -> void:
 		_force_field.set_penetrable(val)
 	
 		if val:
-			remove_collision_exception_with(_force_field.get_node("RigidBody2D"))
+			remove_collision_exception_with(_force_field)
 		else:
-			add_collision_exception_with(_force_field.get_node("RigidBody2D"))
+			add_collision_exception_with(_force_field)
 
 func get_start_rotation() -> int:
 	return _start_rotation

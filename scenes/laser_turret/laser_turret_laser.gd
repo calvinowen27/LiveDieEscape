@@ -26,6 +26,8 @@ func _physics_process(_delta: float) -> void:
 		last_collider = found_collider
 		if found_collider == RoomManager.get_player():
 			RoomManager.get_player().die()
-		elif found_collider as LaserTurret != null:
-			(found_collider as LaserTurret).die()
+		elif found_collider is LaserTurret:
+			found_collider.die()
+		elif found_collider is Disruptor:
+			found_collider.die()
 		# do hit stuff here
