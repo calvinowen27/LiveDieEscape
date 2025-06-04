@@ -42,5 +42,4 @@ func _on_shock_timer_timeout() -> void:
 	_done = true
 
 func set_prev_state(state_name: String) -> void:
-	print("prev_state: ", state_name)
 	_prev_state = state_name

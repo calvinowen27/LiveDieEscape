@@ -26,6 +26,9 @@ func del_item(item: Item) -> void:
 
 func clear() -> void:
 	for item in _items:
-		item.queue_free()
+		if item:
+			item.queue_free()
+		
+		item = null
 	
 	_items.clear()

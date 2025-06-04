@@ -66,8 +66,6 @@ func get_stat_changes_copy() -> Array[Array]:
 func set_stat_changes(new_stat_changes: Array[Array]) -> void:
 	reset_stats()
 
-	print(new_stat_changes)
-
 	for stat in new_stat_changes:
 		change_stat(stat[0], stat[1])
 
