@@ -2,6 +2,8 @@ extends LaserTurretState
 
 var _done: bool = false
 
+var _prev_state: String
+
 func _ready() -> void:
 	pass
 
@@ -11,7 +13,7 @@ func _process(_delta: float) -> void:
 func update(_delta: float) -> String:
 	# once shock timer is over, switch back to activated state
 	if _done:
-		return "LaserTurretActivated"
+		return _prev_state
 	
 	return name
 
@@ -38,3 +40,7 @@ func laser_turret_state_enable(turret: LaserTurret, animation_player: AnimationP
 # once shock timer is over, switch back to activated state
 func _on_shock_timer_timeout() -> void:
 	_done = true
+
+func set_prev_state(state_name: String) -> void:
+	print("prev_state: ", state_name)
+	_prev_state = state_name

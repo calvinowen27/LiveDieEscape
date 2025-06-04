@@ -360,6 +360,7 @@ script = ExtResource("15_uay2m")
 
 [node name="LaserTurretShocked" type="Node" parent="LaserTurretState"]
 script = ExtResource("15_fb24r")
+_initial_state = null
 
 [node name="LaserTurretDisabled" type="Node" parent="LaserTurretState"]
 script = ExtResource("15_48nyh")

@@ -39,6 +39,8 @@ func enable_turret() -> void:
 
 # returns true if new state is enabled, false if new state is disabled
 func toggle() -> bool:
+	if _state.is_disrupted(): return false
+
 	if _state.get_curr_state().name == "LaserTurretDisabled":
 		_state.enable_turret()
 		return true
@@ -70,8 +72,8 @@ func _on_disruptable_disruption(_disruptor: Disruptor) -> void:
 func _on_disruptable_end_disruption(_disruptor: Disruptor) -> void:
 	_state.enable_turret()
 
-func _on_shockable_shock(_lightning: Lightning) -> void:
-	_state.shock()
+func _on_shockable_shock(lightning: Lightning) -> void:
+	_state.shock(lightning)
 
 ## set accessibility of interactables
 func set_scrap_accessible(val: bool) -> void:

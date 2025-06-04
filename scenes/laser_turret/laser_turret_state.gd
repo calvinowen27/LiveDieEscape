@@ -69,18 +69,22 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 		get_parent().enable_turret()
 
 func disable_turret() -> void:
-	if is_broken() or is_disrupted(): return
+	if is_broken(): return
 
 	_set_curr_state("LaserTurretDisabled")
 
 func enable_turret() -> void:
-	if is_broken() or is_disrupted(): return
+	if is_broken(): return
 
 	_set_curr_state("LaserTurretPriming")
 
-func shock() -> void:
+func shock(lightning: Lightning) -> void:
 	if is_broken(): return
 
+	var shocked_state = get_node("LaserTurretShocked")
+	lightning.get_node("LightningState/LightningBuzz/AliveTimer").timeout.connect(shocked_state._on_shock_timer_timeout)
+
+	shocked_state.set_prev_state(_curr_state.name)
 	_set_curr_state("LaserTurretShocked")
 
 func disrupt() -> void:
