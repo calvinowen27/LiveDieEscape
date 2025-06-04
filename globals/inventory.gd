@@ -25,10 +25,10 @@ func del_item(item: Item) -> void:
 	item.queue_free()
 
 func clear() -> void:
-	for item in _items:
-		if item:
-			item.queue_free()
+	for i in range(_items.size()):
+		if _items[i]:
+			_items[i].queue_free()
 		
-		item = null
+		_items[i] = null
 	
 	_items.clear()
