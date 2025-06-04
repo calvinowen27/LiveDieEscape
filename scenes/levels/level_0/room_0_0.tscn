@@ -43,9 +43,6 @@ _start_rotation = 180
 [node name="LaserTurretState" parent="LaserTurrets/LaserTurret3" index="9"]
 _initial_state = "LaserTurretBroken"
 
-[node name="LaserTurretShocked" parent="LaserTurrets/LaserTurret3/LaserTurretState" index="6"]
-_initial_state = null
-
 [node name="LaserTurret4" parent="LaserTurrets" index="3" instance=ExtResource("5_ce412")]
 position = Vector2(181, 190)
 _start_rotation = 270
@@ -68,3 +65,5 @@ _item = NodePath("../Key")
 
 [editable path="LaserTurrets/LaserTurret3"]
 [editable path="LaserTurrets/LaserTurret3/IDInteractable"]
+[editable path="Doors/Door0"]
+[editable path="Doors/Door0/Interactable"]

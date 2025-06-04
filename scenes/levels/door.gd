@@ -29,7 +29,9 @@ func _ready() -> void:
 	
 	if _locked:
 		$Sprite2D.frame_coords.y = 1
-		$RigidBody2D/CollisionShape2D.disabled = false
+		# $RigidBody2D/CollisionShape2D.disabled = false
+	else:
+		$RigidBody2D.add_collision_exception_with(RoomManager.get_player())
 	
 	if abs(rotation - (float(3)/2)*PI) <= 0.1:
 		$Sprite2D.frame_coords.x = 1
@@ -69,7 +71,8 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 func unlock() -> void:
 	$Sprite2D.frame_coords.y = 0
 	# $Sprite2D.texture = _unlocked_texture
-	$RigidBody2D/CollisionShape2D.disabled = true
+	# $RigidBody2D/CollisionShape2D.disabled = true
+	$RigidBody2D.add_collision_exception_with(RoomManager.get_player())
 	_locked = false
 
 	if _player_touching:
