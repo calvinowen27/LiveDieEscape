@@ -29,17 +29,21 @@ func _process(_delta: float) -> void:
 	# show or hide fabricate template
 	if Input.is_action_just_pressed("fabricate"):
 		active = not active # keep track of whether we can fabricate or not with left click
+		var player: Player = RoomManager.get_player()
 		if active:
 			fab_temp.show()
-			RoomManager.get_player().set_fabricate_range_visible(true)
+			player.set_fabricate_range_visible(true)
 		else:
 			fab_temp.hide()
-			RoomManager.get_player().set_fabricate_range_visible(false)
+			player.set_fabricate_range_visible(false)
 	
 	# move fabricate template with grid snapping if necessary (if active)
 	if active and Game.is_game_running():
-		var mouse_pos = Vector2i(Game.get_camera().get_local_mouse_position() + Game.get_camera().position)
-		if (Vector2(mouse_pos) - RoomManager.get_player().position).length() > fab_range:
+		# var mouse_pos = Vector2i(Game.get_camera().get_local_mouse_position() + Game.get_camera().position)
+		var mouse_pos = Vector2i(Game.get_mouse_pos_relative_to(null))
+		var mouse_pos_from_player = Game.get_mouse_pos_relative_to(RoomManager.get_player())
+		# if (Vector2(mouse_pos) - RoomManager.get_player().position).length() > fab_range:
+		if mouse_pos_from_player.length() > fab_range:
 			if mouse_in_range:
 				mouse_in_range = false
 				fab_temp.update()

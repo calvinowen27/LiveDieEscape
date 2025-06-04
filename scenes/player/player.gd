@@ -8,18 +8,15 @@ var _last_move_dir: Vector2
 
 var _interactables_touching: Array
 
-
 func _ready() -> void:
-	# $ZOrdering.init($Sprite2D)
-
 	EventBus.change_room.connect(_on_room_change)
-
-	# TODO: fix this pleassseeeee
-	$FabricateRange.scale.x = Fabricator.get_fabricate_range() * 2 / $FabricateRange.texture.get_height()
-	$FabricateRange.scale.y = Fabricator.get_fabricate_range() * 2 / $FabricateRange.texture.get_height()
 
 	if Fabricator.is_active():
 		set_fabricate_range_visible(true)
+
+func _process(_delta: float) -> void:
+	if $FabricateRange.visible:
+		set_fabricate_point(Game.get_mouse_pos_relative_to(self))
 
 func reset() -> void:
 	for child in get_children():
@@ -75,3 +72,5 @@ func _on_lightning_transition() -> void:
 func set_fabricate_range_visible(val: bool) -> void:
 	$FabricateRange.visible = val
 
+func set_fabricate_point(point: Vector2) -> void:
+	$FabricateRange.set_endpoint(point)

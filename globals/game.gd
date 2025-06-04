@@ -54,3 +54,13 @@ func get_camera() -> Camera2D:
 
 func get_fabricate_material_manager() -> FabricateMaterialManager:
 	return _main.get_fabricate_material_manager()
+
+# returns mouse position relative to target, or relative to camera if target is null
+func get_mouse_pos_relative_to(target: Node2D) -> Vector2:
+	var camera = get_camera()
+	var mouse_pos_from_cam = camera.get_local_mouse_position() + camera.position
+
+	if target == null:
+		return mouse_pos_from_cam
+	else:
+		return mouse_pos_from_cam - target.position
