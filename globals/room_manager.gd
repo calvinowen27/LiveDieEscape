@@ -13,9 +13,13 @@ var _rooms = {}
 
 var _room_timers = {}
 
+# TODO: room state is broken and idk how i wanna handle it so maybe figure that out
+
+# room state information
 var _room_start_materials: Dictionary
 var _room_start_door: int
 var _room_start_stat_changes: Array[Array]
+var _room_start_door_states: Dictionary # { key: int (door idx), val: bool (locked) }
 
 func _ready() -> void:
 	EventBus.player_respawn.connect(_on_player_respawn)
@@ -64,9 +68,21 @@ func _change_room(new_room: Room, next_door_idx: int):
 	else:
 		try_move_player_to_spawn()
 	
+	save_room_state(next_door_idx)
+	
+# save state of room in corresponding variables
+# TODO: honestly these should probs be in one data structure
+func save_room_state(next_door_idx: int):
 	_room_start_materials = Fabricator.get_materials_copy()
 	_room_start_door = next_door_idx
 	_room_start_stat_changes = StatManager.get_stat_changes_copy()
+
+	# save whether or not each door is locked
+	_room_start_door_states.clear()
+	var i = 0
+	while (_curr_room.get_door(i) != null):
+		_room_start_door_states[i] = _curr_room.get_door(i).is_locked()
+		i += 1
 
 func move_player_to_door(next_door: Door) -> void:
 	# spawn location position is relative to parent, global position is what we want
@@ -125,6 +141,11 @@ func reset_curr_room() -> void:
 
 	reset_room(_curr_level, _curr_room_idx)
 	set_curr_room(_curr_level, _curr_room_idx, _room_start_door)
+
+	# unlock all doors that should be
+	for i in _room_start_door_states.keys():
+		if not _room_start_door_states[i]:
+			_curr_room.get_door(i).unlock()
 
 func _on_player_respawn() -> void:
 	reset_curr_room()

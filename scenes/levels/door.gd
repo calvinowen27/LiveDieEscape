@@ -67,6 +67,7 @@ func _on_room_change(level_idx: int, room_idx: int) -> void:
 	var valid = parent_room.is_valid()
 	if valid and parent_room.get_level_idx() == level_idx and parent_room.get_room_idx() == room_idx:
 		_active = true
+	
 
 func unlock() -> void:
 	$Sprite2D.frame_coords.y = 0
