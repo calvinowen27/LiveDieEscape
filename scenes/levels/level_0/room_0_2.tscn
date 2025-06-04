@@ -16,3 +16,4 @@ position = Vector2(82, 137)
 [node name="Door" parent="Doors" index="0" instance=ExtResource("2_dug2u")]
 position = Vector2(80, 148)
 rotation = -1.57079
+_locked = true

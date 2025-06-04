@@ -14,6 +14,13 @@ func _ready() -> void:
 
 	EventBus.change_room.connect(_on_room_change)
 
+	# TODO: fix this pleassseeeee
+	$FabricateRange.scale.x = Fabricator.get_fabricate_range() * 2 / $FabricateRange.texture.get_height()
+	$FabricateRange.scale.y = Fabricator.get_fabricate_range() * 2 / $FabricateRange.texture.get_height()
+
+	if Fabricator.is_active():
+		set_fabricate_range_visible(true)
+
 func reset() -> void:
 	for child in get_children():
 		if child is Lightning:
@@ -64,4 +71,7 @@ func _on_shockable_shock(lightning: Lightning) -> void:
 
 func _on_lightning_transition() -> void:
 	Fabricator.learn_recipe("Shock Bomb")
+
+func set_fabricate_range_visible(val: bool) -> void:
+	$FabricateRange.visible = val
 

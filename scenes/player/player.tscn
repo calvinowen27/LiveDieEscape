@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dsjw11gafshw3"]
+[gd_scene load_steps=28 format=3 uid="uid://dsjw11gafshw3"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fa2xx"]
 [ext_resource type="Script" path="res://scenes/player/player_state.gd" id="3_k6lhe"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://biodi138uf1oh" path="res://resources/art/player3.png" id="6_vrsab"]
 [ext_resource type="Animation" uid="uid://dy3r8d5qimjw7" path="res://resources/animations/player/player_dash_left.tres" id="7_5xl1i"]
 [ext_resource type="Animation" uid="uid://ccnt3pw24244v" path="res://resources/animations/player/RESET.tres" id="7_bh6ys"]
+[ext_resource type="Texture2D" uid="uid://bnarjdglxh6nn" path="res://resources/art/fabricate_range.png" id="7_xi0ha"]
 [ext_resource type="Animation" uid="uid://sbtl83fnjlrt" path="res://resources/animations/player/player_dash_right.tres" id="8_ibgny"]
 [ext_resource type="Animation" uid="uid://btccrnhtuqro4" path="res://resources/animations/player/player_idle_down.tres" id="9_wunrl"]
 [ext_resource type="Animation" uid="uid://bhh2r8fqrja0n" path="res://resources/animations/player/player_idle_left.tres" id="10_h4hqy"]
@@ -91,6 +92,13 @@ frame = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_3t6uc")
+
+[node name="FabricateRange" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0, 0.419608, 1, 0.580392)
+texture = ExtResource("7_xi0ha")
+hframes = 2
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath(".")

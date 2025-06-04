@@ -37,6 +37,7 @@ position = Vector2(137, 80)
 [node name="Door0" parent="Doors" index="0" instance=ExtResource("2_6rxug")]
 position = Vector2(160, 308)
 rotation = -1.5708
+_locked = true
 
 [node name="Door1" parent="Doors" index="1" instance=ExtResource("2_6rxug")]
 position = Vector2(64, 12)

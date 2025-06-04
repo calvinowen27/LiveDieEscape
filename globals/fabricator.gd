@@ -31,8 +31,10 @@ func _process(_delta: float) -> void:
 		active = not active # keep track of whether we can fabricate or not with left click
 		if active:
 			fab_temp.show()
+			RoomManager.get_player().set_fabricate_range_visible(true)
 		else:
 			fab_temp.hide()
+			RoomManager.get_player().set_fabricate_range_visible(false)
 	
 	# move fabricate template with grid snapping if necessary (if active)
 	if active and Game.is_game_running():
@@ -164,3 +166,9 @@ func clear_materials() -> void:
 
 func get_materials_copy() -> Dictionary:
 	return _materials.duplicate()
+
+func get_fabricate_range() -> float:
+	return fab_range
+
+func is_active() -> bool:
+	return active

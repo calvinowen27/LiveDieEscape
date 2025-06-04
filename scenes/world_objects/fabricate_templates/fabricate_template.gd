@@ -51,6 +51,6 @@ func set_range(range_: float) -> void:
 	if _range < 0: return
 
 
-	$Range.scale.x = _range * 2 / $Range.texture.get_width()
-	$Range.scale.y = _range * 2 / $Range.texture.get_width()
+	$Range.scale.x = _range * 2 / $Range.texture.get_height()
+	$Range.scale.y = _range * 2 / $Range.texture.get_height()
 	$Range.visible = true

@@ -27,6 +27,7 @@ polygon = PackedVector2Array(0, 0, 0, 16, 16, 16, 16, 0)
 visible = false
 self_modulate = Color(0, 0.541176, 1, 0.356863)
 texture = ExtResource("3_iw0v1")
+hframes = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
